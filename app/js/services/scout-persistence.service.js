@@ -4,7 +4,7 @@ app.factory('scoutPersistenceService', function () {
 
 	var _scouts = [
 		{
-			id: 'testid',
+			id: 'testid1',
 			firstName: "Stephen",
 			lastName: "Done",
 			photoUrl: '',
@@ -28,7 +28,7 @@ app.factory('scoutPersistenceService', function () {
 			troop: '154'
 		},
 		{
-			id: 'testid',
+			id: 'testid2',
 			firstName: "Timothy",
 			lastName: "Done",
 			photoUrl: '',
@@ -46,6 +46,25 @@ app.factory('scoutPersistenceService', function () {
 			],
 			numberOfMeritBadges: 3,
 			troop: '154'
+		},
+		{
+			id: 'testid3',
+			firstName: "Gustavo",
+			lastName: "Done",
+			photoUrl: '',
+			currentRank: "First Class",
+			currentPatrol: "Fox",
+			currentPositions: [],
+			isOA: false,
+			isOAQualified: true,
+			qualifiedNightsOfCamping: 10,
+			hoursOfService: 1,
+			percentProgressToNextRank: 5,
+			neededRequirementCategories: [
+				{title: 'camping', color: 'green'},
+			],
+			numberOfMeritBadges: 5,
+			troop: '172'
 		}
 	];
 
@@ -58,7 +77,13 @@ app.factory('scoutPersistenceService', function () {
 	}
 
 	var _getScoutsInTroop = function (troopId) {
-		return _scouts;
+		var scouts = []
+		for (var i = 0; i < _scouts.length; i++) {
+			if (_scouts[i].troop === troopId) {
+				scouts.push(_scouts[i]);
+			}
+		}
+		return scouts;
 	};
 
 	return {
