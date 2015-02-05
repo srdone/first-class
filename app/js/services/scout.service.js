@@ -2,8 +2,19 @@ var app = angular.module('firstClass');
 
 app.factory('scoutService', ['scoutObjectService', 'scoutPersistenceService',
 	function (scoutObjectService, scoutPersistenceService) {
-		var sos = scoutObjectService;
-		var sps = scoutPersistenceService;
+		
+		//returns scout object
+		var _getScoutById = function (id) {
+			return scoutPersistenceService.getScoutById(id);
+		};
 
-		return 'test scoutService' + sos + sps;
+		//returns generic object data
+		var _getScoutSummaryById = function (id) {
+			return _getScoutById(id);
+		};
+
+		return {
+			getScoutSummaryById: _getScoutSummaryById
+		}
+
 	}]);
