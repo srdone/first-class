@@ -6,5 +6,5 @@ app.controller('ScoutSummaryController', ['$scope', 'scoutService',
 	function ($scope, scoutService) {
 		$scope.test = "ScoutSummaryController"
 
-		$scope.scout = scoutService.getScoutSummaryById('testid1');
+		$scope.scout = scoutService.getScoutSummaryById('testid3');
 	}]);

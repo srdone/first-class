@@ -5,14 +5,41 @@ var app = angular.module('firstClass');
 app.factory('scoutService', ['scoutObjectService', 'scoutPersistenceService',
 	function (scoutObjectService, scoutPersistenceService) {
 		
+		var Scout = scoutObjectService.Scout;
+
+		//convert scout json to object
+		var _convertScout = function (scoutData) {
+			return new Scout(
+					scoutData.id,
+					scoutData.firstName,
+					scoutData.lastName,
+					scoutData.photoUrl,
+					scoutData.isOA,
+					scoutData.completedReqs,
+					scoutData.currentPatrol,
+					scoutData.troop,
+					scoutData.positionHistory,
+					scoutData.campingHistory,
+					scoutData.serviceHistory
+				);
+		};
+
 		//returns scout object
 		var _getScoutById = function (scoutId) {
-			return scoutPersistenceService.getScoutById(scoutId);
+			var scoutRaw = scoutPersistenceService.getScoutById(scoutId);
+			var scoutConverted = _convertScout(scoutRaw);
+
+			return scoutConverted;
 		};
 
 		//returns scout objects
 		var _getScoutsInTroop = function (troopId) {
-			return scoutPersistenceService.getScoutsInTroop(troopId);
+			var troopScoutDataRaw = scoutPersistenceService.getScoutsInTroop(troopId);
+			var troopScoutsConverted = troopScoutDataRaw.map(function (current) {
+				return _convertScout(current);
+			});
+
+			return troopScoutsConverted;
 		};
 
 		//returns generic object data

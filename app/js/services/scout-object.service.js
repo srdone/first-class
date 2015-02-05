@@ -24,16 +24,37 @@ app.factory('scoutObjectService', ['dateService', 'utilService',
 	  *
 	  * @returns {Scout} A scout object
 	  */
-	  var Scout = function(firstName, lastName, currentPatrol) {
-	    this.id = utilService.createUUID();
+	  var Scout = function(id, firstName, lastName, photoUrl, isOA, completedReqs,
+	  		currentPatrol, troop, positionHistory, campingHistory, serviceHistory) {
+
+	  	var _convertServiceHistory = function (rawServiceArray) {
+	    	return rawServiceArray.map(function (current) {
+	    		return new Service(current.id, current.description, current.hours);
+	    	});
+	    };
+
+	    var _convertCampingHistory = function (rawCampingArray) {
+	    	return rawCampingArray.map(function (current) {
+	    		return new Camping(current.id, current.description, current.start, current.end);
+	    	});
+	    };
+
+	    var _convertPositionHistory = function (rawPositionArray) {
+	    	return rawPositionArray.map(function (current) {
+	    		return new Position(current.id, current.title, current.start, current.end);
+	    	});
+	    };
+
+	    this.id = id || utilService.createUUID();
 	    this.firstName = firstName || '';
 	    this.lastName = lastName || '';
 	    this.currentPatrol = currentPatrol || '';
-	    this.isOA = false;
-	    this._completedReqs = [];
-	    this._positionHistory = [];
-	    this._campingHistory = [];
-	    this._serviceHistory = [];
+	    this.photoUrl = photoUrl || '';
+	    this.isOA = isOA === undefined ? false : isOA;
+	    this._completedReqs = completedReqs || [];
+	    this._positionHistory = positionHistory ? _convertPositionHistory(positionHistory) : [];
+	    this._campingHistory = campingHistory ? _convertCampingHistory(campingHistory) : [];
+	    this._serviceHistory = serviceHistory ? _convertServiceHistory(serviceHistory) : [];
 	  };
 	  /**
 	  * @ngdoc function
@@ -43,7 +64,7 @@ app.factory('scoutObjectService', ['dateService', 'utilService',
 	  *
 	  * @returns {String} The current rank held by the scout
 	  */
-	  Scout.prototype.currentRank = function() {
+	  Scout.prototype.getCurrentRank = function() {
 	      return 'Eagle';
 	  };
 	  /**
@@ -58,7 +79,7 @@ app.factory('scoutObjectService', ['dateService', 'utilService',
 	  * @param {Date} date The date to compare positions against
 	  * @returns {Array<Position>} Array of positions the Scout currently holds
 	  */
-	  Scout.prototype.currentPositions = function(date) {
+	  Scout.prototype.getCurrentPositions = function(date) {
 	    var currentPos = [];
 	    var currentDate = date || new Date();
 	    for (var i = 0; i < this._positionHistory.length; i++) {
@@ -80,13 +101,13 @@ app.factory('scoutObjectService', ['dateService', 'utilService',
 	  *
 	  * @returns {Number} Total number of hours of service
 	  */
-	  Scout.prototype.hoursOfService = function() {
+	  Scout.prototype.getHoursOfService = function() {
 	    var totalHrs = this._serviceHistory.reduce(function(previous, current) {
 	      return previous += current.hours;
 	    }, 0);
 	    return totalHrs;
 	  };
-	  Scout.prototype.qualifiedNightsOfCamping = function() {
+	  Scout.prototype.getQualifiedNightsOfCamping = function() {
 	    var longestLTC;
 	    // changed to filter from map - map leaves spaces in the resulting array
 	    // see http://stackoverflow.com/questions/9289/removing-elements-with-array-map-in-javascript
@@ -114,8 +135,8 @@ app.factory('scoutObjectService', ['dateService', 'utilService',
 	    }, 0);
 	    return totalQualifiedNights;
 	  };
-	  Scout.prototype.OAQualified = function() {
-	    return this.isFirstClass() && this.totalQualifiedNights() >= 15;
+	  Scout.prototype.isOAQualified = function() {
+	    return this.isFirstClass() && this.getQualifiedNightsOfCamping() >= 15;
 	  };
 	  //returns true if the scout is at least first class
 	  Scout.prototype.isFirstClass = function () {
@@ -163,9 +184,42 @@ app.factory('scoutObjectService', ['dateService', 'utilService',
 	    Scout.prototype.getCompletedRequirements = function () {
 	      return this._completedReqs;
 	    };
+	    Scout.prototype.getPercentProgressToNextRank = function () {
+	    	return Math.random() * 100;
+	    };
+	    Scout.prototype.getNeededRequirementCategories = function () {
+	    	return [
+	    		{title: 'test data', color: 'blue'},
+					{title: 'knots', color: 'brown'},
+					{title: 'camping', color: 'green'},
+					{title: 'first-aid', color: 'red'}
+				]
+	    };
+	    Scout.prototype.getMeritBadgeCount = function () {
+	    	return Math.floor( Math.random() * 30 );
+	    };
+	    Scout.prototype.summarize = function () {
+	    	return {
+	    		id: this.id,
+					firstName: this.firstName,
+					lastName: this.lastName,
+					photoUrl: this.photoUrl,
+					currentRank: this.getCurrentRank(),
+					currentPatrol: this.currentPatrol,
+					currentPositions: this.getCurrentPositions(),
+					isOA: this.isOA,
+					isOAQualified: this.isOAQualified,
+					qualifiedNightsOfCamping: this.getQualifiedNightsOfCamping(),
+					hoursOfService: getHoursOfService(),
+					percentProgressToNextRank: getPercentProgressToNextRank(),
+					neededRequirementCategories: getNeededRequirementCategories(),
+					numberOfMeritBadges: getMeritBadgeCount(),
+					troop: this.troop
+	    	}
+	    }
 
-	  var Position = function (title, start, end) {
-	    this.id = utilService.createUUID();
+	  var Position = function (id, title, start, end) {
+	    this.id = id || utilService.createUUID();
 	    this.title = title || '';
 	    this.start = dateService.convert(start);
 	    this.end = !end ? null : dateService.convert(end);
@@ -187,18 +241,20 @@ app.factory('scoutObjectService', ['dateService', 'utilService',
 	    return Math.floor((end - start) / ( 1000 * 60 * 60 * 24 * 30 ));
 	  };
 
-	  var Service = function (desc, hours) {
-	    this.id = utilService.createUUID();
-	    this.desc = desc;
+	  var Service = function (id, description, hours) {
+	    this.id = id || utilService.createUUID();
+	    this.description = description;
 	    this.hours = hours;
 	  };
 	   
-	  var Camping = function (desc, start, end) {
-	    this.id = utilService.createUUID();
-	    this.desc = desc;
+	  var Camping = function (id, description, start, end) {
+	    this.id = id || utilService.createUUID();
+	    this.description = description;
 	    this.start = dateService.convert(start);
 	    this.end = dateService.convert(end);
 	  };
 
-	  return Scout;
+	  return {
+	  	Scout: Scout
+	  };
 	}]);
