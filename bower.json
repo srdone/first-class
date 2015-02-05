@@ -1,0 +1,18 @@
+{
+  "name": "first-class",
+  "version": "0.0.0",
+  "authors": [
+    "Stephen Done <srdone@gmail.com>"
+  ],
+  "description": "Boy scout tracking app",
+  "main": "app/index.html",
+  "license": "None",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
