@@ -1,3 +1,58 @@
 <h1>Scout Summary Snippet</h1>
 
 {{test}}
+
+<div class="row">
+
+	<!-- Scout Image -->
+	<div class="one-third">
+		<div class="well-sm">
+	  	<img ng-src="{{scout.photoUrl}}" height="150" width="150">
+		</div>
+	</div>
+
+	<!-- Scout Summary Data -->
+	<div class="two-thirds">
+
+		<h3>{{scout.firstName}} {{scout.lastName}}</h3>
+
+		<ul>
+		  <li>Rank: {{scout.currentRank}}</li>
+		  <li>Patrol: {{scout.currentPatrol}}</li>
+		  <li>Next Rank: {{scout.percentProgressToNextRank}}</li>
+		  <li ng-repeat="position in scout.currentPositions">
+		    <ul class="list-inline">
+		      <li>{{position.title}}</li>
+		      <li><span class="badge">{{position.monthsInPosition}} months</span></li>
+		    </ul>
+		  </li>
+		</ul>
+	</div>
+
+</div>
+
+<div class="row">
+
+	<div class="one-half">
+
+		<ul>
+		  <li><span class="badge">{{scout.qualifiedNightsOfCamping}}</span> Qualified Nights of Camping</li>
+		  <li><span class="badge">{{scout.hoursOfService}}</span> Hours of Service</li>
+		  <li><span class="badge">{{scout.numberOfMeritBadges}}</span> Merit Badges</li>
+		</ul>
+
+	</div>
+
+	<div class="one-half">
+
+	  
+  	<ul>
+  		<li ng-repeat="category in scout.neededRequirementCategories">{{category.title}}</li>
+  	</ul>
+
+	  <div ng-show="scout.isOA">OA Member</div>
+	  <div ng-show="!scout.isOA && scout.isOAQualified">OA Qualified</div>
+
+	</div>
+
+</div>
