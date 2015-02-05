@@ -1,3 +1,5 @@
+'use strict';
+
 var app = angular.module('firstClass');
 
 app.config(['$stateProvider', '$urlRouterProvider', 
