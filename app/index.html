@@ -4,18 +4,25 @@
     <meta charset="UTF-8">
     <title>First Class Scouting</title>
 </head>
-<body ng-app="firstClass" ng-controller="mainCtrl">
+<body ng-app="firstClass">
 
 	<a ui-sref="main">Main</a>
 	<a ui-sref="troop">Troop</a>
+	<a ui-sref="requirement-management">Requirement Management</a>
 
-	{{test}}
+	{{1 + 1}}
 	<div ui-view></div>
 
 	<script src="bower_components/angular/angular.js"></script>
 	<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
 	<script src="js/app.js"></script>
 	<script src="js/routes.js"></script>
-	<script src="js/controllers/mainCtrl.js"></script>
+	<script src="js/controllers/main.controller.js"></script>
+	<script src="js/controllers/scout.controller.js"></script>
+	<script src="js/controllers/troop.controller.js"></script>
+	<script src="js/controllers/scout-summary.controller.js"></script>
+	<script src="js/controllers/next-steps.controller.js"></script>
+	<script src="js/controllers/requirements-progress.controller.js"></script>
+	<script src="js/controllers/requirement-management.controller.js"></script>
 </body>
 </html>
