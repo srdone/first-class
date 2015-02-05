@@ -24,7 +24,28 @@ app.factory('scoutPersistenceService', function () {
 				{title: 'camping', color: 'green'},
 				{title: 'first-aid', color: 'red'}
 			],
-			numberOfMeritBadges: 30
+			numberOfMeritBadges: 30,
+			troop: '154'
+		},
+		{
+			id: 'testid',
+			firstName: "Timothy",
+			lastName: "Done",
+			photoUrl: '',
+			currentRank: "Tenderfoot",
+			currentPatrol: "Monkey",
+			currentPositions: [],
+			isOA: false,
+			isOAQualified: false,
+			qualifiedNightsOfCamping: 2,
+			hoursOfService: 0,
+			percentProgressToNextRank: 20,
+			neededRequirementCategories: [
+				{title: 'knots', color: 'brown'},
+				{title: 'camping', color: 'green'},
+			],
+			numberOfMeritBadges: 3,
+			troop: '154'
 		}
 	];
 
@@ -36,7 +57,12 @@ app.factory('scoutPersistenceService', function () {
 		}
 	}
 
+	var _getScoutsInTroop = function (troopId) {
+		return _scouts;
+	};
+
 	return {
-		getScoutById: _getScoutById
+		getScoutById: _getScoutById,
+		getScoutsInTroop: _getScoutsInTroop
 	};
 });

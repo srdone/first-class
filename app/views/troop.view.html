@@ -1,5 +1,7 @@
 <div>
 	<h1>This is the troop view</h1>
 
-	<div ng-include="'snippets/scout-summary'" ng-controller="ScoutSummaryController" ui-sref="scout"></div>
+	<div ng-repeat="scout in troop">
+		<div ng-include="'snippets/scout-summary'" ui-sref="scout"></div>
+	</div>
 </div>
