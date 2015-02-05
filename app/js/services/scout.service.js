@@ -56,12 +56,13 @@ app.factory('scoutService', ['scoutObjectService', 'scoutPersistenceService',
 				return _summarizeScout(currentScoutId);
 			});
 
+			console.log(summarized);
 			return summarized;
 		};
 
 		//takes scout object, returns generic object data summary
 		var _summarizeScout = function (scout) {
-			return scout;
+			return scout.summarize();
 		};
 
 		return {

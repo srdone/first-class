@@ -108,6 +108,7 @@ app.factory('scoutObjectService', ['dateService', 'utilService',
 	    return totalHrs;
 	  };
 	  Scout.prototype.getQualifiedNightsOfCamping = function() {
+
 	    var longestLTC;
 	    // changed to filter from map - map leaves spaces in the resulting array
 	    // see http://stackoverflow.com/questions/9289/removing-elements-with-array-map-in-javascript
@@ -128,8 +129,11 @@ app.factory('scoutObjectService', ['dateService', 'utilService',
 	        }
 	      }
 	    });
-	    //add in the one qualified campout
-	    filteredCampouts.push(longestLTC);
+	    //add in the one qualified campout - if it exists
+	    if (longestLTC) {
+	    	filteredCampouts.push(longestLTC);
+	    }
+
 	    var totalQualifiedNights = filteredCampouts.reduce(function (previous, current) {
 	      return previous += dateService.diff(current.start, current.end);
 	    }, 0);
@@ -210,10 +214,10 @@ app.factory('scoutObjectService', ['dateService', 'utilService',
 					isOA: this.isOA,
 					isOAQualified: this.isOAQualified,
 					qualifiedNightsOfCamping: this.getQualifiedNightsOfCamping(),
-					hoursOfService: getHoursOfService(),
-					percentProgressToNextRank: getPercentProgressToNextRank(),
-					neededRequirementCategories: getNeededRequirementCategories(),
-					numberOfMeritBadges: getMeritBadgeCount(),
+					hoursOfService: this.getHoursOfService(),
+					percentProgressToNextRank: this.getPercentProgressToNextRank(),
+					neededRequirementCategories: this.getNeededRequirementCategories(),
+					numberOfMeritBadges: this.getMeritBadgeCount(),
 					troop: this.troop
 	    	}
 	    }

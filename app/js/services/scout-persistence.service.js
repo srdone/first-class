@@ -26,7 +26,7 @@ app.factory('scoutPersistenceService', function () {
 			isOA: false,
 			completedReqs: [],
 			currentPatrol: "Monkey",
-			troop: '154',
+			troop: '174',
 			positionHistory: [
 				{title: 'WebMaster', start: 'Jan 1, 2013', end: 'Dec 31, 2013'},
   				{title: 'Patrol Leader', start: 'Jan 1, 2014', end: 'Sep 5, 2014'},
