@@ -8,7 +8,7 @@ app.controller('TroopController', ['$scope', 'scoutService', '$window',
 
 		$scope.troopNumber = '174';
 
-		$scope.newScout = {firstName: '', lastName: ''};
+		$scope.newScout;
 
 		$scope.troop = scoutService.getScoutSummariesInTroop($scope.troopNumber);
 
@@ -23,7 +23,6 @@ app.controller('TroopController', ['$scope', 'scoutService', '$window',
 		};
 
 		$scope.addScout = function () {
-			debugger;
 			$window.alert($scope.newScout.firstName + ' ' + $scope.newScout.lastName);
 		};
 
