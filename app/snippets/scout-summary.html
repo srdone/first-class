@@ -14,25 +14,31 @@
 			<div class="col-xs-6 col-sm-8">
 				<h3>{{scout.firstName}} {{scout.lastName}}</h3>
 			</div>
-			<div class="col-xs-12 col-sm-6">
+
+			<!-- Scout Rank and Patrol -->
+			<div class="col-xs-6">
 				<ul class="list-inline">
-					<li>Rank: {{scout.currentRank}}</li>
-					<li>Patrol: {{scout.currentPatrol}}</li>
-					<li ng-repeat="position in scout.currentPositions"></li>
+					<li>{{scout.currentRank}}</li>
+					<li>{{scout.currentPatrol}} Patrol</li>
 				</ul>
 			</div>
+
+			<!-- Position Summary Data -->
 			<div class="col-xs-12 col-sm-6">
 				<ul class="list-inline">
 					<li>{{position.title}}</li>
-					<li><span class="badge">{{position.monthsInPosition}} months</span></li>
+					<li ng-repeat="position in scout.currentPositions">
+						{{position.title}} 
+						<span class="badge">{{position.monthsInPosition}} months</span>
+					</li>
 				</ul>
 			</div>
-		</div>
 
-		<div class="row">
-			<div class="col-xs-12">
+			<!-- Next rank progress -->
+			<div class="col-xs-12 col-sm-6">
 				Next Rank: <progressbar type="success" value="scout.percentProgressToNextRank"></progressbar>
 			</div>
+
 		</div>
 
 	</div>
@@ -43,7 +49,7 @@
 
 			<ul class="list-inline">
 				<li><span class="badge">{{scout.qualifiedNightsOfCamping}}</span> Qualified Nights of Camping</li>
-				<li><span class="badge">{{scout.hoursOfService}}</span> Hours of Service</li>
+				<li><span class="badge">{{scout.hoursOfService}}</span> Service Hours</li>
 				<li><span class="badge">{{scout.numberOfMeritBadges}}</span> Merit Badges</li>
 			</ul>
 
@@ -51,7 +57,7 @@
 
 		<div class="col-xs-6">
 
-			
+
 			<ul class="list-inline">
 				<li ng-repeat="category in scout.neededRequirementCategories">
 					<span class="label label-success">{{category.title}}</span>
