@@ -2,8 +2,8 @@
 
 var app = angular.module('firstClass');
 
-app.factory('scoutService', ['scoutObjectService', 'scoutPersistenceService',
-	function (scoutObjectService, scoutPersistenceService) {
+app.factory('scoutService', ['scoutObjectService', 'persistenceService',
+	function (scoutObjectService, persistenceService) {
 		
 		var Scout = scoutObjectService.Scout;
 
@@ -65,7 +65,15 @@ app.factory('scoutService', ['scoutObjectService', 'scoutPersistenceService',
 			return scout.summarize();
 		};
 
+		var _createNewScout = function (scout) {
+			var newScout = new Scout(undefined, scout.firstName, scout.lastName);
+			newScout.save().then(function returnScoutOnSave () {
+				return newScout;
+			};
+		};
+
 		return {
+			createNewScout: _createNewScout,
 			getScoutSummaryById: _getScoutSummaryById,
 			getScoutSummariesInTroop: _getScoutSummariesInTroop
 		}

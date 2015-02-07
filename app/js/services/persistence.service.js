@@ -2,7 +2,7 @@
 
 var app = angular.module('firstClass');
 
-app.factory('scoutPersistenceService', function () {
+app.factory('persistenceService', function () {
 
 	var _scouts = [
 		{
