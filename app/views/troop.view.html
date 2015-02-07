@@ -5,7 +5,10 @@
 
 	<div class="container">
 		<div ng-repeat="scout in troop">
-		<div ng-include="'snippets/scout-summary.html'" ui-sref="scout-detail({ scoutId: scout.id })"></div>
+			<a ui-sref="scout-detail({ scoutId: scout.id })">
+				<fcs-scout-card fcs-scout-summary="scout"></fcs-scout-card>
+			</a>
 		</div>
 	</div>
+	
 </div>	

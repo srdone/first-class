@@ -6,5 +6,9 @@ app.controller('ScoutController', ['$scope', 'scoutService', '$stateParams',
 	function ($scope, scoutService, $stateParams) {
 		$scope.test = 'ScoutController' + scoutService;
 
-		$scope.scout = scoutService.getScoutById($stateParams.scoutId);
+		var scout = scoutService.getScoutById($stateParams.scoutId);
+
+		$scope.scout = scout;
+
+		$scope.scoutSummary = scout.summarize();
 	}]);
