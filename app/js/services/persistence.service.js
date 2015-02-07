@@ -2,7 +2,7 @@
 
 var app = angular.module('firstClass');
 
-app.factory('persistenceService', function () {
+app.factory('persistenceService', ['$q', function ($q) {
 
 	var _scouts = [
 		{
@@ -90,8 +90,28 @@ app.factory('persistenceService', function () {
 		return scouts;
 	};
 
+	//takes a type so we determine how to save the given object
+	var _save = function (type, object) {
+		var deferred = $q.defer();
+
+		console.log('called save ' + type + ': ' + object);
+
+		//using setTimeout to help understand $q
+		setTimeout(function () {
+			if (true) {
+				deferred.resolve(object);
+			} else {
+				deferred.reject('failed to save ' + type + ': ' + object);
+			}
+		}, 1000);
+
+		return deferred.promise;
+
+	}
+
 	return {
+		save: _save,
 		getScoutById: _getScoutById,
 		getScoutsInTroop: _getScoutsInTroop
 	};
-});
+}]);

@@ -2,8 +2,8 @@
 
 var app = angular.module('firstClass');
 
-app.factory('scoutObjectService', ['dateService', 'utilService',
-	function (dateService, utilService) {
+app.factory('scoutObjectService', ['dateService', 'utilService', 'persistenceService',
+	function (dateService, utilService, persistenceService) {
 	  /**
 	  * @ngdoc function
 	  * @name firstClassApp.ScoutService.Scout
@@ -55,6 +55,9 @@ app.factory('scoutObjectService', ['dateService', 'utilService',
 	    this._positionHistory = positionHistory ? _convertPositionHistory(positionHistory) : [];
 	    this._campingHistory = campingHistory ? _convertCampingHistory(campingHistory) : [];
 	    this._serviceHistory = serviceHistory ? _convertServiceHistory(serviceHistory) : [];
+	  };
+	  Scout.prototype.save = function () {
+	  	return persistenceService.save('scout', this);
 	  };
 	  /**
 	  * @ngdoc function

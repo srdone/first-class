@@ -26,7 +26,7 @@ app.factory('scoutService', ['scoutObjectService', 'persistenceService',
 
 		//returns scout object
 		var _getScoutById = function (scoutId) {
-			var scoutRaw = scoutPersistenceService.getScoutById(scoutId);
+			var scoutRaw = persistenceService.getScoutById(scoutId);
 			var scoutConverted = _convertScout(scoutRaw);
 
 			return scoutConverted;
@@ -34,7 +34,7 @@ app.factory('scoutService', ['scoutObjectService', 'persistenceService',
 
 		//returns scout objects
 		var _getScoutsInTroop = function (troopId) {
-			var troopScoutDataRaw = scoutPersistenceService.getScoutsInTroop(troopId);
+			var troopScoutDataRaw = persistenceService.getScoutsInTroop(troopId);
 			var troopScoutsConverted = troopScoutDataRaw.map(function (current) {
 				return _convertScout(current);
 			});
@@ -67,9 +67,7 @@ app.factory('scoutService', ['scoutObjectService', 'persistenceService',
 
 		var _createNewScout = function (scout) {
 			var newScout = new Scout(undefined, scout.firstName, scout.lastName);
-			newScout.save().then(function returnScoutOnSave () {
-				return newScout;
-			};
+			return newScout.save();  
 		};
 
 		return {
