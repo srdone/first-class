@@ -99,6 +99,7 @@ app.factory('persistenceService', ['$q', function ($q) {
 		//using setTimeout to help understand $q
 		setTimeout(function () {
 			if (true) {
+				_scouts.push(object);
 				deferred.resolve(object);
 			} else {
 				deferred.reject('failed to save ' + type + ': ' + object);

@@ -4,6 +4,8 @@
 	<div ng-include="'snippets/add-scout.snippet.html'"></div>
 
 	<div class="container">
-		<div ng-include="'snippets/scout-summary.html'" ui-sref="scout" ng-repeat="scout in troop"></div>
+		<div ng-repeat="scout in troop">
+		<div ng-include="'snippets/scout-summary.html'" ui-sref="scout-detail({ scoutId: scout.id })"></div>
+		</div>
 	</div>
-</div>
+</div>	

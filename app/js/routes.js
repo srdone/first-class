@@ -18,18 +18,18 @@ app.config(['$stateProvider', '$urlRouterProvider',
 				templateUrl: 'views/troop.view.html',
 				controller: 'TroopController'
 			})
-			.state('scout', {
-				url: '/scout',
+			.state('scout-detail', {
+				url: '/scout/:scoutId',
 				templateUrl: 'views/scout.view.html',
 				controller: 'ScoutController'
 			})
-			.state('scout.requirements-progress', {
-				url: '/scout',
+			.state('scout-detail.requirements-progress', {
+				url: '/scout/:scoutId',
 				templateUrl: 'views/requirements-progress.view.html',
 				controller: 'RequirementsProgressController'
 			})
-			.state('scout.next-steps', {
-				url: '/scout',
+			.state('scout-detail.next-steps', {
+				url: '/scout/:scoutId',
 				templateUrl: 'views/next-steps.view.html',
 				controller: 'NextStepsController'
 			})

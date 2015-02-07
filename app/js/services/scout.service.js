@@ -72,6 +72,7 @@ app.factory('scoutService', ['scoutObjectService', 'persistenceService',
 
 		return {
 			createNewScout: _createNewScout,
+			getScoutById: _getScoutById,
 			getScoutSummaryById: _getScoutSummaryById,
 			getScoutSummariesInTroop: _getScoutSummariesInTroop
 		}
