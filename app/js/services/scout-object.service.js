@@ -45,11 +45,13 @@ app.factory('scoutObjectService', ['dateService', 'utilService', 'persistenceSer
 	    	});
 	    };
 
+	    var _tempUserImage = 'https://s3.amazonaws.com/uifaces/faces/twitter/jsa/128.jpg';
+
 	    this.id = id || utilService.createUUID();
 	    this.firstName = firstName || '';
 	    this.lastName = lastName || '';
 	    this.currentPatrol = currentPatrol || '';
-	    this.photoUrl = photoUrl || '';
+	    this.photoUrl = photoUrl || _tempUserImage;
 	    this.isOA = isOA === undefined ? false : isOA;
 	    this._completedReqs = completedReqs || [];
 	    this._positionHistory = positionHistory ? _convertPositionHistory(positionHistory) : [];

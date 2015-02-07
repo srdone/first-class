@@ -2,18 +2,18 @@
 
 var app = angular.module('firstClass');
 
-app.factory('persistenceService', ['$q', function ($q) {
+app.factory('persistenceService', ['$q', '$firebase', function ($q, $firebase) {
 
-	var _scouts = [
+	var _testScouts = [
 		{
 			id: 'testid1',
 			firstName: "Stephen",
 			lastName: "Done",
-			photoUrl: 'https://s3.amazonaws.com/uifaces/faces/twitter/jsa/128.jpg',
+			photoUrl: '',
 			isOA: true,
 			completedReqs: [],
 			currentPatrol: "Owl",
-			troop: '154',
+			troop: '174',
 			positionHistory: [],
 			campingHistory: [],
 			serviceHistory: []
@@ -22,7 +22,7 @@ app.factory('persistenceService', ['$q', function ($q) {
 			id: 'testid2',
 			firstName: "Timothy",
 			lastName: "Done",
-			photoUrl: 'https://s3.amazonaws.com/uifaces/faces/twitter/jsa/128.jpg',
+			photoUrl: '',
 			isOA: false,
 			completedReqs: [],
 			currentPatrol: "Monkey",
@@ -50,7 +50,7 @@ app.factory('persistenceService', ['$q', function ($q) {
 			id: 'testid3',
 			firstName: "Gustavo",
 			lastName: "Done",
-			photoUrl: 'https://s3.amazonaws.com/uifaces/faces/twitter/jsa/128.jpg',
+			photoUrl: '',
 			isOA: false,
 			completedReqs: [],
 			currentPatrol: "Fox",
@@ -72,6 +72,21 @@ app.factory('persistenceService', ['$q', function ($q) {
 		}
 	];
 
+	var _scouts = _testScouts;
+
+	// var ref = new Firebase("https://first-class.firebaseio.com");
+	// var syncScouts = $firebase(ref.child("scouts"));
+	// var _scouts = syncScouts.$asArray();
+
+	// if (_scouts.length === 0) {
+	// 	_testScouts.forEach(function (scout) {
+	// 		var ref = _scouts.$add(scout).then(function () {
+	// 			scout.id = ref.key();
+	// 		});
+	// 		$save();
+	// 	});
+	// }
+
 	var _getScoutById = function (id) {
 		for (var i = 0; i < _scouts.length; i++) {
 			if (_scouts[i].id === id) {
@@ -92,6 +107,11 @@ app.factory('persistenceService', ['$q', function ($q) {
 
 	//takes a type so we determine how to save the given object
 	var _save = function (type, object) {
+
+		// _scouts.$add(object).then(function completedSave () {
+		// 	return object;
+		// });
+
 		var deferred = $q.defer();
 
 		console.log('called save ' + type + ': ' + object);
