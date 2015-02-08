@@ -74,7 +74,8 @@ app.factory('scoutService', ['scoutObjectService', 'persistenceService',
 			createNewScout: _createNewScout,
 			getScoutById: _getScoutById,
 			getScoutSummaryById: _getScoutSummaryById,
-			getScoutSummariesInTroop: _getScoutSummariesInTroop
+			getScoutSummariesInTroop: _getScoutSummariesInTroop,
+			getScoutsInTroop: _getScoutsInTroop
 		}
 
 	}]);

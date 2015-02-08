@@ -8,7 +8,7 @@ app.controller('TroopController', ['$scope', 'scoutService', '$window',
 
 		$scope.troopNumber = '174';
 
-		$scope.troop = scoutService.getScoutSummariesInTroop($scope.troopNumber);
+		$scope.troop = scoutService.getScoutsInTroop($scope.troopNumber);
 
 		$scope.addState = false;
 
@@ -22,10 +22,10 @@ app.controller('TroopController', ['$scope', 'scoutService', '$window',
 
 		$scope.addScout = function (scout) {
 			$scope.addState = false;
-			var promise = scoutService.createNewScout(scout)
+			var promise = scoutService.createNewScout(scout);
 
 			promise.then(function (savedScout) {
-				$scope.troop.push(savedScout.summarize());
+				$scope.troop.push(savedScout);
 				$scope.newScout = {};
 			});
 		};
