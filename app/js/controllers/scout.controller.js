@@ -10,6 +10,4 @@ app.controller('ScoutController', ['$scope', 'scoutService', '$stateParams',
 
 		$scope.scout = scout;
 
-		$scope.scoutSummarized = scout.summarize();
-
 	}]);
