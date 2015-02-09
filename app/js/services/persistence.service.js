@@ -72,6 +72,8 @@ app.factory('persistenceService', ['$q', '$firebase', function ($q, $firebase) {
 		}
 	];
 
+	var ref = new Firebase("https://first-class.firebaseio.com");
+
 	var _scouts = _testScouts;
 
 	// var ref = new Firebase("https://first-class.firebaseio.com");
@@ -131,7 +133,16 @@ app.factory('persistenceService', ['$q', '$firebase', function ($q, $firebase) {
 	}
 
 	var _login = function (username, password) {
-		alert("You logged in!" + username + password);
+		ref.authWithPassword({
+  		email    : username,
+  		password : password
+		}, function(error, authData) {
+  			if (error) {
+    			console.log("Login Failed!", error);
+		  	} else {
+		    	console.log("Authenticated successfully with payload:", authData);
+		 	 	}
+		});
 	};
 
 	return {
