@@ -130,7 +130,12 @@ app.factory('persistenceService', ['$q', '$firebase', function ($q, $firebase) {
 
 	}
 
+	var _login = function (username, password) {
+		alert("You logged in!" + username + password);
+	};
+
 	return {
+		login: _login,
 		save: _save,
 		getScoutById: _getScoutById,
 		getScoutsInTroop: _getScoutsInTroop
