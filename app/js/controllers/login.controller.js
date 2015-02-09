@@ -2,7 +2,7 @@
 
 var app = angular.module('firstClass');
 
-app.controller('Login', ['$scope', 'persistenceService', 
+app.controller('LoginController', ['$scope', 'persistenceService', 
 	function ($scope, persistenceService) {
 
 		var login = function () {
