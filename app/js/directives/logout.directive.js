@@ -4,7 +4,7 @@ angular.module('firstClass').directive('fcsLogout',
 	function () {
 
 		return {
-			restrict: 'E',
+			restrict: 'A',
 			scope: {
 				title: '@'
 			},
@@ -12,10 +12,13 @@ angular.module('firstClass').directive('fcsLogout',
 
 				$scope.logout = function () {
 					persistenceService.logout();
+					console.log("logged out");
 				}
 
 			},
-			template: '<button ng-click="logout()">{{title}}</button>'
+			link: function (scope, element, attributes) {
+				element.bind('click', scope.logout);
+			}
 		}
 
 	});
