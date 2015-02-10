@@ -76,8 +76,7 @@ app.factory('persistenceService', ['$q', '$firebase', function ($q, $firebase) {
 
 	var _scouts = _testScouts;
 
-	// var ref = new Firebase("https://first-class.firebaseio.com");
-	// var syncScouts = $firebase(ref.child("scouts"));
+	var syncScouts = $firebase(ref.child("scouts"));
 	// var _scouts = syncScouts.$asArray();
 
 	// if (_scouts.length === 0) {
@@ -145,8 +144,21 @@ app.factory('persistenceService', ['$q', '$firebase', function ($q, $firebase) {
 		});
 	};
 
+	var _logout = function () {
+		ref.unauth();
+	}
+
+	// ref.onAuth(function(authData) {
+ //  	if (authData) {
+ //    	console.log("Authenticated with uid:", authData.uid);
+ //  	} else {
+ //    	console.log("Client unauthenticated.");
+ //  	}
+	// });
+
 	return {
 		login: _login,
+		logout: _logout,
 		save: _save,
 		getScoutById: _getScoutById,
 		getScoutsInTroop: _getScoutsInTroop
