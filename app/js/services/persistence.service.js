@@ -2,7 +2,8 @@
 
 var app = angular.module('firstClass');
 
-app.factory('persistenceService', ['$q', '$firebase', function ($q, $firebase) {
+app.factory('persistenceService', ['$q', '$firebase', '$firebaseAuth',
+	function ($q, $firebase, $firebaseAuth) {
 
 	var _testScouts = [
 		{
@@ -73,6 +74,8 @@ app.factory('persistenceService', ['$q', '$firebase', function ($q, $firebase) {
 	];
 
 	var ref = new Firebase("https://first-class.firebaseio.com");
+
+	var auth = $firebaseAuth(ref);
 
 	var _scouts = _testScouts;
 
@@ -157,6 +160,7 @@ app.factory('persistenceService', ['$q', '$firebase', function ($q, $firebase) {
 	// });
 
 	return {
+		requireAuth: auth.$requireAuth,
 		login: _login,
 		logout: _logout,
 		save: _save,
