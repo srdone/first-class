@@ -51,6 +51,7 @@ app.factory('scoutObjectService', ['dateService', 'utilService', 'persistenceSer
 	    this.firstName = firstName || '';
 	    this.lastName = lastName || '';
 	    this.currentPatrol = currentPatrol || '';
+	    this.troop = '154';
 	    this.photoUrl = photoUrl || _tempUserImage;
 	    this.isOA = isOA === undefined ? false : isOA;
 	    this._completedReqs = completedReqs || [];
@@ -59,7 +60,7 @@ app.factory('scoutObjectService', ['dateService', 'utilService', 'persistenceSer
 	    this._serviceHistory = serviceHistory ? _convertServiceHistory(serviceHistory) : [];
 	  };
 	  Scout.prototype.save = function () {
-	  	return persistenceService.save('scout', this);
+	  	return persistenceService.saveScout(this);
 	  };
 	  /**
 	  * @ngdoc function

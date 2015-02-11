@@ -6,9 +6,9 @@ app.controller('TroopController', ['$scope', 'scoutService', '$window', 'current
 	function ($scope, scoutService, $window, currentAuth) {
 		$scope.test = 'TroopController';
 
-		$scope.troopNumber = '174';
-
-		$scope.troop = scoutService.getScoutsInTroop($scope.troopNumber);
+		scoutService.getScouts().then(function (scouts) {
+			$scope.troop = scouts;
+		});
 
 		$scope.addState = false;
 
@@ -21,11 +21,9 @@ app.controller('TroopController', ['$scope', 'scoutService', '$window', 'current
 		};
 
 		$scope.addScout = function (scout) {
-			$scope.addState = false;
-			var promise = scoutService.createNewScout(scout);
-
-			promise.then(function (savedScout) {
-				$scope.troop.push(savedScout);
+			scoutService.createNewScout(scout).then(function (scout) {
+				$scope.troop.push(scout);
+				$scope.addState = false;
 				$scope.newScout = {};
 			});
 		};
