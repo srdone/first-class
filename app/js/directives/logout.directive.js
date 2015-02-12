@@ -8,10 +8,11 @@ angular.module('firstClass').directive('fcsLogout',
 			scope: {
 				title: '@'
 			},
-			controller: function ($scope, persistenceService) {
+			controller: function ($scope, $state, persistenceService) {
 
 				$scope.logout = function () {
 					persistenceService.logout();
+					$state.go('main');
 					console.log("logged out");
 				}
 
