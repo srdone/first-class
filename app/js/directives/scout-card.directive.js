@@ -6,8 +6,9 @@ app.directive('fcsScoutCard', function () {
 			scout: '='
 		},
 		link: function (scope) {
-			var scoutSummary = scope.scout.summarize();
-			scope.scoutSummary = scoutSummary;
+			scope.$watch('scout', function(newValue, oldValue) {
+				scope.scoutSummary = scope.scout.summarize();
+			});
 		},
 		templateUrl: 'js/directives/directive-templates/scout-card.template.html'
 	};
