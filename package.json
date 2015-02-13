@@ -1,0 +1,24 @@
+{
+  "name": "first-class",
+  "version": "1.0.0",
+  "description": "Boy Scout Tracking Application (MEAN)",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.11.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/srdone/first-class.git"
+  },
+  "author": "Stephen Done <srdone@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/srdone/first-class/issues"
+  },
+  "homepage": "https://github.com/srdone/first-class"
+}

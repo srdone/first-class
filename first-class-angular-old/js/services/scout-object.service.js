@@ -80,46 +80,7 @@ app.factory('scoutObjectService', ['dateService', 'utilService', 'persistenceSer
 	  Scout.prototype.getCurrentRank = function() {
 	      return 'Eagle';
 	  };
-	  /**
-	  * @ngdoc function
-	  * @name firstClassApp.ScoutService.Scout.prototype.currentPositions
-	  * @description
-	  * # Scout.prototype.currentPositions
-	  * Takes the private variable _positionHistory and compares the dates of the
-	  * history to the date provided and returns a list of positions that the scout held
-	  * on that date.
-	  *
-	  * @param {Date} date The date to compare positions against
-	  * @returns {Array<Position>} Array of positions the Scout currently holds
-	  */
-	  Scout.prototype.getCurrentPositions = function(date) {
-	    var currentPos = [];
-	    var currentDate = date || new Date();
-	    for (var i = 0; i < this._positionHistory.length; i++) {
-	      if (!this._positionHistory[i].end) {
-	        currentPos.push(this._positionHistory[i]);
-	      } else if (dateService.inRange(currentDate, this._positionHistory[i].start,
-	                                           this._positionHistory[i].end)) {
-	        currentPos.push(this._positionHistory[i]);
-	      }
-	    }
-	    return currentPos;
-	  };
-	  /**
-	  * @ngdoc function
-	  * @name firstClassApp.ScoutService.Scout.prototype.hoursOfService
-	  * @description
-	  * # Scout.prototype.hoursOfService
-	  * Returns the total hours of service based on _serviceHistory
-	  *
-	  * @returns {Number} Total number of hours of service
-	  */
-	  Scout.prototype.getHoursOfService = function() {
-	    var totalHrs = this._serviceHistory.reduce(function(previous, current) {
-	      return previous += current.hours;
-	    }, 0);
-	    return totalHrs;
-	  };
+
 	  Scout.prototype.getQualifiedNightsOfCamping = function() {
 
 	    var longestLTC;
