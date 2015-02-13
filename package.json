@@ -4,7 +4,11 @@
   "description": "Boy Scout Tracking Application (MEAN)",
   "main": "server.js",
   "dependencies": {
-    "express": "^4.11.2"
+    "body-parser": "^1.11.0",
+    "compression": "^1.4.0",
+    "express": "^4.11.2",
+    "method-override": "^2.3.1",
+    "morgan": "^1.5.1"
   },
   "devDependencies": {},
   "scripts": {
