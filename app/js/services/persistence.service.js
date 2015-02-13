@@ -26,8 +26,13 @@ app.factory('persistenceService', ['$q', '$firebase', '$firebaseAuth',
 
 	var _saveScout = function (scout) {
 		var deferred = $q.defer();
+    debugger;
 		ref.child('scouts').child(scout.id).set(scout, function (error) {
-			deferred.resolve(scout);
+			if (error) {
+				deferred.reject('Error synchronizing' + error);
+			} else {
+				deferred.resolve(scout);
+			}
 		});
 
 		return deferred.promise;

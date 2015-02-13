@@ -1,0 +1,22 @@
+<h1>Service History View</h1>
+
+<ul>
+	<li ng-repeat="service in scout._serviceHistory">
+		{{service.description}} - Hours: {{service.hours}}
+	</li>
+</ul>
+
+<div class="container">
+
+		<div class="form-group">
+			<input type="text" class="form-control" id="serviceDescription" ng-model="newService.description" placeholder="Service Description">
+		</div>
+
+		<div class="form-group">
+			<input type="number" class="form-control" id="serviceHours" ng-model="newService.hours" placeholder="0">
+		</div>
+
+		<button type="submit" class="btn btn-primary" ng-click="addService(newService)">Add Service</button>
+		<button type="cancel" class="btn btn-default" ng-click="cancelAdd()">Cancel</button>
+
+</div>

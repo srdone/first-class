@@ -155,6 +155,7 @@ app.factory('scoutObjectService', ['dateService', 'utilService', 'persistenceSer
 	  Scout.prototype.addCamping = function(desc, start, end) {
 	    var camping = new Camping(desc, start, end);
 	    this._campingHistory.push(camping);
+	    return camping;
 	  };
 	  Scout.prototype.removeCamping = function (id) {
 	    for (var i = 0; i < this._campingHistory.length; i++) {
@@ -168,6 +169,7 @@ app.factory('scoutObjectService', ['dateService', 'utilService', 'persistenceSer
 	  Scout.prototype.addPosition = function (title, start, end) {
 	    var position = new Position(title, start, end);
 	    this._positionHistory.push(position);
+	    return position;
 	  };
 	  Scout.prototype.removePosition = function (id) {
 	    for (var i = 0; i < this._positionHistory.length; i++) {
@@ -178,9 +180,10 @@ app.factory('scoutObjectService', ['dateService', 'utilService', 'persistenceSer
 	    }
 	    return false;
 	  };
-	  Scout.prototype.addService = function (title, start, end) {
-	    var service = new Service(title, start, end);
+	  Scout.prototype.addService = function (description, hours) {
+	    var service = new Service(undefined, description, hours);
 	    this._serviceHistory.push(service);
+	    return service;
 	  };
 	  Scout.prototype.removeService = function (id) {
 	    for (var i = 0; i < this._serviceHistory.length; i++) {

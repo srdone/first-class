@@ -53,6 +53,16 @@ app.config(['$stateProvider', '$urlRouterProvider',
 					}]
 				}
 			})
+			.state('scout-detail.service-history', {
+				url: '/scout/:scoutId',
+				templateUrl: 'views/service-history.view.html',
+				controller: 'ServiceHistoryController',
+				resolve: {
+					'currentAuth': ['persistenceService', function(persistenceService) {
+						return persistenceService.requireAuth();
+					}]
+				}
+			})
 			.state('requirement-management', {
 				url: 'requirement-management',
 				templateUrl: 'views/requirement-management.view.html',
