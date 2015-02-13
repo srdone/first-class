@@ -19,6 +19,9 @@ module.exports = function () {
   app.use(bodyParser.json());
   app.use(methodOverride());
 
+  app.set('views', './app/views');
+  app.set('view engine', 'ejs');
+
   require('../app/routes/index.server.routes.js')(app);
 
   return app;
