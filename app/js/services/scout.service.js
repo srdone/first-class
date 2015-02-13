@@ -16,18 +16,19 @@ app.factory('scoutService', ['scoutObjectService', 'persistenceService',
 					scoutData.lastName,
 					scoutData.photoUrl,
 					scoutData.isOA,
-					scoutData.completedReqs,
+					scoutData._completedReqs,
 					scoutData.currentPatrol,
 					scoutData.troop,
-					scoutData.positionHistory,
-					scoutData.campingHistory,
-					scoutData.serviceHistory
+					scoutData._positionHistory,
+					scoutData._campingHistory,
+					scoutData._serviceHistory
 				);
 		};
 
 		//returns scout object
 		var _getScoutById = function (scoutId) {
 			return persistenceService.getScoutById(scoutId).then(function (scoutRaw) {
+
 				var scoutConverted = _convertScout(scoutRaw);
 
 				return scoutConverted;

@@ -12,9 +12,12 @@ angular.module('firstClass')
 
 				$scope.scout.addService(service.description, service.hours);
 
-        $scope.scout.save();
+        // get rid of hash key
+        var scoutToSave = angular.copy($scope.scout);
 
-        _getScout();
+        scoutToSave.save().then(function () {
+          _getScout();
+        });
 
 			};
 
