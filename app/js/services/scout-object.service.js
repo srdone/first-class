@@ -180,6 +180,9 @@ app.factory('scoutObjectService', ['dateService', 'utilService', 'persistenceSer
 	    }
 	    return false;
 	  };
+    Scout.prototype.getPositions = function () {
+      return this._positionHistory;
+    };
 	  Scout.prototype.addService = function (description, hours) {
 	    var service = new Service(undefined, description, hours);
 	    this._serviceHistory.push(service);

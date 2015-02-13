@@ -17,6 +17,8 @@ angular.module('firstClass')
         $scope.scout.save().catch(function () {
 					$scope.scout.removeCamping(serviceAdded.id);
 				});
+
+        console.log($scope);
 			};
 
 			$scope.cancelAdd = function () {

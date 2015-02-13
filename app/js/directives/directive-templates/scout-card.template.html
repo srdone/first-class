@@ -6,37 +6,36 @@
 			<!-- scoutSummary Image -->
 			<div class="col-xs-6 col-sm-4">
 				<div class="well-sm">
-					<img class="img-responsive img-thumbnail" ng-src="{{scoutSummary.photoUrl}}">
+					<img class="img-responsive img-thumbnail" ng-src="{{scout.photoUrl}}">
 				</div>
 			</div>
 
 			<!-- scoutSummary Summary Data -->
 			<div class="col-xs-6 col-sm-8">
-				<h3>{{scoutSummary.firstName}} {{scoutSummary.lastName}}</h3>
+				<h3>{{scout.firstName}} {{scout.lastName}}</h3>
 			</div>
 
 			<!-- scoutSummary Rank and Patrol -->
 			<div class="col-xs-6">
 				<ul class="list-inline">
-					<li>{{scoutSummary.currentRank}}</li>
-					<li>{{scoutSummary.currentPatrol}} Patrol</li>
+					<li>{{scout.currentRank}}</li>
+					<li>{{scout.currentPatrol}} Patrol</li>
 				</ul>
 			</div>
 
 			<!-- Position Summary Data -->
 			<div class="col-xs-12 col-sm-6">
 				<ul class="list-inline">
-					<li>{{position.title}}</li>
-					<li ng-repeat="position in scoutSummary.currentPositions">
+					<li ng-repeat="position in scout.getPositions()">
 						{{position.title}} 
-						<span class="badge">{{position.monthsInPosition}} months</span>
+						<span class="badge">{{position.monthsInPosition()}} months</span>
 					</li>
 				</ul>
 			</div>
 
 			<!-- Next rank progress -->
 			<div class="col-xs-12 col-sm-6">
-				Next Rank: <progressbar type="success" value="scoutSummary.percentProgressToNextRank"></progressbar>
+				Next Rank: <progressbar type="success" value="scout.getPercentProgressToNextRank()"></progressbar>
 			</div>
 
 		</div>
@@ -48,9 +47,9 @@
 		<div class="col-xs-6">
 
 			<ul class="list-inline">
-				<li><span class="badge">{{scoutSummary.qualifiedNightsOfCamping}}</span> Qualified Nights of Camping</li>
-				<li><span class="badge">{{scoutSummary.hoursOfService}}</span> Service Hours</li>
-				<li><span class="badge">{{scoutSummary.numberOfMeritBadges}}</span> Merit Badges</li>
+				<li><span class="badge">{{scout.getQualifiedNightsOfCamping()}}</span> Qualified Nights of Camping</li>
+				<li><span class="badge">{{scout.getHoursOfService()}}</span> Service Hours</li>
+				<li><span class="badge">{{scout.getMeritBadgeCount()}}</span> Merit Badges</li>
 			</ul>
 
 		</div>
@@ -59,13 +58,13 @@
 
 
 			<ul class="list-inline">
-				<li ng-repeat="category in scoutSummary.neededRequirementCategories">
+				<li ng-repeat="category in scout.getNeededRequirementCategories()">
 					<span class="label label-success">{{category.title}}</span>
 				</li>
 			</ul>
 
-			<div ng-show="scoutSummary.isOA">OA Member</div>
-			<div ng-show="!scoutSummary.isOA && scoutSummary.isOAQualified">OA Qualified</div>
+			<div ng-show="!!scout.isOA">OA Member</div>
+			<div ng-show="!scout.isOA && scout.isOAQualified()">OA Qualified</div>
 
 		</div>
 
