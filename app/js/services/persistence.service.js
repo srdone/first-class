@@ -26,7 +26,6 @@ app.factory('persistenceService', ['$q', '$firebase', '$firebaseAuth',
 
 	var _saveScout = function (scout) {
 		var deferred = $q.defer();
-    debugger;
 		ref.child('scouts').child(scout.id).set(scout, function (error) {
 			if (error) {
 				deferred.reject('Error synchronizing' + error);

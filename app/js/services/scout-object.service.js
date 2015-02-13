@@ -4,6 +4,13 @@ var app = angular.module('firstClass');
 
 app.factory('scoutObjectService', ['dateService', 'utilService', 'persistenceService',
 	function (dateService, utilService, persistenceService) {
+
+    var tempNeededReqs = [
+        {title: 'test data', color: 'blue'},
+        {title: 'knots', color: 'brown'},
+        {title: 'camping', color: 'green'},
+        {title: 'first-aid', color: 'red'}
+      ];
 	  /**
 	  * @ngdoc function
 	  * @name firstClassApp.ScoutService.Scout
@@ -197,22 +204,22 @@ app.factory('scoutObjectService', ['dateService', 'utilService', 'persistenceSer
 	    }
 	    return false;
 	  };
+    Scout.prototype.getService = function () {
+      return this._serviceHistory;
+    };
 	    Scout.prototype.getCompletedRequirements = function () {
 	      return this._completedReqs;
 	    };
 	    Scout.prototype.getPercentProgressToNextRank = function () {
-	    	return Math.random() * 100;
+        // TODO: calculate this off of requirements
+	    	return 30;
 	    };
 	    Scout.prototype.getNeededRequirementCategories = function () {
-	    	return [
-	    		{title: 'test data', color: 'blue'},
-					{title: 'knots', color: 'brown'},
-					{title: 'camping', color: 'green'},
-					{title: 'first-aid', color: 'red'}
-				]
+        // TODO: calculate these off the requirements list
+	    	return tempNeededReqs;
 	    };
 	    Scout.prototype.getMeritBadgeCount = function () {
-	    	return Math.floor( Math.random() * 30 );
+	    	return 20;
 	    };
 	    Scout.prototype.summarize = function () {
 	    	return {
@@ -232,7 +239,7 @@ app.factory('scoutObjectService', ['dateService', 'utilService', 'persistenceSer
 					numberOfMeritBadges: this.getMeritBadgeCount(),
 					troop: this.troop
 	    	}
-	    }
+	    };
 
 	  var Position = function (id, title, start, end) {
 	    this.id = id || utilService.createUUID();

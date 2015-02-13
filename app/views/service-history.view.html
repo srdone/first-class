@@ -1,7 +1,7 @@
 <h1>Service History View</h1>
 
 <ul>
-	<li ng-repeat="service in scout._serviceHistory">
+	<li ng-repeat="service in scout.getService()">
 		{{service.description}} - Hours: {{service.hours}}
 	</li>
 </ul>
