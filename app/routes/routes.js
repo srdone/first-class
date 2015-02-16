@@ -4,7 +4,15 @@ var users = require('../controllers/users.server.controller.js'),
 
 module.exports = function(app) {
 
-  app.get('/', function (req, res) {
+  var auth = function (req, res, next) {
+    if (!req.isAuthenticated()) {
+      res.send(401);
+    } else {
+      next();
+    }
+  };
+
+  app.get('/', auth, function (req, res) {
     res.send('Hello World Two');
   });
 
