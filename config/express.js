@@ -11,9 +11,7 @@ module.exports = function () {
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(bodyParser.json());
 
-  app.get('/', function (req, res, next) {
-    res.send('Hello World');
-  });
+  require('../app/routes/routes.js')(app);
 
   return app;
 
