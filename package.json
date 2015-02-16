@@ -1,0 +1,25 @@
+{
+  "name": "first-class",
+  "version": "1.0.0",
+  "description": "Scout requirement tracking app",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/srdone/first-class.git"
+  },
+  "author": "Stephen Done <srdone@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/srdone/first-class/issues"
+  },
+  "homepage": "https://github.com/srdone/first-class",
+  "dependencies": {
+    "body-parser": "^1.12.0",
+    "express": "^4.11.2",
+    "morgan": "^1.5.1"
+  }
+}
