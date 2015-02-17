@@ -3,7 +3,8 @@ var express = require('express'),
   bodyParser = require('body-parser'),
   session = require('express-session'),
   mongoose = require('mongoose'),
-  crypto = require('crypto');
+  crypto = require('crypto'),
+  methodOverride = require('method-override');
 
 var app = express();
 mongoose.connect('mongodb://localhost/first-class-dev');
@@ -51,7 +52,10 @@ var User = mongoose.model('User', UserSchema);
 app.use(morgan('dev'));
 // parse json data
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+// parse url query parameters
+app.use(bodyParser.urlencoded({ extended: true }));
+// override rest methods
+app.use(methodOverride());
 
 // configure session
 app.use(session({
@@ -88,6 +92,30 @@ app.route('/auth')
         return next(err);
       } else {
         res.json(users);
+      }
+    });
+  })
+  .delete(function (req, res, next) {
+    User.findOneAndRemove({username: req.body.username}).exec(function (err, user) {
+      if (err) {
+        return next(err);
+      } else if (!user) {
+        res.send({
+          message: 'user does not exist'
+        });
+      } else {
+        res.send({
+          message: 'user ' + user.username + ' successfully removed.'
+        });
+      }
+    });
+  })
+  .put(function (req, res, next) {
+    User.findByIdAndUpdate(req.body._id, req.body).exec(function (err, user) {
+      if (err) {
+        return next(err);
+      } else {
+        res.json(user);
       }
     });
   });
