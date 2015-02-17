@@ -26,9 +26,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // override rest methods
 app.use(methodOverride());
 
+//import configuration for session
+var config = require('./app/config/config.js');
+
 // configure session
 app.use(session({
-  secret: 'developmentSecret',
+  secret: config.sessionSecret,
   saveUninitialized: false, //make sure we don't save empty sessions
   resave: false //don't save when session has not changed
 }));
