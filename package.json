@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/srdone/first-class/issues"
   },
-  "homepage": "https://github.com/srdone/first-class"
+  "homepage": "https://github.com/srdone/first-class",
+  "dependencies": {
+    "morgan": "^1.5.1"
+  }
 }
