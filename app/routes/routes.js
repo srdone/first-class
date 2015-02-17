@@ -1,4 +1,5 @@
 var users = require('../controllers/users.server.controller.js'),
+  scouts = require('../controllers/scouts.server.controller.js'),
   fs = require('fs'),
   passport = require('passport');
 
@@ -6,7 +7,7 @@ module.exports = function(app) {
 
   var auth = function (req, res, next) {
     if (!req.isAuthenticated()) {
-      res.send(401);
+      res.status(401).send({message: 'user is not logged in'});
     } else {
       next();
     }
@@ -17,7 +18,7 @@ module.exports = function(app) {
   });
 
   app.get('/loggedin', function (req, res) {
-    res.send('Sucessfully Logged In!');
+    res.send(req.isAuthenticated() ? req.user : 0);
   });
 
   app.get('/failedlogin', function (req, res) {
@@ -70,5 +71,11 @@ module.exports = function(app) {
   app.get('/signout', users.signout);
 
   app.post('/users', users.create);
+
+  app.route('/scouts')
+    .get(scouts.findByCreator)
+    .post(scouts.create)
+    .put(scouts.update)
+    .delete(scouts.delete);
 
 };
