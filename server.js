@@ -6,10 +6,16 @@ var app = express();
 // add logging
 app.use(morgan('dev'));
 
+
 app.get('/', function (req, res) {
-  res.send('Hello World');
+  res.sendFile(__dirname + '/public/index.html');
 });
 
-app.listen(3000, function () {
-  console.log('Listening on port 3000');
+app.use('/', express.static(__dirname + '/public/'));
+
+var server = app.listen(3000, function () {
+  var address = server.address().address;
+  var port = server.address().port;
+
+  console.log('Listening on http://%s:%s', address, port);
 });
