@@ -2,8 +2,8 @@
 
 var app = angular.module('firstClass');
 
-app.factory('persistenceService', ['$q', '$firebase', '$firebaseAuth',
-	function ($q, $firebase, $firebaseAuth) {
+app.factory('persistenceService', ['$q', '$firebase', '$firebaseAuth', '$http',
+	function ($q, $firebase, $firebaseAuth, $http) {
 
 	var ref = new Firebase("https://first-class.firebaseio.com");
 
@@ -39,21 +39,16 @@ app.factory('persistenceService', ['$q', '$firebase', '$firebaseAuth',
 
 
 	var _login = function (username, password) {
-		ref.authWithPassword({
-  		email    : username,
-  		password : password
-		}, function(error, authData) {
-  			if (error) {
-    			console.log("Login Failed!", error);
-		  	} else {
-		    	console.log("Authenticated successfully with payload:", authData);
-		 	 	}
-		});
+		$http.post('/login', {username: username, password: password}).then(function (response) {
+      console.log('login called, responded: ' + JSON.stringify(response));
+    });
 	};
 
 	var _logout = function () {
-		ref.unauth();
-	}
+		$http.post('/logout', {}).then(function (response) {
+      console.log('logout called, responded: ' + JSON.stringify(response));
+    });
+	};
 
 	return {
 		requireAuth: auth.$requireAuth,

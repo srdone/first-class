@@ -51,15 +51,15 @@ UserSchema.methods.authenticate = function (password) {
 var User = mongoose.model('User', UserSchema);
 
 //configure passport
-passport.serializeUser = function (user, done) {
+passport.serializeUser(function (user, done) {
   done(null, user.id);
-};
+});
 
-passport.deserializeUser = function (id, done) {
+passport.deserializeUser(function (id, done) {
   User.findById(id, '-password, -salt', function (err, user) {
     done(err, user);
   });
-};
+});
 
 // add local authentication strategy - roughly from MEAN Web Development by PACKT Publishing
 // the "done" callback is used to signal if authentication succeeded:
@@ -123,6 +123,15 @@ app.get('/', function (req, res) {
 
 app.get('/lastVisit', requireAuthentication, function (req, res) {
   res.json({'lastVisit':req.session.lastVisit});
+});
+
+app.post('/login', passport.authenticate('local'), function (req, res) {
+  res.send('Hooray!');
+});
+
+app.post('/logout', function (req, res) {
+  req.logout();
+  res.send('LoggedOut');
 });
 
 app.route('/users')
