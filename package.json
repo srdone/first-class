@@ -1,0 +1,19 @@
+{
+  "name": "first-class",
+  "version": "1.0.0",
+  "description": "scout tracking app",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/srdone/first-class.git"
+  },
+  "author": "Stephen Done <srdone@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/srdone/first-class/issues"
+  },
+  "homepage": "https://github.com/srdone/first-class"
+}
