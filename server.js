@@ -11,8 +11,10 @@ mongoose.connect('mongodb://localhost/first-class-dev');
 
 // import models
 require('./app/models/user.server.model');
+require('./app/models/scout.server.model');
 
 var User = mongoose.model('User');
+var Scout = mongoose.model('Scout');
 
 // import and run passport config
 require('./app/config/passport.js')();
