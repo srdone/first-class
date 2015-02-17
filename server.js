@@ -36,6 +36,7 @@ app.use(session({
   resave: false //don't save when session has not changed
 }));
 
+// initialize passport
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -55,28 +56,15 @@ var requireOwnership = function (req, res, next) {
   //implementation details
 };
 
-// serve the index file
+// index route
 app.get('/', function (req, res) {
   req.session.lastVisit = Date.now();
   res.sendFile(__dirname + '/public/index.html');
 });
 
-app.get('/lastVisit', requireAuthentication, function (req, res) {
-  res.json({'lastVisit':req.session.lastVisit});
-});
-
-app.post('/login', passport.authenticate('local'), function (req, res) {
-  res.send('Hooray!');
-});
-
-app.post('/logout', function (req, res) {
-  req.logout();
-  res.send('LoggedOut');
-});
-
 // add route middleware
-require('./app/routes/users.server.routes')(app);
-
+require('./app/routes/auth.server.routes')(app); //login and logout routes
+require('./app/routes/users.server.routes')(app); //user routes
 
 // serve static files
 app.use('/', express.static(__dirname + '/public/'));
