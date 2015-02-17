@@ -3,7 +3,7 @@ var Scout = require('mongoose').model('Scout');
 exports.create = function (req, res, next) {
 
   // Create new scout object from the request body
-  req.body.creator = req.user._id;
+  req.body.creator = req.user.username;
   var scout = new Scout(req.body);
 
   scout.save(function (err) {
