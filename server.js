@@ -67,6 +67,7 @@ app.get('/', function (req, res) {
 // add route middleware
 require('./app/routes/auth.server.routes')(app); //login and logout routes
 require('./app/routes/users.server.routes')(app); //user routes
+require('./app/routes/scouts.server.routes')(app); //scout routes
 
 // serve static files
 app.use('/', express.static(__dirname + '/public/'));
