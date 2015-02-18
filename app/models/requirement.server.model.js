@@ -7,11 +7,15 @@ var RequirementSchema = new Schema({
     required: true,
     unique: true
   },
+  name: {
+    type: String,
+    required: true
+  },
   description: {
     type: String,
     required: true
   },
-  itemNumber: {
+  requirementNumber: {
     type: String,
     required: true
   },
@@ -19,29 +23,18 @@ var RequirementSchema = new Schema({
     type: Number,
     required: true
   },
-  parentAward: {
-    type: String,
-    required: true
-  },
-  isAward: {
-    type: Boolean,
-    required: true
-  },
-  awardType: {
+  requirementType: {
     type: String,
     required: true,
-    enum: ['rank', 'meritbadge', 'other']
+    enum: ['requirement', 'award']
   },
-  parent: {
+  parentRequirement: {
     type: String,
     required: true
-  }
-});
-
-RequirementSchema.pre('save', function (next) {
-  this.id = this.parentAward + '-' + this.itemNumber;
-
-  next();
+  },
+  numberOfChildrenToComplete: Number,
+  completeAllChildren: Boolean,
+  effectiveDate: Date
 });
 
 mongoose.model('Requirement', RequirementSchema);
