@@ -6,6 +6,8 @@ var express = require('express'),
   methodOverride = require('method-override'),
   passport = require('passport');
 
+require('./data/import-requirements.script.js');
+
 var app = express();
 mongoose.connect('mongodb://localhost/first-class-dev');
 
