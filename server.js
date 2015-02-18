@@ -12,6 +12,7 @@ mongoose.connect('mongodb://localhost/first-class-dev');
 // import models
 require('./app/models/user.server.model');
 require('./app/models/scout.server.model');
+require('./app/models/requirement.server.model');
 
 var User = mongoose.model('User');
 var Scout = mongoose.model('Scout');
@@ -68,6 +69,7 @@ app.get('/', function (req, res) {
 require('./app/routes/auth.server.routes')(app); //login and logout routes
 require('./app/routes/users.server.routes')(app); //user routes
 require('./app/routes/scouts.server.routes')(app); //scout routes
+require('./app/routes/requirements.server.routes')(app); //requirement routes
 
 // serve static files
 app.use('/', express.static(__dirname + '/public/'));
