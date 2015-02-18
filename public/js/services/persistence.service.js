@@ -1,40 +1,18 @@
 'use strict';
 
-var app = angular.module('firstClass');
-
-app.factory('persistenceService', ['$q', '$firebase', '$firebaseAuth', '$http',
-	function ($q, $firebase, $firebaseAuth, $http) {
-
-	var ref = new Firebase("https://first-class.firebaseio.com");
-
-	var auth = $firebaseAuth(ref);
-
-	var syncScouts = $firebase(ref.child('scouts'));
+angular.module('firstClass').factory('persistenceService', ['$q', '$http',
+	function ($q, $http) {
 
 	var _getScoutById = function (id) {
-		var deferred = $q.defer();
-		ref.child('scouts').child(id).on('value', function(snapshot) {
-			deferred.resolve(snapshot.val());
-		});
-
-		return deferred.promise;
+		// return promise
 	};
 
 	var _getScouts = function () {
-		return syncScouts.$asArray().$loaded();
+		// return promise
 	};
 
 	var _saveScout = function (scout) {
-		var deferred = $q.defer();
-		ref.child('scouts').child(scout.id).set(scout, function (error) {
-			if (error) {
-				deferred.reject('Error synchronizing' + error);
-			} else {
-				deferred.resolve(scout);
-			}
-		});
-
-		return deferred.promise;
+		// return promise
 	};
 
 
@@ -50,8 +28,12 @@ app.factory('persistenceService', ['$q', '$firebase', '$firebaseAuth', '$http',
     });
 	};
 
+    var _requireAuth = function () {
+      // return auth status (somehow)
+    };
+
 	return {
-		requireAuth: auth.$requireAuth,
+		requireAuth: _requireAuth,
 		login: _login,
 		logout: _logout,
 		saveScout: _saveScout,
