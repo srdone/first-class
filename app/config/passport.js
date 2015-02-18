@@ -21,13 +21,13 @@ module.exports = function () {
   passport.use(new LocalStrategy(function (username, password, done) {
     User.findOne({username: username}).exec(function (err, user) {
       if (err) {
-        return done(err);
+        done(err);
       } else if (!user) {
-        return done(null, false, {message: 'User ' + username + ' does not exist.'});
+        done(null, false, {message: 'User ' + username + ' does not exist.'});
       } else if (!user.authenticate(password)) {
-        return done(null, false, {message: 'Invalid password'});
+        done(null, false, {message: 'Invalid password'});
       } else {
-        return done(null, user);
+        done(null, user);
       }
     });
   }));
