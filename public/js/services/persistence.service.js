@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('firstClass').factory('persistenceService', ['$q', '$http',
-	function ($q, $http) {
+angular.module('firstClass').factory('persistenceService', ['$q', '$http', '$location',
+	function ($q, $http, $location) {
 
 	var _getScoutById = function (id) {
 		// return promise
@@ -28,8 +28,20 @@ angular.module('firstClass').factory('persistenceService', ['$q', '$http',
     });
 	};
 
+    // see https://vickev.com/#!/article/authentication-in-single-page-applications-node-js-passportjs-angularjs
     var _requireAuth = function () {
-      // return auth status (somehow)
+      var deferred = $q.defer();
+
+      $http.get('/loggedin').success(function (user) {
+        if (user !== '0') {
+          deferred.resolve();
+        } else {
+          deferred.reject();
+          $location.url('/');
+        }
+      });
+
+      return deferred.promise;
     };
 
 	return {

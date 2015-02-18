@@ -2,8 +2,8 @@
 
 var app = angular.module('firstClass');
 
-app.config(['$stateProvider', '$urlRouterProvider', 
-	function ($stateProvider, $urlRouterProvider) {
+app.config(['$stateProvider', '$urlRouterProvider', 'persistenceService',
+	function ($stateProvider, $urlRouterProvider, persistenceService) {
 
 		$urlRouterProvider.otherwise('/');
 
@@ -18,9 +18,7 @@ app.config(['$stateProvider', '$urlRouterProvider',
 				templateUrl: 'views/troop.view.html',
 				controller: 'TroopController',
 				resolve: {
-					'currentAuth': ['persistenceService', function(persistenceService) {
-						return persistenceService.requireAuth();
-					}]
+          'currentAuth': persistenceService.requireAuth
 				}
 			})
 			.state('scout-detail', {
@@ -28,9 +26,7 @@ app.config(['$stateProvider', '$urlRouterProvider',
 				templateUrl: 'views/scout.view.html',
 				controller: 'ScoutController',
 				resolve: {
-					'currentAuth': ['persistenceService', function(persistenceService) {
-						return persistenceService.requireAuth();
-					}]
+					'currentAuth': persistenceService.requireAuth
 				}
 			})
 			.state('scout-detail.requirements-progress', {
@@ -38,9 +34,7 @@ app.config(['$stateProvider', '$urlRouterProvider',
 				templateUrl: 'views/requirements-progress.view.html',
 				controller: 'RequirementsProgressController',
 				resolve: {
-					'currentAuth': ['persistenceService', function(persistenceService) {
-						return persistenceService.requireAuth();
-					}]
+          'currentAuth': persistenceService.requireAuth
 				}
 			})
 			.state('scout-detail.next-steps', {
@@ -48,9 +42,7 @@ app.config(['$stateProvider', '$urlRouterProvider',
 				templateUrl: 'views/next-steps.view.html',
 				controller: 'NextStepsController',
 				resolve: {
-					'currentAuth': ['persistenceService', function(persistenceService) {
-						return persistenceService.requireAuth();
-					}]
+          'currentAuth': persistenceService.requireAuth
 				}
 			})
 			.state('scout-detail.service-history', {
@@ -58,9 +50,7 @@ app.config(['$stateProvider', '$urlRouterProvider',
 				templateUrl: 'views/service-history.view.html',
 				controller: 'ServiceHistoryController',
 				resolve: {
-					'currentAuth': ['persistenceService', function(persistenceService) {
-						return persistenceService.requireAuth();
-					}]
+          'currentAuth': persistenceService.requireAuth
 				}
 			})
 			.state('requirement-management', {
@@ -68,9 +58,7 @@ app.config(['$stateProvider', '$urlRouterProvider',
 				templateUrl: 'views/requirement-management.view.html',
 				controller: 'RequirementManagementController',
 				resolve: {
-					'currentAuth': ['persistenceService', function(persistenceService) {
-						return persistenceService.requireAuth();
-					}]
+          'currentAuth': persistenceService.requireAuth
 				}
 			});
 
