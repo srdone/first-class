@@ -36,4 +36,4 @@ UserSchema.methods.authenticate = function (password) {
   return this.password === this.hashPassword(password);
 };
 
-var User = mongoose.model('User', UserSchema);
+mongoose.model('User', UserSchema);
