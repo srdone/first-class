@@ -8,7 +8,7 @@ module.exports = function(app) {
 
       user.save(function (err) {
         if (err) {
-          return next(err);
+          next(err);
         } else {
           res.json(user);
         }
@@ -17,7 +17,7 @@ module.exports = function(app) {
     .get(function (req, res, next) {
       User.find({}).exec(function (err, users) {
         if (err) {
-          return next(err);
+          next(err);
         } else {
           res.json(users);
         }
@@ -26,7 +26,7 @@ module.exports = function(app) {
     .delete(function (req, res, next) {
       User.findOneAndRemove({username: req.body.username}).exec(function (err, user) {
         if (err) {
-          return next(err);
+          next(err);
         } else if (!user) {
           res.send({
             message: 'user does not exist'
@@ -41,7 +41,7 @@ module.exports = function(app) {
     .put(function (req, res, next) {
       User.findByIdAndUpdate(req.body._id, req.body).exec(function (err, user) {
         if (err) {
-          return next(err);
+          next(err);
         } else {
           res.json(user);
         }
