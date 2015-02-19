@@ -2,26 +2,32 @@
 
 var app = angular.module('firstClass');
 
-app.controller('LoginController', ['$scope', '$rootScope', 'persistenceService', 'authService',
-	function ($scope, $rootScope, persistenceService, authService) {
+app.controller('LoginController', ['$scope', '$rootScope', 'persistenceService', 'authService', '$state',
+	function ($scope, $rootScope, persistenceService, authService, $state) {
+
+    $scope.doSignUp = false;
+    $scope.newUser = {};
+
+    var _reset = function () {
+      $scope.user = {};
+      $scope.newUser = {};
+      $scope.doSignUp = false;
+    };
 
     var _login = function () {
       persistenceService.login($scope.user.email, $scope.user.password)
         .then(function success () {
-          $scope.message = undefined;
-          $scope.askSignUp = false;
+          $scope.welcomeMessage = 'Welcome to First Class Scouting!';
           $rootScope.loggedIn = true;
-          $scope.newUser = {};
-          $scope.user = {};
+          _reset();
+          $state.go('troop');
         }, function failure (response) {
           $scope.message = 'Login failed. Do you want to sign up?';
-          $scope.user = {};
-          $scope.newUser = {};
-          $scope.askSignUp = true;
+          _reset();
         });
     };
 
-    var _signup = function () {
+    var _signUp = function () {
       if ($scope.user.password = $scope.newUser.verifyPassword) {
         authService.signUp($scope.user.email, $scope.user.password).then(function () {
           _login();
@@ -30,8 +36,17 @@ app.controller('LoginController', ['$scope', '$rootScope', 'persistenceService',
       }
     };
 
-		$scope.login = _login;
+    var _chooseToSignUp = function () {
+      $scope.doSignUp = true;
+    };
 
-    $scope.signup = _signup;
+    var _cancelSignUp = function () {
+      _reset();
+    };
+
+		$scope.login = _login;
+    $scope.signUp = _signUp;
+    $scope.chooseToSignUp = _chooseToSignUp;
+    $scope.cancelSignUp = _cancelSignUp;
 
 	}]);

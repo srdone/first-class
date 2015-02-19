@@ -12,14 +12,17 @@
         <input id="password" type="password" class="form-control" ng-model="user.password" placeholder="Password">
       </div>
 
-      <div class="form-group" ng-if="askSignUp">
+      <div class="form-group" ng-if="doSignUp">
         <label for="verifyPassword" class="sr-only">Verify Password</label>
         <input id="verifyPassword" type="password" class="form-control" ng-model="newUser.verifyPassword" placeholder="Verify Password">
       </div>
 
-      <button ng-click="login()" class="btn bg-primary">Login</button>
+      <button ng-click="login()" class="btn bg-primary" ng-if="!doSignUp">Login</button>
 
-      <button ng-click="signup()" ng-if="askSignUp" class="btn btn-default">Sign Up</button>
+      <button ng-click="chooseToSignUp()" class="btn btn-default" ng-if="!doSignUp">Sign Up</button>
+
+      <button ng-click="signUp()" class="btn btn-primary" ng-if="doSignUp">Sign Up</button>
+      <button ng-click="cancelSignUp()" class="btn btn-default" ng-if="doSignUp">Cancel</button>
 
     </form>
   </div>
