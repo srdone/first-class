@@ -10,8 +10,9 @@ app.factory('scoutService', ['scoutObjectService', 'persistenceService',
 		//convert scout json to object
 		var _convertScout = function (scoutData) {
 
+      debugger;
 			return new Scout(
-					scoutData.id,
+					scoutData._id,
 					scoutData.firstName,
 					scoutData.lastName,
 					scoutData.photoUrl,
@@ -27,6 +28,7 @@ app.factory('scoutService', ['scoutObjectService', 'persistenceService',
 
 		//returns scout object
 		var _getScoutById = function (scoutId) {
+      debugger;
 			return persistenceService.getScoutById(scoutId).then(function (scoutRaw) {
 
 				var scoutConverted = _convertScout(scoutRaw);
@@ -38,7 +40,6 @@ app.factory('scoutService', ['scoutObjectService', 'persistenceService',
 		//returns scout objects
 		var _getScouts = function () {
 			return persistenceService.getScouts().then(function (troopScoutDataRaw) {
-        debugger;
 
 				var troopScoutsConverted = troopScoutDataRaw.map(function (current) {
 

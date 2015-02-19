@@ -20,7 +20,6 @@ app.controller('TroopController', ['$scope', 'scoutService', 'troop',
 		$scope.addScout = function (scout) {
 			scoutService.createNewScout(scout).then(function (scout) {
         scoutService.getScouts().then(function (scouts) {
-          debugger;
           $scope.troop = scouts;
           $scope.addState = false;
           $scope.newScout = {};

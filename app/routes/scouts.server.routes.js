@@ -10,6 +10,7 @@ module.exports = function (app) {
     .post(scouts.createScout);
 
   app.route('/scouts/:scoutId')
+    .get(scouts.hasAuthorization, scouts.readScout)
     .put(scouts.hasAuthorization, scouts.updateScout)
     .delete(scouts.hasAuthorization, scouts.deleteScout);
 

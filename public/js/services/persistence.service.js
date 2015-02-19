@@ -4,7 +4,9 @@ angular.module('firstClass').factory('persistenceService', ['$q', '$http',
 	function ($q, $http) {
 
 	var _getScoutById = function (id) {
-		// return promise
+		return $http.get('/scouts/' + id).then(function (response) {
+      return response.data;
+    });
 	};
 
 	var _getScouts = function () {
@@ -14,7 +16,9 @@ angular.module('firstClass').factory('persistenceService', ['$q', '$http',
 	};
 
 	var _saveScout = function (scout) {
-		return $http.post('/scouts', scout);
+		return $http.post('/scouts', scout).then(function (response) {
+      return response.data;
+    });
 	};
 
 
