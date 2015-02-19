@@ -9,6 +9,7 @@ app.controller('LoginController', ['$scope', '$rootScope', 'persistenceService',
 			console.log('hi');
 			persistenceService.login($scope.user.email, $scope.user.password).then(function () {
         $rootScope.loggedIn = true;
+        $scope.user = {};
       });
 		};
 
