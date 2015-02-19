@@ -4,7 +4,9 @@ var express = require('express'),
   session = require('express-session'),
   mongoose = require('mongoose'),
   methodOverride = require('method-override'),
-  passport = require('passport');
+  passport = require('passport'),
+  cookieParser = require('cookie-parser'),
+  connectFlash = require('connect-flash');
 
 require('./data/import-requirements.script.js')();
 
@@ -34,12 +36,17 @@ app.use(methodOverride());
 //import configuration for session
 var config = require('./app/config/config.js');
 
+app.use(cookieParser(config.sessionSecret));
+
 // configure session
 app.use(session({
+  cookie: {maxAge: 60000},
   secret: config.sessionSecret,
   saveUninitialized: false, //make sure we don't save empty sessions
   resave: false //don't save when session has not changed
 }));
+
+app.use(connectFlash());
 
 // initialize passport
 app.use(passport.initialize());
