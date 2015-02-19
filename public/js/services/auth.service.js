@@ -11,7 +11,7 @@ angular.module('firstClass').factory('authService', ['$location', '$http', '$q',
         deferred.resolve('success');
       })
       .failure(function () {
-        $location.url('/');
+        $location.path('/');
         deferred.reject();
       });
 
