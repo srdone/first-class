@@ -20,8 +20,8 @@ angular.module('firstClass').factory('authService', ['$location', '$http', '$q',
 
   };
 
-  var _signUp = function (newUser) {
-    return $http.post('/signup', newUser);
+  var _signUp = function (username, password) {
+    return $http.post('/signup', {username: username, password: password});
   };
 
   return {

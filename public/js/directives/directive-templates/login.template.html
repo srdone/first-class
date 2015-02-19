@@ -5,6 +5,8 @@
 
 	<input type="password" ng-model="user.password" placeholder="Password">
 
+  <input type="password" ng-model="newUser.verifyPassword" placeholder="Verify Password" ng-show="askSignUp">
+
 	<input type="button" ng-click="login()" value="Login">
 
   <input type="button" ng-click="signup()" value="Sign Up" ng-show="askSignUp">

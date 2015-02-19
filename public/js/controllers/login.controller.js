@@ -2,11 +2,10 @@
 
 var app = angular.module('firstClass');
 
-app.controller('LoginController', ['$scope', '$rootScope', 'persistenceService',
-	function ($scope, $rootScope, persistenceService) {
+app.controller('LoginController', ['$scope', '$rootScope', 'persistenceService', 'authService',
+	function ($scope, $rootScope, persistenceService, authService) {
 
-    var login = function () {
-      console.log('hi');
+    var _login = function () {
       persistenceService.login($scope.user.email, $scope.user.password)
         .then(function success () {
           $scope.message = undefined;
@@ -14,11 +13,21 @@ app.controller('LoginController', ['$scope', '$rootScope', 'persistenceService',
           $rootScope.loggedIn = true;
           $scope.user = {};
         }, function failure (response) {
-          $scope.message = 'Login failed. Are you a member?';
+          $scope.message = 'Login failed. Do you want to sign up?';
           $scope.askSignUp = true;
         });
     };
 
-		$scope.login = login;
+    var _signup = function () {
+      if ($scope.user.password = $scope.newUser.verifyPassword) {
+        authService.signUp($scope.user.email, $scope.user.password).then(function () {
+          _login();
+        });
+      }
+    };
+
+		$scope.login = _login;
+
+    $scope.signup = _signup;
 
 	}]);
