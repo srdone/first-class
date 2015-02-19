@@ -1,7 +1,7 @@
 // see https://vickev.com/#!/article/authentication-in-single-page-applications-node-js-passportjs-angularjs
 
 angular.module('firstClass').factory('verifyAuthenticationHttpInterceptor',
-  ['$q', '$state', '$rootScope', function ($q, $state, $rootScope) {
+  ['$q', '$location', '$rootScope', function ($q, $location, $rootScope) {
 
     return {
       response: function (response) {
@@ -12,7 +12,7 @@ angular.module('firstClass').factory('verifyAuthenticationHttpInterceptor',
         console.log(response);
         if (response.status === 401) {
           $rootScope.loggedIn = false;
-          $state.go('main');
+          $location.url('/');
         }
         return $q.reject(response);
       }
