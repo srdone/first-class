@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('firstClass').factory('persistenceService', ['$q', '$http',
-	function ($q, $http) {
+angular.module('firstClass').factory('persistenceService', ['$q', '$http', '$rootScope',
+	function ($q, $http, $rootScope) {
 
 	var _getScoutById = function (id) {
 		return $http.get('/scouts/' + id).then(function (response) {
@@ -29,6 +29,7 @@ angular.module('firstClass').factory('persistenceService', ['$q', '$http',
 
 	var _login = function (username, password) {
 		return $http.post('/login', {username: username, password: password}).then(function (response) {
+      $rootScope.username = response.data.username;
       console.log('login called, responded: ' + JSON.stringify(response));
     });
 	};

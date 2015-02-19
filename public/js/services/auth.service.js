@@ -1,4 +1,4 @@
-angular.module('firstClass').factory('authService', ['$location', '$http', '$q', function ($location, $http, $q) {
+angular.module('firstClass').factory('authService', ['$location', '$http', '$q', '$rootScope', function ($location, $http, $q, $rootScope) {
 
   // see https://vickev.com/#!/article/authentication-in-single-page-applications-node-js-passportjs-angularjs
   var _requireAuth = function () {
@@ -8,6 +8,7 @@ angular.module('firstClass').factory('authService', ['$location', '$http', '$q',
     $http.get('/loggedin')
       .success(function (response) {
         console.log(response);
+        $rootScope.username = response.data.username;
         deferred.resolve('success');
       })
       .failure(function () {
