@@ -2,11 +2,9 @@
 
 var app = angular.module('firstClass');
 
-app.controller('ScoutController', ['$scope', 'scoutService', '$stateParams',
-	function ($scope, scoutService, $stateParams) {
+app.controller('ScoutController', ['$scope', 'scoutService', 'scout',
+	function ($scope, scoutService, scout) {
 
-		scoutService.getScoutById($stateParams.scoutId).then(function (scout) {
-			$scope.scout = scout;
-		});
+		$scope.scout = scout;
 
 	}]);

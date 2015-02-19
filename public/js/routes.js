@@ -18,9 +18,6 @@ app.config(['$stateProvider', '$urlRouterProvider',
 				templateUrl: 'views/troop.view.html',
 				controller: 'TroopController',
         resolve: {
-          //currentAuth: ['authService', function (authService) {
-          //  return authService.requireAuth();
-          //}],
           troop: ['scoutService', function (scoutService) {
             return scoutService.getScouts();
           }]
@@ -29,42 +26,32 @@ app.config(['$stateProvider', '$urlRouterProvider',
 			.state('scout-detail', {
 				url: '/scout/:scoutId',
 				templateUrl: 'views/scout.view.html',
-				controller: 'ScoutController'
-        //resolve: ['authService', function (authService) {
-        //  return authService.requireAuth();
-        //}]
+				controller: 'ScoutController',
+        resolve: {
+          scout: ['$stateParams', 'scoutService', function ($stateParams, scoutService) {
+            return scoutService.getScoutById($stateParams.scoutId);
+          }]
+        }
 			})
 			.state('scout-detail.requirements-progress', {
 				url: '/scout/:scoutId',
 				templateUrl: 'views/requirements-progress.view.html',
-				controller: 'RequirementsProgressController',
-        resolve: ['authService', function (authService) {
-          return authService.requireAuth();
-        }]
+				controller: 'RequirementsProgressController'
 			})
 			.state('scout-detail.next-steps', {
 				url: '/scout/:scoutId',
 				templateUrl: 'views/next-steps.view.html',
 				controller: 'NextStepsController'
-        //resolve: ['authService', function (authService) {
-        //  return authService.requireAuth();
-        //}]
 			})
 			.state('scout-detail.service-history', {
 				url: '/scout/:scoutId',
 				templateUrl: 'views/service-history.view.html',
 				controller: 'ServiceHistoryController'
-        //resolve: ['authService', function (authService) {
-        //  return authService.requireAuth();
-        //}]
 			})
 			.state('requirement-management', {
 				url: 'requirement-management',
 				templateUrl: 'views/requirement-management.view.html',
 				controller: 'RequirementManagementController'
-        //resolve: ['authService', function (authService) {
-        //  return authService.requireAuth();
-        //}]
 			});
 
 	}]);
