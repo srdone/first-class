@@ -2,15 +2,10 @@
 
 var app = angular.module('firstClass');
 
-app.controller('TroopController', ['$scope', 'scoutService',
-	function ($scope, scoutService) {
-		$scope.test = 'TroopController';
+app.controller('TroopController', ['$scope', 'scoutService', 'troop'
+	function ($scope, scoutService, troop) {
 
-    $scope.troop = [];
-
-		scoutService.getScouts().then(function (scouts) {
-			$scope.troop = scouts;
-		});
+    $scope.troop = troop;
 
 		$scope.addState = false;
 
@@ -24,9 +19,11 @@ app.controller('TroopController', ['$scope', 'scoutService',
 
 		$scope.addScout = function (scout) {
 			scoutService.createNewScout(scout).then(function (scout) {
-				$scope.troop.push(scout);
-				$scope.addState = false;
-				$scope.newScout = {};
+        scoutService.getScouts().then(function (scouts) {
+          $scope.troop = scouts;
+          $scope.addState = false;
+          $scope.newScout = {};
+        });
 			});
 		};
 
