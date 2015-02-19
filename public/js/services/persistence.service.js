@@ -28,13 +28,13 @@ angular.module('firstClass').factory('persistenceService', ['$q', '$http',
   };
 
 	var _login = function (username, password) {
-		$http.post('/login', {username: username, password: password}).then(function (response) {
+		return $http.post('/login', {username: username, password: password}).then(function (response) {
       console.log('login called, responded: ' + JSON.stringify(response));
     });
 	};
 
 	var _logout = function () {
-		$http.post('/logout', {}).then(function (response) {
+		return $http.post('/logout', {}).then(function (response) {
       console.log('logout called, responded: ' + JSON.stringify(response));
     });
 	};

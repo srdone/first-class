@@ -2,12 +2,14 @@
 
 var app = angular.module('firstClass');
 
-app.controller('LoginController', ['$scope', 'persistenceService', 
-	function ($scope, persistenceService) {
+app.controller('LoginController', ['$scope', '$rootScope', 'persistenceService',
+	function ($scope, $rootScope, persistenceService) {
 
 		var login = function () {
 			console.log('hi');
-			persistenceService.login($scope.user.email, $scope.user.password);
+			persistenceService.login($scope.user.email, $scope.user.password).then(function () {
+        $rootScope.loggedIn = true;
+      });
 		};
 
 		$scope.login = login;
