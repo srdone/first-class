@@ -5,9 +5,11 @@ angular.module('firstClass').factory('verifyAuthenticationHttpInterceptor',
 
     return {
       response: function (response) {
+        console.log(response);
         return response;
       },
       responseError: function (response) {
+        console.log(response);
         if (response.status === 401) {
           $location.url('/');
         }

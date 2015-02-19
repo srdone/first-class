@@ -6,6 +6,8 @@ app.controller('TroopController', ['$scope', 'scoutService',
 	function ($scope, scoutService) {
 		$scope.test = 'TroopController';
 
+    $scope.troop = [];
+
 		scoutService.getScouts().then(function (scouts) {
 			$scope.troop = scouts;
 		});

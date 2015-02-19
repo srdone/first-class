@@ -17,9 +17,11 @@ app.config(['$stateProvider', '$urlRouterProvider',
 				url: '/troop',
 				templateUrl: 'views/troop.view.html',
 				controller: 'TroopController',
-        resolve: ['authService', function (authService) {
-          return authService.requireAuth();
-        }]
+        //resolve: {
+        //  currentAuth: ['authService', function (authService) {
+        //    return authService.requireAuth();
+        //  }]
+        //}
 			})
 			.state('scout-detail', {
 				url: '/scout/:scoutId',

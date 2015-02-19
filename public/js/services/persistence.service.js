@@ -8,11 +8,11 @@ angular.module('firstClass').factory('persistenceService', ['$q', '$http',
 	};
 
 	var _getScouts = function () {
-		// return promise
+		return $http.get('/scouts');
 	};
 
 	var _saveScout = function (scout) {
-		// return promise
+		return $http.post('/scouts', scout);
 	};
 
 
