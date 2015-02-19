@@ -48,6 +48,16 @@ app.config(['$stateProvider', '$urlRouterProvider',
 				templateUrl: 'views/service-history.view.html',
 				controller: 'ServiceHistoryController'
 			})
+      .state('scout-detail.position-history', {
+        url: '/scout/:scoutId',
+        templateUrl: 'views/position-history.view.html',
+        controller: 'PositionHistoryController'
+      })
+      .state('scout-detail.camping-history', {
+        url: '/scout/:scoutId',
+        templateUrl: 'views/camping-history.view.html',
+        controller: 'CampingHistoryController'
+      })
 			.state('requirement-management', {
 				url: 'requirement-management',
 				templateUrl: 'views/requirement-management.view.html',
