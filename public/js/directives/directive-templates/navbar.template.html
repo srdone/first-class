@@ -4,12 +4,12 @@
       <a class="navbar-brand" ui-sref="main">FirstClass</a>
     </div>
 
-    <ul class="nav navbar-nav">
-      <li fcs-show-on-login><a ui-sref="troop">Troop</a></li>
+    <ul class="nav navbar-nav" fcs-show-on-login>
+      <li><a ui-sref="troop">Troop</a></li>
       <li><a ui-sref="requirement-management">Requirement Management</a></li>
     </ul>
 
-    <ul class="nav navbar-nav navbar-right">
+    <ul class="nav navbar-nav navbar-right" fcs-show-on-login>
       <li><a>User</a></li>
       <li><a fcs-logout>Logout</a></li>
     </ul>
