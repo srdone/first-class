@@ -2,7 +2,7 @@
 
 var app = angular.module('firstClass');
 
-app.controller('TroopController', ['$scope', 'scoutService', 'troop'
+app.controller('TroopController', ['$scope', 'scoutService', 'troop',
 	function ($scope, scoutService, troop) {
 
     $scope.troop = troop;
@@ -20,6 +20,7 @@ app.controller('TroopController', ['$scope', 'scoutService', 'troop'
 		$scope.addScout = function (scout) {
 			scoutService.createNewScout(scout).then(function (scout) {
         scoutService.getScouts().then(function (scouts) {
+          debugger;
           $scope.troop = scouts;
           $scope.addState = false;
           $scope.newScout = {};

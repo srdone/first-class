@@ -38,6 +38,7 @@ app.factory('scoutService', ['scoutObjectService', 'persistenceService',
 		//returns scout objects
 		var _getScouts = function () {
 			return persistenceService.getScouts().then(function (troopScoutDataRaw) {
+        debugger;
 
 				var troopScoutsConverted = troopScoutDataRaw.map(function (current) {
 

@@ -8,7 +8,9 @@ angular.module('firstClass').factory('persistenceService', ['$q', '$http',
 	};
 
 	var _getScouts = function () {
-		return $http.get('/scouts');
+		return $http.get('/scouts').then(function (response) {
+      return response.data;
+    });
 	};
 
 	var _saveScout = function (scout) {
