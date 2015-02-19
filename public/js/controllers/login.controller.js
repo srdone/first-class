@@ -11,9 +11,12 @@ app.controller('LoginController', ['$scope', '$rootScope', 'persistenceService',
           $scope.message = undefined;
           $scope.askSignUp = false;
           $rootScope.loggedIn = true;
+          $scope.newUser = {};
           $scope.user = {};
         }, function failure (response) {
           $scope.message = 'Login failed. Do you want to sign up?';
+          $scope.user = {};
+          $scope.newUser = {};
           $scope.askSignUp = true;
         });
     };
@@ -22,6 +25,7 @@ app.controller('LoginController', ['$scope', '$rootScope', 'persistenceService',
       if ($scope.user.password = $scope.newUser.verifyPassword) {
         authService.signUp($scope.user.email, $scope.user.password).then(function () {
           _login();
+          $scope.newUser = {};
         });
       }
     };
