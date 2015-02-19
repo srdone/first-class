@@ -52,7 +52,7 @@ app.factory('scoutService', ['scoutObjectService', 'persistenceService',
 
 		var _createNewScout = function (scout) {
 			var newScout = new Scout(undefined, scout.firstName, scout.lastName);
-			return newScout.save();
+			return persistenceService.createScout(newScout);
 		};
 
 		return {
