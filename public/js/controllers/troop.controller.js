@@ -2,8 +2,8 @@
 
 var app = angular.module('firstClass');
 
-app.controller('TroopController', ['$scope', 'scoutService', '$window', 'currentAuth',
-	function ($scope, scoutService, $window, currentAuth) {
+app.controller('TroopController', ['$scope', 'scoutService',
+	function ($scope, scoutService) {
 		$scope.test = 'TroopController';
 
 		scoutService.getScouts().then(function (scouts) {
