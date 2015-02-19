@@ -25,7 +25,7 @@ angular.module('firstClass').factory('persistenceService', ['$q', '$http',
     return $http.post('/scouts', scout).then(function (response) {
       return response.data;
     });
-  }
+  };
 
 	var _login = function (username, password) {
 		$http.post('/login', {username: username, password: password}).then(function (response) {

@@ -10,7 +10,6 @@ app.factory('scoutService', ['scoutObjectService', 'persistenceService',
 		//convert scout json to object
 		var _convertScout = function (scoutData) {
 
-      debugger;
 			return new Scout(
 					scoutData._id,
 					scoutData.firstName,
@@ -28,7 +27,7 @@ app.factory('scoutService', ['scoutObjectService', 'persistenceService',
 
 		//returns scout object
 		var _getScoutById = function (scoutId) {
-      debugger;
+
 			return persistenceService.getScoutById(scoutId).then(function (scoutRaw) {
 
 				var scoutConverted = _convertScout(scoutRaw);
