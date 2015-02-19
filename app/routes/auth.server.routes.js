@@ -3,8 +3,22 @@ var passport = require('passport'),
 
 module.exports = function (app) {
 
-  app.post('/login', passport.authenticate('local'), function (req, res) {
-    res.send({message: 'Logged in successfully', username: req.user.username});
+  app.post('/login', function (req, res, next) {
+    passport.authenticate('local', function (err, user, info) {
+      if (err) {
+        next(err);
+      } else if (!user) {
+        res.send({message: 'user does not exist', userDoesNotExist: true});
+      } else {
+        req.login(user, function (err) {
+          if (err) {
+            next(err);
+          } else {
+            res.send({message: 'Logged in successfully', username: req.user.username});
+          }
+        })
+      }
+    })(req,res,next);
   });
 
   app.post('/logout', function (req, res) {
