@@ -1,17 +1,32 @@
-<div>
-<form novalidate class="login-form">
+<div class="container">
+  <div class="row">
+    <form novalidate class="login-form form-inline form-group">
 
-	<input type="text" ng-model="user.email" placeholder="Email">
+      <div class="form-group">
+        <label for="username" class="sr-only">Username</label>
+        <input id="username" type="text" class="form-control" ng-model="user.email" placeholder="Email">
+      </div>
 
-	<input type="password" ng-model="user.password" placeholder="Password">
+      <div class="form-group">
+        <label for="password" class="sr-only">Password</label>
+        <input id="password" type="password" class="form-control" ng-model="user.password" placeholder="Password">
+      </div>
 
-  <input type="password" ng-model="newUser.verifyPassword" placeholder="Verify Password" ng-show="askSignUp">
+      <div class="form-group" ng-if="askSignUp">
+        <label for="verifyPassword" class="sr-only">Verify Password</label>
+        <input id="verifyPassword" type="password" class="form-control" ng-model="newUser.verifyPassword" placeholder="Verify Password">
+      </div>
 
-	<input type="button" ng-click="login()" value="Login">
+      <button ng-click="login()" class="btn bg-primary">Login</button>
 
-  <input type="button" ng-click="signup()" value="Sign Up" ng-show="askSignUp">
+      <button ng-click="signup()" ng-if="askSignUp" class="btn btn-default">Sign Up</button>
 
-</form>
+    </form>
+  </div>
 
-  {{message}}
+  <div class="row">
+    <div ng-show="message" class="alert alert-warning">
+      {{message}}
+    </div>
+  </div>
 </div>
