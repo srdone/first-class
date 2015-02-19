@@ -1,12 +1,19 @@
-<h1>Scout View</h1>
-
+<div>
 <fcs-scout-card scout="scout" class="clearfix"></fcs-scout-card>
 
 <hr>
 
 
-<a ui-sref="scout-detail.next-steps">Next Steps</a>
-<a ui-sref="scout-detail.requirements-progress">Requirements Progress</a>
-<a ui-sref="scout-detail.service-history">Service History</a>
+<!--<a ui-sref="scout-detail.next-steps">Next Steps</a>-->
+<!--<a ui-sref="scout-detail.requirements-progress">Requirements Progress</a>-->
+<!--<a ui-sref="scout-detail.service-history">Service History</a>-->
+
+<tabset>
+  <tab heading="Next Steps" ui-sref="scout-detail.next-steps" active="tab.active"></tab>
+  <tab heading="Requirements" ui-sref="scout-detail.requirements-progress"></tab>
+  <tab heading="Service" ui-sref="scout-detail.service-history"></tab>
+</tabset>
 
 <div ui-view></div>
+
+  </div>
