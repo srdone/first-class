@@ -1,4 +1,5 @@
-var passport = require('passport');
+var passport = require('passport'),
+  User = require('mongoose').model('User');
 
 module.exports = function (app) {
 
@@ -17,6 +18,18 @@ module.exports = function (app) {
     } else {
       res.status(401);
     }
+  });
+
+  app.post('/signup', function (req, res, next) {
+    var user = new User(req.body);
+
+    user.save(function (err) {
+      if (err) {
+        next(err);
+      } else {
+        res.json({username: user.username});
+      }
+    });
   });
 
 };

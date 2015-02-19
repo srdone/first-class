@@ -19,8 +19,13 @@ angular.module('firstClass').factory('authService', ['$location', '$http', '$q',
 
   };
 
+  var _signUp = function (newUser) {
+    return $http.post('/signup', newUser);
+  };
+
   return {
-    requireAuth: _requireAuth
+    requireAuth: _requireAuth,
+    signUp: _signUp
   };
 
 }]);
