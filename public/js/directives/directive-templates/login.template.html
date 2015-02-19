@@ -1,9 +1,15 @@
+<div>
 <form novalidate class="login-form">
-	
+
 	<input type="text" ng-model="user.email" placeholder="Email">
 
 	<input type="password" ng-model="user.password" placeholder="Password">
 
 	<input type="button" ng-click="login()" value="Login">
 
+  <input type="button" ng-click="signup()" value="Sign Up" ng-show="askSignUp">
+
 </form>
+
+  {{message}}
+</div>
