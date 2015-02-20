@@ -216,7 +216,6 @@ app.factory('scoutObjectService', ['dateService', 'utilService', 'persistenceSer
 	  };
 	   
 	  var Camping = function (id, description, start, end) {
-      debugger;
 	    this.id = id || utilService.createUUID();
 	    this.description = description;
 	    this.start = dateService.convert(start);
