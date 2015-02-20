@@ -1,13 +1,13 @@
-angular.module('firstClass').controller('AddDetailsModalController', ['$scope', '$modalInstance', 'scout',
-  function ($scope, $modalInstance, scout) {
+angular.module('firstClass').controller('AddDetailsModalController', ['$scope', '$modalInstance', 'scout', '$controller',
+  function ($scope, $modalInstance, scout, $controller) {
 
     $scope.addView = {
-      selected: 'views/add-service.view.html',
+      selected: {name: 'Add Service', templateUrl: 'views/add-service.view.html'},
       options: [
-        {name: 'Add Service', templateUrl: 'views/add-service.view.html', controller: 'AddServiceController'},
-        {name: 'Add Position', templateUrl: 'views/add-position.view.html', controller: 'AddPositionController'},
-        {name: 'Add Campout', templateUrl: 'views/add-campout.view.html', controller: 'AddCampoutController'},
-        {name: 'Add Requirement', templateUrl: 'views/add-requirement.view.html', controller: 'AddRequirementController'}
+        {name: 'Add Service', templateUrl: 'views/add-service.view.html'},
+        {name: 'Add Position', templateUrl: 'views/add-position.view.html'},
+        {name: 'Add Campout', templateUrl: 'views/add-campout.view.html'},
+        {name: 'Add Requirement', templateUrl: 'views/add-requirement.view.html'}
       ]
     };
 
