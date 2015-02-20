@@ -1,0 +1,15 @@
+<div>
+  <div class="modal-header">
+    Add Scout Details
+  </div>
+
+  <div class="modal-body">
+    <select ng-options="view as view.name for view in addView.options track by view.templateUrl" ng-model="addView.selected"></select>
+    <ng-include src="addView.selected.templateUrl"></ng-include>
+  </div>
+
+  <div class="modal-footer">
+    <button class="btn btn-primary" ng-click="ok()">OK</button>
+    <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+  </div>
+</div>
