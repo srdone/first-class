@@ -17,12 +17,12 @@
 			</div>
 
 			<!-- scoutSummary Rank and Patrol -->
-			<div class="col-xs-6">
-				<ul class="list-inline">
-					<li>{{scout.currentRank}}</li>
-					<li>{{scout.currentPatrol}} Patrol</li>
-				</ul>
-			</div>
+			<!--<div class="col-xs-6">-->
+				<!--<ul class="list-inline">-->
+					<!--<li>{{scout.currentRank}}</li>-->
+					<!--<li>{{scout.currentPatrol}} Patrol</li>-->
+				<!--</ul>-->
+			<!--</div>-->
 
 			<!-- Position Summary Data -->
 			<div class="col-xs-12 col-sm-6">
@@ -35,9 +35,9 @@
 			</div>
 
 			<!-- Next rank progress -->
-			<div class="col-xs-12 col-sm-6">
-				Next Rank: <progressbar type="success" value="scout.getPercentProgressToNextRank()"></progressbar>
-			</div>
+			<!--<div class="col-xs-12 col-sm-6">-->
+				<!--Next Rank: <progressbar type="success" value="scout.getPercentProgressToNextRank()"></progressbar>-->
+			<!--</div>-->
 
 		</div>
 
@@ -45,7 +45,7 @@
 
 	<div class="row">
 
-		<div class="col-xs-6">
+		<div class="col-xs-12">
 
 			<ul class="list-inline">
 				<li><span class="badge">{{scout.getQualifiedNightsOfCamping()}}</span> Qualified Nights of Camping</li>
@@ -55,19 +55,19 @@
 
 		</div>
 
-		<div class="col-xs-6">
+		<!--<div class="col-xs-6">-->
 
 
-			<ul class="list-inline">
-				<li ng-repeat="category in scout.getNeededRequirementCategories()">
-					<span class="label label-success">{{category.title}}</span>
-				</li>
-			</ul>
+			<!--<ul class="list-inline">-->
+				<!--<li ng-repeat="category in scout.getNeededRequirementCategories()">-->
+					<!--<span class="label label-success">{{category.title}}</span>-->
+				<!--</li>-->
+			<!--</ul>-->
 
-			<div ng-if="!!scout.isOA">OA Member</div>
-			<div ng-if="!scout.isOA && scout.isOAQualified()">OA Qualified</div>
+			<!--<div ng-if="!!scout.isOA">OA Member</div>-->
+			<!--<div ng-if="!scout.isOA && scout.isOAQualified()">OA Qualified</div>-->
 
-		</div>
+		<!--</div>-->
 
 	</div>
 
