@@ -8,21 +8,27 @@ angular.module('firstClass')
         });
       };
 
-      // TODO: fix funny animation of new service lines
-			$scope.addService = function (service) {
+      $scope.service = {
+        description: '',
+        hours: 0
+      };
 
+      $scope.fields = [
+        {property: $scope.service.description, inputType: 'text', placeholder: 'Description'},
+        {property: $scope.service.hours, inputType: 'number', placeholder: 'Hours'}
+      ];
+
+      // TODO: fix funny animation of new service lines
+			$scope.addService = function () {
+        debugger;
 				var scoutToUpdate = angular.copy($scope.scout);
 
-        scoutToUpdate.addService(service.description, service.hours);
+        scoutToUpdate.addService($scope.fields[0].property, $scope.fields[1].property);
 
         scoutToUpdate.save().then(function () {
           _getScout();
         });
 
-			};
-
-			$scope.cancelAdd = function () {
-				$scope.newService = {};
 			};
 
 		}]);

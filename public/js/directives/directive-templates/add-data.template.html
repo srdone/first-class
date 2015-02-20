@@ -1,0 +1,17 @@
+<div class="container">
+
+  <fcs-add-button ng-click="showAdd()" ng-hide="addState"></fcs-add-button>
+
+  <div ng-show="addState">
+
+    <div class="form-group" ng-repeat="field in fields">
+      <label for="{{field.property}}"></label>
+      <input type="{{field.inputType}}" class="form-control" id="{{field.property}}" ng-model="field.property" placeholder="{{field.placeholder}}">
+    </div>
+
+    <button id="submit" type="submit" class="btn btn-primary" ng-click="action()">{{addButton}}</button>
+    <button id="cancel" type="cancel" class="btn btn-default" ng-click="cancelAdd()">Cancel</button>
+
+  </div>
+
+</div>
