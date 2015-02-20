@@ -120,12 +120,12 @@ app.factory('scoutObjectService', ['dateService', 'utilService', 'persistenceSer
 	  Scout.prototype.isFirstClass = function () {
 	    return true;
 	  };
-	  Scout.prototype.addCamping = function(desc, start, end) {
-	    var camping = new Camping(desc, start, end);
+	  Scout.prototype.addCampout = function(desc, start, end) {
+	    var camping = new Camping(undefined, desc, start, end);
 	    this._campingHistory.push(camping);
 	    return camping;
 	  };
-	  Scout.prototype.removeCamping = function (id) {
+	  Scout.prototype.removeCampout = function (id) {
 	    for (var i = 0; i < this._campingHistory.length; i++) {
 	      if (this._campingHistory[i].id === id) {
 	        this._campingHistory.splice(i, 1);
@@ -138,7 +138,7 @@ app.factory('scoutObjectService', ['dateService', 'utilService', 'persistenceSer
       return this._campingHistory;
     };
 	  Scout.prototype.addPosition = function (title, start, end) {
-	    var position = new Position(title, start, end);
+	    var position = new Position(undefined, title, start, end);
 	    this._positionHistory.push(position);
 	    return position;
 	  };
@@ -185,25 +185,6 @@ app.factory('scoutObjectService', ['dateService', 'utilService', 'persistenceSer
 	    Scout.prototype.getMeritBadgeCount = function () {
 	    	return 20;
 	    };
-	    Scout.prototype.summarize = function () {
-	    	return {
-	    		id: this.id,
-					firstName: this.firstName,
-					lastName: this.lastName,
-					photoUrl: this.photoUrl,
-					currentRank: this.getCurrentRank(),
-					currentPatrol: this.currentPatrol,
-					currentPositions: this.getCurrentPositions(),
-					isOA: this.isOA,
-					isOAQualified: this.isOAQualified,
-					qualifiedNightsOfCamping: this.getQualifiedNightsOfCamping(),
-					hoursOfService: this.getHoursOfService(),
-					percentProgressToNextRank: this.getPercentProgressToNextRank(),
-					neededRequirementCategories: this.getNeededRequirementCategories(),
-					numberOfMeritBadges: this.getMeritBadgeCount(),
-					troop: this.troop
-	    	}
-	    };
 
 	  var Position = function (id, title, start, end) {
 	    this.id = id || utilService.createUUID();
@@ -235,6 +216,7 @@ app.factory('scoutObjectService', ['dateService', 'utilService', 'persistenceSer
 	  };
 	   
 	  var Camping = function (id, description, start, end) {
+      debugger;
 	    this.id = id || utilService.createUUID();
 	    this.description = description;
 	    this.start = dateService.convert(start);
