@@ -2,29 +2,24 @@
 
 var app = angular.module('firstClass');
 
-app.controller('TroopController', ['$scope', 'scoutService', 'troop',
-	function ($scope, scoutService, troop) {
+app.controller('TroopController', ['$scope', '$modal', 'scoutService', 'troop',
+	function ($scope, $modal, scoutService, troop) {
 
     $scope.troop = troop;
 
-		$scope.addState = false;
+    $scope.openAddScoutModal = function () {
 
-		$scope.showAdd = function () {
-			$scope.addState = true;
-		};
+      var modalInstance = $modal.open({
+        templateUrl: 'modals/add-scout.modal.html',
+        controller: 'AddScoutModalController',
+        size: 'sm',
+        resolve: {
+          troop: function () {
+            return $scope.troop;
+          }
+        }
+      });
 
-		$scope.cancelAdd = function () {
-			$scope.addState = false;
-		};
-
-		$scope.addScout = function (scout) {
-			scoutService.createNewScout(scout).then(function (scout) {
-        scoutService.getScouts().then(function (scouts) {
-          $scope.troop = scouts;
-          $scope.addState = false;
-          $scope.newScout = {};
-        });
-			});
-		};
+    };
 
 }]);

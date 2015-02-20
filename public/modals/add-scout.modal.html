@@ -1,0 +1,39 @@
+<div>
+  <div class="modal-header">
+    Create Scout
+  </div>
+
+  <div class="modal-body">
+
+    <div class="form-group">
+      <label for="firstName">First Name</label>
+      <input type="text" class="form-control" id="firstName" ng-model="newScout.firstName" placeholder="Baden">
+    </div>
+
+    <div class="form-group">
+      <label for="lastName">Last Name</label>
+      <input type="text" class="form-control" id="lastName" ng-model="newScout.lastName" placeholder="Powell">
+    </div>
+
+    <div class="form-group">
+      <label for="patrol">Patrol</label>
+      <input type="text" class="form-control" id="patrol" ng-model="newScout.patrol" placeholder="Owl Patrol">
+    </div>
+
+    <div class="form-group">
+      <label for="photoUrl">Photo URL</label>
+      <input type="text" class="form-control" id="photoUrl" ng-model="newScout.photoUrl" placeholder="http://...">
+    </div>
+
+    <div class="form-group">
+      <label for="isOA">OA Member</label>
+      <input type="checkbox" class="form-control" id="isOA" ng-model="newScout.isOA">
+    </div>
+
+  </div>
+
+  <div class="modal-footer">
+    <button class="btn btn-primary" ng-click="addScout(newScout)">Add Scout</button>
+    <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+  </div>
+</div>

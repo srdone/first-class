@@ -1,5 +1,5 @@
-angular.module('firstClass').controller('AddDetailsModalController', ['$scope', '$modalInstance', 'scout', '$controller',
-  function ($scope, $modalInstance, scout, $controller) {
+angular.module('firstClass').controller('AddDetailsModalController', ['$scope', '$modalInstance', 'scout',
+  function ($scope, $modalInstance, scout) {
 
     $scope.addView = {
       selected: {name: 'Add Service', templateUrl: 'views/add-service.view.html'},
