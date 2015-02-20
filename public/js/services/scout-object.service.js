@@ -226,6 +226,9 @@ app.factory('scoutObjectService', ['dateService', 'utilService', 'persistenceSer
 	    this.start = dateService.convert(start);
 	    this.end = dateService.convert(end);
 	  };
+    Camping.prototype.delete = function () {
+      // code to delete this...
+    };
 
 	  return {
 	  	Scout: Scout
