@@ -16,7 +16,9 @@ angular.module('firstClass').factory('persistenceService', ['$q', '$http', '$roo
 	};
 
 	var _saveScout = function (scout) {
-		return $http.put('/scouts', scout).then(function (response) {
+    debugger;
+		return $http.put('/scouts/' + scout.id, scout).then(function (response) {
+      debugger;
       return response.data;
     });
 	};

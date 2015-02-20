@@ -2,6 +2,7 @@ var Scout = require('mongoose').model('Scout')
 
 exports.hasAuthorization = function (req, res, next) {
   console.log('has authorization called');
+  console.log(req.body);
   if (req.scout.creator !== req.user.username) {
     res.status(403).send({message: 'user is not the owner'});
   } else {
@@ -12,7 +13,10 @@ exports.hasAuthorization = function (req, res, next) {
 // the idea for this pattern comes from MEAN Web Development by PACKT Publishing
 exports.scoutById = function (req, res, next, id) {
   console.log('scoutById called');
+  console.log(req.body);
   Scout.findById(id).exec(function (err, scout) {
+    console.log(err);
+    console.log(scout);
     if (err) {
       next(err);
     } else if (!scout) {
@@ -27,7 +31,10 @@ exports.scoutById = function (req, res, next, id) {
 exports.scoutsByOwner = function (req, res, next) {
   console.log('scoutsByOwner called');
   console.log(req.user.username);
+  console.log(req.body);
   Scout.find({creator: req.user.username}).exec(function (err, scouts) {
+    console.log(err);
+    console.log(scouts);
     if(err) {
       next(err);
     } else {
@@ -38,11 +45,13 @@ exports.scoutsByOwner = function (req, res, next) {
 
 exports.readScout = function (req, res) {
   console.log('readScout called');
+  console.log(req.scout);
   res.json(req.scout);
 };
 
 exports.createScout = function (req, res, next) {
   console.log('createScout called');
+  console.log('body');
   req.body.creator = req.user.username;
   var scout = new Scout(req.body);
 
@@ -57,6 +66,7 @@ exports.createScout = function (req, res, next) {
 
 exports.updateScout = function (req, res) {
   console.log('updateScout called');
+  console.log(req.scout);
   var scout = req.scout;
 
   scout.firstName = req.body.firstName;
@@ -66,9 +76,9 @@ exports.updateScout = function (req, res) {
   scout.completedRequirements = req.body.completedRequirements;
   scout.currentPatrol = req.body.currentPatrol;
   scout.troop = req.body.troop;
-  scout.positionHistory = req.body.positionHistory;
-  scout.campingHistory = req.body.campingHistory;
-  scout.serviceHistory = req.body.serviceHistory;
+  scout._positionHistory = req.body._positionHistory;
+  scout._campingHistory = req.body._campingHistory;
+  scout._serviceHistory = req.body._serviceHistory;
 
   scout.save(function (err) {
     if (err) {
@@ -81,6 +91,7 @@ exports.updateScout = function (req, res) {
 
 exports.deleteScout = function (req, res) {
   console.log('deleteScout called');
+  console.log(req.scout);
   var scout = req.scout;
 
   scout.remove(function (err) {

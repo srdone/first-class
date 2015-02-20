@@ -9,9 +9,9 @@ var ScoutSchema = new Schema({
   completedRequirements: [{requirementId: String, date: Date}],
   currentPatrol: String,
   troop: String,
-  positionHistory: [{title: String, start: Date, end: Date}],
-  campingHistory: [{description: String, start: Date, end: Date}],
-  serviceHistory: [{description: String, hours: Number}],
+  _positionHistory: [{title: String, start: Date, end: Date}],
+  _campingHistory: [{description: String, start: Date, end: Date}],
+  _serviceHistory: [{description: String, hours: Number}],
   creator: {
     type: String,
     required: true
