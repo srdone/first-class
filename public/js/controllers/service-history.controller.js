@@ -23,6 +23,7 @@ angular.module('firstClass')
         debugger;
 				var scoutToUpdate = angular.copy($scope.scout);
 
+        // TODO: this feels very fragile - redo the directive
         scoutToUpdate.addService($scope.fields[0].property, $scope.fields[1].property);
 
         scoutToUpdate.save().then(function () {
