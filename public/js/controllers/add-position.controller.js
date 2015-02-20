@@ -12,12 +12,12 @@ angular.module('firstClass').controller('AddPositionController',
                                    + $scope.newPosition.endDate;
         $scope.newPosition = {};
       }, function () {
-        $scope.scout.removeService(service.id);
+        $scope.scout.removePosition(service.id);
         $scope.message = 'Error - failed to add service';
       });
     };
 
-    $scope.cancelAddService = function () {
+    $scope.cancelAddPosition = function () {
       $scope.newPosition = {};
       $scope.message = '';
     }
