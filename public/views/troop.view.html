@@ -24,7 +24,7 @@
 
 	<div class="container">
 		<div ng-repeat="scout in troop">
-			<a ui-sref="scout-detail.next-steps({ scoutId: scout.id })">
+			<a ui-sref="scout-detail({ scoutId: scout.id })">
 				<fcs-scout-card scout="scout"></fcs-scout-card>
 			</a>
 		</div>

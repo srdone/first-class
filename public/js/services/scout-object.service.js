@@ -134,6 +134,9 @@ app.factory('scoutObjectService', ['dateService', 'utilService', 'persistenceSer
 	    }
 	    return false;
 	  };
+    Scout.prototype.getCamping = function () {
+      return this._campingHistory;
+    };
 	  Scout.prototype.addPosition = function (title, start, end) {
 	    var position = new Position(title, start, end);
 	    this._positionHistory.push(position);

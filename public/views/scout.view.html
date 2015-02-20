@@ -4,9 +4,12 @@
   <hr>
 
   <tabset>
-    <tab heading="Next Steps" ui-sref="scout-detail.next-steps"></tab>
-    <tab heading="Requirements" ui-sref="scout-detail.requirements-progress"></tab>
-    <tab heading="Service" ui-sref="scout-detail.service-history"></tab>
+    <tab heading="Next Steps">
+      <ng-include src="'views/next-steps.view.html'"></ng-include>
+    </tab>
+    <tab heading="Details">
+      <ng-include src="'views/details.view.html'"></ng-include>
+    </tab>
   </tabset>
 
   <div ui-view></div>

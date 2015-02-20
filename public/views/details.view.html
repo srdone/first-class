@@ -1,0 +1,18 @@
+<div>
+
+  <h3>Service History</h3>
+  <ul>
+    <li ng-repeat="service in scout.getService()">{{service.description}} - {{service.hours}} hours</li>
+  </ul>
+
+  <h3>Campouts Attended</h3>
+  <ul>
+    <li ng-repeat="campout in scout.getCamping()">{{campout.description}}: {{campout.start}} - {{campout.end}}</li>
+  </ul>
+
+  <h3>Positions Held</h3>
+  <ul>
+    <li ng-repeat="position in scout.getPositions()">{{position.title}}: {{position.start}} - {{position.end}}</li>
+  </ul>
+
+</div>
