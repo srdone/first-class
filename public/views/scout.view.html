@@ -1,19 +1,18 @@
-<div>
-  <fcs-scout-card scout="scout" class="clearfix"></fcs-scout-card>
+<div class="container">
 
-  <fcs-add-button ng-click="open()"></fcs-add-button>
+  <div class="row">
 
-  <hr>
+      <fcs-scout-card scout="scout" class="clearfix">
 
-  <ng-include src="'views/details.view.html'"></ng-include>
+        <div class="row">
+        <fcs-add-button ng-click="open()"></fcs-add-button>
+          </div>
 
-  <!--<tabset>-->
-    <!--<tab heading="Next Steps">-->
-      <!--<ng-include src="'views/next-steps.view.html'"></ng-include>-->
-    <!--</tab>-->
-    <!--<tab heading="Details">-->
-      <!--<ng-include src="'views/details.view.html'"></ng-include>-->
-    <!--</tab>-->
-  <!--</tabset>-->
+        <div class="row">
+          <ng-include src="'views/details.view.html'"></ng-include>
+        </div>
+      </fcs-scout-card>
+
+  </div>
 
 </div>

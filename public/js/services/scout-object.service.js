@@ -171,6 +171,11 @@ app.factory('scoutObjectService', ['dateService', 'utilService', 'persistenceSer
     Scout.prototype.getService = function () {
       return this._serviceHistory;
     };
+    Scout.prototype.getHoursOfService = function () {
+      return this._serviceHistory.reduce(function (prev, curr) {
+        return prev += curr.hours;
+      }, 0);
+    };
 	    Scout.prototype.getCompletedRequirements = function () {
 	      return this._completedReqs;
 	    };

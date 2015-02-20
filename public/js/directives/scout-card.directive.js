@@ -5,6 +5,7 @@ app.directive('fcsScoutCard', function () {
 		scope: {
 			scout: '='
 		},
-		templateUrl: 'js/directives/directive-templates/scout-card.template.html'
+		templateUrl: 'js/directives/directive-templates/scout-card.template.html',
+    transclude: true
 	};
 });
