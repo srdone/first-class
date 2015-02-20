@@ -8,11 +8,14 @@ angular.module('firstClass')
         });
       };
 
+      // TODO: fix funny animation of new service lines
 			$scope.addService = function (service) {
 
-				$scope.scout.addService(service.description, service.hours);
+				var scoutToUpdate = angular.copy($scope.scout);
 
-        $scope.scout.save().then(function () {
+        scoutToUpdate.addService(service.description, service.hours);
+
+        scoutToUpdate.save().then(function () {
           _getScout();
         });
 
