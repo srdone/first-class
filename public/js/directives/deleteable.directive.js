@@ -4,9 +4,7 @@ angular.module('firstClass').directive('fcsDeleteable', [function () {
     restrict: 'A',
     link: function ($scope, $element, $attributes) {
 
-      var deleteMe = function () {
-        $scope[$attributes.fcsDeleteable].delete();
-      };
+      var deleteMe = $parse($attributes.fcsDeleteable);
 
       var deleteHook = $element.find('.delete-hook');
 

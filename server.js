@@ -40,7 +40,7 @@ app.use(cookieParser(config.sessionSecret));
 
 // configure session
 app.use(session({
-  cookie: {maxAge: 60000},
+  cookie: {},
   secret: config.sessionSecret,
   saveUninitialized: false, //make sure we don't save empty sessions
   resave: false //don't save when session has not changed

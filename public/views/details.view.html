@@ -7,7 +7,7 @@
 
   <h3>Campouts Attended</h3>
   <ul>
-    <li ng-repeat="campout in scout.getCamping() | orderBy: 'campout.start'" fcs-deleteable="campout">{{campout.description}}: {{campout.start | date:'shortDate'}} - {{campout.end | date:'shortDate'}}</li>
+    <li ng-repeat="campout in scout.getCamping() | orderBy: 'campout.start'" fcs-deleteable="deleteCampout(campout)">{{campout.description}}: {{campout.start | date:'shortDate'}} - {{campout.end | date:'shortDate'}}</li>
   </ul>
 
   <h3>Positions Held</h3>
