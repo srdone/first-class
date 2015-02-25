@@ -1,1 +1,1 @@
-exports.sessionSecret = 'developmentSecret';
+exports.sessionSecret = process.env.SESSION_SECRET || 'developmentSecret';
