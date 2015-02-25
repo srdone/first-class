@@ -23,15 +23,18 @@ app.controller('ScoutController', ['$scope', '$modal', 'scoutService', 'scout',
     };
 
     $scope.deleteCampout = function (campout) {
-      alert('Deleted ' + campout);
+      $scope.scout.removeCampout(campout.id);
+      $scope.scout.save();
     };
 
     $scope.deleteService = function (service) {
-      alert('Deleted ' + service);
+      $scope.scout.removeService(service.id);
+      $scope.scout.save();
     };
 
     $scope.deletePosition = function (position) {
-      alert('Deleted ' + position);
+      $scope.scout.removePosition(position.id);
+      $scope.scout.save();
     };
 
 	}]);
