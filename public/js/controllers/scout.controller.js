@@ -22,4 +22,16 @@ app.controller('ScoutController', ['$scope', '$modal', 'scoutService', 'scout',
 
     };
 
+    $scope.deleteCampout = function (campout) {
+      alert('Deleted ' + campout);
+    };
+
+    $scope.deleteService = function (service) {
+      alert('Deleted ' + service);
+    };
+
+    $scope.deletePosition = function (position) {
+      alert('Deleted ' + position);
+    };
+
 	}]);
