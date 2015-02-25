@@ -2,16 +2,17 @@
 
   <div class="row">
 
-      <fcs-scout-card scout="scout" class="clearfix">
+    <span class="glyphicon glyphicon-pencil" ng-click="editable.$show()" ng-hide="editable.$visible"></span>
 
-        <div class="row">
-        <fcs-add-button ng-click="open()"></fcs-add-button>
-          </div>
+    <fcs-e-scout-name></fcs-e-scout-name>
 
-        <div class="row">
-          <ng-include src="'views/details.view.html'"></ng-include>
-        </div>
-      </fcs-scout-card>
+    <div class="row">
+      <fcs-add-button ng-click="open()"></fcs-add-button>
+    </div>
+
+    <div class="row">
+      <ng-include src="'views/details.view.html'"></ng-include>
+    </div>
 
   </div>
 

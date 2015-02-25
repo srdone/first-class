@@ -14,10 +14,8 @@
 			<!-- scoutSummary Summary Data -->
 			<div class="col-xs-6 col-sm-8">
 				<h3>
-          <span editable-text="scout.firstName" e-form="editable">{{scout.firstName}}</span>
-          <span editable-text="scout.lastName" e-form="editable">{{scout.lastName}}</span>
+          <fcs-e-scout-name></fcs-e-scout-name>
         </h3>
-        <span class="glyphicon glyphicon-pencil" ng-click="editable.$show()" ng-hide="editable.$visible"></span>
 			</div>
 
 			<!-- scoutSummary Rank and Patrol -->
@@ -74,10 +72,6 @@
 		<!--</div>-->
 
 	</div>
-
-  <div class="container-fluid">
-    <ng-transclude class="row"></ng-transclude>
-  </div>
 
 </div>
   </div>

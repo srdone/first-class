@@ -37,4 +37,8 @@ app.controller('ScoutController', ['$scope', '$modal', 'scoutService', 'scout',
       $scope.scout.save();
     };
 
+    $scope.updateScout = function () {
+      $scope.scout.save();
+    };
+
 	}]);
