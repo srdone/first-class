@@ -1,17 +1,80 @@
-<div class="container">
+<div class="container panel">
+
+  <div class="row">
+    <div class="col-xs-6 col-sm-4 col-md-2">
+      <div class="well-sm">
+        <img class="img-responsive img-thumbnail" ng-src="{{scout.photoUrl}}">
+      </div>
+    </div>
+
+    <div class="col-xs-6 col-sm-4 col-md-2">
+      <h3 class="text-left">
+        <span editable-text="scout.firstName" e-form="editable" onaftersave="updateScout()">{{scout.firstName}}</span>
+        <span editable-text="scout.lastName" e-form="editable" onaftersave="updateScout()">{{scout.lastName}}</span>
+        <span class="glyphicon glyphicon-pencil" ng-click="editable.$show()" ng-hide="editable.$visible"></span>
+      </h3>
+
+      <span e-form="editable" editable-text="scout.currentPatrol" onaftersave="updateScout()">{{scout.currentPatrol}}</span> Patrol
+
+    </div>
+
+  </div>
+
+  <div class="row">
+    <fcs-add-button ng-click="open()"></fcs-add-button>
+  </div>
 
   <div class="row">
 
-    <span class="glyphicon glyphicon-pencil" ng-click="editable.$show()" ng-hide="editable.$visible"></span>
-
-    <fcs-e-scout-name></fcs-e-scout-name>
-
-    <div class="row">
-      <fcs-add-button ng-click="open()"></fcs-add-button>
+    <!--Service Detail-->
+    <div ng-if="!!scout.getService().length" class="col-xs-12 col-sm-6 col-md-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4>Service History</h4>
+        </div>
+        <div class="panel-body">
+          <ul>
+            <li ng-repeat="service in scout.getService()">
+              {{service.description}} - {{service.hours | number: 1}} hours
+              <span class="glyphicon glyphicon-remove" ng-click="deleteService(service)" ng-show="editable.$visible"></span>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
 
-    <div class="row">
-      <ng-include src="'views/details.view.html'"></ng-include>
+    <!--Camping Detail-->
+    <div ng-if="!!scout.getCamping().length" class="col-xs-12 col-sm-6 col-md-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4>Campouts Attended</h4>
+        </div>
+        <div class="panel-body">
+          <ul>
+            <li ng-repeat="campout in scout.getCamping() | orderBy: 'campout.start'">
+              {{campout.description}}: {{campout.start | date:'shortDate'}} - {{campout.end | date:'shortDate'}}
+              <span class="glyphicon glyphicon-remove" ng-click="deleteCampout(campout)" ng-show="editable.$visible"></span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!--Position Detail-->
+    <div ng-if="!!scout.getPositions().length" class="col-xs-12 col-sm-6 col-md-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4>Positions Held</h4>
+        </div>
+        <div class="panel-body">
+          <ul>
+            <li ng-repeat="position in scout.getPositions() | orderBy: 'position.start'">
+              {{position.title}}: {{position.start | date:'shortDate'}}<span ng-if="position.end"> - {{position.end | date:'shortDate'}}</span>
+              <span class="glyphicon glyphicon-remove" ng-click="deletePosition(position)" ng-show="editable.$visible"></span>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
 
   </div>
