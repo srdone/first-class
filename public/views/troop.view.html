@@ -12,6 +12,7 @@
       <div ng-repeat="scout in troop">
         <a ui-sref="scout-detail({ scoutId: scout.id })">
           <fcs-scout-card scout="scout"></fcs-scout-card>
+          <div class="clearfix visible-md-block" ng-if="$odd"></div>
         </a>
       </div>
     </div>
