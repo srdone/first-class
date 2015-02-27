@@ -1,8 +1,12 @@
 <md-card class="md-whiteframe-z3">
   <md-toolbar>
     <div class="md-toolbar-tools" layout="row" layout-margin>
-      <div flex>{{scout.firstName}} {{scout.lastName}}<span ng-if="scout.currentRank()">: {{scout.currentRank}}</span></div>
-      <md-button ui-sref="scout-detail({ scoutId: scout.id })" class="md-raised md-accent" flex-sm=22 flex-md=15 flex-lg=10>Details</md-button>
+      <span>
+        <img ng-src="{{scout.photoUrl}}" class="avatar-sm">
+        {{scout.firstName}} {{scout.lastName}}<span ng-if="scout.currentRank()">: {{scout.currentRank}}</span>
+      </span>
+      <span flex></span>
+      <md-button ui-sref="scout-detail({ scoutId: scout.id })" class="md-raised md-accent">Details</md-button>
     </div>
   </md-toolbar>
 
@@ -12,21 +16,19 @@
     {{scout.currentPatrol}} <span ng-hide="patrolContainsPatrol">Patrol</span>
 
     <!--Next rank progress -->
-    <progressbar class="md-primary" value="scout.getPercentProgressToNextRank()">Next Rank</progressbar>
+
+    <div class="md-tile-content">
+      Rank Progress: <progressbar class="md-primary" value="scout.getPercentProgressToNextRank()"></progressbar>
 
         <!-- Position Summary Data -->
-            <div ng-repeat="position in scout.getPositions()">
-              {{position.title}}
-              <span class="badge">{{position.monthsInPosition()}} months</span>
+              <div ng-repeat="position in scout.getPositions()">
+                {{position.title}} - {{position.monthsInPosition()}} months
+              </div>
             </div>
 
-          <span class="badge">{{scout.getQualifiedNightsOfCamping()}}</span> Qualified Nights of Camping
-          <span class="badge">{{scout.getHoursOfService()}}</span> Service Hours
-          <span class="badge">{{scout.getMeritBadgeCount()}}</span> Merit Badges
-
-          <div ng-repeat="category in scout.getNeededRequirementCategories()">
-            <span class="label label-success">{{category.title}}</span>
-          </div>
+          {{scout.getQualifiedNightsOfCamping()}} Qualified Nights of Camping
+          {{scout.getHoursOfService()}} Service Hours
+          {{scout.getMeritBadgeCount()}} Merit Badges
 
         <span ng-if="!!scout.isOA">OA Member</span>
         <span ng-if="!scout.isOA && scout.isOAQualified()">OA Qualified</span>
