@@ -9,12 +9,11 @@
 
     <div class="col-xs-6 col-sm-4 col-md-2">
       <h3 class="text-left">
-        <span editable-text="scout.firstName" e-form="editable" onaftersave="updateScout()">{{scout.firstName}}</span>
-        <span editable-text="scout.lastName" e-form="editable" onaftersave="updateScout()">{{scout.lastName}}</span>
-        <span class="glyphicon glyphicon-pencil" ng-click="editable.$show()" ng-hide="editable.$visible"></span>
+        <span editable-text="scout.firstName" onaftersave="updateScout()">{{scout.firstName}}</span>
+        <span editable-text="scout.lastName" onaftersave="updateScout()">{{scout.lastName}}</span>
       </h3>
 
-      <span e-form="editable" editable-text="scout.currentPatrol" onaftersave="updateScout()">{{scout.currentPatrol}}</span> Patrol
+      <span editable-text="scout.currentPatrol" onaftersave="updateScout()">{{scout.currentPatrol}}</span> Patrol
 
       <span class="badge">{{scout.getHoursOfService()}}</span> Hours of Service<br/>
       <span class="badge">{{scout.getQualifiedNightsOfCamping()}}</span> Qualified Nights of Camping
