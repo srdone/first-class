@@ -11,27 +11,30 @@
   </md-toolbar>
 
   <md-card-content>
-    <!-- scoutSummary Rank and Patrol -->
-
-    {{scout.currentPatrol}} <span ng-hide="patrolContainsPatrol">Patrol</span>
-
     <!--Next rank progress -->
-
     <div class="md-tile-content">
-      Rank Progress: <progressbar class="md-primary" value="scout.getPercentProgressToNextRank()"></progressbar>
+        <h3>Progress to next rank: </h3>
+
+      <md-progress-linear class="md-info" md-mode="determinate" value="scout.getPercentProgressToNextRank()" flex></md-progress-linear>
 
         <!-- Position Summary Data -->
               <div ng-repeat="position in scout.getPositions()">
                 {{position.title}} - {{position.monthsInPosition()}} months
               </div>
-            </div>
 
-          {{scout.getQualifiedNightsOfCamping()}} Qualified Nights of Camping
-          {{scout.getHoursOfService()}} Service Hours
-          {{scout.getMeritBadgeCount()}} Merit Badges
+      <div class="md-tile-content">
+
+        {{scout.getQualifiedNightsOfCamping()}} Qualified Nights of Camping
+        {{scout.getHoursOfService()}} Service Hours
+        {{scout.getMeritBadgeCount()}} Merit Badges
 
         <span ng-if="!!scout.isOA">OA Member</span>
         <span ng-if="!scout.isOA && scout.isOAQualified()">OA Qualified</span>
+
+        <span ng-show="scout.currentPatrol">{{scout.currentPatrol}} <span ng-hide="patrolContainsPatrol">Patrol</span></span>
+
+      </div>
+      </div>
 
   </md-card-content>
 

@@ -22,3 +22,9 @@
     border: 1px black solid;
     border-radius: 50%;
 }
+
+.add-scout {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+}
