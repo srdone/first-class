@@ -16,6 +16,9 @@
 
       <span e-form="editable" editable-text="scout.currentPatrol" onaftersave="updateScout()">{{scout.currentPatrol}}</span> Patrol
 
+      <span class="badge">{{scout.getHoursOfService()}}</span> Hours of Service<br/>
+      <span class="badge">{{scout.getQualifiedNightsOfCamping()}}</span> Qualified Nights of Camping
+
     </div>
 
   </div>
@@ -36,7 +39,7 @@
           <ul>
             <li ng-repeat="service in scout.getService()">
               {{service.description}} - {{service.hours | number: 1}} hours
-              <span class="glyphicon glyphicon-remove" ng-click="deleteService(service)" ng-show="editable.$visible"></span>
+              <span class="glyphicon glyphicon-remove" ng-click="deleteService(service)"></span>
             </li>
           </ul>
         </div>
@@ -53,7 +56,7 @@
           <ul>
             <li ng-repeat="campout in scout.getCamping() | orderBy: 'campout.start'">
               {{campout.description}}: {{campout.start | date:'shortDate'}} - {{campout.end | date:'shortDate'}}
-              <span class="glyphicon glyphicon-remove" ng-click="deleteCampout(campout)" ng-show="editable.$visible"></span>
+              <span class="glyphicon glyphicon-remove" ng-click="deleteCampout(campout)"></span>
             </li>
           </ul>
         </div>
@@ -70,7 +73,7 @@
           <ul>
             <li ng-repeat="position in scout.getPositions() | orderBy: 'position.start'">
               {{position.title}}: {{position.start | date:'shortDate'}}<span ng-if="position.end"> - {{position.end | date:'shortDate'}}</span>
-              <span class="glyphicon glyphicon-remove" ng-click="deletePosition(position)" ng-show="editable.$visible"></span>
+              <span class="glyphicon glyphicon-remove" ng-click="deletePosition(position)"></span>
             </li>
           </ul>
         </div>
