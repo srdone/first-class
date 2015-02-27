@@ -1,21 +1,11 @@
-<div class="container">
+<div>
 
   <!-- add scout -->
-  <div class="container">
 
     <fcs-add-button ng-click="openAddScoutModal()" ng-hide="addState"></fcs-add-button>
 
-  </div>
-
-  <div class="container">
-    <div class="row">
       <div ng-repeat="scout in troop">
-        <a ui-sref="scout-detail({ scoutId: scout.id })">
           <fcs-scout-card scout="scout"></fcs-scout-card>
-          <div class="clearfix visible-md-block" ng-if="$odd"></div>
-        </a>
       </div>
-    </div>
-  </div>
 
-</div>	
+</div>

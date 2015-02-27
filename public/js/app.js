@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('firstClass', ['ui.router', 'ui.bootstrap', 'xeditable']);
+var app = angular.module('firstClass', ['ui.router', 'ui.bootstrap', 'xeditable', 'ngMaterial', 'ngAria']);
 
 app.config(['$httpProvider', function ($httpProvider) {
   $httpProvider.interceptors.push('verifyAuthenticationHttpInterceptor');
