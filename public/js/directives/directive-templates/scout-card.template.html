@@ -4,6 +4,7 @@
       <span>
         <img ng-src="{{scout.photoUrl}}" class="avatar-sm">
         {{scout.firstName}} {{scout.lastName}}<span ng-if="scout.currentRank()">: {{scout.currentRank}}</span>
+        <md-icon md-svg-src="icons/oa_pocket_device.svg" ng-if="!!scout.isOA"></md-icon>
       </span>
       <span flex></span>
       <md-button ui-sref="scout-detail({ scoutId: scout.id })" class="md-raised md-accent">Details</md-button>
@@ -24,11 +25,23 @@
 
       <div class="md-tile-content">
 
-        {{scout.getQualifiedNightsOfCamping()}} Qualified Nights of Camping
-        {{scout.getHoursOfService()}} Service Hours
-        {{scout.getMeritBadgeCount()}} Merit Badges
+        <md-button>
+          <span class="number">{{scout.getQualifiedNightsOfCamping()}}</span>
+          <md-tooltip>
+            Qualified Nights of Camping
+          </md-tooltip>
+          <md-icon md-svg-src="icons/svg/camping2.svg">
+          </md-icon>
+        </md-button>
 
-        <span ng-if="!!scout.isOA">OA Member</span>
+        <md-button>
+          <span class="number">{{scout.getHoursOfService()}}</span>
+          <md-tooltip>
+            Hours of Service
+          </md-tooltip>
+          <md-icon md-svg-src="icons/svg/cement.svg"></md-icon>
+        </md-button>
+
         <span ng-if="!scout.isOA && scout.isOAQualified()">OA Qualified</span>
 
         <span ng-show="scout.currentPatrol">{{scout.currentPatrol}} <span ng-hide="patrolContainsPatrol">Patrol</span></span>
