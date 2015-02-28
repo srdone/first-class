@@ -1,34 +1,42 @@
-<div class="container">
-  <div class="row">
-    <form novalidate class="login-form form-inline form-group">
+<div>
+  <div layout="column">
+    <form novalidate name="loginForm">
 
-      <div class="form-group">
+      <div layout-lt-md="row" layout-gt-md="row">
+
+      <md-input-container flex>
         <label for="username" class="sr-only">Username</label>
         <input id="username" type="text" class="form-control" ng-model="user.email" placeholder="Email">
-      </div>
+      </md-input-container>
 
-      <div class="form-group">
+      <md-input-container flex>
         <label for="password" class="sr-only">Password</label>
         <input id="password" type="password" class="form-control" ng-model="user.password" placeholder="Password">
-      </div>
+      </md-input-container>
 
-      <div class="form-group" ng-if="doSignUp">
+      <md-input-container ng-if="doSignUp" flex>
         <label for="verifyPassword" class="sr-only">Verify Password</label>
         <input id="verifyPassword" type="password" class="form-control" ng-model="newUser.verifyPassword" placeholder="Verify Password">
+      </md-input-container>
+
       </div>
 
-      <!-- TODO: Fix funny fade in / out on chooseToSignUp -->
-      <button ng-click="login()" class="btn bg-primary" ng-if="!doSignUp">Login</button>
+      <md-content layout="row" layout-padding>
+        <!-- TODO: Fix funny fade in / out on chooseToSignUp -->
 
-      <button ng-click="chooseToSignUp()" class="btn btn-default" ng-if="!doSignUp">Sign Up</button>
+        <md-button class="md-raised md-primary" ng-click="login()" class="btn bg-primary" ng-if="!doSignUp">Login</md-button>
 
-      <button ng-click="signUp()" class="btn btn-primary" ng-if="doSignUp">Sign Up</button>
-      <button ng-click="cancelSignUp()" class="btn btn-default" ng-if="doSignUp">Cancel</button>
+        <md-button class="md-raised" ng-click="chooseToSignUp()" class="btn btn-default" ng-if="!doSignUp">Sign Up</md-button>
+
+        <md-button class="md-raised md-primary" ng-click="signUp()" class="btn btn-primary" ng-if="doSignUp">Sign Up</md-button>
+        <md-button class="md-raised md-warn" ng-click="cancelSignUp()" class="btn btn-default" ng-if="doSignUp">Cancel</md-button>
+
+      </md-content>
 
     </form>
   </div>
 
-  <div class="row">
+  <div>
     <div ng-show="message" class="alert alert-warning">
       {{message}}
     </div>
