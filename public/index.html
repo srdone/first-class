@@ -12,34 +12,50 @@
 
   <link rel="stylesheet" href="styles/styles.css" />
 </head>
-<body ng-app="firstClass" ng-cloak>
+<body ng-app="firstClass" ng-cloak ng-controller="NavigationController" layout="row">
 
-<md-toolbar>
-
-  <md-button ng-click="goHome()">
-    <md-icon md-svg-src="bower_components/material-design-icons/navigation/svg/production/ic_menu_48px.svg"></md-icon>
-  </md-button>
-
-  <div flex></div>
-
-  <ul fcs-toggle-on-login>
-    <li><a fcs-logout>Logout {{username}}</a></li>
-  </ul>
-</md-toolbar>
 
 <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$media('gt-md')">
   <md-toolbar>
-    First Class
+    <h1 class="md-toolbar-tools">First Class Scouting</h1>
   </md-toolbar>
+
+  <md-content flex>
+    <md-button fcs-toggle-on-login fcs-logout>
+      Logout {{username}}
+    </md-button>
+  </md-content>
 </md-sidenav>
 
-<md-content>
 
-  <md-content ui-view></md-content>
+<div layout="column" tabindex="-1" flex role="main">
+  <md-toolbar>
 
-  <div>Icons made by <a href="http://www.flaticon.com/authors/ocha" title="OCHA"></a></div>
+    <div class="md-toolbar-tools" ng-click="toggleMenu()" >
+      <md-button hide-gt-md aria-label="Toogle Menu">
+        <md-icon md-svg-src="bower_components/material-design-icons/navigation/svg/production/ic_menu_48px.svg"></md-icon>
+      </md-button>
 
-</md-content>
+      <div layout="row" flex class="fill-height">
+        <div class="md-toolbar-item md-breadcrumb" hide-gt-md>
+          First Class Scouting
+        </div>
+      </div>
+
+      <span flex></span>
+
+    </div>
+  </md-toolbar>
+
+  <section layout="row" flex>
+
+    <md-content md-scroll-y ui-view class="md-padding md-default-theme"></md-content>
+
+  </section>
+
+</div>
+<!--<div>Icons made by <a href="http://www.flaticon.com/authors/ocha" title="OCHA"></a></div>-->
+
 
 <!-- jquery -->
 <script src="bower_components/jquery/dist/jquery.js"></script>
@@ -72,6 +88,7 @@
 <script src="js/services/requirements.client.service.js"></script>
 
 <!-- controllers -->
+<script src="js/controllers/navigation.controller.js"></script>
 <script src="js/controllers/main.controller.js"></script>
 <script src="js/controllers/scout.controller.js"></script>
 <script src="js/controllers/troop.controller.js"></script>
