@@ -1,56 +1,90 @@
-<div class="container panel">
+<div>
 
-  <div class="row">
-    <div class="col-xs-6 col-sm-4 col-md-2">
-      <div class="well-sm">
-        <img class="img-responsive img-thumbnail" ng-src="{{scout.photoUrl}}">
+  <md-card class="md-whiteframe-z3">
+    <md-toolbar>
+      <div class="md-toolbar-tools" layout="row" layout-margin>
+      <span>
+        <img ng-src="{{scout.photoUrl}}" class="avatar-sm">
+        {{scout.firstName}} {{scout.lastName}}<span ng-if="scout.currentRank()">: {{scout.currentRank}}</span>
+        <md-icon md-svg-src="icons/oa_pocket_device.svg" ng-if="!!scout.isOA"></md-icon>
+      </span>
+        <span flex></span>
       </div>
-    </div>
+    </md-toolbar>
 
-    <div class="col-xs-6 col-sm-4 col-md-2">
-      <h3 class="text-left">
-        <span editable-text="scout.firstName" onaftersave="updateScout()">{{scout.firstName}}</span>
-        <span editable-text="scout.lastName" onaftersave="updateScout()">{{scout.lastName}}</span>
-      </h3>
+    <md-card-content>
+      <!--Next rank progress -->
+      <div class="md-tile-content">
+        <h3>Progress to next rank: </h3>
 
-      <span editable-text="scout.currentPatrol" onaftersave="updateScout()">{{scout.currentPatrol}}</span> Patrol
+        <md-progress-linear class="md-info" md-mode="determinate" value="scout.getPercentProgressToNextRank()" flex></md-progress-linear>
 
-      <span class="badge">{{scout.getHoursOfService()}}</span> Hours of Service<br/>
-      <span class="badge">{{scout.getQualifiedNightsOfCamping()}}</span> Qualified Nights of Camping
+        <!-- Position Summary Data -->
+        <div ng-repeat="position in scout.getPositions()">
+          {{position.title}} - {{position.monthsInPosition()}} months
+        </div>
 
-    </div>
+        <div class="md-tile-content">
 
-  </div>
+          <md-button>
+            <span class="number">{{scout.getQualifiedNightsOfCamping()}}</span>
+            <md-tooltip>
+              Qualified Nights of Camping
+            </md-tooltip>
+            <md-icon md-svg-src="icons/svg/camping2.svg">
+            </md-icon>
+          </md-button>
 
-  <div class="row">
-    <fcs-add-button ng-click="open()"></fcs-add-button>
-  </div>
+          <md-button>
+            <span class="number">{{scout.getHoursOfService()}}</span>
+            <md-tooltip>
+              Hours of Service
+            </md-tooltip>
+            <md-icon md-svg-src="icons/svg/cement.svg"></md-icon>
+          </md-button>
 
-  <div class="row">
+          <span ng-if="!scout.isOA && scout.isOAQualified()">OA Qualified</span>
+
+          <span ng-show="scout.currentPatrol">{{scout.currentPatrol}} <span ng-hide="patrolContainsPatrol">Patrol</span></span>
+
+        </div>
+      </div>
+
+    </md-card-content>
+
+  </md-card>
+
+  <md-button class="md-fab add-details" aria-label="Add Scout Details" ng-click="open()">
+    <md-icon class="add-button"
+             md-svg-src="bower_components/material-design-icons/content/svg/production/ic_add_circle_48px.svg"></md-icon>
+  </md-button>
 
     <!--Service Detail-->
-    <div ng-if="!!scout.getService().length" class="col-xs-12 col-sm-6 col-md-4">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h4>Service History</h4>
-        </div>
-        <div class="panel-body">
-          <ul>
-            <li ng-repeat="service in scout.getService()">
-              {{service.description}} - {{service.hours | number: 1}} hours
-              <span class="glyphicon glyphicon-remove" ng-click="deleteService(service)"></span>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
+    <md-card ng-if="!!scout.getService().length">
+        <md-toolbar>
+          <div class="md-toolbar-tools">
+            Service History
+          </div>
+        </md-toolbar>
+        <md-card-content>
+          <md-list>
+            <md-item ng-repeat="service in scout.getService()">
+              <md-item-content>
+                  {{service.description}} - {{service.hours | number: 1}} hours
+                  <md-button ng-click="deleteService(service)" aria-label="Remove Service {{service.description}}">
+                    <md-icon md-svg-src="bower_components/material-design-icons/action/svg/production/ic_delete_48px.svg"></md-icon>
+                  </md-button>
+              </md-item-content>
+            </md-item>
+          </md-list>
+        </md-card-content>
+    </md-card>
 
     <!--Camping Detail-->
-    <div ng-if="!!scout.getCamping().length" class="col-xs-12 col-sm-6 col-md-4">
-      <div class="panel panel-default">
-        <div class="panel-heading">
+    <md-card ng-if="!!scout.getCamping().length">
+        <md-toolbar>
           <h4>Campouts Attended</h4>
-        </div>
+        </md-toolbar>
         <div class="panel-body">
           <ul>
             <li ng-repeat="campout in scout.getCamping() | orderBy: 'campout.start'">
@@ -59,12 +93,10 @@
             </li>
           </ul>
         </div>
-      </div>
-    </div>
+    </md-card>
 
     <!--Position Detail-->
-    <div ng-if="!!scout.getPositions().length" class="col-xs-12 col-sm-6 col-md-4">
-      <div class="panel panel-default">
+    <md-card ng-if="!!scout.getPositions().length">
         <div class="panel-heading">
           <h4>Positions Held</h4>
         </div>
@@ -76,9 +108,6 @@
             </li>
           </ul>
         </div>
-      </div>
-    </div>
-
-  </div>
+    </md-card>
 
 </div>
