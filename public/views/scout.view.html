@@ -20,7 +20,7 @@
         <md-progress-linear class="md-info" md-mode="determinate" value="scout.getPercentProgressToNextRank()" flex></md-progress-linear>
 
         <!-- Position Summary Data -->
-        <div ng-repeat="position in scout.getCurrentPosition()">
+        <div ng-repeat="position in scout.getCurrentPositions()">
           {{position.title}} - {{position.monthsInPosition()}} months
         </div>
 
