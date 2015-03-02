@@ -20,7 +20,7 @@
         <md-progress-linear class="md-info" md-mode="determinate" value="scout.getPercentProgressToNextRank()" flex></md-progress-linear>
 
         <!-- Position Summary Data -->
-        <div ng-repeat="position in scout.getPositions()">
+        <div ng-repeat="position in scout.getCurrentPosition()">
           {{position.title}} - {{position.monthsInPosition()}} months
         </div>
 
@@ -83,31 +83,43 @@
     <!--Camping Detail-->
     <md-card ng-if="!!scout.getCamping().length">
         <md-toolbar>
-          <h4>Campouts Attended</h4>
+          <div class="md-toolbar-tools">
+            Campouts Attended
+          </div>
         </md-toolbar>
-        <div class="panel-body">
-          <ul>
-            <li ng-repeat="campout in scout.getCamping() | orderBy: 'campout.start'">
-              {{campout.description}}: {{campout.start | date:'shortDate'}} - {{campout.end | date:'shortDate'}}
-              <span class="glyphicon glyphicon-remove" ng-click="deleteCampout(campout)"></span>
-            </li>
-          </ul>
-        </div>
+        <md-card-content>
+          <md-list>
+            <md-item ng-repeat="campout in scout.getCamping() | orderBy: 'campout.start'">
+              <md-item-content>
+                {{campout.description}}: {{campout.start | date:'shortDate'}} - {{campout.end | date:'shortDate'}}
+                <md-button ng-click="deleteCampout(campout)" aria-label="Remove Campout {{campout.description}}">
+                  <md-icon md-svg-src="bower_components/material-design-icons/action/svg/production/ic_delete_48px.svg"></md-icon>
+                </md-button>
+              </md-item-content>
+            </md-item>
+          </md-list>
+        </md-card-content>
     </md-card>
 
     <!--Position Detail-->
     <md-card ng-if="!!scout.getPositions().length">
-        <div class="panel-heading">
-          <h4>Positions Held</h4>
-        </div>
-        <div class="panel-body">
-          <ul>
-            <li ng-repeat="position in scout.getPositions() | orderBy: 'position.start'">
-              {{position.title}}: {{position.start | date:'shortDate'}}<span ng-if="position.end"> - {{position.end | date:'shortDate'}}</span>
-              <span class="glyphicon glyphicon-remove" ng-click="deletePosition(position)"></span>
-            </li>
-          </ul>
-        </div>
+        <md-toolbar>
+          <div class="md-toolbar-tools">
+            Positions Held
+          </div>
+        </md-toolbar>
+        <md-card-content>
+          <md-list>
+            <md-item ng-repeat="position in scout.getPositions() | orderBy: 'position.start'">
+              <md-item-content>
+                {{position.title}}: {{position.start | date:'shortDate'}}<span ng-if="position.end"> - {{position.end | date:'shortDate'}}</span>
+                <md-button ng-click="deletePosition(position)" aria-label="Remove Position {{position.title}}">
+                  <md-icon md-svg-src="bower_components/material-design-icons/action/svg/production/ic_delete_48px.svg"></md-icon>
+                </md-button>
+              </md-item-content>
+            </md-item>
+          </md-list>
+        </md-card-content>
     </md-card>
 
 </div>
