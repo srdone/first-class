@@ -68,6 +68,12 @@ var requireOwnership = function (req, res, next) {
   //implementation details
 };
 
+function mainRoute (req, res) {
+  res.redirect('/');
+  req.session.lastVisit = Date.now();
+  res.sendFile(__dirname + '/public/index.html');
+};
+
 // index route
 app.get('/', function (req, res) {
   req.session.lastVisit = Date.now();
@@ -82,6 +88,8 @@ require('./app/routes/requirements.server.routes')(app); //requirement routes
 
 // serve static files
 app.use('/', express.static(__dirname + '/public/'));
+
+app.get('*', mainRoute);
 
 var server = app.listen(3000, function () {
   var address = server.address().address;
