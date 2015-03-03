@@ -2,7 +2,10 @@
 
 var app = angular.module('firstClass', ['ui.router', 'ui.bootstrap', 'xeditable', 'ngMaterial', 'ngAria']);
 
-app.config(['$httpProvider', function ($httpProvider) {
+app.config(['$httpProvider', '$logProvider', function ($httpProvider, $logProvider) {
+  $logProvider.debugEnabled(true);
+
+  $httpProvider.interceptors.push('debugHttpInterceptor');
   $httpProvider.interceptors.push('verifyAuthenticationHttpInterceptor');
 }]);
 
