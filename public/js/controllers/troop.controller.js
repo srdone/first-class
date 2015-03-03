@@ -2,8 +2,8 @@
 
 var app = angular.module('firstClass');
 
-app.controller('TroopController', ['$scope', '$modal', 'scoutService', 'troop',
-	function ($scope, $modal, scoutService, troop) {
+app.controller('TroopController', ['$scope', '$modal', 'scoutService', 'troop', '$mdBottomSheet', 'bottomSheets',
+	function ($scope, $modal, scoutService, troop, $mdBottomSheet, bottomSheets) {
 
     $scope.troop = troop;
 
@@ -20,6 +20,10 @@ app.controller('TroopController', ['$scope', '$modal', 'scoutService', 'troop',
         }
       });
 
+    };
+
+    $scope.openAddScoutSheet = function () {
+      $mdBottomSheet.show(bottomSheets.addScoutSheet);
     };
 
 }]);

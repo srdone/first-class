@@ -1,0 +1,32 @@
+<md-content>
+
+    <md-input-container>
+      <label for="firstName">First Name</label>
+      <input type="text" class="form-control" id="firstName" ng-model="newScout.firstName" placeholder="Baden">
+    </md-input-container>
+
+    <md-input-container>
+      <label for="lastName">Last Name</label>
+      <input type="text" class="form-control" id="lastName" ng-model="newScout.lastName" placeholder="Powell">
+    </md-input-container>
+
+    <md-input-container>
+      <label for="patrol">Patrol</label>
+      <input type="text" class="form-control" id="patrol" ng-model="newScout.patrol" placeholder="Owl Patrol">
+    </md-input-container>
+
+    <md-input-container>
+      <label for="photoUrl">Photo URL</label>
+      <input type="text" class="form-control" id="photoUrl" ng-model="newScout.photoUrl" placeholder="http://...">
+    </md-input-container>
+
+    <md-input-container>
+      <label for="isOA">OA Member</label>
+      <md-checkbox type="checkbox" class="form-control" id="isOA" ng-model="newScout.isOA"></md-checkbox>
+    </md-input-container>
+
+  <div class="modal-footer">
+    <button class="btn btn-primary" ng-click="addScout(newScout)">Add Scout</button>
+    <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+  </div>
+</md-content>
