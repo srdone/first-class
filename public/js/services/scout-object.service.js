@@ -156,7 +156,8 @@ app.factory('scoutObjectService', ['dateService', 'utilService', 'persistenceSer
     };
     Scout.prototype.getCurrentPositions = function () {
       return this._positionHistory.filter(function (element, index, array) {
-        return dateService.inRange(Date.now(), element.start, element.end);
+        var end = element.end || Date.now();
+        return dateService.inRange(Date.now(), element.start, end);
       });
     };
 	  Scout.prototype.addService = function (description, hours) {
