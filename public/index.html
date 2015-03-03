@@ -19,7 +19,10 @@
     <h1 class="md-toolbar-tools">First Class Scouting</h1>
   </md-toolbar>
 
-  <md-content flex>
+  <md-content flex layout="column">
+    <md-button ng-click="goToTroopView()" fcs-toggle-on-login="false">
+      Troop
+    </md-button>
     <md-button fcs-toggle-on-login fcs-logout>
       Logout {{username}}
     </md-button>
