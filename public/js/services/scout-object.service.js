@@ -2,8 +2,8 @@
 
 var app = angular.module('firstClass');
 
-app.factory('scoutObjectService', ['dateService', 'utilService', 'persistenceService',
-	function (dateService, utilService, persistenceService) {
+app.factory('scoutObjectService', ['requirementService', 'dateService', 'utilService', 'persistenceService', '$log',
+	function (requirementService, dateService, utilService, persistenceService, $log) {
 
     var tempNeededReqs = [
         {title: 'test data', color: 'blue'},
@@ -52,6 +52,16 @@ app.factory('scoutObjectService', ['dateService', 'utilService', 'persistenceSer
 	    	});
 	    };
 
+      var _convertCompletedRequirements = function (completedReqs) {
+        $log.debug(completedReqs);
+        return completedReqs.map(function (current) {
+          return {
+            requirement: new requirementService.Requirement(current.requirement),
+            dateCompleted: current.dateCompleted
+          };
+        });
+      };
+
 	    var _tempUserImage = 'https://s3.amazonaws.com/uifaces/faces/twitter/jsa/128.jpg';
 
 	    this.id = id || utilService.createUUID();
@@ -61,7 +71,7 @@ app.factory('scoutObjectService', ['dateService', 'utilService', 'persistenceSer
 	    this.troop = '154';
 	    this.photoUrl = photoUrl || _tempUserImage;
 	    this.isOA = isOA === undefined ? false : isOA;
-	    this._completedReqs = completedReqs || [];
+	    this._completedReqs = completedReqs ? _convertCompletedRequirements(completedReqs) : [];
 	    this._positionHistory = positionHistory ? _convertPositionHistory(positionHistory) : [];
 	    this._campingHistory = campingHistory ? _convertCampingHistory(campingHistory) : [];
 	    this._serviceHistory = serviceHistory ? _convertServiceHistory(serviceHistory) : [];
@@ -182,8 +192,33 @@ app.factory('scoutObjectService', ['dateService', 'utilService', 'persistenceSer
         return prev += curr.hours;
       }, 0);
     };
+    Scout.prototype.completedRequirementDateById = function (id) {
+      for (var i = 0; i < this._completedReqs.length; i++) {
+        if (this._completedReqs[i].requirement.id === id) {
+          return this._completedReqs[i].dateCompleted;
+        }
+      }
+      return false;
+    };
     Scout.prototype.addRequirement = function (requirement) {
-      this._completedReqs.push({requirement: requirement, dateCompleted: Date.now()});
+      if (!this.completedRequirementDateById(requirement.id)) {
+        this._completedReqs.push({requirement: requirement, dateCompleted: Date.now()});
+      }
+    };
+    Scout.prototype.removeRequirementById = function (id) {
+      $log.debug('Removing: ' + id);
+      $log.debug('Completed requirements: ');
+      $log.debug(this._completedReqs);
+      for (var i = 0; i < this._completedReqs.length; i++) {
+        $log.debug(this._completedReqs[i].requirement.id);
+        if (this._completedReqs[i].requirement.id === id) {
+          var deleted = this._completedReqs.splice(i, 1);
+          $log.debug('Deleted: ' + deleted);
+          return true;
+        }
+      }
+      $log.debug('Could not find a requirement to delete');
+      return false;
     };
 	    Scout.prototype.getCompletedRequirements = function () {
 	      return this._completedReqs;

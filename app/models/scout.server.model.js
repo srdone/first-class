@@ -6,7 +6,10 @@ var ScoutSchema = new Schema({
   lastName: String,
   photoUrl: String,
   isOA: Boolean,
-  completedRequirements: [{requirementId: String, date: Date}],
+  _completedReqs: [{requirement: {
+    type: Schema.ObjectId,
+    ref: 'Requirement'
+  }, dateCompleted: Date}],
   currentPatrol: String,
   troop: String,
   _positionHistory: [{title: String, start: Date, end: Date}],

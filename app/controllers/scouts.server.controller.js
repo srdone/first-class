@@ -14,7 +14,7 @@ exports.hasAuthorization = function (req, res, next) {
 exports.scoutById = function (req, res, next, id) {
   console.log('scoutById called');
   console.log(req.body);
-  Scout.findById(id).exec(function (err, scout) {
+  Scout.findById(id).populate('_completedReqs.requirement').exec(function (err, scout) {
     console.log(err);
     console.log(scout);
     if (err) {
@@ -32,7 +32,7 @@ exports.scoutsByOwner = function (req, res, next) {
   console.log('scoutsByOwner called');
   console.log(req.user.username);
   console.log(req.body);
-  Scout.find({creator: req.user.username}).exec(function (err, scouts) {
+  Scout.find({creator: req.user.username}).populate('_completedReqs.requirement').exec(function (err, scouts) {
     console.log(err);
     console.log(scouts);
     if(err) {
@@ -73,7 +73,12 @@ exports.updateScout = function (req, res) {
   scout.lastName = req.body.lastName;
   scout.photoUrl = req.body.photoUrl;
   scout.isOA = req.body.isOA;
-  scout.completedRequirements = req.body.completedRequirements;
+  scout._completedReqs = req.body._completedReqs.map(function (current) {
+    return {
+      requirement: current.requirement._id,
+      dateCompleted: current.dateCompleted
+    }
+  });
   scout.currentPatrol = req.body.currentPatrol;
   scout.troop = req.body.troop;
   scout._positionHistory = req.body._positionHistory;

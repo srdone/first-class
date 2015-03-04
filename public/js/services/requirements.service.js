@@ -1,8 +1,9 @@
-angular.module('firstClass').factory('requirementService', ['persistenceService', function(persistenceService) {
+angular.module('firstClass').factory('requirementService', ['persistenceService', '$log', function(persistenceService, $log) {
 
   var existingRequirements = [];
 
   var Requirement = function (requirement) {
+    $log.debug(requirement);
     this._id = requirement._id;
     this.id = requirement.id;
     this.name = requirement.name;
