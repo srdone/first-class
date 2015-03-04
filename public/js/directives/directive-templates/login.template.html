@@ -21,18 +21,20 @@
 
       </div>
 
-      <md-content layout="row" layout-padding>
+      <div layout="row" layout-align="space-around center" layout-margin>
         <!-- TODO: Fix funny fade in / out on chooseToSignUp -->
         <!-- TODO: Fix button margin -->
 
-        <md-button class="md-raised md-primary" ng-click="login()" class="btn bg-primary" ng-if="!doSignUp">Login</md-button>
+        <md-button class="md-raised md-primary" ng-click="login()" class="btn bg-primary" ng-if="!doSignUp" layout-margin flex>Login</md-button>
 
-        <md-button class="md-raised" ng-click="chooseToSignUp()" class="btn btn-default" ng-if="!doSignUp">Sign Up</md-button>
+        <md-button class="md-raised" ng-click="chooseToSignUp()" class="btn btn-default" ng-if="!doSignUp" layout-margin flex>Sign Up</md-button>
 
-        <md-button class="md-raised md-primary" ng-click="signUp()" class="btn btn-primary" ng-if="doSignUp">Sign Up</md-button>
-        <md-button class="md-raised md-warn" ng-click="cancelSignUp()" class="btn btn-default" ng-if="doSignUp">Cancel</md-button>
+        <md-button class="md-raised md-primary" ng-click="signUp()" class="btn btn-primary" ng-if="doSignUp" layout-margin flex>Sign Up</md-button>
+        <md-button class="md-raised md-warn" ng-click="cancelSignUp()" class="btn btn-default" ng-if="doSignUp" layout-margin flex>Cancel</md-button>
 
-      </md-content>
+        <span flex></span>
+
+      </div>
 
     </form>
   </div>
