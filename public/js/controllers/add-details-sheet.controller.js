@@ -13,12 +13,8 @@ angular.module('firstClass').controller('AddDetailsSheetController', ['$scope', 
 
     $scope.scout = scout;
 
-    $scope.ok = function () {
+    $scope.dismiss = function () {
       $mdBottomSheet.hide();
     };
-
-    $scope.cancel = function () {
-      $mdBottomSheet.cancel();
-    }
 
   }]);
