@@ -1,22 +1,18 @@
-angular.module('firstClass').factory('requirementService', function() {
+angular.module('firstClass').factory('requirementService', ['persistenceService', function(persistenceService) {
 
   var existingRequirements = [];
 
-  var Requirement = function (desc, itemNum, order, award, isAward, type) {
-    this.desc = desc || '';
-    this.itemNum = itemNum || '';
-    this.order = order || 0;
-    this.award = award || '';
-    this.isAward = isAward || false;
-    this.type = type || 'requirement';
-    this._prereqs = [];
-    this.parentRequirement = null;
-
-    this.id = this.generateId();
-  };
-  Requirement.prototype.generateId = function () {
-    var id = this.award + '-' + this.itemNum;
-    return id;
+  var Requirement = function (requirement) {
+    this._id = requirement._id;
+    this.id = requirement.id;
+    this.description = requirement.description;
+    this.requirementNumber = requirement.requirementNumber;
+    this.order = requirement.order;
+    this.requirementType = requirement.requirementType;
+    this.parentRequirement = requirement.parentRequirement;
+    this.numberOfChildrenToComplete = requirement.numberOfChildrenToComplete;
+    this.completeAllChildren = requirement.completeAllChildren;
+    this.effectiveDate = requirement.effectiveDate;
   };
   Requirement.prototype.addPrereq = function (req) {
     this._prereqs.push(req.id);
@@ -75,7 +71,13 @@ angular.module('firstClass').factory('requirementService', function() {
   };
 
   var getAllRequirements = function () {
-    return existingRequirements;
+    return persistenceService.getAllRequirements().then(function (requirements) {
+      existingRequirements = [];
+      requirements.forEach(function (current) {
+        existingRequirements.push(new Requirement (current));
+      });
+      return existingRequirements;
+    });
   };
 
   return {
@@ -86,4 +88,4 @@ angular.module('firstClass').factory('requirementService', function() {
     'updateRequirement': updateRequirement,
     'getAllRequirements': getAllRequirements
   };
-});
+}]);

@@ -40,13 +40,20 @@ angular.module('firstClass').factory('persistenceService', ['$q', '$http', '$roo
     });
 	};
 
+    var _getAllRequirements = function () {
+      return $http.get('/requirements').then(function (response) {
+        return response.data;
+      });
+    };
+
 	return {
 		login: _login,
 		logout: _logout,
     createScout: _createScout,
 		saveScout: _saveScout,
 		getScoutById: _getScoutById,
-		getScouts: _getScouts
+		getScouts: _getScouts,
+    getAllRequirements: _getAllRequirements
 	};
 
 }]);

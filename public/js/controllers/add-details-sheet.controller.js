@@ -1,5 +1,5 @@
-angular.module('firstClass').controller('AddDetailsSheetController', ['$scope', '$mdBottomSheet', 'scout',
-  function ($scope, $mdBottomSheet, scout) {
+angular.module('firstClass').controller('AddDetailsSheetController', ['$scope', '$mdBottomSheet', 'scout', 'requirements', '$log',
+  function ($scope, $mdBottomSheet, scout, requirements, $log) {
 
     $scope.addView = {
       selected: {name: 'Add Service', templateUrl: 'views/add-service.view.html'},
@@ -12,6 +12,10 @@ angular.module('firstClass').controller('AddDetailsSheetController', ['$scope', 
     };
 
     $scope.scout = scout;
+
+    $scope.requirements = requirements;
+    debugger;
+    $log.debug(requirements);
 
     $scope.dismiss = function () {
       $mdBottomSheet.hide();

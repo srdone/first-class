@@ -2,8 +2,8 @@
 
 var app = angular.module('firstClass');
 
-app.controller('ScoutController', ['$scope', '$modal', 'scoutService', 'scout', '$mdBottomSheet',
-	function ($scope, $modal, scoutService, scout, $mdBottomSheet) {
+app.controller('ScoutController', ['$scope', '$modal', 'scoutService', 'scout', '$mdBottomSheet', 'requirementService',
+	function ($scope, $modal, scoutService, scout, $mdBottomSheet, requirementService) {
 
 		$scope.scout = scout;
 
@@ -14,6 +14,9 @@ app.controller('ScoutController', ['$scope', '$modal', 'scoutService', 'scout', 
         resolve: {
           scout: function () {
             return $scope.scout;
+          },
+          requirements: function () {
+            return requirementService.getAllRequirements();
           }
         }
       });
