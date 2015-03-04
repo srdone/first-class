@@ -8,8 +8,6 @@ var express = require('express'),
   cookieParser = require('cookie-parser'),
   connectFlash = require('connect-flash');
 
-require('./data/import-requirements.script.js')();
-
 var app = express();
 mongoose.connect('mongodb://localhost/first-class-dev');
 
@@ -61,11 +59,6 @@ var requireAuthentication = function (req, res, next) {
   } else {
     next();
   }
-};
-
-// middleware to make sure the user owns the document - my idea - how to implement?
-var requireOwnership = function (req, res, next) {
-  //implementation details
 };
 
 function mainRoute (req, res) {
