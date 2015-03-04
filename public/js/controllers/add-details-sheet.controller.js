@@ -14,7 +14,6 @@ angular.module('firstClass').controller('AddDetailsSheetController', ['$scope', 
     $scope.scout = scout;
 
     $scope.requirements = requirements;
-    debugger;
     $log.debug(requirements);
 
     $scope.dismiss = function () {

@@ -182,6 +182,9 @@ app.factory('scoutObjectService', ['dateService', 'utilService', 'persistenceSer
         return prev += curr.hours;
       }, 0);
     };
+    Scout.prototype.addRequirement = function (requirement) {
+      this._completedReqs.push({requirement: requirement, dateCompleted: Date.now()});
+    };
 	    Scout.prototype.getCompletedRequirements = function () {
 	      return this._completedReqs;
 	    };

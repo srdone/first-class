@@ -1,4 +1,9 @@
 <div ng-controller="AddRequirementController">
   Add Requirement
-  {{requirements}}
+  <select ng-options="requirement as requirement.name group by requirement.awardName for requirement in requirements" ng-model="requirement"></select>
+  <md-button class="md-raised md-primary" ng-click="addRequirement(requirement)">Add Requirement</md-button>
+
+  {{requirement.name}}
+
+  {{scout.getCompletedRequirements()}}
 </div>

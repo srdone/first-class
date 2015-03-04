@@ -5,6 +5,7 @@ angular.module('firstClass').factory('requirementService', ['persistenceService'
   var Requirement = function (requirement) {
     this._id = requirement._id;
     this.id = requirement.id;
+    this.name = requirement.name;
     this.description = requirement.description;
     this.requirementNumber = requirement.requirementNumber;
     this.order = requirement.order;
@@ -13,6 +14,7 @@ angular.module('firstClass').factory('requirementService', ['persistenceService'
     this.numberOfChildrenToComplete = requirement.numberOfChildrenToComplete;
     this.completeAllChildren = requirement.completeAllChildren;
     this.effectiveDate = requirement.effectiveDate;
+    this.awardName = requirement.id.split('-')[0];
   };
   Requirement.prototype.addPrereq = function (req) {
     this._prereqs.push(req.id);
