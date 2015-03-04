@@ -2,8 +2,8 @@
 
 var app = angular.module('firstClass');
 
-app.controller('ScoutController', ['$scope', '$modal', 'scoutService', 'scout',
-	function ($scope, $modal, scoutService, scout) {
+app.controller('ScoutController', ['$scope', '$modal', 'scoutService', 'scout', '$mdBottomSheet',
+	function ($scope, $modal, scoutService, scout, $mdBottomSheet) {
 
 		$scope.scout = scout;
 
@@ -20,6 +20,18 @@ app.controller('ScoutController', ['$scope', '$modal', 'scoutService', 'scout',
         }
       });
 
+    };
+
+    $scope.openAddScoutDetailsSheet = function () {
+      $mdBottomSheet.show({
+        templateUrl: 'js/bottom-sheets/add-details.bottom-sheet.html',
+        controller: 'AddDetailsSheetController',
+        resolve: {
+          scout: function () {
+            return $scope.scout;
+          }
+        }
+      });
     };
 
     $scope.deleteCampout = function (campout) {

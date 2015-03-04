@@ -1,0 +1,15 @@
+<md-bottom-sheet>
+  <div>
+    Add Scout Details
+  </div>
+
+  <div>
+    <select ng-options="view as view.name for view in addView.options track by view.templateUrl" ng-model="addView.selected"></select>
+    <ng-include src="addView.selected.templateUrl"></ng-include>
+  </div>
+
+  <div>
+    <md-button class="btn btn-primary" ng-click="ok()">OK</md-button>
+    <md-button class="btn btn-warning" ng-click="cancel()">Cancel</md-button>
+  </div>
+</md-bottom-sheet>

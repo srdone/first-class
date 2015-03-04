@@ -1,23 +1,23 @@
-<div ng-controller="AddCampoutController">
+<div ng-controller="AddCampoutController" layout="column">
 
-  <div class="form-group">
+  <md-input-container>
     <label for="description">Description</label>
     <input type="text" class="form-control" id="description" ng-model="newCampout.description" placeholder="Title">
-  </div>
+  </md-input-container>
 
-  <div class="form-group">
+  <md-input-container>
     <label for="start-date">Start Date</label>
     <input type="date" class="form-control" id="start-date" ng-model="newCampout.startDate" placeholder="Start Date">
-  </div>
+  </md-input-container>
 
-  <div class="form-group">
+  <md-input-container>
     <label for="end-date">End Date</label>
     <input type="date" class="form-control" id="end-date" ng-model="newCampout.endDate" placeholder="End Date">
-  </div>
+  </md-input-container>
 
-  <div class="form-group">
-    <button id="submit" type="submit" class="btn btn-primary" ng-click="addCampout()">Add Campout</button>
-    <button id="cancel" type="cancel" class="btn btn-default" ng-click="cancelAddCampout()">Clear</button>
+  <div layout="row">
+    <md-button id="submit" type="submit" class="btn btn-primary" ng-click="addCampout()">Add Campout</md-button>
+    <md-button id="cancel" type="cancel" class="btn btn-default" ng-click="cancelAddCampout()">Clear</md-button>
   </div>
 
   <div class="alert alert-info" ng-if="message">{{message}}</div>

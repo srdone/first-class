@@ -1,23 +1,23 @@
-<div ng-controller="AddPositionController">
+<div ng-controller="AddPositionController" layout="column">
 
-  <div class="form-group">
+  <md-input-container>
     <label for="title">Description</label>
     <input type="text" class="form-control" id="title" ng-model="newPosition.title" placeholder="Title">
-  </div>
+  </md-input-container>
 
-  <div class="form-group">
+  <md-input-container>
     <label for="start-date">Start Date</label>
     <input type="date" class="form-control" id="start-date" ng-model="newPosition.startDate" placeholder="Start Date">
-  </div>
+  </md-input-container>
 
-  <div class="form-group">
+  <md-input-container>
     <label for="end-date">End Date</label>
     <input type="date" class="form-control" id="end-date" ng-model="newPosition.endDate" placeholder="End Date">
-  </div>
+  </md-input-container>
 
-  <div class="form-group">
-    <button id="submit" type="submit" class="btn btn-primary" ng-click="addPosition()">Add Position</button>
-    <button id="cancel" type="cancel" class="btn btn-default" ng-click="cancelAddPosition()">Clear</button>
+  <div layout="row">
+    <md-button id="submit" type="submit" class="md-raised md-primary" ng-click="addPosition()">Add Position</md-button>
+    <md-button id="cancel" type="cancel" class="md-raised md-warn" ng-click="cancelAddPosition()">Clear</md-button>
   </div>
 
   <div class="alert alert-info" ng-if="message">{{message}}</div>

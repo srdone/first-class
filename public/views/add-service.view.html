@@ -1,18 +1,18 @@
-<div ng-controller="AddServiceController">
+<div ng-controller="AddServiceController" layout="column">
 
-  <div class="form-group">
+  <md-input-container>
     <label for="description">Description</label>
     <input type="text" class="form-control" id="description" ng-model="newService.description" placeholder="Description">
-  </div>
+  </md-input-container>
 
-  <div class="form-group">
+  <md-input-container>
     <label for="hours">Hours</label>
     <input type="number" class="form-control" id="hours" ng-model="newService.hours" placeholder="Hours">
-  </div>
+  </md-input-container>
 
-  <div class="form-group">
-    <button id="submit" type="submit" class="btn btn-primary" ng-click="addService()">Add Service</button>
-    <button id="cancel" type="cancel" class="btn btn-default" ng-click="cancelAddService()">Clear</button>
+  <div layout="row">
+    <md-button id="submit" type="submit" class="md-raised md-primary" ng-click="addService()">Add Service</md-button>
+    <md-button id="cancel" type="cancel" class="md-raised md-warn" ng-click="cancelAddService()">Clear</md-button>
   </div>
 
   <div class="alert alert-info" ng-if="message">{{message}}</div>
