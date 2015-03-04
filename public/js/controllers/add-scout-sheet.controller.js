@@ -1,10 +1,8 @@
-angular.module('firstClass').controller('AddScoutSheetController', ['$scope', '$mdBottomSheet', 'troop', 'scoutService',
-  function ($scope, $mdBottomSheet, troop, scoutService) {
+angular.module('firstClass').controller('AddScoutSheetController', ['$scope', '$mdBottomSheet', 'scoutService',
+  function ($scope, $mdBottomSheet, scoutService) {
 
     $scope.addScout = function (scout) {
       scoutService.createNewScout(scout).then(function (scout) {
-        troop.push(scout);
-        $scope.addState = false;
         $scope.newScout = {};
         $mdBottomSheet.hide();
       });
