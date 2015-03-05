@@ -26,25 +26,25 @@ angular.module('firstClass').factory('requirementService', ['persistenceService'
   };
   _Requirement.prototype.prereqsComplete = function (reqsCompleted) {
     var prereqs = this.getPrereqs() || [];
-    $log.debug('Prereqs:');
-    $log.debug(prereqs);
     var reqsCompletedIds = reqsCompleted.map(function (reqCompleted) {
-      return reqCompleted.id;
+      return reqCompleted.requirement.id;
     });
+    var completedAllPrereqs = true;
     prereqs.forEach(function (currentPrereq) {
       // if the current prereq has prereqs, check those to make sure they are completed
       if (currentPrereq.getPrereqs()) {
         if (!currentPrereq.prereqsComplete(reqsCompleted)) {
-          return false;
+          completedAllPrereqs = false;
         }
       }
       // verify that the current prereq id is listed in the list of completed requirement ids
+      $log.debug('Index of currentPreqreq in completed list: ' + reqsCompleted.indexOf(currentPrereq.id));
       if (reqsCompletedIds.indexOf(currentPrereq.id) === -1) {
-        return false;
+        completedAllPrereqs = false;
       }
     });
     // return true if it passes all the above tests.
-    return true;
+    return completedAllPrereqs;
   };
 
   var _getCurrentRank = function (completedRequirements) {
