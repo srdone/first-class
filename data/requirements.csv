@@ -27,7 +27,7 @@ tenderfoot-13,Tenderfoot Requirement 13,Demonstrate Scout spirit by living the S
 tenderfoot-14,Tenderfoot Requirement 14,Participate in a Scoutmaster conference.,14,13,requirement,tenderfoot-rank,,TRUE,1/1/2014
 tenderfoot-15,Tenderfoot Requirement 15,Complete your board of review.,15,14,requirement,tenderfoot-rank,,TRUE,1/1/2014
 tenderfoot-rank,Tenderfoot,Tenderfoot Scout Rank,2,1,rank,eaglescout-rank,,TRUE,1/1/2014
-boyscout-joining-requirements,Boy Scout,Boy Scout Joining Requirements,1,0,rank,eaglescout-rank,,TRUE,1/1/2014
+boyscout-joining-requirements,Boy Scout,Boy Scout Joining Requirements,1,0,rank,tenderfoot-rank,,TRUE,1/1/2014
 boyscout-1,Boy Scout Joining Requirement 1,"Meet the age requirements. Be a boy who is 11 years old, or one who has completed the fifth grade or earned the Arrow of Light Award and is at least 10 years old, but is not yet 18 years old.",1,0,requirement,boyscout-joining-requirements,,TRUE,1/1/2014
 boyscout-2,Boy Scout Joining Requirement 2,Find a Scout troop near your home.,2,1,requirement,boyscout-joining-requirements,,TRUE,1/1/2014
 boyscout-3,Boy Scout Joining Requirement 3,Complete a Boy Scout application and health history signed by your parent or guardian.,3,2,requirement,boyscout-joining-requirements,,TRUE,1/1/2014
@@ -71,7 +71,7 @@ secondclass-10,Second Class Requirement 10,"Earn an amount of money agreed upon 
 secondclass-11,Second Class Requirement 11,Demonstrate  Scout spirit by living the Scout Oath (Promise) and Scout Law in your everyday life. Discuss four specific examples (different from those used for Tenderfoot requirement 13) of how you have lived the points of the Scout Law in your daily life.,11,29,requirement,secondclass-rank,,TRUE,1/1/2014
 secondclass-12,Second Class Requirement 12,Participate in a Scoutmaster conference.,12,30,requirement,secondclass-rank,,TRUE,1/1/2014
 secondclass-13,Second Class Requirement 13,Complete your board of review.,13,31,requirement,secondclass-rank,,TRUE,1/1/2014
-secondclass-rank,Second Class,Second Class Scout Rank,3,2,rank,eaglescout-rank,,TRUE,1/1/2014
+secondclass-rank,Second Class,Second Class Scout Rank,3,2,rank,firstclass-rank,,TRUE,1/1/2014
 firstclass-rank,First Class,First Class Scout Rank,4,3,rank,eaglescout-rank,,TRUE,1/1/2014
 firstclass-1,First Class Requirement 1,Demonstrate how to find directions during the day and at night without using a compass.,1,0,requirement,firstclass-rank,,TRUE,1/1/2014
 firstclass-2,First Class Requirement 2,"Using a map and compass, complete an orienteering course that covers at least one mile and requires measuring the height and/or width of designated items (tree, tower, canyon, ditch, etc.).",2,1,requirement,firstclass-rank,,TRUE,1/1/2014
