@@ -2,7 +2,8 @@ angular.module('firstClass').factory('requirementService', ['persistenceService'
 
   var existingRequirements = [];
 
-  var Requirement = function (requirement) {
+  var _Requirement = function (requirement) {
+    $log.debug('new Requirement called');
     $log.debug(requirement);
     this._id = requirement._id;
     this.id = requirement.id;
@@ -17,78 +18,84 @@ angular.module('firstClass').factory('requirementService', ['persistenceService'
     this.effectiveDate = requirement.effectiveDate;
     this.awardName = requirement.id.split('-')[0];
   };
-  Requirement.prototype.addPrereq = function (req) {
-    this._prereqs.push(req.id);
+  _Requirement.prototype.getPrereqs = function () {
+    var that = this;
+    return existingRequirements.filter(function (current) {
+      return (current.parentRequirement === that.id);
+    });
   };
-  // @param req {Requirement} A requirement object
-  Requirement.prototype.removePrereq = function (req) {
-    if (this._prereqs.indexOf(req.id) !== -1) {
-      this._prereqs.splice(this._prereqs.indexOf(req.id), 1);
-    }
-  };
-  Requirement.prototype.getPrereqs = function () {
-    return this._prereqs;
-  };
-  Requirement.prototype.prereqsComplete = function (reqsCompleted) {
-    for (var i = 0; i < this._prereqs.length; i++) {
-      if (reqsCompleted.indexOf(this._prereqs[i]) === -1) {
+  _Requirement.prototype.prereqsComplete = function (reqsCompleted) {
+    var prereqs = this.getPrereqs() || [];
+    $log.debug('Prereqs:');
+    $log.debug(prereqs);
+    var reqsCompletedIds = reqsCompleted.map(function (reqCompleted) {
+      return reqCompleted.id;
+    });
+    prereqs.forEach(function (currentPrereq) {
+      // if the current prereq has prereqs, check those to make sure they are completed
+      if (currentPrereq.getPrereqs()) {
+        if (!currentPrereq.prereqsComplete(reqsCompleted)) {
+          return false;
+        }
+      }
+      // verify that the current prereq id is listed in the list of completed requirement ids
+      if (reqsCompletedIds.indexOf(currentPrereq.id) === -1) {
         return false;
       }
-    }
+    });
+    // return true if it passes all the above tests.
     return true;
   };
 
-  var addRequirement = function (req) {
-    var existingIds = existingRequirements.map(function (current) {
-      return current.id;
-    });
-    if (existingIds.indexOf(req.id) === -1) {
-      existingRequirements.push(req);
-      console.log(existingRequirements);
-    } else {
-      throw new Error('The requirement \'' + req.id + '\' already exists.');
-    }
-  };
+  var _getCurrentRank = function (completedRequirements) {
+    $log.debug('called requirementService.getCurrentRank');
+    $log.debug('Completed Requirements:');
+    $log.debug(completedRequirements);
 
-  var removeRequirement = function (req) {
-    for (var i = 0; i < existingRequirements.length; i++) {
-      if (existingRequirements[i] === req) {
-        existingRequirements.splice(i, 1);
-        break;
-      }
-    }
-  };
-
-  var getRequirement = function (id) {
-    for (var i = 0; i < existingRequirements.length; i++) {
-      if (existingRequirements[i].id === id) {
-        return existingRequirements[i];
-      }
-    }
-    //throw error if can't find the id
-    throw new Error('The requirement id \'' + id + '\' does not exist');
-  };
-
-  var updateRequirement = function () {
-
-  };
-
-  var getAllRequirements = function () {
-    return persistenceService.getAllRequirements().then(function (requirements) {
-      existingRequirements = [];
-      requirements.forEach(function (current) {
-        existingRequirements.push(new Requirement (current));
+    $log.debug('Existing Requirements');
+      $log.debug(existingRequirements);
+      var ranks = existingRequirements.filter(function (currentRequirement) {
+        if (currentRequirement.requirementType === 'rank') {
+          return currentRequirement;
+        }
       });
-      return existingRequirements;
+      $log.debug('Checking Ranks:');
+      $log.debug(ranks);
+
+      var completedRanks = ranks.filter(function (currentRank) {
+        return currentRank.prereqsComplete(completedRequirements);
+      });
+      $log.debug('Completed Ranks: ');
+      $log.debug(completedRanks);
+
+      completedRanks.sort(function (a, b) {
+        if (a.order < b.order) {
+          return -1;
+        } else if (a.order > b.order) {
+          return 1;
+        } else {
+          return 0;
+        }
+      });
+
+      return completedRanks[completedRanks.length - 1];
+  };
+
+  var _getAllRequirements = function () {
+    $log.debug('getAllRequirements called');
+    return persistenceService.getAllRequirements().then(function (requirements) {
+      var inflatedReqs = [];
+      requirements.forEach(function (current) {
+        inflatedReqs.push(new _Requirement(current));
+      });
+      existingRequirements = inflatedReqs;
+      return inflatedReqs;
     });
   };
 
   return {
-    'Requirement': Requirement,
-    'addRequirement': addRequirement,
-    'removeRequirement': removeRequirement,
-    'getRequirement': getRequirement,
-    'updateRequirement': updateRequirement,
-    'getAllRequirements': getAllRequirements
+    'Requirement': _Requirement,
+    'getAllRequirements': _getAllRequirements,
+    'getCurrentRank': _getCurrentRank
   };
 }]);

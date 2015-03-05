@@ -88,7 +88,8 @@ app.factory('scoutObjectService', ['requirementService', 'dateService', 'utilSer
 	  * @returns {String} The current rank held by the scout
 	  */
 	  Scout.prototype.getCurrentRank = function() {
-	      return 'Eagle';
+      $log.debug('called scoutObjectService.getCurrentRank');
+      return requirementService.getCurrentRank(this._completedReqs);
 	  };
 
 	  Scout.prototype.getQualifiedNightsOfCamping = function() {

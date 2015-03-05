@@ -4,7 +4,7 @@
     <md-toolbar>
       <div class="md-toolbar-tools" layout="row">
         <img ng-src="{{scout.photoUrl}}" class="avatar-sm" layout-margin>
-        {{scout.firstName}} {{scout.lastName}}<span ng-if="scout.currentRank()">: {{scout.currentRank}}</span>
+        {{scout.firstName}} {{scout.lastName}}<span ng-if="scout.getCurrentRank()">: {{scout.getCurrentRank().name}}</span>
         <md-icon md-svg-src="icons/oa_pocket_device.svg" ng-if="!!scout.isOA"></md-icon>
         <span flex></span>
       </div>

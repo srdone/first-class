@@ -18,8 +18,12 @@ app.config(['$stateProvider', '$urlRouterProvider',
 				templateUrl: 'views/troop.view.html',
 				controller: 'TroopController',
         resolve: {
-          troop: ['scoutService', function (scoutService) {
+          troop: ['scoutService', '$log', function (scoutService, $log) {
+            $log.debug('resolving troop');
             return scoutService.getScouts();
+          }],
+          existingRequirements: ['requirementService', function (requirementService) {
+            return requirementService.getAllRequirements();
           }]
         }
 			})

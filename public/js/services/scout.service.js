@@ -2,8 +2,8 @@
 
 var app = angular.module('firstClass');
 
-app.factory('scoutService', ['scoutObjectService', 'persistenceService',
-	function (scoutObjectService, persistenceService) {
+app.factory('scoutService', ['scoutObjectService', 'persistenceService', '$log',
+	function (scoutObjectService, persistenceService, $log) {
 		
 		var Scout = scoutObjectService.Scout;
 
@@ -27,6 +27,7 @@ app.factory('scoutService', ['scoutObjectService', 'persistenceService',
 
 		//returns scout object
 		var _getScoutById = function (scoutId) {
+      $log.debug('getScoutById called with scoutId: ' + scoutId);
 
 			return persistenceService.getScoutById(scoutId).then(function (scoutRaw) {
 
@@ -38,6 +39,7 @@ app.factory('scoutService', ['scoutObjectService', 'persistenceService',
 
 		//returns scout objects
 		var _getScouts = function () {
+      $log.debug('getScouts called');
 			return persistenceService.getScouts().then(function (troopScoutDataRaw) {
 
 				var troopScoutsConverted = troopScoutDataRaw.map(function (current) {
@@ -50,6 +52,8 @@ app.factory('scoutService', ['scoutObjectService', 'persistenceService',
 		};
 
 		var _createNewScout = function (scout) {
+      $log.debug('createNewScout called');
+      $log.debug(scout);
 			var newScout = new Scout(undefined, scout.firstName, scout.lastName, scout.photoUrl, scout.isOA, undefined, scout.patrol);
 			return persistenceService.createScout(newScout);
 		};
