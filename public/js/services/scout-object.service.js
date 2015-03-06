@@ -5,12 +5,6 @@ var app = angular.module('firstClass');
 app.factory('scoutObjectService', ['requirementService', 'dateService', 'utilService', 'persistenceService', '$log',
 	function (requirementService, dateService, utilService, persistenceService, $log) {
 
-    var tempNeededReqs = [
-        {title: 'test data', color: 'blue'},
-        {title: 'knots', color: 'brown'},
-        {title: 'camping', color: 'green'},
-        {title: 'first-aid', color: 'red'}
-      ];
 	  /**
 	  * @ngdoc function
 	  * @name firstClassApp.ScoutService.Scout
@@ -75,6 +69,7 @@ app.factory('scoutObjectService', ['requirementService', 'dateService', 'utilSer
 	    this._positionHistory = positionHistory ? _convertPositionHistory(positionHistory) : [];
 	    this._campingHistory = campingHistory ? _convertCampingHistory(campingHistory) : [];
 	    this._serviceHistory = serviceHistory ? _convertServiceHistory(serviceHistory) : [];
+      this.currentRank = this.getCurrentRank();
 	  };
 	  Scout.prototype.save = function () {
 	  	return persistenceService.saveScout(this);
@@ -204,6 +199,7 @@ app.factory('scoutObjectService', ['requirementService', 'dateService', 'utilSer
     Scout.prototype.addRequirement = function (requirement) {
       if (!this.completedRequirementDateById(requirement.id)) {
         this._completedReqs.push({requirement: requirement, dateCompleted: Date.now()});
+        this.currentRank = this.getCurrentRank();
       }
     };
     Scout.prototype.removeRequirementById = function (id) {
@@ -215,6 +211,8 @@ app.factory('scoutObjectService', ['requirementService', 'dateService', 'utilSer
         if (this._completedReqs[i].requirement.id === id) {
           var deleted = this._completedReqs.splice(i, 1);
           $log.debug('Deleted: ' + deleted);
+
+          this.currentRank = this.getCurrentRank();
           return true;
         }
       }
