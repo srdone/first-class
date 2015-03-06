@@ -1,12 +1,13 @@
 <div layout="row">
 
+  <span>Remaining Requirements:</span>
   <div ng-repeat="(key, value) in neededRequirementCategories">
-    <md-button>
+    <md-button flex>
       <span class="number">{{value}}</span>
       <md-tooltip>
         {{key | uppercase}}
       </md-tooltip>
-      <md-icon md-svg-src="icons[key]"></md-icon>
+      <md-icon md-svg-src="{{icons[key]}}"></md-icon>
     </md-button>
   </div>
 

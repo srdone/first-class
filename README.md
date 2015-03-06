@@ -4,11 +4,11 @@ Note: some of the code for the backend is based off code from MEAN Web Developme
 
 # Bug Fixes:
 
-1 - icons not displaying on fcs-needed-requirement-summary directive
 3 - rendering issue on transition between routes
 4 - transition on choice of item to add (bottom sheet) - maybe use an intermediate bottom sheet
 7 - code smell - need more directives - currently repeating a lot
 8 - lose login state on refresh - save login state to cookie instead of rootScope?
+9 - remaining requirements directive display needs polish
 
 # Todos:
 
