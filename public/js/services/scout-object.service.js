@@ -201,6 +201,11 @@ app.factory('scoutObjectService', ['requirementService', 'dateService', 'utilSer
       if (!this.completedRequirementDateById(requirement.id)) {
         this._completedReqs.push({requirement: requirement, dateCompleted: Date.now()});
 
+        // mark prereqs as completed
+        requirement.getPrereqs().forEach(function (currentPrereq) {
+          this.addRequirement(currentPrereq);
+        }, this);
+
         // update values
         this.currentRank = this.getCurrentRank();
         this.neededReqSummary = this.getSummarizedNeededRequirementCategories();
