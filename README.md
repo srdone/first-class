@@ -5,7 +5,6 @@ Note: some of the code for the backend is based off code from MEAN Web Developme
 # Bug Fixes:
 
 1 - icons not displaying on fcs-needed-requirement-summary directive
-2 - needed requirement summary returning completed requirements not needed requirements?
 3 - rendering issue on transition between routes
 4 - transition on choice of item to add (bottom sheet) - maybe use an intermediate bottom sheet
 5 - Patrol Patrol (scout view)

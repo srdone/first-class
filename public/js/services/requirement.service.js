@@ -104,7 +104,7 @@ angular.module('firstClass').factory('requirementService', ['persistenceService'
     });
 
     return existingRequirements.filter(function (current) {
-      return (completedRequirementIds.indexOf(current.id) !== -1);
+      return (completedRequirementIds.indexOf(current.id) === -1);
     });
   };
 
