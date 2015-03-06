@@ -3,7 +3,7 @@
     <div class="md-toolbar-tools" layout="row">
         <img ng-src="{{scout.photoUrl}}" class="avatar-sm" layout-margin>
         {{scout.firstName}} {{scout.lastName}}<span ng-if="scout.currentRank">: {{scout.currentRank.name}}</span>
-        <md-icon md-svg-src="icons/oa_pocket_device.svg" ng-if="!!scout.isOA"></md-icon>
+        <md-icon md-svg-src="icons/oa_pocket_device.svg" ng-if="!!scout.isOA" layout-margin></md-icon>
       <span flex></span>
       <md-button ui-sref="scout-detail({ scoutId: scout.id })" class="md-raised md-accent">Details</md-button>
     </div>
