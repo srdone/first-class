@@ -12,6 +12,7 @@ Note: some of the code for the backend is based off code from MEAN Web Developme
 6 - padding between OA badge and rank name
 7 - code smell - need more directives - currently repeating a lot
 8 - lose login state on refresh - save login state to cookie instead of rootScope?
+9 - requirement data not loaded for neededReqSummary value on initial load
 
 # Todos:
 
