@@ -10,6 +10,7 @@ Note: some of the code for the backend is based off code from MEAN Web Developme
 8 - lose login state on refresh - save login state to cookie instead of rootScope?
 9 - remaining requirements directive display needs polish
 10 - adding overall requirement doesn't get sub-sub requirements
+11 - removing requirement doesn't reset current rank properly
 
 # Todos:
 
