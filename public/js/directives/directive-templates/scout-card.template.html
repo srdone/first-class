@@ -46,7 +46,7 @@
 
         <span ng-if="!scout.isOA && scout.isOAQualified()">OA Qualified</span>
 
-        <span ng-show="scout.currentPatrol">{{scout.currentPatrol}} <span ng-hide="patrolContainsPatrol">Patrol</span></span>
+        <fcs-scout-patrol patrol="scout.currentPatrol"></fcs-scout-patrol>
 
       </div>
       </div>

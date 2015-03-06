@@ -34,6 +34,9 @@ app.config(['$stateProvider', '$urlRouterProvider',
         resolve: {
           scout: ['$stateParams', 'scoutService', function ($stateParams, scoutService) {
             return scoutService.getScoutById($stateParams.scoutId);
+          }],
+          existingRequirements: ['requirementService', function (requirementService) {
+            return requirementService.getAllRequirements();
           }]
         }
 			});

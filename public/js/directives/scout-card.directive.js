@@ -5,13 +5,6 @@ app.directive('fcsScoutCard', function () {
 		scope: {
 			scout: '='
 		},
-		templateUrl: 'js/directives/directive-templates/scout-card.template.html',
-    link: function ($scope, $element, $attributes) {
-      $scope.$watch('scout.currentPatrol', function (n, o) {
-        if (n.toLowerCase().indexOf('patrol') !== -1) {
-          $scope.patrolContainsPatrol = true;
-        }
-      });
-    }
+		templateUrl: 'js/directives/directive-templates/scout-card.template.html'
 	};
 });
