@@ -2,8 +2,8 @@
 
 var app = angular.module('firstClass');
 
-app.controller('ScoutController', ['$scope', '$modal', 'scoutService', 'scout', '$mdBottomSheet', 'requirementService',
-	function ($scope, $modal, scoutService, scout, $mdBottomSheet, requirementService) {
+app.controller('ScoutController', ['$scope', 'scoutService', 'scout', '$mdBottomSheet', 'requirementService',
+	function ($scope, scoutService, scout, $mdBottomSheet, requirementService) {
 
 		$scope.scout = scout;
 

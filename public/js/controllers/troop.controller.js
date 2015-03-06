@@ -2,8 +2,8 @@
 
 var app = angular.module('firstClass');
 
-app.controller('TroopController', ['$scope', '$modal', 'scoutService', 'troop', '$mdBottomSheet',
-	function ($scope, $modal, scoutService, troop, $mdBottomSheet) {
+app.controller('TroopController', ['$scope', 'scoutService', 'troop', '$mdBottomSheet',
+	function ($scope, scoutService, troop, $mdBottomSheet) {
 
     $scope.troop = troop;
 
