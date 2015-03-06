@@ -9,7 +9,6 @@ Note: some of the code for the backend is based off code from MEAN Web Developme
 4 - transition on choice of item to add (bottom sheet) - maybe use an intermediate bottom sheet
 7 - code smell - need more directives - currently repeating a lot
 8 - lose login state on refresh - save login state to cookie instead of rootScope?
-9 - requirement data not loaded for neededReqSummary value on initial load
 
 # Todos:
 
