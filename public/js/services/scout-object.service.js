@@ -228,12 +228,23 @@ app.factory('scoutObjectService', ['requirementService', 'dateService', 'utilSer
         return requirementService.getPercentProgressToFirstClass(this._completedReqs);
 	    };
 	    Scout.prototype.getNeededRequirementCategories = function () {
-        // TODO: calculate these off the requirements list
-	    	return tempNeededReqs;
+        return this.getMissingRequirements().map(function (current) {
+          return current.category;
+        });
 	    };
-	    Scout.prototype.getMeritBadgeCount = function () {
-	    	return 20;
-	    };
+      Scout.prototype.getSummarizedNeededRequirementCategories = function () {
+        return this.getNeededRequirementCategories().reduce(function (previous, current) {
+          if (previous[current]) {
+            previous[current] += 1;
+          } else {
+            previous[current] = 1;
+          }
+          return previous;
+        }, {});
+      };
+      Scout.prototype.getMissingRequirements = function () {
+        return requirementService.getMissingRequirements(this._completedReqs);
+      };
 
 	  var Position = function (id, title, start, end) {
 	    this.id = id || utilService.createUUID();

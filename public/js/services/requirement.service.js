@@ -9,6 +9,7 @@ angular.module('firstClass').factory('requirementService', ['persistenceService'
     this.id = requirement.id;
     this.name = requirement.name;
     this.description = requirement.description;
+    this.category = requirement.category;
     this.requirementNumber = requirement.requirementNumber;
     this.order = requirement.order;
     this.requirementType = requirement.requirementType;
@@ -97,10 +98,21 @@ angular.module('firstClass').factory('requirementService', ['persistenceService'
     return (completedRequirements.length / existingRequirements.length);
   };
 
+  var _getMissingRequirements = function (completedRequirements) {
+    var completedRequirementIds = completedRequirements.map(function (current) {
+      return current.requirement.id;
+    });
+
+    return existingRequirements.filter(function (current) {
+      return (completedRequirementIds.indexOf(current.id) !== -1);
+    });
+  };
+
   return {
     'Requirement': _Requirement,
     'getAllRequirements': _getAllRequirements,
     'getCurrentRank': _getCurrentRank,
-    'getPercentProgressToFirstClass': _getPercentProgressToFirstClass
+    'getPercentProgressToFirstClass': _getPercentProgressToFirstClass,
+    'getMissingRequirements': _getMissingRequirements
   };
 }]);

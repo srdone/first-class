@@ -15,6 +15,9 @@ var RequirementSchema = new Schema({
     type: String,
     required: true
   },
+  category: {
+    type: String
+  },
   requirementNumber: {
     type: String,
     required: true
