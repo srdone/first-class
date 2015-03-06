@@ -61,24 +61,27 @@
              md-svg-src="bower_components/material-design-icons/content/svg/production/ic_add_circle_48px.svg"></md-icon>
   </md-button>
 
-  <!--<md-card>-->
-    <!--<md-toolbar>-->
-      <!--<div class="md-toolbar-tools">-->
-        <!--Requirements-->
-      <!--</div>-->
-    <!--</md-toolbar>-->
-    <!--<md-card-content>-->
-      <!--<md-list>-->
-        <!--<md-item ng-repeat="allRequirements">-->
-          <!--<md-item-content>-->
-            <!--<md-checkbox>-->
-              <!---->
-            <!--</md-checkbox>-->
-          <!--</md-item-content>-->
-        <!--</md-item>-->
-      <!--</md-list>-->
-    <!--</md-card-content>-->
-  <!--</md-card>-->
+  <md-card>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        Requirements Completed
+      </div>
+    </md-toolbar>
+    <md-card-content>
+      <md-list>
+        <md-item ng-repeat="completedRequirement in scout.getCompletedRequirements()">
+          <md-item-content>
+            <span class="truncate">
+              {{completedRequirement.dateCompleted | date: 'shortDate'}}: {{completedRequirement.requirement.name}} - {{completedRequirement.requirement.description}}
+            </span>
+            <md-button ng-click="deleteRequirement(completedRequirement)" aria-label="Remove Requirement {{completedRequirement.requirement.name}}">
+              <md-icon md-svg-src="bower_components/material-design-icons/action/svg/production/ic_delete_48px.svg"></md-icon>
+            </md-button>
+          </md-item-content>
+        </md-item>
+      </md-list>
+    </md-card-content>
+  </md-card>
 
     <!--Service Detail-->
     <md-card ng-if="!!scout.getService().length">

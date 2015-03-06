@@ -19,6 +19,7 @@ Note: some of the code for the backend is based off code from MEAN Web Developme
 4 - Add ability to edit scout name / OA status / picture url
 5 - Add ability to edit position / service / campout information
 6 - Deploy to Digital Ocean or Heroku
+7 - Add asynchronous error handling
 
 8 - Add ability to edit possible requirements
 

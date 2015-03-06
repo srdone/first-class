@@ -22,6 +22,13 @@ app.controller('ScoutController', ['$scope', 'scoutService', 'scout', '$mdBottom
       });
     };
 
+    $scope.deleteRequirement = function(completedRequirement) {
+      $scope.scout.removeRequirementById(completedRequirement.requirement.id);
+      $scope.scout.save().then(null, function () {
+        $scope.scout.addRequirement(completedRequirement.requirement);
+      });
+    };
+
     $scope.deleteCampout = function (campout) {
       $scope.scout.removeCampout(campout.id);
       $scope.scout.save();
