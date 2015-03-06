@@ -41,3 +41,8 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+.truncate:hover {
+    white-space: normal;
+    overflow: visible;
+}
