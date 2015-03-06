@@ -15,13 +15,12 @@ Note: some of the code for the backend is based off code from MEAN Web Developme
 
 # Todos:
 
-1 - Show current requirement / rank status
+1 - Add summary card of all scouts
 2 - Add ability to delete scout
 3 - Add ability to delete requirement
 4 - Add ability to edit scout name / OA status / picture url
 5 - Add ability to edit position / service / campout information
 6 - Deploy to Digital Ocean or Heroku
-7 - Cleanup login / logout bugs
 
 8 - Add ability to edit possible requirements
 
