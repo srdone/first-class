@@ -70,6 +70,7 @@ app.factory('scoutObjectService', ['requirementService', 'dateService', 'utilSer
 	    this._campingHistory = campingHistory ? _convertCampingHistory(campingHistory) : [];
 	    this._serviceHistory = serviceHistory ? _convertServiceHistory(serviceHistory) : [];
       this.currentRank = this.getCurrentRank();
+      this.neededReqSummary = this.getSummarizedNeededRequirementCategories();
 	  };
 	  Scout.prototype.save = function () {
 	  	return persistenceService.saveScout(this);
@@ -199,7 +200,10 @@ app.factory('scoutObjectService', ['requirementService', 'dateService', 'utilSer
     Scout.prototype.addRequirement = function (requirement) {
       if (!this.completedRequirementDateById(requirement.id)) {
         this._completedReqs.push({requirement: requirement, dateCompleted: Date.now()});
+
+        // update values
         this.currentRank = this.getCurrentRank();
+        this.neededReqSummary = this.getSummarizedNeededRequirementCategories();
       }
     };
     Scout.prototype.removeRequirementById = function (id) {
@@ -212,7 +216,10 @@ app.factory('scoutObjectService', ['requirementService', 'dateService', 'utilSer
           var deleted = this._completedReqs.splice(i, 1);
           $log.debug('Deleted: ' + deleted);
 
+          //update values
           this.currentRank = this.getCurrentRank();
+          this.neededReqSummary = this.getSummarizedNeededRequirementCategories();
+
           return true;
         }
       }
