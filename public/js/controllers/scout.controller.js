@@ -16,7 +16,7 @@ app.controller('ScoutController', ['$scope', 'scoutService', 'scout', '$mdBottom
             return $scope.scout;
           },
           requirements: function () {
-            return requirementService.getAllRequirements();
+            return $scope.scout.getMissingRequirements();
           }
         }
       });

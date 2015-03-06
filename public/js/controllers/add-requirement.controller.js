@@ -6,6 +6,7 @@ angular.module('firstClass').controller('AddRequirementController',
       $scope.scout.save().then(function (savedScout) {
         $log.debug('Saved Scout:');
         $log.debug(savedScout);
+        $scope.requirements = $scope.scout.getMissingRequirements();
       });
     };
 
@@ -13,6 +14,7 @@ angular.module('firstClass').controller('AddRequirementController',
       $scope.scout.removeRequirementById(completedRequirement.requirement.id);
       $scope.scout.save().then(function (savedScout) {
         $log.debug(savedScout);
+        $scope.requirements = $scope.scout.getMissingRequirements();
       });
     };
 
