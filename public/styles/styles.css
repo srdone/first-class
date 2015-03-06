@@ -2,19 +2,19 @@
   display: none !important;
 }
 /*see http://www.htmlxprs.com/post/9/easy-angularjs-animations-using-animatecss*/
-.ng-enter {
-    -webkit-animation: fadeIn 1s;
-    -moz-animation: fadeIn 1s;
-    -o-animation: fadeIn 1s;
-    animation: fadeIn 1s;
-}
+/*.ng-enter {*/
+    /*-webkit-animation: fadeIn 1s;*/
+    /*-moz-animation: fadeIn 1s;*/
+    /*-o-animation: fadeIn 1s;*/
+    /*animation: fadeIn 1s;*/
+/*}*/
 
-.ng-leave {
-    -webkit-animation: fadeOut 1s;
-    -moz-animation: fadeOut 1s;
-    -o-animation: fadeOut 1s;
-    animation: fadeOut 1s;
-}
+/*.ng-leave {*/
+    /*-webkit-animation: fadeOut 1s;*/
+    /*-moz-animation: fadeOut 1s;*/
+    /*-o-animation: fadeOut 1s;*/
+    /*animation: fadeOut 1s;*/
+/*}*/
 
 .avatar-sm {
     height: 50px;
