@@ -93,9 +93,14 @@ angular.module('firstClass').factory('requirementService', ['persistenceService'
     });
   };
 
+  var _getPercentProgressToFirstClass = function (completedRequirements) {
+    return (completedRequirements.length / existingRequirements.length);
+  };
+
   return {
     'Requirement': _Requirement,
     'getAllRequirements': _getAllRequirements,
-    'getCurrentRank': _getCurrentRank
+    'getCurrentRank': _getCurrentRank,
+    'getPercentProgressToFirstClass': _getPercentProgressToFirstClass
   };
 }]);

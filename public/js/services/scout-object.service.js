@@ -224,9 +224,8 @@ app.factory('scoutObjectService', ['requirementService', 'dateService', 'utilSer
 	    Scout.prototype.getCompletedRequirements = function () {
 	      return this._completedReqs;
 	    };
-	    Scout.prototype.getPercentProgressToNextRank = function () {
-        // TODO: calculate this off of requirements
-	    	return 30;
+	    Scout.prototype.getPercentProgressToFirstClass = function () {
+        return requirementService.getPercentProgressToFirstClass(this._completedReqs);
 	    };
 	    Scout.prototype.getNeededRequirementCategories = function () {
         // TODO: calculate these off the requirements list

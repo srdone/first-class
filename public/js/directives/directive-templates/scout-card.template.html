@@ -12,9 +12,9 @@
   <md-card-content>
     <!--Next rank progress -->
     <div class="md-tile-content">
-        <h3>Progress to next rank: </h3>
+        <h3>Progress to First Class: {{scout.getPercentProgressToFirstClass() | percent}}</h3>
 
-      <md-progress-linear class="md-info" md-mode="determinate" value="scout.getPercentProgressToNextRank()" flex layout-margin></md-progress-linear>
+      <md-progress-linear class="md-info" md-mode="determinate" ng-value="scout.getPercentProgressToFirstClass() * 100" flex layout-margin></md-progress-linear>
 
         <!-- Position Summary Data -->
       <md-list>
