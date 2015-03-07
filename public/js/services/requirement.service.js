@@ -55,24 +55,28 @@ angular.module('firstClass').factory('requirementService', ['persistenceService'
     }
   };
 
-  var _getCurrentRank = function (completedRequirements) {
+  var _getCompletedRanks = function (completedRequirements) {
     $log.debug('called requirementService.getCurrentRank');
     $log.debug('Completed Requirements:');
     $log.debug(completedRequirements);
 
     $log.debug('Existing Requirements');
-      $log.debug(existingRequirements);
-      var ranks = existingRequirements.filter(function (currentRequirement) {
-        if (currentRequirement.requirementType === 'rank') {
-          return currentRequirement;
-        }
-      });
-      $log.debug('Checking Ranks:');
-      $log.debug(ranks);
+    $log.debug(existingRequirements);
+    var ranks = existingRequirements.filter(function (currentRequirement) {
+      if (currentRequirement.requirementType === 'rank') {
+        return currentRequirement;
+      }
+    });
+    $log.debug('Checking Ranks:');
+    $log.debug(ranks);
 
-      var completedRanks = ranks.filter(function (currentRank) {
-        return currentRank.prereqsComplete(completedRequirements);
-      });
+    return ranks.filter(function (currentRank) {
+      return currentRank.prereqsComplete(completedRequirements);
+    });
+  };
+
+  var _getCurrentRank = function (completedRequirements) {
+      var completedRanks = _getCompletedRanks(completedRequirements);
       $log.debug('Completed Ranks: ');
       $log.debug(completedRanks);
 
@@ -118,6 +122,7 @@ angular.module('firstClass').factory('requirementService', ['persistenceService'
   return {
     'Requirement': _Requirement,
     'getAllRequirements': _getAllRequirements,
+    'getCompletedRanks': _getCompletedRanks,
     'getCurrentRank': _getCurrentRank,
     'getPercentProgressToFirstClass': _getPercentProgressToFirstClass,
     'getMissingRequirements': _getMissingRequirements

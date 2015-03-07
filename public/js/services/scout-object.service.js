@@ -208,6 +208,10 @@ app.factory('scoutObjectService', ['requirementService', 'dateService', 'utilSer
 
         // update values
         this.currentRank = this.getCurrentRank();
+        requirementService.getCompletedRanks(this._completedReqs).forEach(function (currentRank) {
+          this.addRequirement(currentRank);
+        }, this);
+
         this.neededReqSummary = this.getSummarizedNeededRequirementCategories();
       }
     };
