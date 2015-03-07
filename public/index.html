@@ -14,16 +14,16 @@
 <body ng-app="firstClass" ng-cloak ng-controller="MainController" layout="row">
 
 
-<md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$media('gt-md')">
+<md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$media('gt-md')" ng-if="loggedIn">
   <md-toolbar>
     <h1 class="md-toolbar-tools">First Class Scouting</h1>
   </md-toolbar>
 
   <md-content flex layout="column">
-    <md-button ng-click="goToTroopView()" fcs-toggle-on-login="false">
+    <md-button ng-click="goToTroopView()">
       Troop
     </md-button>
-    <md-button fcs-toggle-on-login ng-click="logout()">
+    <md-button ng-click="logout()">
       Logout {{username}}
     </md-button>
   </md-content>
@@ -104,7 +104,6 @@
 <script src="js/directives/scout-card.directive.js"></script>
 <script src="js/directives/login.directive.js"></script>
 <script src="js/directives/navbar.directive.js"></script>
-<script src="js/directives/toggle-on-login.directive.js"></script>
 <script src="js/directives/add-button.directive.js"></script>
 <script src="js/directives/scout-avatar.directive.js"></script>
 <script src="js/directives/welcome.directive.js"></script>

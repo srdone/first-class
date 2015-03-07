@@ -46,3 +46,7 @@
 .truncate:hover {
     white-space: normal;
 }
+
+.hidden {
+    display: none;
+}

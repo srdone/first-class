@@ -15,10 +15,9 @@ app.controller('LoginController', ['$scope', '$rootScope', 'persistenceService',
     };
 
     var _login = function () {
-      persistenceService.login($scope.user.email, $scope.user.password)
+      authService.login($scope.user.email, $scope.user.password)
         .then(function success () {
           $scope.welcomeMessage = 'Welcome to First Class Scouting!';
-          $rootScope.loggedIn = true;
           _reset();
           $log.debug('logged in, going to troop state');
           $state.go('troop');

@@ -24,9 +24,25 @@ angular.module('firstClass').factory('authService', ['$location', '$http', '$q',
     return $http.post('/signup', {username: username, password: password});
   };
 
+  var _login = function (username, password) {
+    return $http.post('/login', {username: username, password: password}).then(function (response) {
+      $rootScope.loggedIn = true;
+      $rootScope.username = response.data.username;
+      console.log('login called, responded: ' + JSON.stringify(response));
+    });
+  };
+
+  var _logout = function () {
+    return $http.post('/logout', {}).then(function (response) {
+      console.log('logout called, responded: ' + JSON.stringify(response));
+    });
+  };
+
   return {
     requireAuth: _requireAuth,
-    signUp: _signUp
+    signUp: _signUp,
+    login: _login,
+    logout: _logout
   };
 
 }]);
