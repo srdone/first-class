@@ -61,14 +61,21 @@ angular.module('firstClass').factory('requirementService', ['persistenceService'
     $log.debug('Existing Requirements');
     $log.debug(existingRequirements);
     var ranks = existingRequirements.filter(function (currentRequirement) {
-      if (currentRequirement.requirementType === 'rank') {
-        return currentRequirement;
-      }
+      return (currentRequirement.requirementType === 'rank');
     });
     $log.debug('Checking Ranks:');
     $log.debug(ranks);
 
-    return ranks.filter(function (currentRank) {
+    var ranksMarkedComplete = ranks.filter(function (currentRank) {
+      for (var i = 0; i < completedRequirements.length; i++) {
+        if (completedRequirements[i].requirement.id === currentRank.id) {
+          return true;
+        }
+      }
+      return false;
+    });
+
+    return ranksMarkedComplete.filter(function (currentRank) {
       return currentRank.prereqsComplete(completedRequirements);
     });
   };
