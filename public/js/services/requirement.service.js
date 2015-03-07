@@ -1,6 +1,8 @@
 angular.module('firstClass').factory('requirementService', ['persistenceService', '$log', function(persistenceService, $log) {
 
   var existingRequirements = [];
+  var existingRequirementsParentByChildId = {};
+  var existingRequirementsChildrenByParentId = {};
 
   var _Requirement = function (requirement) {
     $log.debug('new Requirement called');
@@ -19,11 +21,11 @@ angular.module('firstClass').factory('requirementService', ['persistenceService'
     this.effectiveDate = requirement.effectiveDate;
     this.awardName = requirement.id.split('-')[0];
   };
+
   _Requirement.prototype.getPrereqs = function () {
-    return existingRequirements.filter(function (current) {
-      return (current.parentRequirement === this.id);
-    }, this);
+    return existingRequirementsChildrenByParentId[this.id] || [];
   };
+
   _Requirement.prototype.prereqsComplete = function (reqsCompleted) {
     var prereqs = this.getPrereqs() || [];
     var reqsCompletedIds = reqsCompleted.map(function (reqCompleted) {
@@ -46,17 +48,13 @@ angular.module('firstClass').factory('requirementService', ['persistenceService'
     // return true if it passes all the above tests.
     return completedAllPrereqs;
   };
-  _Requirement.prototype.getParent = function () {
-    for (var i = 0; i < existingRequirements.length; i++) {
 
-      if (existingRequirements[i].id === this.parentRequirement) {
-        return existingRequirements[i];
-      }
-    }
+  _Requirement.prototype.getParent = function () {
+    return existingRequirementsParentByChildId[this.id];
   };
 
   var _getCompletedRanks = function (completedRequirements) {
-    $log.debug('called requirementService.getCurrentRank');
+    $log.debug('called requirementService.getCompletedRank');
     $log.debug('Completed Requirements:');
     $log.debug(completedRequirements);
 
@@ -101,8 +99,42 @@ angular.module('firstClass').factory('requirementService', ['persistenceService'
         inflatedReqs.push(new _Requirement(current));
       });
       existingRequirements = inflatedReqs;
+      existingRequirementsChildrenByParentId = _keyRequirementsByParent(existingRequirements);
+      $log.debug('existingRequirementsChildrenByParentId');
+      $log.debug(existingRequirementsChildrenByParentId);
+      existingRequirementsParentByChildId = _keyRequirementsByChild(existingRequirements);
+      $log.debug('existingRequirementsParentByChildId');
+      $log.debug(existingRequirementsParentByChildId);
       return inflatedReqs;
     });
+  };
+
+  var _keyRequirementsByParent = function (requirements) {
+    return requirements.reduce(function (previous, current) {
+      if (previous[current.parentRequirement]) {
+        previous[current.parentRequirement].push(current);
+      } else {
+        previous[current.parentRequirement] = [];
+        previous[current.parentRequirement].push(current);
+      }
+      return previous;
+    }, {});
+  };
+
+  var _keyRequirementsByChild = function (requirements) {
+    return requirements.reduce(function (previous, current) {
+      previous[current.id] = _findParentRequirementById(current.parentRequirement, requirements);
+      return previous;
+    }, {});
+  };
+
+  var _findParentRequirementById = function (parentId, requirements) {
+    for (var i = 0; i < requirements.length; i++) {
+      if (requirements[i].id === parentId) {
+        return requirements[i];
+      }
+    }
+    return undefined;
   };
 
   var _getPercentProgressToFirstClass = function (completedRequirements) {
