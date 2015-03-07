@@ -34,7 +34,7 @@
   <md-toolbar>
 
     <div class="md-toolbar-tools" ng-click="toggleMenu()" layout="row" flex>
-      <md-button hide-gt-md aria-label="Toogle Menu">
+      <md-button hide-gt-md aria-label="Toogle Menu" ng-if="loggedIn">
         <md-icon md-svg-src="bower_components/material-design-icons/navigation/svg/production/ic_menu_48px.svg"></md-icon>
       </md-button>
 
