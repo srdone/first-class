@@ -50,9 +50,7 @@
         <md-item ng-repeat="completedRequirement in scout.getCompletedRequirements()">
           <md-item-content>
             <fcs-completed-requirement-summary completed-requirement="completedRequirement"></fcs-completed-requirement-summary>
-            <md-button ng-click="deleteRequirement(completedRequirement)" aria-label="Remove Requirement {{completedRequirement.requirement.name}}">
-              <md-icon md-svg-src="bower_components/material-design-icons/action/svg/production/ic_delete_48px.svg"></md-icon>
-            </md-button>
+            <fcs-delete-button ng-click="deleteRequirement(completedRequirement)" aria-label="Remove Requirement {{completedRequirement.requirement.name}}"></fcs-delete-button>
           </md-item-content>
         </md-item>
       </md-list>
