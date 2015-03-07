@@ -20,7 +20,7 @@
       <md-list>
         <md-item ng-repeat="position in scout.getCurrentPositions()">
           <md-item-content>
-            {{position.title}} - {{position.monthsInPosition()}} months
+            <fcs-position-summary position="position"></fcs-position-summary>
           </md-item-content>
         </md-item>
       </md-list>
