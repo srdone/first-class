@@ -23,16 +23,14 @@
     border-radius: 50%;
 }
 
-.add-scout {
+fcs-add-button .md-button {
     position: fixed;
-    bottom: 40px;
+    bottom: 0;
     right: 40px;
-}
-
-.add-details {
-    position: fixed;
-    bottom: 40px;
-    right: 40px;
+    height: 35px;
+    width: 50px;
+    z-index: 999;
+    background: rgba(252, 68, 130, 0.5);
 }
 
 /* https://css-tricks.com/snippets/css/truncate-string-with-ellipsis/ */
@@ -55,4 +53,16 @@ fcs-requirement-summary-icons .header {
 
 fcs-rank-progress .header {
     font-weight: 800;
+}
+
+fcs-position-summary .title {
+    font-weight: 800;
+}
+
+fcs-position-summary .months {
+    font-style: italic;
+}
+
+fcs-position-list .current {
+    margin-bottom: 10px;
 }
