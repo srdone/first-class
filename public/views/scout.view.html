@@ -28,22 +28,9 @@
 
         <div class="md-tile-content">
 
-          <md-button>
-            <span class="number">{{scout.getQualifiedNightsOfCamping()}}</span>
-            <md-tooltip>
-              Qualified Nights of Camping
-            </md-tooltip>
-            <md-icon md-svg-src="icons/svg/camping2.svg">
-            </md-icon>
-          </md-button>
+          <fcs-nights-of-camping-icon nights="scout.getQualifiedNightsOfCamping()"></fcs-nights-of-camping-icon>
 
-          <md-button>
-            <span class="number">{{scout.getHoursOfService()}}</span>
-            <md-tooltip>
-              Hours of Service
-            </md-tooltip>
-            <md-icon md-svg-src="icons/svg/cement.svg"></md-icon>
-          </md-button>
+          <fcs-hours-of-service-icon hours="scout.getHoursOfService()"></fcs-hours-of-service-icon>
 
           <span ng-if="!scout.isOA && scout.isOAQualified()">OA Qualified</span>
 
