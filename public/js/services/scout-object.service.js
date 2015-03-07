@@ -70,6 +70,7 @@ app.factory('scoutObjectService', ['requirementService', 'dateService', 'utilSer
 	    this._campingHistory = campingHistory ? _convertCampingHistory(campingHistory) : [];
 	    this._serviceHistory = serviceHistory ? _convertServiceHistory(serviceHistory) : [];
       this.currentRank = this.getCurrentRank();
+      this.currentPositions = this.getCurrentPositions();
       this.neededReqSummary = this.getSummarizedNeededRequirementCategories();
 	  };
 	  Scout.prototype.save = function () {
@@ -147,12 +148,14 @@ app.factory('scoutObjectService', ['requirementService', 'dateService', 'utilSer
 	  Scout.prototype.addPosition = function (title, start, end) {
 	    var position = new Position(undefined, title, start, end);
 	    this._positionHistory.push(position);
+      this.currentPositions = this.getCurrentPositions();
 	    return position;
 	  };
 	  Scout.prototype.removePosition = function (id) {
 	    for (var i = 0; i < this._positionHistory.length; i++) {
 	      if (this._positionHistory[i].id === id) {
 	        this._positionHistory.splice(i, 1);
+          this.currentPositions = this.getCurrentPositions();
 	        return true;
 	      }
 	    }
