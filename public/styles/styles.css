@@ -47,6 +47,12 @@
     white-space: normal;
 }
 
-.hidden {
-    display: none;
+fcs-requirement-summary-icons .header {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-weight: 800;
+}
+
+fcs-rank-progress .header {
+    font-weight: 800;
 }

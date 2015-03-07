@@ -11,7 +11,7 @@ angular.module('firstClass').factory('authService', ['$location', '$http', '$q',
         $rootScope.username = response.data.username;
         deferred.resolve('success');
       })
-      .failure(function () {
+      .error(function () {
         $location.path('/');
         deferred.reject();
       });
@@ -38,11 +38,24 @@ angular.module('firstClass').factory('authService', ['$location', '$http', '$q',
     });
   };
 
+  var _checkLoggedIn = function () {
+    return $http.get('/loggedIn')
+      .success(function (response) {
+        $rootScope.loggedIn = true;
+      })
+      .error(function (response) {
+        $location.path('/');
+        $rootScope.username = undefined;
+        $rootScope.loggedIn = false;
+      });
+  };
+
   return {
     requireAuth: _requireAuth,
     signUp: _signUp,
     login: _login,
-    logout: _logout
+    logout: _logout,
+    checkLoggedIn: _checkLoggedIn
   };
 
 }]);

@@ -9,9 +9,8 @@ app.config(['$httpProvider', '$logProvider', function ($httpProvider, $logProvid
   $httpProvider.interceptors.push('verifyAuthenticationHttpInterceptor');
 }]);
 
-app.run(['$rootScope', '$state', function ($rootScope, $state) {
-  $rootScope.loggedIn = false;
-  $state.go('main');
+app.run(['$rootScope', '$state', 'authService', function ($rootScope, $state, authService) {
+  authService.checkLoggedIn();
 }]);
 
 
