@@ -2,8 +2,8 @@
 
 var app = angular.module('firstClass');
 
-app.controller('ScoutController', ['$scope', 'scoutService', 'scout', '$mdBottomSheet', 'requirementService',
-	function ($scope, scoutService, scout, $mdBottomSheet, requirementService) {
+app.controller('ScoutController', ['$scope', 'scoutService', 'scout', '$mdBottomSheet', 'requirementService', '$mdDialog',
+	function ($scope, scoutService, scout, $mdBottomSheet, requirementService, $mdDialog) {
 
 		$scope.scout = scout;
 
@@ -23,9 +23,15 @@ app.controller('ScoutController', ['$scope', 'scoutService', 'scout', '$mdBottom
     };
 
     $scope.deleteRequirement = function(completedRequirement) {
-      $scope.scout.removeRequirementById(completedRequirement.requirement.id);
-      $scope.scout.save().then(null, function () {
-        $scope.scout.addRequirement(completedRequirement.requirement);
+      var dialog = $mdDialog.confirm()
+          .title('Warning').content('Delete requirement ' + completedRequirement.requirement.name + ' and all parents?')
+        .ok('Yes')
+        .cancel('Cancel');
+      $mdDialog.show(dialog).then(function () {
+        $scope.scout.removeRequirementById(completedRequirement.requirement.id);
+        $scope.scout.save().then(null, function () {
+          $scope.scout.addRequirement(completedRequirement.requirement);
+        });
       });
     };
 
