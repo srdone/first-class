@@ -40,9 +40,9 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    max-width: 95%;
 }
 
 .truncate:hover {
     white-space: normal;
-    overflow: visible;
 }

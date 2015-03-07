@@ -1,4 +1,14 @@
-<span class="truncate">
-  {{completedRequirement.dateCompleted | date: 'shortDate'}}: {{completedRequirement.requirement.name}} - {{completedRequirement.requirement.description}}
-  <ng-transclude></ng-transclude>
-</span>
+<md-content   layout="row" layout-align="start center">
+
+  <div>
+    <ng-transclude></ng-transclude>
+  </div>
+
+  <div flex class="truncate">
+
+    <span>
+      {{completedRequirement.dateCompleted | date: 'shortDate'}}: {{completedRequirement.requirement.name}} - {{completedRequirement.requirement.description}}
+    </span>
+  </div>
+
+</md-content>
