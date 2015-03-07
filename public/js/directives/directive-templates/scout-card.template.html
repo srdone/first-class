@@ -27,14 +27,7 @@
 
       <div class="md-tile-content">
 
-        <md-button>
-          <span class="number">{{scout.getQualifiedNightsOfCamping()}}</span>
-          <md-tooltip>
-            Qualified Nights of Camping
-          </md-tooltip>
-          <md-icon md-svg-src="icons/svg/camping2.svg">
-          </md-icon>
-        </md-button>
+        <fcs-nights-of-camping-icon nights="scout.getQualifiedNightsOfCamping()"></fcs-nights-of-camping-icon>
 
         <fcs-hours-of-service-icon hours="scout.getHoursOfService()"></fcs-hours-of-service-icon>
 
