@@ -30,6 +30,10 @@ angular.module('firstClass').directive('fcsRequirementSummaryIcons', function ()
       icons['service'] = 'icons/svg/worker20.svg';
 
       $scope.icons = icons;
+
+      if (_.isEmpty($scope.reqCategoryCount)) {
+        $element.hide();
+      }
     }
   }
 

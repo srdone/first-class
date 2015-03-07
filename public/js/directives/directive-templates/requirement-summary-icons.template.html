@@ -1,6 +1,7 @@
-<div layout="row" layout-align="start center" layout-wrap>
+<div layout="column" layout-align="start start">
 
-  <span >Remaining Requirements:</span>
+  <div>Remaining Requirements:</div>
+  <div layout="row" layout-align="start center" layout-wrap>
   <div ng-repeat="(key, value) in reqCategoryCount">
     <md-button flex>
       <span class="number">{{value}}</span>
@@ -9,6 +10,7 @@
       </md-tooltip>
       <md-icon md-svg-src="{{icons[key]}}"></md-icon>
     </md-button>
+  </div>
   </div>
 
 </div>
