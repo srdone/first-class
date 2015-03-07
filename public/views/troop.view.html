@@ -1,9 +1,6 @@
 <div>
 
-  <md-button class="md-fab add-scout" aria-label="Add Scout" ng-click="openAddScoutSheet()">
-    <md-icon class="add-button"
-             md-svg-src="bower_components/material-design-icons/content/svg/production/ic_add_circle_48px.svg"></md-icon>
-  </md-button>
+  <fcs-add-button ng-click="openAddScoutSheet()"></fcs-add-button>
 
       <div ng-repeat="scout in troop">
           <fcs-scout-card scout="scout"></fcs-scout-card>
