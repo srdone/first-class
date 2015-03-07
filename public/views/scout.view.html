@@ -49,8 +49,9 @@
       <md-list>
         <md-item ng-repeat="completedRequirement in scout.getCompletedRequirements()">
           <md-item-content>
-            <fcs-completed-requirement-summary completed-requirement="completedRequirement"></fcs-completed-requirement-summary>
-            <fcs-delete-button ng-click="deleteRequirement(completedRequirement)" fcs-aria-label="Remove Requirement {{completedRequirement.requirement.name}}"></fcs-delete-button>
+            <fcs-completed-requirement-summary completed-requirement="completedRequirement">
+              <fcs-delete-button ng-click="deleteRequirement(completedRequirement)" fcs-aria-label="Remove Requirement {{completedRequirement.requirement.name}}"></fcs-delete-button>
+            </fcs-completed-requirement-summary>
           </md-item-content>
         </md-item>
       </md-list>
