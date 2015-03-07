@@ -5,7 +5,7 @@
       <div class="md-toolbar-tools" layout="row">
         <img ng-src="{{scout.photoUrl}}" class="avatar-sm" layout-margin>
         {{scout.firstName}} {{scout.lastName}}<span ng-if="scout.currentRank">: {{scout.currentRank.name}}</span>
-        <md-icon md-svg-src="icons/oa_pocket_device.svg" ng-if="!!scout.isOA" layout-margin></md-icon>
+        <fcs-oa-icon ng-if="!!scout.isOA"></fcs-oa-icon>
         <span flex></span>
       </div>
     </md-toolbar>
