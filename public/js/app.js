@@ -25,7 +25,7 @@ app.run(['$state', '$rootScope', function ($state, $rootScope) {
 }]);
 
 app.run(function(editableOptions) {
-  editableOptions.theme = 'bs3'; // bootstrap3 theme. Can be also 'bs2', 'default'
+  editableOptions.theme = 'default'; // bootstrap3 theme. Can be also 'bs2', 'default'
 });
 
 // http://stackoverflow.com/questions/27299471/angular-ui-router-resolve-service-halting-route-change

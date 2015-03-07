@@ -11,6 +11,7 @@ Note: some of the code for the backend is based off code from MEAN Web Developme
 9 - remaining requirements directive display needs polish
 10 - adding overall requirement doesn't get sub-sub requirements
 11 - removing requirement doesn't reset current rank properly
+12 - ordering of various lists
 
 # Todos:
 
@@ -21,6 +22,7 @@ Note: some of the code for the backend is based off code from MEAN Web Developme
 5 - Add ability to edit position / service / campout information
 6 - Deploy to Digital Ocean or Heroku
 7 - Add asynchronous error handling
+8 - Add tabs for details instead of cards
 
 8 - Add ability to edit possible requirements
 

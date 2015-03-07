@@ -26,7 +26,7 @@ tenderfoot-12b-7,Tenderfoot Requirement 12b-7,Frostbite and sunburn,first aid,12
 tenderfoot-13,Tenderfoot Requirement 13,Demonstrate Scout spirit by living the Scout Oath (Promise) and Scout Law in your everyday life. Discuss four specific examples of how you have lived the points of the Scout Law in your daily life.,citizenship,13,12,requirement,tenderfoot-rank,,TRUE,1/1/2014
 tenderfoot-14,Tenderfoot Requirement 14,Participate in a Scoutmaster conference.,review,14,13,requirement,tenderfoot-rank,,TRUE,1/1/2014
 tenderfoot-15,Tenderfoot Requirement 15,Complete your board of review.,review,15,14,requirement,tenderfoot-rank,,TRUE,1/1/2014
-tenderfoot-rank,Tenderfoot,Tenderfoot Scout Rank,rank,2,1,rank,eaglescout-rank,,TRUE,1/1/2014
+tenderfoot-rank,Tenderfoot,Tenderfoot Scout Rank,rank,2,1,rank,secondclass-rank,,TRUE,1/1/2014
 boyscout-joining-requirements,Boy Scout,Boy Scout Joining Requirements,rank,1,0,rank,tenderfoot-rank,,TRUE,1/1/2014
 boyscout-1,Boy Scout Joining Requirement 1,"Meet the age requirements. Be a boy who is 11 years old, or one who has completed the fifth grade or earned the Arrow of Light Award and is at least 10 years old, but is not yet 18 years old.",joining,1,0,requirement,boyscout-joining-requirements,,TRUE,1/1/2014
 boyscout-2,Boy Scout Joining Requirement 2,Find a Scout troop near your home.,joining,2,1,requirement,boyscout-joining-requirements,,TRUE,1/1/2014
@@ -38,7 +38,6 @@ boyscout-7,Boy Scout Joining Requirement 7,"Understand and agree to live by the 
 boyscout-8,Boy Scout Joining Requirement 8,Describe the Scout badge.,scout facts,8,7,requirement,boyscout-joining-requirements,,TRUE,1/1/2014
 boyscout-9,Boy Scout Joining Requirement 9,"Complete the pamphlet exercises. With your parent or guardian, complete the exercises in the pamphlet How to Protect Your Children From Child Abuse: A Parent’s Guide.",joining,9,8,requirement,boyscout-joining-requirements,,TRUE,1/1/2014
 boyscout-10,Boy Scout Joining Requirement 10,"Participate in a Scoutmaster conference. Turn in your Boy Scout application and health history form signed by your parent or guardian, then participate in a Scoutmaster conference.",review,10,9,requirement,boyscout-joining-requirements,,TRUE,1/1/2014
-eaglescout-rank,Eagle Scout,Eagle Scout Rank,rank,1,0,rank,boy-scout-requirements,,TRUE,1/1/2014
 secondclass-1a,Second Class Requirement 1a,Demonstrate how a compass works and how to orient a map. Explain what map symbols mean.,map and compass,1a,0,requirement,secondclass-rank,,TRUE,1/1/2014
 secondclass-1b,Second Class Requirement 1b,"Using a compass and a map together, take a five-mile hike (or 10 miles by bike) approved by your adult leader and your parent or guardian.*",map and compass,1b,1,requirement,secondclass-rank,,TRUE,1/1/2014
 secondclass-2,Second Class Requirement 2,Discuss the principles of Leave No Trace.,citizenship,2,2,requirement,secondclass-rank,,TRUE,1/1/2014
@@ -55,13 +54,13 @@ secondclass-6,Second Class Requirement 6,"Identify or show evidence of at least 
 secondclass-7a,Second Class Requirement 7a,"Show what to do for ""hurry"" cases of stopped breathing, serious bleeding, and ingested poisoning.",first aid,7a,13,requirement,secondclass-rank,,TRUE,1/1/2014
 secondclass-7b,Second Class Requirement 7b,Prepare a personal first-aid kit to take with you on a hike.,first aid,7b,14,requirement,secondclass-rank,,TRUE,1/1/2014
 secondclass-7c,Second Class Requirement 7c,Demonstrate first aid for the following:,first aid,7c,15,requirement,secondclass-rank,,TRUE,1/1/2014
-secondclass-7c-1,Second Class Requirement 7c-1,Object in the eye,first aid,7c-1,16,requirement,secondclass-rank-7c,,TRUE,1/1/2014
-secondclass-7c-2,Second Class Requirement 7c-2,Bite of a suspected rabid animal,first aid,7c-2,17,requirement,secondclass-rank-7c,,TRUE,1/1/2014
-secondclass-7c-3,Second Class Requirement 7c-3,"Puncture wounds from a splinter, nail, and fishhook",first aid,7c-3,18,requirement,secondclass-rank-7c,,TRUE,1/1/2014
-secondclass-7c-4,Second Class Requirement 7c-4,"Serious burns (partial thickness, or second-degree)",first aid,7c-4,19,requirement,secondclass-rank-7c,,TRUE,1/1/2014
-secondclass-7c-5,Second Class Requirement 7c-5,Heat exhaustion,first aid,7c-5,20,requirement,secondclass-rank-7c,,TRUE,1/1/2014
-secondclass-7c-6,Second Class Requirement 7c-6,Shock,first aid,7c-6,21,requirement,secondclass-rank-7c,,TRUE,1/1/2014
-secondclass-7c-7,Second Class Requirement 7c-7,"Heatstroke, dehydration, hypothermia, and hyperventilation",first aid,7c-7,22,requirement,secondclass-rank-7c,,TRUE,1/1/2014
+secondclass-7c-1,Second Class Requirement 7c-1,Object in the eye,first aid,7c-1,16,requirement,secondclass-7c,,TRUE,1/1/2014
+secondclass-7c-2,Second Class Requirement 7c-2,Bite of a suspected rabid animal,first aid,7c-2,17,requirement,secondclass-7c,,TRUE,1/1/2014
+secondclass-7c-3,Second Class Requirement 7c-3,"Puncture wounds from a splinter, nail, and fishhook",first aid,7c-3,18,requirement,secondclass-7c,,TRUE,1/1/2014
+secondclass-7c-4,Second Class Requirement 7c-4,"Serious burns (partial thickness, or second-degree)",first aid,7c-4,19,requirement,secondclass-7c,,TRUE,1/1/2014
+secondclass-7c-5,Second Class Requirement 7c-5,Heat exhaustion,first aid,7c-5,20,requirement,secondclass-7c,,TRUE,1/1/2014
+secondclass-7c-6,Second Class Requirement 7c-6,Shock,first aid,7c-6,21,requirement,secondclass-7c,,TRUE,1/1/2014
+secondclass-7c-7,Second Class Requirement 7c-7,"Heatstroke, dehydration, hypothermia, and hyperventilation",first aid,7c-7,22,requirement,secondclass-7c,,TRUE,1/1/2014
 secondclass-8a,Second Class Requirement 8a,Tell what precautions must be taken for a safe swim.,swimming,8a,23,requirement,secondclass-rank,,TRUE,1/1/2014
 secondclass-8b,Second Class Requirement 8b,"Demonstrate your ability to jump feetfirst into water over your head in depth, level off and swim 25 feet on the surface, stop, turn sharply, resume swimming, then return to your starting place.",swimming,8b,24,requirement,secondclass-rank,,TRUE,1/1/2014
 secondclass-8c,Second Class Requirement 8c,"Demonstrate water rescue methods by reaching with your arm or leg, by reaching with a suitable object, and by throwing lines and objects. Explain why swimming rescues should not be attempted when a reaching or throwing rescue is possible, and explain why and how a rescue swimmer should avoid contact with the victim.",swimming,8c,25,requirement,secondclass-rank,,TRUE,1/1/2014
@@ -88,8 +87,8 @@ firstclass-7b,First Class Requirement 7b,Use lashing to make a useful camp gadge
 firstclass-8a,First Class Requirement 8a,Demonstrate tying the bowline knot and describe several ways it can be used.,ropes and knots,8a,12,requirement,firstclass-rank,,TRUE,1/1/2014
 firstclass-8b,First Class Requirement 8b,"Demonstrate bandages for a sprained ankle and for injuries on the head, the upper arm, and the collarbone.",first aid,8b,13,requirement,firstclass-rank,,TRUE,1/1/2014
 firstclass-8c,First Class Requirement 8c,"Show how to transport by yourself, and with one other person, a person",first aid,8c,14,requirement,firstclass-rank,,TRUE,1/1/2014
-firstclass-8c-1,First Class Requirement 8c-1,From a smoke-filled room,first aid,8c-1,0,requirement,firstclass-rank-8c,,TRUE,1/1/2014
-firstclass-8c-2,First Class Requirement 8c-2,"With a sprained ankle, for at least 25 yards",first aid,8c-2,1,requirement,firstclass-rank-8c,,TRUE,1/1/2014
+firstclass-8c-1,First Class Requirement 8c-1,From a smoke-filled room,first aid,8c-1,0,requirement,firstclass-8c,,TRUE,1/1/2014
+firstclass-8c-2,First Class Requirement 8c-2,"With a sprained ankle, for at least 25 yards",first aid,8c-2,1,requirement,firstclass-8c,,TRUE,1/1/2014
 firstclass-8d,First Class Requirement 8d,Tell the five most common signals of a heart attack. Explain the steps (procedures) in cardiopulmonary resuscitation (CPR).,first aid,8d,15,requirement,firstclass-rank,,TRUE,1/1/2014
 firstclass-9a,First Class Requirement 9a,Tell what precautions must be taken for a safe trip afloat.,swimming,9a,16,requirement,firstclass-rank,,TRUE,1/1/2014
 firstclass-9b,First Class Requirement 9b,Successfully complete the BSA swimmer test.,swimming,9b,17,requirement,firstclass-rank,,TRUE,1/1/2014

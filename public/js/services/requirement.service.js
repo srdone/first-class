@@ -20,10 +20,9 @@ angular.module('firstClass').factory('requirementService', ['persistenceService'
     this.awardName = requirement.id.split('-')[0];
   };
   _Requirement.prototype.getPrereqs = function () {
-    var that = this;
     return existingRequirements.filter(function (current) {
-      return (current.parentRequirement === that.id);
-    });
+      return (current.parentRequirement === this.id);
+    }, this);
   };
   _Requirement.prototype.prereqsComplete = function (reqsCompleted) {
     var prereqs = this.getPrereqs() || [];
@@ -46,6 +45,14 @@ angular.module('firstClass').factory('requirementService', ['persistenceService'
     });
     // return true if it passes all the above tests.
     return completedAllPrereqs;
+  };
+  _Requirement.prototype.getParent = function () {
+    for (var i = 0; i < existingRequirements.length; i++) {
+
+      if (existingRequirements[i].id === this.parentRequirement) {
+        return existingRequirements[i];
+      }
+    }
   };
 
   var _getCurrentRank = function (completedRequirements) {

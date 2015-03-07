@@ -215,21 +215,32 @@ app.factory('scoutObjectService', ['requirementService', 'dateService', 'utilSer
       $log.debug('Removing: ' + id);
       $log.debug('Completed requirements: ');
       $log.debug(this._completedReqs);
+
+      var foundItemToDelete = false;
       for (var i = 0; i < this._completedReqs.length; i++) {
-        $log.debug(this._completedReqs[i].requirement.id);
+
         if (this._completedReqs[i].requirement.id === id) {
           var deleted = this._completedReqs.splice(i, 1);
+
+          var parent = deleted[0].requirement.getParent();
+          if (parent) {
+            this.removeRequirementById(parent.id);
+          }
+
           $log.debug('Deleted: ' + deleted);
+          $log.debug('Remaining: ');
+          $log.debug(this._completedReqs);
 
-          //update values
-          this.currentRank = this.getCurrentRank();
-          this.neededReqSummary = this.getSummarizedNeededRequirementCategories();
-
-          return true;
+          foundItemToDelete = true;
         }
       }
-      $log.debug('Could not find a requirement to delete');
-      return false;
+
+      //update values
+      this.currentRank = this.getCurrentRank();
+      this.neededReqSummary = this.getSummarizedNeededRequirementCategories();
+
+      $log.debug('Found item to delete: ' + foundItemToDelete);
+      return foundItemToDelete;
     };
 	    Scout.prototype.getCompletedRequirements = function () {
 	      return this._completedReqs;

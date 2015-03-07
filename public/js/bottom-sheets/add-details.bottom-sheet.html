@@ -3,12 +3,10 @@
     Add Scout Details
   </div>
 
-  <div>
-    <select ng-options="view as view.name for view in addView.options track by view.templateUrl" ng-model="addView.selected"></select>
-    <ng-include src="addView.selected.templateUrl"></ng-include>
-  </div>
+  <ng-include src="addView.selected.templateUrl"></ng-include>
 
   <div>
+    <select ng-options="view as view.name for view in addView.options track by view.templateUrl" ng-model="addView.selected"></select>
     <md-button class="md-raised" ng-click="dismiss()">Dismiss</md-button>
   </div>
 </md-bottom-sheet>
