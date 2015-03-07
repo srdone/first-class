@@ -15,7 +15,7 @@
         <h3>Progress to First Class: {{scout.getPercentProgressToFirstClass() | percent}}</h3>
 
       <md-progress-linear class="md-info" md-mode="determinate" ng-value="scout.getPercentProgressToFirstClass() * 100" flex layout-margin></md-progress-linear>
-      {{scout.neededReqSummary}}
+      <fcs-requirement-summary-icons req-category-count="scout.neededReqSummary"></fcs-requirement-summary-icons>
         <!-- Position Summary Data -->
       <md-list>
         <md-item ng-repeat="position in scout.getCurrentPositions()">

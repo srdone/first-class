@@ -1,10 +1,10 @@
-angular.module('firstClass').directive('fcsNeededRequirementSummary', function () {
+angular.module('firstClass').directive('fcsRequirementSummaryIcons', function () {
 
   return {
     scope: {
-      neededRequirementCategories: '='
+      reqCategoryCount: '='
     },
-    templateUrl: 'js/directives/directive-templates/needed-requirement-summary.template.html',
+    templateUrl: 'js/directives/directive-templates/requirement-summary-icons.template.html',
     link: function ($scope, $element, $attributes) {
       var icons = {};
 
