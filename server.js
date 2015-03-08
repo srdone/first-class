@@ -9,7 +9,10 @@ var express = require('express'),
   connectFlash = require('connect-flash');
 
 var app = express();
-mongoose.connect('mongodb://localhost/first-class-dev');
+
+var dbConnectString = process.env.MONGOLAB_URI || 'mongodb://localhost/first-class-dev';
+
+mongoose.connect(dbConnectString);
 
 // import models
 require('./app/models/user.server.model');

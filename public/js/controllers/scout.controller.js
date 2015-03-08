@@ -27,6 +27,7 @@ app.controller('ScoutController', ['$scope', 'scoutService', 'scout', '$mdBottom
           .title('Warning').content('Delete requirement ' + completedRequirement.requirement.name + ' and all parents?')
         .ok('Yes')
         .cancel('Cancel');
+
       $mdDialog.show(dialog).then(function () {
         $scope.scout.removeRequirementById(completedRequirement.requirement.id);
         $scope.scout.save().then(null, function () {
