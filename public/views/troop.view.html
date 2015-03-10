@@ -2,7 +2,7 @@
 
   <fcs-add-button ng-click="openAddScoutSheet()"></fcs-add-button>
 
-      <div ng-repeat="scout in troop">
+      <div ng-repeat="scout in troop | orderBy: 'lastName+firstName'">
           <fcs-scout-card scout="scout"></fcs-scout-card>
       </div>
 
