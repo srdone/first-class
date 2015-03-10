@@ -67,3 +67,12 @@ fcs-position-summary .months {
 fcs-position-list .current {
     margin-bottom: 10px;
 }
+
+.legal {
+    font-weight: 300;
+    text-transform: uppercase;
+}
+
+a .legal-link {
+    font-size: .25em;
+}

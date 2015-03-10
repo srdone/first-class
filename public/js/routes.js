@@ -39,6 +39,10 @@ app.config(['$stateProvider', '$urlRouterProvider',
             return requirementService.getAllRequirements();
           }]
         }
-			});
+			})
+      .state('legal', {
+        url: '/legal',
+        templateUrl: 'views/legal.view.html'
+      });
 
 	}]);
