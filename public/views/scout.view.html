@@ -84,6 +84,27 @@
     </md-card-content>
   </md-card>
 
+  <!--Position Detail-->
+  <md-card ng-if="!!scout.getPositions().length">
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        Position History
+      </div>
+    </md-toolbar>
+    <md-card-content>
+      <md-list>
+        <md-item ng-repeat="position in scout.getPositions() | orderBy: 'start'">
+          <md-item-content>
+            {{position.title}}: {{position.start | date: 'shortDate'}} - {{position.end | date: 'shortDate'}}
+            <md-button ng-click="deletePosition(position)" aria-label="Remove position {{position.title}}">
+              <md-icon md-svg-src="bower_components/material-design-icons/action/svg/production/ic_delete_48px.svg"></md-icon>
+            </md-button>
+          </md-item-content>
+        </md-item>
+      </md-list>
+    </md-card-content>
+  </md-card>
+
   <md-card>
     <md-toolbar>
       <div class="md-toolbar-tools">
