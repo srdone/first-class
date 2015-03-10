@@ -78,7 +78,7 @@ a .legal-link {
 }
 
 .button-group > .md-button {
-    margin: 5px;
+    margin: 5px 5px 5px 0;
 }
 
 md-bottom-sheet .header {
