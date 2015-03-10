@@ -15,9 +15,10 @@
     <input type="date" class="form-control" id="end-date" ng-model="newCampout.endDate" placeholder="End Date">
   </md-input-container>
 
-  <div layout="row">
-    <md-button id="submit" type="submit" class="btn btn-primary" ng-click="addCampout()">Add Campout</md-button>
-    <md-button id="cancel" type="cancel" class="btn btn-default" ng-click="cancelAddCampout()">Clear</md-button>
+  <div layout="row" class="button-group">
+    <md-button id="submit" type="submit" class="md-raised md-primary" ng-click="addCampout()">Add Campout</md-button>
+    <md-button id="cancel" type="cancel" class="md-raised md-warn" ng-click="cancelAddCampout()">Clear</md-button>
+    <div flex></div>
   </div>
 
   <div class="alert alert-info" ng-if="message">{{message}}</div>

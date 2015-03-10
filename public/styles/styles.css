@@ -76,3 +76,13 @@ fcs-position-list .current {
 a .legal-link {
     font-size: .25em;
 }
+
+.button-group > .md-button {
+    margin: 5px;
+}
+
+md-bottom-sheet .header {
+    font-weight: 800;
+    font-size: 1.2em;
+    margin-bottom: 5px;
+}

@@ -1,11 +1,11 @@
 <md-bottom-sheet>
-  <div>
-    Add Scout Details
+  <div class="header">
+    {{addView.selected.name}}
   </div>
 
   <ng-include src="addView.selected.templateUrl"></ng-include>
 
-  <div>
+  <div class="button-group">
     <select ng-options="view as view.name for view in addView.options track by view.templateUrl" ng-model="addView.selected"></select>
     <md-button class="md-raised" ng-click="dismiss()">Dismiss</md-button>
   </div>

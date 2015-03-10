@@ -1,18 +1,9 @@
 <div ng-controller="AddRequirementController">
   Add Requirement
   <select ng-options="requirement as requirement.name group by requirement.category for requirement in requirements" ng-model="requirement"></select>
-  <md-button class="md-raised md-primary" ng-click="addRequirement(requirement)">Add Requirement</md-button>
 
-  <!--{{requirement.name}}-->
+  <div class="button-group">
+    <md-button class="md-raised md-primary" ng-click="addRequirement(requirement)">Add Requirement</md-button>
+  </div>
 
-  <!--<md-list>-->
-    <!--<md-item ng-repeat="completedRequirement in scout.getCompletedRequirements()">-->
-      <!--<div ng-repeat="completedRequirement in scout.getCompletedRequirements()">-->
-      <!--{{completedRequirement.requirement.name}} - {{completedRequirement.dateCompleted}}-->
-        <!--</div>-->
-      <!--<md-button ng-click="deleteRequirement(completedRequirement)" aria-label="Remove Requirement {{completedRequirement.requirement.name}}">-->
-        <!--<md-icon md-svg-src="bower_components/material-design-icons/action/svg/production/ic_delete_48px.svg"></md-icon>-->
-      <!--</md-button>-->
-    <!--</md-item>-->
-  <!--</md-list>-->
 </div>
