@@ -15,9 +15,9 @@ angular.module('firstClass').controller('MainController', ['$scope', '$mdSidenav
 
     $scope.logout = function () {
       authService.logout().then(function () {
+        $state.go('main');
         $mdSidenav('left').toggle();
         $rootScope.loggedIn = false;
-        $state.go('main');
         $log.debug("logged out");
       });
     };

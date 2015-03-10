@@ -41,7 +41,10 @@ angular.module('firstClass').factory('authService', ['$location', '$http', '$q',
   var _checkLoggedIn = function () {
     return $http.get('/loggedIn')
       .success(function (response) {
-        $rootScope.loggedIn = true;
+        if (response.data.message === 'currently logged in') {
+          $rootScope.username = response.data.username;
+          $rootScope.loggedIn = true;
+        }
       })
       .error(function (response) {
         $location.path('/');

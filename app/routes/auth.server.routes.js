@@ -12,11 +12,11 @@ module.exports = function (app) {
     res.send({message: 'Logged out'});
   });
 
-  app.get('/loggedin', function (req, res) {
+  app.get('/loggedIn', function (req, res, next) {
     if (req.isAuthenticated()) {
-      res.send({message: 'currently logged in', username: req.user.username});
+      res.json({message: 'currently logged in', username: req.user.username});
     } else {
-      res.status(401);
+      res.send(401);
     }
   });
 
