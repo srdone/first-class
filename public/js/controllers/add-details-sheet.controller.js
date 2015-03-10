@@ -2,12 +2,12 @@ angular.module('firstClass').controller('AddDetailsSheetController', ['$scope', 
   function ($scope, $mdBottomSheet, scout, requirements, $log) {
 
     $scope.addView = {
-      selected: {name: 'Add Service', templateUrl: 'views/add-service.view.html'},
+      selected: {name: 'Add Requirement', templateUrl: 'views/add-requirement.view.html'},
       options: [
-        {name: 'Add Service', templateUrl: 'views/add-service.view.html'},
-        {name: 'Add Position', templateUrl: 'views/add-position.view.html'},
+        {name: 'Add Requirement', templateUrl: 'views/add-requirement.view.html'},
         {name: 'Add Campout', templateUrl: 'views/add-campout.view.html'},
-        {name: 'Add Requirement', templateUrl: 'views/add-requirement.view.html'}
+        {name: 'Add Service', templateUrl: 'views/add-service.view.html'},
+        {name: 'Add Position', templateUrl: 'views/add-position.view.html'}
       ]
     };
 
