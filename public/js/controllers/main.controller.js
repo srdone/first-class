@@ -27,7 +27,7 @@ angular.module('firstClass').controller('MainController', ['$scope', '$mdSidenav
     };
 
     $rootScope.$watch('loggedIn', function (newVal) {
-      $scope.loggedIn = newVal;
+      $scope.loggedIn = (newVal === true);
     });
 
   }]);
