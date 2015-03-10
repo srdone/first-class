@@ -20,10 +20,9 @@
       <input type="text" class="form-control" id="photoUrl" ng-model="newScout.photoUrl" placeholder="http://...">
     </md-input-container>
 
-    <md-input-container>
-      <label for="isOA">OA Member</label>
-      <md-checkbox type="checkbox" class="form-control" id="isOA" ng-model="newScout.isOA"></md-checkbox>
-    </md-input-container>
+    <md-checkbox type="checkbox" class="form-control" id="isOA" ng-model="newScout.isOA">
+      OA Member
+    </md-checkbox>
 
   <div class="button-group">
     <md-button class="md-raised md-primary" ng-click="addScout(newScout)">Add Scout</md-button>
