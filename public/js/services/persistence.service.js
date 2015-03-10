@@ -27,6 +27,12 @@ angular.module('firstClass').factory('persistenceService', ['$q', '$http', '$roo
     });
   };
 
+    var _deleteScout = function (scout) {
+      return $http.delete('/scouts/' + scout.id).then(function (response) {
+        return response.data;
+      });
+    };
+
     var _getAllRequirements = function () {
       return $http.get('/requirements').then(function (response) {
         return response.data;
@@ -36,6 +42,7 @@ angular.module('firstClass').factory('persistenceService', ['$q', '$http', '$roo
 	return {
     createScout: _createScout,
 		saveScout: _saveScout,
+    deleteScout: _deleteScout,
 		getScoutById: _getScoutById,
 		getScouts: _getScouts,
     getAllRequirements: _getAllRequirements

@@ -2,8 +2,8 @@
 
 var app = angular.module('firstClass');
 
-app.controller('ScoutController', ['$scope', 'scoutService', 'scout', '$mdBottomSheet', 'requirementService', '$mdDialog', '$filter',
-	function ($scope, scoutService, scout, $mdBottomSheet, requirementService, $mdDialog, $filter) {
+app.controller('ScoutController', ['$scope', 'scoutService', 'scout', '$mdBottomSheet', 'requirementService', '$mdDialog', '$filter', '$state',
+	function ($scope, scoutService, scout, $mdBottomSheet, requirementService, $mdDialog, $filter, $state) {
 
 		$scope.scout = scout;
 
@@ -81,6 +81,16 @@ app.controller('ScoutController', ['$scope', 'scoutService', 'scout', '$mdBottom
 
     $scope.updateScout = function () {
       $scope.scout.save();
+    };
+
+    $scope.deleteScout = function () {
+      var dialog = warningDialog.content('Are you sure you want to delete ' + scout.firstName + ' ' + scout.lastName + ' and all his data?');
+
+      $mdDialog.show(dialog).then(function () {
+        $scope.scout.delete().then(function () {
+          $state.go('troop');
+        })
+      });
     };
 
 	}]);
