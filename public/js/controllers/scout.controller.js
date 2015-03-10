@@ -22,6 +22,21 @@ app.controller('ScoutController', ['$scope', 'scoutService', 'scout', '$mdBottom
       });
     };
 
+    $scope.editScout = function () {
+      $mdBottomSheet.show({
+        templateUrl: 'js/bottom-sheets/edit-scout.bottom-sheet.html',
+        controller: 'EditScoutSheetController',
+        resolve: {
+          editingScout: function () {
+            return angular.copy($scope.scout);
+          }
+        }
+      }).then(function (scout) {
+        $scope.scout = scout;
+        $scope.scout.save();
+      })
+    };
+
     $scope.deleteRequirement = function(completedRequirement) {
       var dialog = $mdDialog.confirm()
           .title('Warning').content('Delete requirement ' + completedRequirement.requirement.name + ' and all parents?')

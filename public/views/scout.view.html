@@ -7,6 +7,7 @@
         {{scout.firstName}} {{scout.lastName}}<span ng-if="scout.currentRank">: {{scout.currentRank.name}}</span>
         <fcs-oa-icon ng-if="!!scout.isOA"></fcs-oa-icon>
         <span flex></span>
+        <md-button ng-click="editScout()" class="md-raised md-accent">Edit</md-button>
       </div>
     </md-toolbar>
 
