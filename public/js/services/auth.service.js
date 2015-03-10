@@ -5,7 +5,7 @@ angular.module('firstClass').factory('authService', ['$location', '$http', '$q',
     console.log('called requireAuth');
     var deferred = $q.defer();
 
-    $http.get('/loggedin')
+    $http.get('/loggedIn')
       .success(function (response) {
         console.log(response);
         $rootScope.username = response.data.username;
