@@ -20,7 +20,11 @@ angular.module('firstClass').controller('MainController', ['$scope', '$mdSidenav
         $state.go('main');
         $log.debug("logged out");
       });
-    }
+    };
+
+    $scope.close = function () {
+      $mdSidenav('left').toggle();
+    };
 
     $rootScope.$watch('loggedIn', function (newVal) {
       $scope.loggedIn = newVal;

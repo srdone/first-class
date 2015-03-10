@@ -15,7 +15,7 @@
 <body ng-app="firstClass" ng-cloak ng-controller="MainController" layout="row">
 
 
-<md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" ng-if="loggedIn">
+<md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" ng-if="loggedIn" md-swipe-left="close()">
   <md-toolbar>
     <h1 class="md-toolbar-tools">First Class Scouting</h1>
   </md-toolbar>
@@ -26,6 +26,9 @@
     </md-button>
     <md-button ng-click="logout()">
       Logout {{username}}
+    </md-button>
+    <md-button ng-if="!$mdMedia('gt-md')" ng-click="close()">
+      Close Menu
     </md-button>
   </md-content>
 </md-sidenav>
