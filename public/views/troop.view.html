@@ -1,9 +1,14 @@
-<md-content>
+<md-content layout-fill layout="column">
 
   <fcs-add-button ng-click="openAddScoutSheet()"></fcs-add-button>
 
       <div ng-repeat="scout in troop | orderBy: 'lastName+firstName'">
           <fcs-scout-card scout="scout"></fcs-scout-card>
       </div>
+
+  <div class="no-scouts" ng-if="troop.length === 0">
+    <p>No scouts yet!</p>
+    <p>Click the add button below to get started.</p>
+  </div>
 
 </md-content>

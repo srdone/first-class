@@ -18,7 +18,7 @@
 
 .avatar-sm {
     height: auto;
-    width: 65px;
+    width: 50px;
     border: 1px black solid;
     border-radius: 50%;
 }
@@ -98,4 +98,11 @@ fcs-rank .rank {
 
 .md-button-group {
     margin-top: 10px;
+}
+
+.no-scouts {
+    text-align: center;
+    font-size: 1.7em;
+    font-weight: 200;
+    font-style: italic;
 }
