@@ -4,7 +4,7 @@ angular.module('firstClass').directive('fcsScoutSummary', function () {
     scope: {
       scout: '='
     },
-    templateUrl: 'js/directives/directive-templates/scout-summary.template.html',
+    templateUrl: 'js/directives/directive-templates/scout-summary.template.html'
   }
 
 });

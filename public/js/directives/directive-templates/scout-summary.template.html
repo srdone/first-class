@@ -1,6 +1,6 @@
 <div>
 
-  <div class="md-tile-content">
+  <div class="md-tile-content" ng-if="!scout.hasNoDetails()">
 
     <fcs-rank rank="scout.currentRank" ng-if="scout.currentRank"></fcs-rank>
 
@@ -25,5 +25,8 @@
     </div>
 
   </div>
+
+  <div class="no-details" ng-if="scout.hasNoDetails()">No details yet! Click the add button on the details screen to add
+  requirements and other events to this scout.</div>
 
 </div>

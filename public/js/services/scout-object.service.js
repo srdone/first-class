@@ -79,6 +79,12 @@ app.factory('scoutObjectService', ['requirementService', 'dateService', 'utilSer
     Scout.prototype.delete = function () {
       return persistenceService.deleteScout(this);
     };
+    Scout.prototype.hasNoDetails = function () {
+      return (this._completedReqs.length === 0 &&
+          this._positionHistory.length === 0 &&
+          this._campingHistory.length === 0 &&
+          this._serviceHistory.length === 0);
+    };
 	  /**
 	  * @ngdoc function
 	  * @name firstClassApp.ScoutService.Scout.prototype.currentRank
