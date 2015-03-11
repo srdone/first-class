@@ -1,5 +1,9 @@
 <md-bottom-sheet>
 
+    <div class="button-group">
+      <md-button ng-click="deleteScout()" class="md-raised md-warn">Delete</md-button>
+    </div>
+
     <md-input-container>
       <label for="firstName">First Name</label>
       <input type="text" class="form-control" id="firstName" ng-model="editingScout.firstName" placeholder="Baden">

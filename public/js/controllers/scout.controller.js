@@ -83,14 +83,4 @@ app.controller('ScoutController', ['$scope', 'scoutService', 'scout', '$mdBottom
       $scope.scout.save();
     };
 
-    $scope.deleteScout = function () {
-      var dialog = warningDialog.content('Are you sure you want to delete ' + scout.firstName + ' ' + scout.lastName + ' and all his data?');
-
-      $mdDialog.show(dialog).then(function () {
-        $scope.scout.delete().then(function () {
-          $state.go('troop');
-        })
-      });
-    };
-
 	}]);
