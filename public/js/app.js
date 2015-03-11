@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('firstClass', ['ui.router', 'xeditable', 'ngMaterial', 'ngAria']);
+var app = angular.module('firstClass', ['ui.router', 'ngMaterial', 'ngAria']);
 
 app.config(['$httpProvider', '$logProvider', function ($httpProvider, $logProvider) {
   $logProvider.debugEnabled(false);
