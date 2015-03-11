@@ -217,7 +217,8 @@ md-tab > .md-ripple-container .md-ripple {
 [flex] {
   -webkit-flex: 1;
       -ms-flex: 1;
-          flex: 1; }
+          
+  flex: 1; }
 
 [flex="0"] {
   -webkit-flex: 0 0 0%;

@@ -4,34 +4,17 @@
     <md-toolbar>
       <div class="md-toolbar-tools" layout="row">
         <img ng-src="{{scout.photoUrl}}" class="avatar-sm" layout-margin>
-        {{scout.firstName}} {{scout.lastName}}<span ng-if="scout.currentRank">: {{scout.currentRank.name}}</span>
-        <fcs-oa-icon ng-if="!!scout.isOA"></fcs-oa-icon>
+        <fcs-scout-name scout="scout"></fcs-scout-name>
         <span flex></span>
-        <md-button ng-click="editScout()" class="md-raised md-accent">Edit</md-button>
       </div>
     </md-toolbar>
 
     <md-card-content>
       <!--Next rank progress -->
-      <div class="md-tile-content">
+      <fcs-scout-summary scout="scout"></fcs-scout-summary>
 
-        <fcs-rank-progress pct-progress="scout.getPercentProgressToFirstClass()"></fcs-rank-progress>
-
-        <fcs-requirement-summary-icons req-category-count="scout.neededReqSummary"></fcs-requirement-summary-icons>
-
-        <fcs-position-list positions="scout.currentPositions"></fcs-position-list>
-
-        <div class="md-tile-content">
-
-          <fcs-nights-of-camping-icon nights="scout.getQualifiedNightsOfCamping()"></fcs-nights-of-camping-icon>
-
-          <fcs-hours-of-service-icon hours="scout.getHoursOfService()"></fcs-hours-of-service-icon>
-
-          <span ng-if="!scout.isOA && scout.isOAQualified()">OA Qualified</span>
-
-          <fcs-scout-patrol patrol="scout.currentPatrol"></fcs-scout-patrol>
-
-        </div>
+      <div class="md-button-group">
+        <md-button ng-click="editScout()" class="md-raised md-accent md-button" flex>Edit</md-button>
       </div>
 
     </md-card-content>

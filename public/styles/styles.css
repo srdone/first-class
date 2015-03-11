@@ -17,8 +17,8 @@
 /*}*/
 
 .avatar-sm {
-    height: 50px;
-    width: 50px;
+    height: auto;
+    width: 65px;
     border: 1px black solid;
     border-radius: 50%;
 }
@@ -85,4 +85,17 @@ md-bottom-sheet .header {
     font-weight: 800;
     font-size: 1.2em;
     margin-bottom: 5px;
+}
+
+fcs-rank .rank {
+    font-weight: 800;
+    margin-bottom: 5px  ;
+}
+
+.details-button {
+    width: 110px;
+}
+
+.md-button-group {
+    margin-top: 10px;
 }

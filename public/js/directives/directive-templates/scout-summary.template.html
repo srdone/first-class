@@ -1,0 +1,29 @@
+<div>
+
+  <div class="md-tile-content">
+
+    <fcs-rank rank="scout.currentRank" ng-if="scout.currentRank"></fcs-rank>
+
+    <fcs-scout-patrol patrol="scout.currentPatrol" flex></fcs-scout-patrol>
+
+    <fcs-rank-progress pct-progress="scout.getPercentProgressToFirstClass()"></fcs-rank-progress>
+
+    <fcs-requirement-summary-icons req-category-count="scout.neededReqSummary"></fcs-requirement-summary-icons>
+
+    <fcs-position-list positions="scout.currentPositions"></fcs-position-list>
+
+    <div layout="row" layout="center center">
+
+      <fcs-nights-of-camping-icon nights="scout.getQualifiedNightsOfCamping()" flex></fcs-nights-of-camping-icon>
+
+      <fcs-hours-of-service-icon hours="scout.getHoursOfService()" flex></fcs-hours-of-service-icon>
+
+      <span ng-if="!scout.isOA && scout.isOAQualified()" flex>OA Qualified</span>
+
+      <fcs-oa-icon ng-if="!!scout.isOA" flex></fcs-oa-icon>
+
+    </div>
+
+  </div>
+
+</div>
