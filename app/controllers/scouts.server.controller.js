@@ -1,4 +1,4 @@
-var Scout = require('mongoose').model('Scout')
+var Scout = require('mongoose').model('Scout');
 
 exports.hasAuthorization = function (req, res, next) {
   console.log('has authorization called');
