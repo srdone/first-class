@@ -18,12 +18,12 @@ app.config(['$stateProvider', '$urlRouterProvider',
 				templateUrl: 'views/troop.view.html',
 				controller: 'TroopController',
         resolve: {
-          troop: ['scoutService', '$log', function (scoutService, $log) {
-            $log.debug('resolving troop');
-            return scoutService.getScouts();
-          }],
           existingRequirements: ['requirementService', function (requirementService) {
             return requirementService.getAllRequirements();
+          }],
+          troop: ['scoutService', '$log', 'existingRequirements', function (scoutService, $log) {
+            $log.debug('resolving troop');
+            return scoutService.getScouts();
           }]
         }
 			})
@@ -32,11 +32,11 @@ app.config(['$stateProvider', '$urlRouterProvider',
 				templateUrl: 'views/scout.view.html',
 				controller: 'ScoutController',
         resolve: {
-          scout: ['$stateParams', 'scoutService', function ($stateParams, scoutService) {
-            return scoutService.getScoutById($stateParams.scoutId);
-          }],
           existingRequirements: ['requirementService', function (requirementService) {
             return requirementService.getAllRequirements();
+          }],
+          scout: ['$stateParams', 'scoutService', 'existingRequirements', function ($stateParams, scoutService) {
+            return scoutService.getScoutById($stateParams.scoutId);
           }]
         }
 			})
