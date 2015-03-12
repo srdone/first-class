@@ -23,17 +23,6 @@
     border-radius: 50%;
 }
 
-fcs-add-button .md-button.add-button-tab {
-    position: fixed;
-    bottom: 0;
-    right: 40px;
-    height: 35px;
-    width: 50px;
-    z-index: 999;
-    background: rgba(252, 68, 130, 0.5);
-    border-radius: 3px 3px 0 0;
-}
-
 /* https://css-tricks.com/snippets/css/truncate-string-with-ellipsis/ */
 .truncate {
     white-space: nowrap;

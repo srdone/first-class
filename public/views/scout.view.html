@@ -14,16 +14,16 @@
       <fcs-scout-summary scout="scout"></fcs-scout-summary>
 
       <div class="md-button-group">
+        <md-button ng-click="openAddScoutDetailsSheet()" class="md-raised md-primary md-button">Add Details</md-button>
+      </div>
+
+      <div class="md-button-group">
         <md-button ng-click="editScout()" class="md-raised md-accent md-button" flex>Edit</md-button>
       </div>
 
     </md-card-content>
 
   </md-card>
-
-  <fcs-add-button ng-click="openAddScoutDetailsSheet()"></fcs-add-button>
-
-
 
   <!--Service Detail-->
   <md-card ng-if="!!scout.getService().length">
