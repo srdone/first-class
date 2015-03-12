@@ -28,6 +28,7 @@ angular.module('firstClass').directive('fcsRequirementSummaryIcons', function ()
       icons['personal management'] = 'icons/svg/planning.svg';
       icons['plants and animals'] = 'icons/svg/deer4.svg';
       icons['service'] = 'icons/svg/worker20.svg';
+      icons['scout facts'] = 'icons/svg/human45.svg'
 
       $scope.icons = icons;
 
