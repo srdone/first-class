@@ -14,7 +14,7 @@
 <body ng-app="firstClass" ng-cloak ng-controller="MainController" layout="row">
 
 
-<md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" ng-if="loggedIn" md-swipe-left="close()">
+<md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$media('gt-md')" ng-if="loggedIn" md-swipe-left="close()">
   <md-toolbar>
     <h1 class="md-toolbar-tools">First Class Scouting</h1>
   </md-toolbar>
@@ -36,8 +36,8 @@
 <div layout="column" tabindex="-1" flex role="main" class="main">
   <md-toolbar>
 
-    <div class="md-toolbar-tools" ng-click="toggleMenu()" layout="row" flex>
-      <md-button hide-gt-md aria-label="Toogle Menu" ng-if="loggedIn">
+    <div class="md-toolbar-tools" layout="row" flex>
+      <md-button hide-gt-md aria-label="Toogle Menu" ng-if="loggedIn" ng-click="toggleMenu()">
         <md-icon md-svg-src="bower_components/material-design-icons/navigation/svg/production/ic_menu_48px.svg"></md-icon>
       </md-button>
 
