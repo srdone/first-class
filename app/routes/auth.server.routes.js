@@ -16,7 +16,7 @@ module.exports = function (app) {
     if (req.isAuthenticated()) {
       res.json({message: 'currently logged in', username: req.user.username});
     } else {
-      res.send(401);
+      res.sendStatus(401);
     }
   });
 
