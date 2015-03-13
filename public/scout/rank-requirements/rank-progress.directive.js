@@ -5,7 +5,7 @@ angular.module('firstClass').directive('fcsRankProgress', function () {
     scope: {
       pctProgress: '='
     },
-    templateUrl: 'rank-requirements/rank-progress.template.html'
+    templateUrl: 'scout/rank-requirements/rank-progress.template.html'
   }
 
 });

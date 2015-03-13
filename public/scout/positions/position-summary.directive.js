@@ -5,7 +5,7 @@ angular.module('firstClass').directive('fcsPositionSummary', function () {
     scope: {
       position: '='
     },
-    templateUrl: 'positions/position-summary.template.html'
+    templateUrl: 'scout/positions/position-summary.template.html'
   }
 
 });

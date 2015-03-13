@@ -4,7 +4,7 @@ angular.module('firstClass').directive('fcsHoursOfServiceIcon', function () {
     scope: {
       hours: '='
     },
-    templateUrl: 'service-projects/hours-of-service-icon.template.html'
+    templateUrl: 'scout/service-projects/hours-of-service-icon.template.html'
   }
 
 });
