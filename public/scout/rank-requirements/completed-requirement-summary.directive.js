@@ -6,7 +6,7 @@ angular.module('firstClass').directive('fcsCompletedRequirementSummary', functio
       completedRequirement: '='
     },
     transclude: true,
-    templateUrl: 'rank-requirements/completed-requirement-summary.template.html'
+    templateUrl: 'scout/rank-requirements/completed-requirement-summary.template.html'
   }
 
 });
