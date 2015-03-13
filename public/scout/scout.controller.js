@@ -2,8 +2,8 @@
 
 var app = angular.module('firstClass');
 
-app.controller('ScoutController', ['$scope', 'scoutService', 'scout', '$mdBottomSheet', 'requirementService', '$mdDialog', '$filter', '$state',
-	function ($scope, scoutService, scout, $mdBottomSheet, requirementService, $mdDialog, $filter, $state) {
+app.controller('ScoutController', ['$scope', 'scoutService', 'scout', '$mdBottomSheet', 'requirementService', '$mdDialog', '$filter', '$mdToast',
+	function ($scope, scoutService, scout, $mdBottomSheet, requirementService, $mdDialog, $filter, $mdToast) {
 
 		$scope.scout = scout;
 
@@ -44,9 +44,13 @@ app.controller('ScoutController', ['$scope', 'scoutService', 'scout', '$mdBottom
 
       $mdDialog.show(dialog).then(function () {
         $scope.scout.removeRequirementById(completedRequirement.requirement.id);
-        $scope.scout.save().then(null, function () {
-          $scope.scout.addRequirement(completedRequirement.requirement);
-        });
+        $scope.scout.save()
+          .then(function () {
+            $mdToast.showSimple('Deleted requirement and its dependents: ' + completedRequirement.requirement.name);
+          }, function () {
+            $scope.scout.addRequirement(completedRequirement.requirement);
+            $mdToast.showSimple('A server error occurred: Failed to delete requirement');
+          });
       });
     };
 
@@ -56,7 +60,13 @@ app.controller('ScoutController', ['$scope', 'scoutService', 'scout', '$mdBottom
 
       $mdDialog.show(dialog).then(function () {
         $scope.scout.removeCampout(campout.id);
-        $scope.scout.save();
+        $scope.scout.save()
+          .then(function () {
+            $mdToast.showSimple('Deleted campout: ' + campout.toString());
+          }, function () {
+            $scope.scout.addCampout(campout);
+            $mdToast.showSimple('A server error occurred: Failed to delete campout');
+          });
       });
     };
 
@@ -65,7 +75,13 @@ app.controller('ScoutController', ['$scope', 'scoutService', 'scout', '$mdBottom
 
       $mdDialog.show(dialog).then(function () {
         $scope.scout.removeService(service.id);
-        $scope.scout.save();
+        $scope.scout.save()
+          .then(function () {
+            $mdToast.showSimple('Deleted service project: ' + service.toString());
+          }, function () {
+            $scope.scout.addService(service);
+            $mdToast.showSimple('A server error occurred: Failed to delete service project');
+          });
       });
     };
 
@@ -75,7 +91,13 @@ app.controller('ScoutController', ['$scope', 'scoutService', 'scout', '$mdBottom
 
       $mdDialog.show(dialog).then(function () {
         $scope.scout.removePosition(position.id);
-        $scope.scout.save();
+        $scope.scout.save()
+          .then(function () {
+            $mdToast.showSimple('Deleted position: ' + position.toString());
+          }, function () {
+            $scope.scout.addPosition(position);
+            $mdToast.showSimple('A server error occurred: Failed to delete position');
+          });
       });
     };
 

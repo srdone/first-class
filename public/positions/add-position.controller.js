@@ -1,5 +1,5 @@
 angular.module('firstClass').controller('AddPositionController',
-  ['$scope', function ($scope) {
+  ['$scope', '$mdToast', function ($scope, $mdToast) {
 
     $scope.addPosition = function () {
       var position = $scope.scout.addPosition($scope.newPosition.title,
@@ -7,9 +7,7 @@ angular.module('firstClass').controller('AddPositionController',
                                              $scope.newPosition.endDate);
 
       $scope.scout.save().then(function () {
-        $scope.message = 'Added: ' + $scope.newPosition.title + ': '
-                                   + $scope.newPosition.startDate + ' - '
-                                   + $scope.newPosition.endDate;
+        $mdToast.showSimple('Added Position: ' + position.toString());
         $scope.newPosition = {};
       }, function () {
         $scope.scout.removePosition(position.id);

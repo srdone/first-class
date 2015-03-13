@@ -2,8 +2,8 @@
 
 var app = angular.module('firstClass');
 
-app.controller('LoginController', ['$scope', '$rootScope', 'persistenceService', 'authService', '$state', '$log',
-	function ($scope, $rootScope, persistenceService, authService, $state, $log) {
+app.controller('LoginController', ['$scope', '$rootScope', 'persistenceService', 'authService', '$state', '$log', '$mdToast',
+	function ($scope, $rootScope, persistenceService, authService, $state, $log, $mdToast) {
 
     $scope.doSignUp = false;
     $scope.newUser = {};
@@ -17,7 +17,7 @@ app.controller('LoginController', ['$scope', '$rootScope', 'persistenceService',
     var _login = function () {
       authService.login($scope.user.email, $scope.user.password)
         .then(function success () {
-          $scope.welcomeMessage = 'Welcome to First Class Scouting!';
+          $mdToast.showSimple('Welcome to First Class Scouting!');
           _reset();
           $log.debug('logged in, going to troop state');
           $state.go('troop');

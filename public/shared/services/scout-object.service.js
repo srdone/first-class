@@ -305,12 +305,18 @@ app.factory('scoutObjectService', ['requirementService', 'dateService', 'utilSer
 	    var end = this.end || new Date(); // replaces null end date with current date.
 	    return Math.floor((end - start) / ( 1000 * 60 * 60 * 24 * 30 ));
 	  };
+    Position.prototype.toString = function () {
+      return this.title + ': ' + moment(this.start).format('l') + '-' + moment(this.end).format('l');
+    };
 
 	  var Service = function (id, description, hours) {
 	    this.id = id || utilService.createUUID();
 	    this.description = description;
 	    this.hours = hours;
 	  };
+    Service.prototype.toString = function () {
+      return this.description + ': ' + this.hours + ' hours';
+    };
 	   
 	  var Camping = function (id, description, start, end) {
 	    this.id = id || utilService.createUUID();
@@ -318,6 +324,9 @@ app.factory('scoutObjectService', ['requirementService', 'dateService', 'utilSer
 	    this.start = dateService.convert(start);
 	    this.end = dateService.convert(end);
 	  };
+    Camping.prototype.toString = function () {
+      return this.description + ': ' + moment(this.start).format('l') + '-' + moment(this.end).format('l');
+    };
 
 	  return {
 	  	Scout: Scout

@@ -16,7 +16,7 @@
 <md-content layout="row">
 
   <md-sidenav class="md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" ng-if="loggedIn" md-swipe-left="close()">
-    <md-toolbar class="md-toolbar-tools">
+    <md-toolbar layout="column" layout-align="center center">
       First Class Scouting
     </md-toolbar>
 
@@ -63,6 +63,9 @@
 
 <!-- lodash -->
 <script src="bower_components/lodash/lodash.js"></script>
+
+<!--moment-->
+<script src="bower_components/moment/moment.js"></script>
 
 <!-- angular components -->
 <script src="bower_components/angular/angular.js"></script>

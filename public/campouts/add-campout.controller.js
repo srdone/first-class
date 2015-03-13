@@ -1,5 +1,5 @@
 angular.module('firstClass').controller('AddCampoutController',
-  ['$scope', function ($scope) {
+  ['$scope', '$mdToast', function ($scope, $mdToast) {
 
     $scope.addCampout = function () {
       var campout = $scope.scout.addCampout($scope.newCampout.description,
@@ -7,9 +7,7 @@ angular.module('firstClass').controller('AddCampoutController',
                                             $scope.newCampout.endDate);
 
       $scope.scout.save().then(function () {
-        $scope.message = 'Added: ' + $scope.newCampout.description + ': '
-                                   + $scope.newCampout.startDate + ' - '
-                                   + $scope.newCampout.endDate;
+        $mdToast.showSimple('Added campout: ' + campout.toString());
         $scope.newCampout = {};
       }, function () {
         $scope.scout.removeCampout(campout.id);

@@ -1,11 +1,11 @@
 angular.module('firstClass').controller('AddServiceController',
-  ['$scope', function ($scope) {
+  ['$scope', '$mdToast', function ($scope, $mdToast) {
 
     $scope.addService = function () {
       var service = $scope.scout.addService($scope.newService.description, $scope.newService.hours);
 
       $scope.scout.save().then(function () {
-        $scope.message = 'Added: ' + $scope.newService.description + ' - ' + $scope.newService.hours + ' hours';
+        $mdToast.showSimple('Added Service Hours:' + ' ' + service.toString());
         $scope.newService = {};
       }, function () {
         $scope.scout.removeService(service.id);
