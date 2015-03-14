@@ -8,6 +8,7 @@ angular.module('firstClass').factory('authService', ['$location', '$http', '$q',
     $http.get('/loggedIn')
       .success(function (response) {
         console.log(response);
+        $rootScope.loggedIn = true;
         $rootScope.username = response.data.username;
         deferred.resolve('success');
       })
@@ -34,6 +35,8 @@ angular.module('firstClass').factory('authService', ['$location', '$http', '$q',
 
   var _logout = function () {
     return $http.post('/logout', {}).then(function (response) {
+      $rootScope.loggedIn = false;
+      $rootScope.username = undefined;
       console.log('logout called, responded: ' + JSON.stringify(response));
     });
   };
