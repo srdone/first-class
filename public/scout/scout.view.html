@@ -1,6 +1,6 @@
 <div layout-fill layout="column">
 
-  <md-card class="md-whiteframe-z3">
+  <md-card class="md-whiteframe-z2">
     <md-toolbar>
       <div class="md-toolbar-tools" layout="row">
         <img ng-src="{{scout.photoUrl}}" class="avatar-sm" layout-margin>
@@ -26,7 +26,7 @@
   </md-card>
 
   <!--Service Detail-->
-  <md-card ng-if="!!scout.getService().length">
+  <md-card ng-if="!!scout.getService().length" class="md-whiteframe-z2">
     <md-toolbar>
       <div class="md-toolbar-tools">
         Service History
@@ -47,7 +47,7 @@
   </md-card>
 
   <!--Camping Detail-->
-  <md-card ng-if="!!scout.getCamping().length">
+  <md-card ng-if="!!scout.getCamping().length" class="md-whiteframe-z2">
     <md-toolbar>
       <div class="md-toolbar-tools">
         Campouts Attended
@@ -68,7 +68,7 @@
   </md-card>
 
   <!--Position Detail-->
-  <md-card ng-if="!!scout.getPositions().length">
+  <md-card ng-if="!!scout.getPositions().length" class="md-whiteframe-z2">
     <md-toolbar>
       <div class="md-toolbar-tools">
         Position History
@@ -88,7 +88,7 @@
     </md-card-content>
   </md-card>
 
-  <md-card>
+  <md-card ng-if="!!scout.getCompletedRanks().length" class="md-whiteframe-z2">
     <md-toolbar>
       <div class="md-toolbar-tools">
         Requirements Completed

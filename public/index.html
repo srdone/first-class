@@ -13,9 +13,9 @@
 <body ng-app="firstClass" ng-cloak ng-controller="LayoutController" ng-strict-di>
 
 
-<md-content layout="row">
+<md-content layout="row" flex layout-fill>
 
-  <md-sidenav class="md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" ng-if="loggedIn" md-swipe-left="close()">
+  <md-sidenav class="md-whiteframe-z3" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" ng-if="loggedIn" md-swipe-left="close()">
     <md-toolbar layout="column" layout-align="center center">
       First Class Scouting
     </md-toolbar>
