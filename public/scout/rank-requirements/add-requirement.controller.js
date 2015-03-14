@@ -20,4 +20,11 @@ angular.module('firstClass').controller('AddRequirementController',
       });
     };
 
+    $scope.requirementCategories = $scope.requirements.reduce(function (previous, current) {
+      if (previous.indexOf(current.category) === -1) {
+        previous.push(current.category);
+      }
+      return previous;
+    }, []);
+
   }]);

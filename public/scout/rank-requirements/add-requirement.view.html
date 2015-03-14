@@ -1,9 +1,13 @@
 <div ng-controller="AddRequirementController">
-  Add Requirement
-  <select ng-options="requirement as requirement.name group by requirement.category for requirement in requirements" ng-model="requirement"></select>
+
+  <md-select ng-model="selectedRequirement" placeholder="Select Requirement to Add">
+    <md-optgroup label="{{requirementCategory}}" ng-repeat="requirementCategory in requirementCategories">
+      <md-option ng-value="requirement" ng-repeat="requirement in requirements | filter: {category: requirementCategory}">{{requirement.name}}</md-option>
+    </md-optgroup>
+  </md-select>
 
   <div class="button-group">
-    <md-button class="md-raised md-primary" ng-click="addRequirement(requirement)">Add Requirement</md-button>
+    <md-button class="md-raised md-primary" ng-click="addRequirement(selectedRequirement)">Add Requirement</md-button>
   </div>
 
 </div>
