@@ -17,7 +17,7 @@
 /*}*/
 
 .avatar-sm {
-    height: auto;
+    height: 50px;
     width: 50px;
     border: 1px black solid;
     border-radius: 50%;

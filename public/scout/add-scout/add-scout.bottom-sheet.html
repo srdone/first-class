@@ -1,28 +1,34 @@
 <md-bottom-sheet>
 
-    <md-input-container>
-      <label for="firstName">First Name</label>
-      <input type="text" class="form-control" id="firstName" ng-model="newScout.firstName" placeholder="Baden">
-    </md-input-container>
+  <md-input-container>
+    <label for="firstName">First Name</label>
+    <input type="text" class="form-control" id="firstName" ng-model="newScout.firstName" placeholder="Baden">
+  </md-input-container>
 
-    <md-input-container>
-      <label for="lastName">Last Name</label>
-      <input type="text" class="form-control" id="lastName" ng-model="newScout.lastName" placeholder="Powell">
-    </md-input-container>
+  <md-input-container>
+    <label for="lastName">Last Name</label>
+    <input type="text" class="form-control" id="lastName" ng-model="newScout.lastName" placeholder="Powell">
+  </md-input-container>
 
-    <md-input-container>
-      <label for="patrol">Patrol</label>
-      <input type="text" class="form-control" id="patrol" ng-model="newScout.patrol" placeholder="Owl Patrol">
-    </md-input-container>
+  <md-input-container>
+    <label for="patrol">Patrol</label>
+    <input type="text" class="form-control" id="patrol" ng-model="newScout.patrol" placeholder="Owl Patrol">
+  </md-input-container>
 
-    <md-input-container>
+  <div layout="row">
+
+    <md-input-container flex>
       <label for="photoUrl">Photo URL</label>
       <input type="text" class="form-control" id="photoUrl" ng-model="newScout.photoUrl" placeholder="http://...">
     </md-input-container>
 
-    <md-checkbox type="checkbox" class="form-control" id="isOA" ng-model="newScout.isOA">
-      OA Member
-    </md-checkbox>
+    <img ng-if="newScout.photoUrl" ng-src="{{newScout.photoUrl}}" class="avatar-sm">
+
+  </div>
+
+  <md-checkbox type="checkbox" class="form-control" id="isOA" ng-model="newScout.isOA">
+    OA Member
+  </md-checkbox>
 
   <div class="button-group">
     <md-button class="md-raised md-primary" ng-click="addScout(newScout)">Add Scout</md-button>

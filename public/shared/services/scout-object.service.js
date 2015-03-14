@@ -56,14 +56,12 @@ app.factory('scoutObjectService', ['requirementService', 'dateService', 'utilSer
         });
       };
 
-	    var _tempUserImage = 'https://s3.amazonaws.com/uifaces/faces/twitter/jsa/128.jpg';
-
 	    this.id = id || utilService.createUUID();
 	    this.firstName = firstName || '';
 	    this.lastName = lastName || '';
 	    this.currentPatrol = currentPatrol || '';
 	    this.troop = '154';
-	    this.photoUrl = photoUrl || _tempUserImage;
+	    this.photoUrl = photoUrl || undefined;
 	    this.isOA = isOA === undefined ? false : isOA;
 	    this._completedReqs = completedReqs ? _convertCompletedRequirements(completedReqs) : [];
 	    this._positionHistory = positionHistory ? _convertPositionHistory(positionHistory) : [];
