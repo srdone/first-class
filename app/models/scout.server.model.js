@@ -2,8 +2,14 @@ var mongoose = require('mongoose'),
   Schema = mongoose.Schema;
 
 var ScoutSchema = new Schema({
-  firstName: String,
-  lastName: String,
+  firstName: {
+    type: String,
+    required: true
+  },
+  lastName: {
+    type: String,
+    required: true
+  },
   photoUrl: {
     type: String,
     required: true,

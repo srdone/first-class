@@ -1,34 +1,44 @@
 <md-bottom-sheet>
 
+  <form name="addScoutForm">
+
   <md-input-container>
-    <label for="firstName">First Name</label>
-    <input type="text" class="form-control" id="firstName" ng-model="newScout.firstName" placeholder="Baden">
+    <label>First Name</label>
+    <input type="text" class="form-control" name="firstName" ng-model="newScout.firstName" placeholder="Robert Baden" required>
+    <div ng-messages="addScoutForm.firstName.$error" ng-show="addScoutForm.firstName.$dirty && addScoutForm.firstName.$invalid">
+      <div ng-message="required">First Name is Required</div>
+    </div>
   </md-input-container>
 
   <md-input-container>
-    <label for="lastName">Last Name</label>
-    <input type="text" class="form-control" id="lastName" ng-model="newScout.lastName" placeholder="Powell">
+    <label>Last Name</label>
+    <input type="text" class="form-control" name="lastName" ng-model="newScout.lastName" placeholder="Powell" required>
+    <div ng-messages="addScoutForm.lastName.$error" ng-show="addScoutForm.lastName.$dirty && addScoutForm.lastName.$invalid">
+      <div ng-message="required">Last Name is Required</div>
+    </div>
   </md-input-container>
 
   <md-input-container>
-    <label for="patrol">Patrol</label>
-    <input type="text" class="form-control" id="patrol" ng-model="newScout.patrol" placeholder="Owl Patrol">
+    <label>Patrol</label>
+    <input type="text" class="form-control" name="patrol" ng-model="newScout.patrol" placeholder="Owl Patrol">
   </md-input-container>
 
   <div layout="row">
 
     <md-input-container flex>
-      <label for="photoUrl">Photo URL</label>
-      <input type="text" class="form-control" id="photoUrl" ng-model="newScout.photoUrl" placeholder="http://...">
+      <label>Photo URL</label>
+      <input type="text" class="form-control" name="photoUrl" ng-model="newScout.photoUrl" placeholder="http://...">
     </md-input-container>
 
     <img ng-if="newScout.photoUrl" ng-src="{{newScout.photoUrl}}" class="avatar-sm">
 
   </div>
 
-  <md-checkbox type="checkbox" class="form-control" id="isOA" ng-model="newScout.isOA">
+  <md-checkbox class="form-control" name="isOA" ng-model="newScout.isOA">
     OA Member
   </md-checkbox>
+
+  </form>
 
   <div class="button-group">
     <md-button class="md-raised md-primary" ng-click="addScout(newScout)">Add Scout</md-button>

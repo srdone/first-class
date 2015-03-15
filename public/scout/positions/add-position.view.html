@@ -1,18 +1,26 @@
 <div ng-controller="AddPositionController" layout="column">
 
+  <form name="addPositionForm">
+
   <md-input-container>
-    <label for="title">Description</label>
-    <input type="text" class="form-control" id="title" ng-model="newPosition.title" placeholder="Title">
+    <label>Description</label>
+    <input type="text" class="form-control" name="title" ng-model="newPosition.title" placeholder="Title" required>
+    <div ng-messages="addPositionForm.title" ng-show="addPositionForm.lastName.$dirty && addPositionForm.lastName.$invalid">
+      <div ng-message="required">Position Title is Required</div>
+    </div>
   </md-input-container>
 
   <md-input-container>
-    <label for="start-date">Start Date</label>
-    <input type="date" class="form-control" id="start-date" ng-model="newPosition.startDate" placeholder="Start Date">
+    <label>Start Date</label>
+    <input type="date" class="form-control" name="startDate" ng-model="newPosition.startDate" required>
+    <div ng-messages="addPositionForm.startDate" ng-show="addPositionForm.startDate.$dirty && addPositionForm.startDate.$invalid">
+      <div ng-message="required">Start Date is Required</div>
+    </div>
   </md-input-container>
 
   <md-input-container>
-    <label for="end-date">End Date</label>
-    <input type="date" class="form-control" id="end-date" ng-model="newPosition.endDate" placeholder="End Date">
+    <label>End Date</label>
+    <input type="date" class="form-control" name="endDate" ng-model="newPosition.endDate">
   </md-input-container>
 
   <div layout="row" class="button-group">
@@ -20,5 +28,5 @@
     <md-button id="cancel" type="cancel" class="md-raised md-warn" ng-click="cancelAddPosition()">Clear</md-button>
   </div>
 
-  <div class="alert alert-info" ng-if="message">{{message}}</div>
+  </form>
 </div>

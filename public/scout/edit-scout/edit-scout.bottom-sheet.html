@@ -4,32 +4,48 @@
       <md-button ng-click="deleteScout()" class="md-raised md-warn">Delete</md-button>
     </div>
 
+  <form name="editingScoutForm">
+
     <md-input-container>
-      <label for="firstName">First Name</label>
-      <input type="text" class="form-control" id="firstName" ng-model="editingScout.firstName" placeholder="Baden">
+      <label>First Name</label>
+      <input type="text" class="form-control" name="firstName" ng-model="editingScout.firstName" placeholder="Robert Baden" required>
+      <div ng-messages="editingScoutForm.firstName.$error" ng-show="editingScoutForm.firstName.$dirty && editingScoutForm.firstName.$invalid">
+        <div ng-message="required">First Name is Required</div>
+      </div>
     </md-input-container>
 
     <md-input-container>
-      <label for="lastName">Last Name</label>
-      <input type="text" class="form-control" id="lastName" ng-model="editingScout.lastName" placeholder="Powell">
+      <label>Last Name</label>
+      <input type="text" class="form-control" name="lastName" ng-model="editingScout.lastName" placeholder="Powell" required>
+      <div ng-messages="editingScoutForm.lastName.$error" ng-show="editingScoutForm.lastName.$dirty && editingScoutForm.lastName.$invalid">
+        <div ng-message="required">Last Name is Required</div>
+      </div>
     </md-input-container>
 
     <md-input-container>
-      <label for="patrol">Patrol</label>
-      <input type="text" class="form-control" id="patrol" ng-model="editingScout.patrol" placeholder="Owl Patrol">
+      <label>Patrol</label>
+      <input type="text" class="form-control" name="patrol" ng-model="editingScout.patrol" placeholder="Owl Patrol">
     </md-input-container>
 
-    <md-input-container>
-      <label for="photoUrl">Photo URL</label>
-      <input type="text" class="form-control" id="photoUrl" ng-model="editingScout.photoUrl" placeholder="http://...">
-    </md-input-container>
+    <div layout="row">
 
-    <md-checkbox type="checkbox" class="form-control" id="isOA" ng-model="editingScout.isOA">
+      <md-input-container flex>
+        <label>Photo URL</label>
+        <input type="text" class="form-control" name="photoUrl" ng-model="editingScout.photoUrl" placeholder="http://...">
+      </md-input-container>
+
+      <img ng-if="editingScout.photoUrl" ng-src="{{editingScout.photoUrl}}" class="avatar-sm">
+
+    </div>
+
+    <md-checkbox name="isOA" ng-model="editingScout.isOA">
       OA Member
     </md-checkbox>
 
+  </form>
+
   <div class="button-group">
-    <md-button class="md-raised md-primary" ng-click="addScout(newScout)">Save Edits</md-button>
+    <md-button class="md-raised md-primary" ng-click="addScout(editingScout)">Save Edits</md-button>
     <md-button class="md-raised md-warn" ng-click="cancel()">Cancel</md-button>
   </div>
 </md-bottom-sheet>

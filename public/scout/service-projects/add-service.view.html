@@ -1,20 +1,28 @@
 <div ng-controller="AddServiceController" layout="column">
 
+  <form name="addServiceForm">
+
   <md-input-container>
-    <label for="description">Description</label>
-    <input type="text" class="form-control" id="description" ng-model="newService.description" placeholder="Description">
+    <label>Description</label>
+    <input type="text" class="form-control" name="description" ng-model="newService.description" placeholder="Description" required>
+    <div ng-messages="addServiceForm.description" ng-show="addServiceForm.description.$dirty && addServiceForm.description.$invalid">
+      <div ng-message="required">Service Description is Required</div>
+    </div>
   </md-input-container>
 
   <md-input-container>
     <label for="hours">Hours</label>
-    <input type="number" class="form-control" id="hours" ng-model="newService.hours" placeholder="Hours">
+    <input type="number" class="form-control" id="hours" ng-model="newService.hours" placeholder="Hours" required>
+    <div ng-messages="addServiceForm.description" ng-show="addServiceForm.description.$dirty && addServiceForm.description.$invalid">
+      <div ng-message="required">Service Hours are Required</div>
+    </div>
   </md-input-container>
 
   <div layout="row" class="button-group">
-    <md-button id="submit" type="submit" class="md-raised md-primary" ng-click="addService()">Add Service</md-button>
-    <md-button id="cancel" type="cancel" class="md-raised md-warn" ng-click="cancelAddService()">Clear</md-button>
+    <md-button id="submit" class="md-raised md-primary" ng-click="addService()">Add Service</md-button>
+    <md-button id="cancel" class="md-raised md-warn" ng-click="cancelAddService()">Clear</md-button>
   </div>
 
-  <div class="alert alert-info" ng-if="message">{{message}}</div>
+  </form>
 
 </div>
