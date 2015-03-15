@@ -1,5 +1,7 @@
 #!/bin/bash
 
+SCM_COMMAND_IDLE_TIMEOUT = 600
+
 # ----------------------
 # KUDU Deployment Script
 # Version: 0.1.11
