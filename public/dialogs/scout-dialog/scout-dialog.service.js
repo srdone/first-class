@@ -5,7 +5,7 @@ angular.module('firstClass').factory('scoutDialogService', ['$mdDialog', functio
   var _addScoutDialogPreset = function (options)  {
 
     var defaultOptions =  {
-      templateUrl: 'dialogs/scout-dialog.template.html',
+      templateUrl: 'dialogs/scout-dialog/scout-dialog.template.html',
       controller: 'ScoutDialogController',
       controllerAs: 'vm',
       bindToController: true,
