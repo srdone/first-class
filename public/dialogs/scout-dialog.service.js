@@ -1,11 +1,11 @@
 'use strict';
 
-angular.module('firstClass').factory('dialogService', ['$mdDialog', function ($mdDialog) {
+angular.module('firstClass').factory('scoutDialogService', ['$mdDialog', function ($mdDialog) {
 
   var _addScoutDialogPreset = function (options)  {
 
     var defaultOptions =  {
-      templateUrl: 'shared/dialog-templates/scout-dialog.template.html',
+      templateUrl: 'dialogs/scout-dialog.template.html',
       controller: 'ScoutDialogController',
       controllerAs: 'vm',
       bindToController: true,

@@ -2,13 +2,13 @@
 
 var app = angular.module('firstClass');
 
-app.controller('TroopController', ['$scope', 'scoutService', 'troop', 'dialogService',
-	function ($scope, scoutService, troop, dialogService) {
+app.controller('TroopController', ['$scope', 'scoutService', 'troop', 'scoutDialogService',
+	function ($scope, scoutService, troop, scoutDialogService) {
 
     $scope.troop = troop;
 
     $scope.addScout = function () {
-      dialogService.showScoutDialog({create: true}).then(function (newScout) {
+      scoutDialogService.showScoutDialog({create: true}).then(function (newScout) {
         $scope.troop.push(newScout);
       });
     }
