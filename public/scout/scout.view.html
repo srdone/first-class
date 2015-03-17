@@ -14,6 +14,10 @@
       <fcs-scout-summary scout="scout"></fcs-scout-summary>
 
       <div class="md-button-group">
+        <md-button ng-click="addPosition($event)">Add Position</md-button>
+      </div>
+
+      <div class="md-button-group">
         <md-button ng-click="addCampout($event)">Add Campout</md-button>
       </div>
 
@@ -42,7 +46,7 @@
           <md-item-content>
             {{service.description}} - {{service.hours | number: 1}} hours
             <md-button ng-click="deleteService(service)" aria-label="Remove Service {{service.description}}">
-              <md-icon md-svg-src="bower_components/material-design-icons/action/svg/production/ic_delete_48px.svg"></md-icon>
+              <md-icon md-svg-src="actions:delete"></md-icon>
             </md-button>
           </md-item-content>
         </md-item>
@@ -85,10 +89,13 @@
       <md-list>
         <md-item ng-repeat="position in scout.getPositions() | orderBy: 'start'">
           <md-item-content>
-            {{position.title}}: {{position.start | date: 'shortDate'}} - {{position.end | date: 'shortDate'}}
             <md-button ng-click="deletePosition(position)" aria-label="Remove position {{position.title}}">
-              <md-icon md-svg-src="bower_components/material-design-icons/action/svg/production/ic_delete_48px.svg"></md-icon>
+              <md-icon md-svg-src="actions:delete"></md-icon>
             </md-button>
+            <md-button ng-click="editPosition($event, position)" aria-label="Edit position {{position.title}}">
+              <md-icon md-svg-src="actions:edit"></md-icon>
+            </md-button>
+            {{position.title}}: {{position.start | date: 'shortDate'}} - {{position.end | date: 'shortDate'}}
           </md-item-content>
         </md-item>
       </md-list>

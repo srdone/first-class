@@ -2,8 +2,8 @@
 
 var app = angular.module('firstClass');
 
-app.controller('ScoutController', ['$scope', 'scoutService', 'scout', '$mdBottomSheet', 'requirementService', '$mdDialog', '$filter', '$mdToast', 'scoutDialogService', 'campoutDialogService',
-	function ($scope, scoutService, scout, $mdBottomSheet, requirementService, $mdDialog, $filter, $mdToast, scoutDialogService, campoutDialogService) {
+app.controller('ScoutController', ['$scope', 'scoutService', 'scout', '$mdBottomSheet', 'requirementService', '$mdDialog', '$filter', '$mdToast', 'scoutDialogService', 'campoutDialogService', 'positionDialogService',
+	function ($scope, scoutService, scout, $mdBottomSheet, requirementService, $mdDialog, $filter, $mdToast, scoutDialogService, campoutDialogService, positionDialogService) {
 
 		$scope.scout = scout;
 
@@ -21,6 +21,31 @@ app.controller('ScoutController', ['$scope', 'scoutService', 'scout', '$mdBottom
             return $scope.scout.getMissingRequirements();
           }
         }
+      });
+    };
+
+    $scope.addPosition = function (event) {
+      positionDialogService.showCreateDialog({targetEvent: event}).then(function (newPositionData) {
+        var newPosition = $scope.scout.addPosition(newPositionData.title, newPositionData.start, newPositionData.end);
+        $scope.scout.save().then(function () {
+          $mdToast.showSimple('New Position Added: ' + newPosition.toString());
+        }, function () {
+          $scope.scout.removePosition(newPosition.id);
+          $mdToast.showSimple('Failed to save new position');
+        });
+      });
+    };
+
+    $scope.editPosition = function (event, position) {
+      var positionToEdit = angular.copy(position);
+
+      positionDialogService.showEditDialog({targetEvent: event, position: positionToEdit}).then(function (editedPosition) {
+        $scope.scout.removePosition(position.id);
+        $scope.scout.addPosition(editedPosition.title, editedPosition.start, editedPosition.end);
+        $scope.scout.save().then(function (savedScout) {
+          $mdToast.showSimple('Saved Position Changes: ' + editedPosition.toString());
+          $scope.scout = savedScout;
+        });
       });
     };
 
