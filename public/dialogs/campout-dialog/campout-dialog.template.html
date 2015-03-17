@@ -33,9 +33,22 @@
   </md-content>
 
   <div class="md-actions" layout="row">
+
     <span flex></span>
-    <md-button id="submit" class="md-primary" ng-click="vm.returnCampout()">{{vm.create ? 'Add' : 'Update'}} Campout</md-button>
+
+    <md-button
+        id="submit"
+        class="md-primary"
+        ng-click="vm.returnCampout()">
+
+      {{vm.create ? 'Add' : 'Update'}}
+
+      <span show-gt-sm> Campout</span>
+
+    </md-button>
+
     <md-button id="cancel" class="md-warn" ng-click="vm.cancel()">Cancel</md-button>
+
   </div>
 
 </md-dialog>
