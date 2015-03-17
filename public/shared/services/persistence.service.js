@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('firstClass').factory('persistenceService', ['$q', '$http', '$rootScope',
-	function ($q, $http, $rootScope) {
+	function ($q, $http) {
 
 	var _getScoutById = function (id) {
 		return $http.get('/scouts/' + id).then(function (response) {

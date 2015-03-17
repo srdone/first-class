@@ -280,6 +280,9 @@ app.factory('scoutObjectService', ['requirementService', 'dateService', 'utilSer
       Scout.prototype.getMissingRequirements = function () {
         return requirementService.getMissingRequirements(this._completedReqs);
       };
+    Scout.prototype.getName = function () {
+      return this.firstName + ' ' + this.lastName;
+    };
 
 	  var Position = function (id, title, start, end) {
 	    this.id = id || utilService.createUUID();

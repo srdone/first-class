@@ -1,7 +1,7 @@
 <div layout-fill layout="column" flex>
 
   <div class="md-button-group">
-    <md-button ng-click="openAddScoutSheet()" class="md-button md-raised md-accent">Add Scout</md-button>
+    <md-button ng-click="addScout()" class="md-button md-raised md-accent">Add Scout</md-button>
   </div>
 
       <div ng-repeat="scout in troop | orderBy: 'lastName+firstName'">

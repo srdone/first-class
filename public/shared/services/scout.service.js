@@ -54,8 +54,9 @@ app.factory('scoutService', ['scoutObjectService', 'persistenceService', '$log',
 		var _createNewScout = function (scout) {
       $log.debug('createNewScout called');
       $log.debug(scout);
-			var newScout = new Scout(undefined, scout.firstName, scout.lastName, scout.photoUrl, scout.isOA, undefined, scout.patrol);
-			return persistenceService.createScout(newScout);
+			return persistenceService.createScout(scout).then(function (newScoutData) {
+        return _convertScout(newScoutData);
+      });
 		};
 
 		return {
