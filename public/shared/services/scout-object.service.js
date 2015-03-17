@@ -139,9 +139,9 @@ app.factory('scoutObjectService', ['requirementService', 'dateService', 'utilSer
 	    return true;
 	  };
 	  Scout.prototype.addCampout = function(desc, start, end) {
-	    var camping = new Camping(undefined, desc, start, end);
-	    this._campingHistory.push(camping);
-	    return camping;
+	    var campout = new Camping(undefined, desc, start, end);
+	    this._campingHistory.push(campout);
+	    return campout;
 	  };
 	  Scout.prototype.removeCampout = function (id) {
 	    for (var i = 0; i < this._campingHistory.length; i++) {

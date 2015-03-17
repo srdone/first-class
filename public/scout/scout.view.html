@@ -14,6 +14,10 @@
       <fcs-scout-summary scout="scout"></fcs-scout-summary>
 
       <div class="md-button-group">
+        <md-button ng-click="addCampout($event)">Add Campout</md-button>
+      </div>
+
+      <div class="md-button-group">
         <md-button ng-click="openAddScoutDetailsSheet()" class="md-raised md-primary md-button">Add Details</md-button>
       </div>
 
@@ -57,10 +61,13 @@
       <md-list>
         <md-item ng-repeat="campout in scout.getCamping() | orderBy: 'start'">
           <md-item-content>
-            {{campout.description}}: {{campout.start | date:'shortDate'}} - {{campout.end | date:'shortDate'}}
             <md-button ng-click="deleteCampout(campout)" aria-label="Remove Campout {{campout.description}}">
-              <md-icon md-svg-src="bower_components/material-design-icons/action/svg/production/ic_delete_48px.svg"></md-icon>
+              <md-icon md-svg-src="actions:delete"></md-icon>
             </md-button>
+            <md-button ng-click="editCampout($event, campout)" aria-label="Edit Campout {{campout.description}}">
+              <md-icon md-svg-src="actions:edit"></md-icon>
+            </md-button>
+            {{campout.description}}: {{campout.start | date:'shortDate'}} - {{campout.end | date:'shortDate'}}
           </md-item-content>
         </md-item>
       </md-list>

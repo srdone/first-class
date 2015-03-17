@@ -2,8 +2,8 @@
 
 var app = angular.module('firstClass');
 
-app.controller('ScoutController', ['$scope', 'scoutService', 'scout', '$mdBottomSheet', 'requirementService', '$mdDialog', '$filter', '$mdToast', 'scoutDialogService',
-	function ($scope, scoutService, scout, $mdBottomSheet, requirementService, $mdDialog, $filter, $mdToast, scoutDialogService) {
+app.controller('ScoutController', ['$scope', 'scoutService', 'scout', '$mdBottomSheet', 'requirementService', '$mdDialog', '$filter', '$mdToast', 'scoutDialogService', 'campoutDialogService',
+	function ($scope, scoutService, scout, $mdBottomSheet, requirementService, $mdDialog, $filter, $mdToast, scoutDialogService, campoutDialogService) {
 
 		$scope.scout = scout;
 
@@ -50,6 +50,28 @@ app.controller('ScoutController', ['$scope', 'scoutService', 'scout', '$mdBottom
             $scope.scout.addRequirement(completedRequirement.requirement);
             $mdToast.showSimple('A server error occurred: Failed to delete requirement');
           });
+      });
+    };
+
+    $scope.addCampout = function (event) {
+      campoutDialogService.showCreateCampoutDialog({targetEvent: event}).then(function (newCampoutData) {
+        var newCampout = $scope.scout.addCampout(newCampoutData.description, newCampoutData.start, newCampoutData.end);
+        $scope.scout.save().then(function () {
+          $mdToast.showSimple('Created Campout: ' + newCampout.toString());
+        });
+      });
+    };
+
+    $scope.editCampout = function (event, campout) {
+      var campoutToEdit = angular.copy(campout);
+
+      campoutDialogService.showEditCampoutDialog({targetEvent: event, campout: campoutToEdit}).then(function (editedCampout) {
+        $scope.scout.removeCampout(campout.id);
+        $scope.scout.addCampout(editedCampout.description, editedCampout.start, editedCampout.end);
+        $scope.scout.save().then(function (savedScout) {
+          $mdToast.showSimple('Saved Campout Changes: ' + editedCampout.toString());
+          $scope.scout = savedScout;
+        });
       });
     };
 

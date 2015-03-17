@@ -28,4 +28,8 @@ angular.module('firstClass').config(['$mdIconProvider', function($mdIconProvider
   $mdIconProvider
     .icon('badges:oa member'                  , 'shared/icons/oa_pocket_device.svg');
 
+  $mdIconProvider
+    .icon('actions:edit'                      , 'bower_components/material-design-icons/editor/svg/design/ic_mode_edit_48px.svg')
+    .icon('actions:delete'                    , 'bower_components/material-design-icons/action/svg/production/ic_delete_48px.svg')
+
 }]);

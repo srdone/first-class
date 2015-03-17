@@ -48,8 +48,8 @@
 
   <div class="md-actions" layout="row">
     <span flex></span>
-    <md-button ng-click="vm.addScout()" ng-disabled="vm.scoutForm.$invalid || vm.scoutForm.$untouched" ng-if="vm.create">Add Scout</md-button>
-    <md-button ng-click="vm.updateScout()" ng-disabled="vm.scoutForm.$invalid" ng-if="!vm.create">Save Edits</md-button>
+    <md-button class="md-primary" ng-click="vm.addScout()" ng-disabled="vm.scoutForm.$invalid || vm.scoutForm.$untouched" ng-if="vm.create">Add Scout</md-button>
+    <md-button class="md-primary" ng-click="vm.updateScout()" ng-disabled="vm.scoutForm.$invalid" ng-if="!vm.create">Save Edits</md-button>
     <md-button class="md-warn" ng-click="vm.cancel()">Cancel</md-button>
   </div>
 </md-dialog>
