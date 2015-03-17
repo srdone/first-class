@@ -1,15 +1,41 @@
 'use strict';
 
-angular.module('firstClass').factory('dialogService', [function () {
+angular.module('firstClass').factory('dialogService', ['$mdDialog', function ($mdDialog) {
 
-  var _addScoutDialogPreset = {
-    templateUrl: 'shared/dialog-templates/add-scout-dialog.template.html',
-    controller: 'AddScoutDialogController',
-    controllerAs: 'vm'
-  }
+  var _addScoutDialogPreset = function (options)  {
+
+    var defaultOptions =  {
+      templateUrl: 'shared/dialog-templates/scout-dialog.template.html',
+      controller: 'ScoutDialogController',
+      controllerAs: 'vm',
+      bindToController: true,
+      targetEvent: options.event,
+      locals: {
+        create: options.create,
+        scout: options.scout
+      }
+    };
+
+    return defaultOptions;
+
+  };
+
+  var _showScoutDialog = function (options) {
+    return $mdDialog.show(_addScoutDialogPreset(options));
+  };
+
+  var _showEditScoutDialog = function (editOptions) {
+    var options = {
+      scout: editOptions.scout,
+      event: editOptions.event,
+      create: false
+    };
+    return $mdDialog.show(_addScoutDialogPreset(options));
+  };
 
   return {
-    addScoutDialogPreset: _addScoutDialogPreset
+    showScoutDialog: _showScoutDialog,
+    showEditScoutDialog: _showEditScoutDialog
   }
 
 }]);

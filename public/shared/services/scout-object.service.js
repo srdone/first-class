@@ -72,7 +72,10 @@ app.factory('scoutObjectService', ['requirementService', 'dateService', 'utilSer
       this.neededReqSummary = this.getSummarizedNeededRequirementCategories();
 	  };
 	  Scout.prototype.save = function () {
-	  	return persistenceService.saveScout(this);
+      var thisScout = this;
+	  	return persistenceService.saveScout(this).then(function () {
+        return thisScout;
+      });
 	  };
     Scout.prototype.delete = function () {
       return persistenceService.deleteScout(this);

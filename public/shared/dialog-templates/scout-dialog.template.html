@@ -1,0 +1,55 @@
+<md-dialog aria-label="Add Scout">
+
+  <md-subheader class="md-sticky-no-effect md-primary">{{vm.create ? 'Add' : 'Edit'}} Scout</md-subheader>
+
+  <md-content>
+
+  <form name="vm.scoutForm">
+
+    <md-input-container>
+      <label>First Name</label>
+      <input type="text" class="form-control" name="firstName" ng-model="vm.scout.firstName" placeholder="Robert Baden" required>
+      <div ng-messages="vm.addScoutForm.firstName.$error" ng-show="vm.scoutForm.firstName.$dirty && vm.scoutForm.firstName.$invalid">
+        <div ng-message="required">First Name is Required</div>
+      </div>
+    </md-input-container>
+
+    <md-input-container>
+      <label>Last Name</label>
+      <input type="text" class="form-control" name="lastName" ng-model="vm.scout.lastName" placeholder="Powell" required>
+      <div ng-messages="vm.addScoutForm.lastName.$error" ng-show="vm.scoutForm.lastName.$dirty && vm.scoutForm.lastName.$invalid">
+        <div ng-message="required">Last Name is Required</div>
+      </div>
+    </md-input-container>
+
+    <md-input-container>
+      <label>Patrol</label>
+      <input type="text" class="form-control" name="patrol" ng-model="vm.scout.patrol" placeholder="Owl Patrol">
+    </md-input-container>
+
+    <div layout="row">
+
+      <md-input-container flex>
+        <label>Photo URL</label>
+        <input type="text" class="form-control" name="photoUrl" ng-model="vm.scout.photoUrl" placeholder="http://...">
+      </md-input-container>
+
+      <img ng-if="vm.scout.photoUrl" ng-src="{{vm.scout.photoUrl}}" class="avatar-sm">
+
+    </div>
+
+    <md-checkbox class="form-control" name="isOA" ng-model="vm.scout.isOA">
+      OA Member
+    </md-checkbox>
+
+  </form>
+
+  </md-content>
+
+  <div class="md-actions" layout="row">
+    <span flex></span>
+    <md-button ng-click="vm.addScout()" ng-disabled="vm.scoutForm.$invalid || vm.scoutForm.$untouched" ng-if="vm.create">Add Scout</md-button>
+    <md-button ng-click="vm.updateScout()" ng-disabled="vm.scoutForm.$invalid" ng-if="!vm.create">Save Edits</md-button>
+    <md-button class="md-warn" ng-click="vm.cancel()">Cancel</md-button>
+  </div>
+</md-dialog>

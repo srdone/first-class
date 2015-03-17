@@ -2,8 +2,8 @@
 
 var app = angular.module('firstClass');
 
-app.controller('ScoutController', ['$scope', 'scoutService', 'scout', '$mdBottomSheet', 'requirementService', '$mdDialog', '$filter', '$mdToast',
-	function ($scope, scoutService, scout, $mdBottomSheet, requirementService, $mdDialog, $filter, $mdToast) {
+app.controller('ScoutController', ['$scope', 'scoutService', 'scout', '$mdBottomSheet', 'requirementService', '$mdDialog', '$filter', '$mdToast', 'dialogService',
+	function ($scope, scoutService, scout, $mdBottomSheet, requirementService, $mdDialog, $filter, $mdToast, dialogService) {
 
 		$scope.scout = scout;
 
@@ -24,19 +24,30 @@ app.controller('ScoutController', ['$scope', 'scoutService', 'scout', '$mdBottom
       });
     };
 
-    $scope.editScout = function () {
-      $mdBottomSheet.show({
-        templateUrl: 'scout/edit-scout/edit-scout.bottom-sheet.html',
-        controller: 'EditScoutSheetController',
-        resolve: {
-          editingScout: function () {
-            return angular.copy($scope.scout);
-          }
-        }
-      }).then(function (scout) {
-        $scope.scout = scout;
-        $scope.scout.save();
-      })
+    //$scope.editScout = function () {
+    //  $mdBottomSheet.show({
+    //    templateUrl: 'scout/edit-scout/edit-scout.bottom-sheet.html',
+    //    controller: 'EditScoutSheetController',
+    //    resolve: {
+    //      editingScout: function () {
+    //        return angular.copy($scope.scout);
+    //      }
+    //    }
+    //  }).then(function (scout) {
+    //    $scope.scout = scout;
+    //    $scope.scout.save();
+    //  })
+    //};
+
+    $scope.editScout = function (event) {
+      var options = {
+        scout: angular.copy($scope.scout),
+        event: event
+      };
+
+      dialogService.showEditScoutDialog(options).then(function (editedScout) {
+        $scope.scout = editedScout;
+      });
     };
 
     $scope.deleteRequirement = function(completedRequirement) {
