@@ -7,7 +7,7 @@
 
       <md-input-container>
         <label>Description</label>
-        <input type="text" class="form-control" name="description" ng-model="vm.campout.description" placeholder="Title" required>
+        <input type="text" class="form-control" name="description" ng-model="vm.campout.description" required>
         <div ng-messages="vm.campoutForm.description.$error" ng-show="vm.campoutForm.description.$dirty && vm.campoutForm.description.$invalid">
           <div ng-message="required">Description is required</div>
         </div>
@@ -36,15 +36,9 @@
 
     <span flex></span>
 
-    <md-button
-        id="submit"
-        class="md-primary"
-        ng-click="vm.returnCampout()">
-
+    <md-button id="submit" class="md-primary" ng-click="vm.returnCampout()">
       {{vm.create ? 'Add' : 'Update'}}
-
       <span ng-show="$mdMedia('gt-sm')"> Campout</span>
-
     </md-button>
 
     <md-button id="cancel" class="md-warn" ng-click="vm.cancel()">Cancel</md-button>

@@ -14,7 +14,7 @@
       <fcs-scout-summary scout="scout"></fcs-scout-summary>
 
       <div class="md-button-group">
-        <md-button ng-click="addPosition($event)">Add Position</md-button>
+        <md-button ng-click="addServiceProject($event)">Add Service Project</md-button>
       </div>
 
       <div class="md-button-group">
@@ -22,7 +22,7 @@
       </div>
 
       <div class="md-button-group">
-        <md-button ng-click="openAddScoutDetailsSheet()" class="md-raised md-primary md-button">Add Details</md-button>
+        <md-button ng-click="addPosition($event)">Add Position</md-button>
       </div>
 
       <div class="md-button-group">
@@ -44,10 +44,13 @@
       <md-list>
         <md-item ng-repeat="service in scout.getService() | orderBy: 'description'">
           <md-item-content>
-            {{service.description}} - {{service.hours | number: 1}} hours
             <md-button ng-click="deleteService(service)" aria-label="Remove Service {{service.description}}">
               <md-icon md-svg-src="actions:delete"></md-icon>
             </md-button>
+            <md-button ng-click="editServiceProject($event, service)" aria-label="Edit Campout {{service.description}}">
+              <md-icon md-svg-src="actions:edit"></md-icon>
+            </md-button>
+            {{service.description}} - {{service.hours | number: 1}} hours
           </md-item-content>
         </md-item>
       </md-list>

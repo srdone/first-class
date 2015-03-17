@@ -2,8 +2,8 @@
 
 var app = angular.module('firstClass');
 
-app.controller('ScoutController', ['$scope', 'scoutService', 'scout', '$mdBottomSheet', 'requirementService', '$mdDialog', '$filter', '$mdToast', 'scoutDialogService', 'campoutDialogService', 'positionDialogService',
-	function ($scope, scoutService, scout, $mdBottomSheet, requirementService, $mdDialog, $filter, $mdToast, scoutDialogService, campoutDialogService, positionDialogService) {
+app.controller('ScoutController', ['$scope', 'scoutService', 'scout', '$mdBottomSheet', 'requirementService', '$mdDialog', '$filter', '$mdToast', 'scoutDialogService', 'campoutDialogService', 'positionDialogService', 'serviceProjectDialogService',
+	function ($scope, scoutService, scout, $mdBottomSheet, requirementService, $mdDialog, $filter, $mdToast, scoutDialogService, campoutDialogService, positionDialogService, serviceProjectDialogService) {
 
 		$scope.scout = scout;
 
@@ -44,6 +44,32 @@ app.controller('ScoutController', ['$scope', 'scoutService', 'scout', '$mdBottom
         $scope.scout.addPosition(editedPosition.title, editedPosition.start, editedPosition.end);
         $scope.scout.save().then(function (savedScout) {
           $mdToast.showSimple('Saved Position Changes: ' + editedPosition.toString());
+          $scope.scout = savedScout;
+        });
+      });
+    };
+
+    $scope.addServiceProject = function (event) {
+      serviceProjectDialogService.showCreateDialog({targetEvent: event}).then(function handleServiceData (newServiceProjectData) {
+        var newServiceProject = $scope.scout.addService(newServiceProjectData.description, newServiceProjectData.hours);
+
+        $scope.scout.save().then(function handleSuccessfulSave () {
+          $mdToast.showSimple('New Service Project Added: ' + newServiceProject.toString());
+        }, function handleError () {
+          $scope.scout.removeService(newServiceProject.id);
+          $mdToast.showSimple('Failed to save new service project');
+        });
+      });
+    };
+
+    $scope.editServiceProject = function (event, serviceProject) {
+      var serviceProjectToEdit = angular.copy(serviceProject);
+
+      serviceProjectDialogService.showEditDialog({targetEvent: event, serviceProject: serviceProjectToEdit}).then(function (editedServiceProject) {
+        $scope.scout.removeService(serviceProject.id);
+        $scope.scout.addService(editedServiceProject.description, editedServiceProject.hours);
+        $scope.scout.save().then(function (savedScout) {
+          $mdToast.showSimple('Saved Changes: ' + editedServiceProject.toString());
           $scope.scout = savedScout;
         });
       });
