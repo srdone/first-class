@@ -2,39 +2,42 @@
 
 angular.module('firstClass').factory('scoutDialogService', ['$mdDialog', function ($mdDialog) {
 
-  var _addScoutDialogPreset = function (options)  {
+  var _scoutDialogPreset = function (options)  {
 
-    var defaultOptions =  {
+    return {
       templateUrl: 'dialogs/scout-dialog/scout-dialog.template.html',
       controller: 'ScoutDialogController',
       controllerAs: 'vm',
       bindToController: true,
-      targetEvent: options.event,
+      targetEvent: options.targetEvent,
       locals: {
         create: options.create,
         scout: options.scout
       }
     };
 
-    return defaultOptions;
-
   };
 
-  var _showScoutDialog = function (options) {
-    return $mdDialog.show(_addScoutDialogPreset(options));
+  var _showCreateScoutDialog = function (createOptions) {
+    var options = {
+      targetEvent: createOptions.targetEvent,
+      create: true
+    };
+
+    return $mdDialog.show(_scoutDialogPreset(options));
   };
 
   var _showEditScoutDialog = function (editOptions) {
     var options = {
       scout: editOptions.scout,
-      event: editOptions.event,
+      targetEvent: editOptions.targetEvent,
       create: false
     };
-    return $mdDialog.show(_addScoutDialogPreset(options));
+    return $mdDialog.show(_scoutDialogPreset(options));
   };
 
   return {
-    showScoutDialog: _showScoutDialog,
+    showCreateScoutDialog: _showCreateScoutDialog,
     showEditScoutDialog: _showEditScoutDialog
   }
 

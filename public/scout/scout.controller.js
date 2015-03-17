@@ -31,7 +31,10 @@ app.controller('ScoutController', ['$scope', 'scoutService', 'scout', '$mdBottom
       };
 
       scoutDialogService.showEditScoutDialog(options).then(function (editedScout) {
-        $scope.scout = editedScout;
+        editedScout.save().then(function (savedScout) {
+          $mdToast.showSimple('Saved Scout: ' + savedScout.getName());
+          $scope.scout = savedScout;
+        });
       });
     };
 
