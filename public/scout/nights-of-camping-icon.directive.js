@@ -5,7 +5,7 @@ angular.module('firstClass').directive('fcsNightsOfCampingIcon', function () {
     scope: {
       nights: '='
     },
-    templateUrl: 'scout/campouts/nights-of-camping-icon.template.html'
+    templateUrl: 'scout/nights-of-camping-icon.template.html'
   }
 
 });
