@@ -182,15 +182,21 @@ app.controller('ScoutController', ['$scope', 'scoutService', 'scout', '$mdBottom
       });
 
       requirementDialogService.showDialog({targetEvent: $event, preSelectedRequirements: rawCompletedRequirements, difference: true})
-        .then(function handleSelected (selectedRequirements) {
-          selectedRequirements.added.forEach(function (currentRequirement) {
-            console.log('Added: ');
-            console.log(currentRequirement);
+        .then(function handleRequirementUpdates (updatedRequirements) {
+          updatedRequirements.added.forEach(function (currentRequirement) {
+            $scope.scout.addRequirement(currentRequirement);
           });
-          selectedRequirements.removed.forEach(function (currentRequirement) {
-            console.log('Removed: ');
-            console.log(currentRequirement);
+          updatedRequirements.removed.forEach(function (currentRequirement) {
+            $scope.scout.removeRequirementById(currentRequirement.id);
           });
+
+          $scope.scout.save().then(function handleSavedScout (savedScout) {
+            $scope.scout = savedScout;
+            var totalDeliberatelyUpdated = updatedRequirements.added + updatedRequirements.removed;
+            $mdToast.showSimple('Updated ' + totalDeliberatelyUpdated + ' requirements and their parents or children.');
+          });
+        }, function () {
+          $mdToast.showSimple('Failed to save requirements.');
         });
     };
 
