@@ -20,7 +20,7 @@
 
     <span flex></span>
 
-    <md-button id="submit" class="md-primary" ng-click="vm.returnAllSelections()">
+    <md-button id="submit" class="md-primary" ng-click="vm.difference ? vm.returnChangedSelections() : vm.returnAllSelections()">
       Update
       <span ng-show="$mdMedia('gt-sm')"> Requirements</span>
     </md-button>

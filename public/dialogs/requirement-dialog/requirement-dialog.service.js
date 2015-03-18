@@ -11,7 +11,8 @@ angular.module('firstClass').factory('requirementDialogService', ['$mdDialog', f
       bindToController: true,
       targetEvent: options.targetEvent,
       locals: {
-        preSelectedRequirements: options.preSelectedRequirements
+        preSelectedRequirements: options.preSelectedRequirements,
+        difference: options.difference
       },
       resolve: {
         existingRequirements: ['requirementService', function (requirementService) {
@@ -30,7 +31,8 @@ angular.module('firstClass').factory('requirementDialogService', ['$mdDialog', f
 
     var options = {
       targetEvent: editOptions.targetEvent,
-      preSelectedRequirements: editOptions.preSelectedRequirements
+      preSelectedRequirements: editOptions.preSelectedRequirements,
+      difference: editOptions.difference
     };
 
     return $mdDialog.show(_getDialogPreset(options));

@@ -177,11 +177,21 @@ app.controller('ScoutController', ['$scope', 'scoutService', 'scout', '$mdBottom
     };
 
     $scope.selectRequirements = function ($event) {
-      requirementDialogService.showDialog({targetEvent: $event}).then(function handleSelected (selectedRequirements) {
-        selectedRequirements.forEach(function (currentRequirement) {
-          console.log(currentRequirement);
-        });
+      var rawCompletedRequirements = $scope.scout.getCompletedRequirements().map(function (current) {
+        return current.requirement;
       });
+
+      requirementDialogService.showDialog({targetEvent: $event, preSelectedRequirements: rawCompletedRequirements, difference: true})
+        .then(function handleSelected (selectedRequirements) {
+          selectedRequirements.added.forEach(function (currentRequirement) {
+            console.log('Added: ');
+            console.log(currentRequirement);
+          });
+          selectedRequirements.removed.forEach(function (currentRequirement) {
+            console.log('Removed: ');
+            console.log(currentRequirement);
+          });
+        });
     };
 
     $scope.updateScout = function () {

@@ -4,7 +4,7 @@ angular.module('firstClass').factory('requirementService', ['persistenceService'
   var existingRequirementsParentByChildId = {};
   var existingRequirementsChildrenByParentId = {};
 
-  var _Requirement = function (requirement) {
+  var Requirement = function (requirement) {
     $log.debug('new Requirement called');
     $log.debug(requirement);
     this._id = requirement._id;
@@ -22,11 +22,11 @@ angular.module('firstClass').factory('requirementService', ['persistenceService'
     this.awardName = requirement.id.split('-')[0];
   };
 
-  _Requirement.prototype.getPrereqs = function () {
+  Requirement.prototype.getPrereqs = function () {
     return existingRequirementsChildrenByParentId[this.id] || [];
   };
 
-  _Requirement.prototype.prereqsComplete = function (reqsCompleted) {
+  Requirement.prototype.prereqsComplete = function (reqsCompleted) {
     var prereqs = this.getPrereqs() || [];
     var reqsCompletedIds = reqsCompleted.map(function (reqCompleted) {
       return reqCompleted.requirement.id;
@@ -49,7 +49,7 @@ angular.module('firstClass').factory('requirementService', ['persistenceService'
     return completedAllPrereqs;
   };
 
-  _Requirement.prototype.getParent = function () {
+  Requirement.prototype.getParent = function () {
     return existingRequirementsParentByChildId[this.id];
   };
 
@@ -103,7 +103,7 @@ angular.module('firstClass').factory('requirementService', ['persistenceService'
     return persistenceService.getAllRequirements().then(function (requirements) {
       var inflatedReqs = [];
       requirements.forEach(function (current) {
-        inflatedReqs.push(new _Requirement(current));
+        inflatedReqs.push(new Requirement(current));
       });
       existingRequirements = inflatedReqs;
       existingRequirementsChildrenByParentId = _keyRequirementsByParent(existingRequirements);
@@ -159,7 +159,7 @@ angular.module('firstClass').factory('requirementService', ['persistenceService'
   };
 
   return {
-    'Requirement': _Requirement,
+    'Requirement': Requirement,
     'getAllRequirements': _getAllRequirements,
     'getCompletedRanks': _getCompletedRanks,
     'getCurrentRank': _getCurrentRank,

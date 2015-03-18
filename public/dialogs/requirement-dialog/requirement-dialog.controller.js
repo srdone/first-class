@@ -6,9 +6,10 @@ angular.module('firstClass').controller('RequirementDialogController', ['$mdDial
     var _init = function () {
       if (this.preSelectedRequirements.length) {
         this.preSelectedRequirements.forEach(function markAsSelected(current) {
-          var index = existingRequirements.indexOf(current);
+          var index = _.findIndex(existingRequirements, _.matches({id: current.id}));
 
-          this.existingRequirements[index].isSelected = true;
+          existingRequirements[index].isSelected = true;
+          existingRequirements[index].wasPreSelected = true;
         });
       }
     };
@@ -28,6 +29,12 @@ angular.module('firstClass').controller('RequirementDialogController', ['$mdDial
       });
     };
 
+    var _getWasPreSelected = function () {
+      return existingRequirements.filter(function (currentRequirement) {
+        return currentRequirement.wasPreSelected;
+      });
+    };
+
     this.returnAllSelections = function () {
       var allSelected = _getAllSelected();
 
@@ -35,13 +42,15 @@ angular.module('firstClass').controller('RequirementDialogController', ['$mdDial
     };
 
     this.returnChangedSelections = function () {
-      var added = _.difference(_getAllSelected(), this.preSelectedRequirements);
-      var removed = _.difference(_getNotSelected(), this.preSelectedRequirements);
+      var wasPreSelected = _getWasPreSelected();
 
-      return {
+      var added = _.difference(_getAllSelected(), wasPreSelected);
+      var removed = _.intersection(_getNotSelected(), wasPreSelected);
+
+      $mdDialog.hide({
         added: added,
         removed: removed
-      }
+      });
     };
 
     this.cancel = function () {
