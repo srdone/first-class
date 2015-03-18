@@ -8,10 +8,10 @@ angular.module('firstClass').controller('SelectDetailBottomSheetController',
     var vm = this;
 
     vm.detailList = [
-      {name: 'requirement', icon: 'details:requirement'},
-      {name: 'service',     icon: 'details:service'},
-      {name: 'position',    icon: 'details:position'},
-      {name: 'campout',     icon: 'details:campout'}
+      {name: 'requirement', icon: 'details:requirement', displayName: 'req\'mnt'},
+      {name: 'service',     icon: 'details:service', displayName: 'service'},
+      {name: 'position',    icon: 'details:position', displayName: 'position'},
+      {name: 'campout',     icon: 'details:campout', displayName: 'campout'}
     ];
 
     vm.selectListItem = function (index) {
