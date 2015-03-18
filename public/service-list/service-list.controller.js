@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('firstClass').controller('ServiceDetailController', ['$mdToast', '$mdDialog', 'serviceProjectDialogService',
+angular.module('firstClass').controller('ServiceListController', ['$mdToast', '$mdDialog', 'serviceProjectDialogService',
   function ($mdToast, $mdDialog, serviceProjectDialogService) {
 
     var vm = this;
