@@ -13,6 +13,7 @@ angular.module('firstClass').controller('RequirementDialogController', ['$mdDial
       }
     };
 
+    // wait to run _init until controller has instantiated. Otherwise bindToController hasn't yet run
     $timeout(_init.bind(this), 4);
 
     var _getAllSelected = function () {
