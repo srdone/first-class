@@ -179,7 +179,7 @@ app.controller('ScoutController', ['$scope', 'scoutService', 'scout', '$mdBottom
 
           $scope.scout.save().then(function handleSavedScout (savedScout) {
             $scope.scout = savedScout;
-            var totalDeliberatelyUpdated = updatedRequirements.added + updatedRequirements.removed;
+            var totalDeliberatelyUpdated = updatedRequirements.added.length + updatedRequirements.removed.length;
             $mdToast.showSimple('Updated ' + totalDeliberatelyUpdated + ' requirements and their parents or children.');
           });
         }, function () {
