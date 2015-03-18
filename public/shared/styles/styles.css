@@ -104,3 +104,7 @@ fcs-rank .rank {
     -ms-user-select: none;
     user-select: none;
 }
+
+.spacer {
+    height: 75px;
+}
