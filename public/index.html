@@ -10,53 +10,44 @@
 
   <link rel="stylesheet" href="shared/styles/styles.css" />
 </head>
-<body ng-app="firstClass" ng-cloak ng-controller="LayoutController" ng-strict-di>
+<body ng-app="firstClass" ng-cloak ng-controller="LayoutController" ng-strict-di layout="row">
 
+<md-sidenav class="md-whiteframe-z3" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" ng-if="loggedIn" md-swipe-left="close()" flex layout-fill>
+  <md-toolbar layout="column" layout-align="center center">
+    First Class Scouting
+  </md-toolbar>
 
-<md-content layout="row" flex layout-fill>
-
-  <md-sidenav class="md-whiteframe-z3" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" ng-if="loggedIn" md-swipe-left="close()">
-    <md-toolbar layout="column" layout-align="center center">
-      First Class Scouting
-    </md-toolbar>
-
-    <md-content flex layout="column">
-      <md-button ng-click="goToTroopView()">
-        Troop
-      </md-button>
-      <md-button ng-click="logout()">
-        Logout {{username}}
-      </md-button>
-      <md-button hide-gt-md ng-click="close()">
-        Close Menu
-      </md-button>
-    </md-content>
-  </md-sidenav>
-
-
-  <div layout="column" tabindex="-1" flex role="main" class="main">
-
-    <md-toolbar>
-
-      <div class="md-toolbar-tools" layout="row" flex>
-        <md-button hide-gt-md aria-label="Toogle Menu" ng-if="loggedIn" ng-click="toggleMenu()">
-          <md-icon md-svg-src="bower_components/material-design-icons/navigation/svg/production/ic_menu_48px.svg"></md-icon>
-        </md-button>
-
-        <div class="md-toolbar-item md-breadcrumb" hide-gt-md>
-          First Class Scouting
-        </div>
-
-        <span flex></span>
-
-      </div>
-    </md-toolbar>
-
-    <md-content md-scroll-y ui-view class="md-padding" layout-fill></md-content>
-
+  <div flex layout="column">
+    <md-button ng-click="goToTroopView()">
+      Troop
+    </md-button>
+    <md-button ng-click="logout()">
+      Logout {{username}}
+    </md-button>
+    <md-button hide-gt-md ng-click="close()">
+      Close Menu
+    </md-button>
   </div>
+</md-sidenav>
 
-</md-content>
+<div layout="column" flex>
+  <md-toolbar layout="row" flex>
+
+    <md-button hide-gt-md aria-label="Toogle Menu" ng-if="loggedIn" ng-click="toggleMenu()">
+      <md-icon md-svg-src="bower_components/material-design-icons/navigation/svg/production/ic_menu_48px.svg"></md-icon>
+    </md-button>
+
+    <div class="md-toolbar-item md-breadcrumb md-toolbar-tools" hide-gt-md>
+      First Class Scouting
+    </div>
+
+    <span flex></span>
+
+  </md-toolbar>
+
+  <md-content ui-view class="md-padding"></md-content>
+
+</div>
 
 <!-- jquery -->
 <script src="bower_components/jquery/dist/jquery.js"></script>
