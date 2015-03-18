@@ -10,7 +10,7 @@
 
   <link rel="stylesheet" href="shared/styles/styles.css" />
 </head>
-<body ng-app="firstClass" ng-cloak ng-controller="LayoutController" ng-strict-di layout="row">
+<body ng-app="firstClass" ng-cloak ng-controller="LayoutController" layout="row">
 
 <md-sidenav class="md-whiteframe-z3" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" ng-if="loggedIn" md-swipe-left="close()" flex layout-fill>
   <md-toolbar layout="column" layout-align="center center">
@@ -30,8 +30,8 @@
   </div>
 </md-sidenav>
 
-<div layout="column" flex>
-  <md-toolbar layout="row" flex>
+<div layout="column">
+  <md-toolbar layout="row">
 
     <md-button hide-gt-md aria-label="Toogle Menu" ng-if="loggedIn" ng-click="toggleMenu()">
       <md-icon md-svg-src="bower_components/material-design-icons/navigation/svg/production/ic_menu_48px.svg"></md-icon>
@@ -45,7 +45,7 @@
 
   </md-toolbar>
 
-  <md-content ui-view layout></md-content>
+  <md-content ui-view layout="column" id="content"></md-content>
 
 </div>
 
@@ -149,7 +149,11 @@
 <script src="scout/rank-requirements/rank-progress.directive.js"></script>
 <script src="scout/rank-requirements/requirement-summary-icons.directive.js"></script>
 
-<!--service-detail-->
+<!--select detail bottom sheet-->
+<script src="select-detail-bottom-sheet/select-detail-bottom-sheet.service.js"></script>
+<script src="select-detail-bottom-sheet/select-detail-bottom-sheet.controller.js"></script>
+
+<!--service-list-->
 <script src="service-list/service-list.directive.js"></script>
 <script src="service-list/service-list.controller.js"></script>
 

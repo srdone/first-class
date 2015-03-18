@@ -1,4 +1,4 @@
-<md-card class="md-whiteframe-z1">
+<md-card class="md-whiteframe-z1" layout="column">
   <md-toolbar>
     <div class="md-toolbar-tools" layout="row">
         <img ng-src="{{scout.photoUrl}}" class="avatar-sm" layout-margin>
@@ -8,7 +8,7 @@
     </div>
   </md-toolbar>
 
-  <md-card-content>
+  <md-card-content flex>
     <!--Next rank progress -->
     <fcs-scout-summary scout="scout"></fcs-scout-summary>
 

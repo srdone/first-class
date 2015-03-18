@@ -2,8 +2,8 @@
 
 var app = angular.module('firstClass');
 
-app.controller('TroopController', ['$scope', 'scoutService', 'troop', 'scoutDialogService', '$mdToast',
-	function ($scope, scoutService, troop, scoutDialogService, $mdToast) {
+app.controller('TroopController', ['$scope', 'scoutService', 'troop', 'scoutDialogService', '$mdToast', 'selectDetailBottomSheetService',
+	function ($scope, scoutService, troop, scoutDialogService, $mdToast, selectDetailBottomSheetService) {
 
     $scope.troop = troop;
 
@@ -15,5 +15,11 @@ app.controller('TroopController', ['$scope', 'scoutService', 'troop', 'scoutDial
         });
       });
     }
+
+    $scope.addDetails = function (event) {
+      selectDetailBottomSheetService.show(event).then(function (selectedItem) {
+        console.log(selectedItem);
+      });
+    };
 
 }]);

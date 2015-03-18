@@ -1,0 +1,12 @@
+<md-bottom-sheet class="md-grid">
+  <md-list>
+    <md-item ng-repeat="detail in vm.detailList">
+      <md-button class="md-grid-item-content" aria-label="{{detail.name}}" ng-click="vm.selectListItem($index)">
+        <div class="md-icon-container">
+          <md-icon md-svg-src="{{detail.icon}}"></md-icon>
+        </div>
+        <p class="md-grid-text">{{detail.name}}</p>
+      </md-button>
+    </md-item>
+  </md-list>
+</md-bottom-sheet>
