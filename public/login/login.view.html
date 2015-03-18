@@ -1,16 +1,11 @@
-<div layout-fill layout="column">
+<md-content layout-margin>
 
-    <h1>First Class Scouting</h1>
+  <p>{{introParagraph}}</p>
 
-    <md-content>
+  <fcs-login ng-if="!loggedIn"></fcs-login>
+  <!--<fcs-welcome fcs-toggle-on-login="show"></fcs-welcome>-->
 
-      <p>{{introParagraph}}</p>
-
-      <fcs-login ng-if="!loggedIn"></fcs-login>
-      <!--<fcs-welcome fcs-toggle-on-login="show"></fcs-welcome>-->
-
-      <div>
-        <a class="legal-link" ui-sref="legal">Legal Information</a>
-      </div>
-
-</div>
+  <div>
+    <a class="legal-link" ui-sref="legal">Legal Information</a>
+  </div>
+</md-content>

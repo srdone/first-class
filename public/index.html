@@ -14,7 +14,7 @@
 
 <md-sidenav class="md-whiteframe-z3" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" ng-if="loggedIn" md-swipe-left="close()" flex layout-fill>
   <md-toolbar layout="column" layout-align="center center">
-    First Class Scouting
+    Menu
   </md-toolbar>
 
   <div flex layout="column">
@@ -30,14 +30,14 @@
   </div>
 </md-sidenav>
 
-<div layout="column">
+<div layout="column" flex>
   <md-toolbar layout="row">
 
     <md-button hide-gt-md aria-label="Toogle Menu" ng-if="loggedIn" ng-click="toggleMenu()">
       <md-icon md-svg-src="bower_components/material-design-icons/navigation/svg/production/ic_menu_48px.svg"></md-icon>
     </md-button>
 
-    <div class="md-toolbar-item md-breadcrumb md-toolbar-tools" hide-gt-md>
+    <div class="md-toolbar-item md-breadcrumb md-toolbar-tools">
       First Class Scouting
     </div>
 
