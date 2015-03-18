@@ -65,19 +65,6 @@ app.controller('ScoutController', ['$scope', 'scoutService', 'scout', '$mdBottom
       });
     };
 
-    $scope.editServiceProject = function (event, serviceProject) {
-      var serviceProjectToEdit = angular.copy(serviceProject);
-
-      serviceProjectDialogService.showEditDialog({targetEvent: event, serviceProject: serviceProjectToEdit}).then(function (editedServiceProject) {
-        $scope.scout.removeService(serviceProject.id);
-        $scope.scout.addService(editedServiceProject.description, editedServiceProject.hours);
-        $scope.scout.save().then(function (savedScout) {
-          $mdToast.showSimple('Saved Changes: ' + editedServiceProject.toString());
-          $scope.scout = savedScout;
-        });
-      });
-    };
-
     $scope.editScout = function (event) {
       var options = {
         scout: angular.copy($scope.scout),
@@ -141,21 +128,6 @@ app.controller('ScoutController', ['$scope', 'scoutService', 'scout', '$mdBottom
           }, function () {
             $scope.scout.addCampout(campout);
             $mdToast.showSimple('A server error occurred: Failed to delete campout');
-          });
-      });
-    };
-
-    $scope.deleteService = function (service) {
-      var dialog = warningDialog.content('Delete service record: ' + service.description + ': ' + service.hours + ' hours?');
-
-      $mdDialog.show(dialog).then(function () {
-        $scope.scout.removeService(service.id);
-        $scope.scout.save()
-          .then(function () {
-            $mdToast.showSimple('Deleted service project: ' + service.toString());
-          }, function () {
-            $scope.scout.addService(service);
-            $mdToast.showSimple('A server error occurred: Failed to delete service project');
           });
       });
     };

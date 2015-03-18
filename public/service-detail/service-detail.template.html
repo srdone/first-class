@@ -1,0 +1,21 @@
+<md-list>
+
+  <md-item ng-repeat="service in vm.scout.getService() | orderBy: 'description'">
+
+    <md-item-content>
+
+      <md-button ng-click="vm.deleteService(service)" aria-label="Remove Service {{service.description}}">
+        <md-icon md-svg-src="actions:delete"></md-icon>
+      </md-button>
+
+      <md-button ng-click="vm.editServiceProject($event, service)" aria-label="Edit Campout {{service.description}}">
+        <md-icon md-svg-src="actions:edit"></md-icon>
+      </md-button>
+
+      {{service.description}} - {{service.hours | number: 1}} hours
+
+    </md-item-content>
+
+  </md-item>
+
+</md-list>

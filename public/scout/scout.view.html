@@ -39,26 +39,17 @@
 
   <!--Service Detail-->
   <md-card ng-if="!!scout.getService().length" class="md-whiteframe-z2">
+
     <md-toolbar>
       <div class="md-toolbar-tools">
         Service History
       </div>
     </md-toolbar>
+
     <md-card-content>
-      <md-list>
-        <md-item ng-repeat="service in scout.getService() | orderBy: 'description'">
-          <md-item-content>
-            <md-button ng-click="deleteService(service)" aria-label="Remove Service {{service.description}}">
-              <md-icon md-svg-src="actions:delete"></md-icon>
-            </md-button>
-            <md-button ng-click="editServiceProject($event, service)" aria-label="Edit Campout {{service.description}}">
-              <md-icon md-svg-src="actions:edit"></md-icon>
-            </md-button>
-            {{service.description}} - {{service.hours | number: 1}} hours
-          </md-item-content>
-        </md-item>
-      </md-list>
+      <fcs-service-detail scout="scout"></fcs-service-detail>
     </md-card-content>
+
   </md-card>
 
   <!--Camping Detail-->
