@@ -4,9 +4,10 @@ var app = angular.module('firstClass');
 
 app.controller('ScoutController', ['$scope', 'scoutService', 'scout', '$mdBottomSheet', 'requirementService',
   '$mdDialog', '$filter', '$mdToast', 'scoutDialogService', 'campoutDialogService', 'positionDialogService',
-  'serviceProjectDialogService', 'requirementDialogService', '$log',
+  'serviceProjectDialogService', 'requirementDialogService', '$log', 'selectDetailBottomSheetService',
 	function ($scope, scoutService, scout, $mdBottomSheet, requirementService, $mdDialog, $filter, $mdToast, scoutDialogService,
-            campoutDialogService, positionDialogService, serviceProjectDialogService, requirementDialogService, $log) {
+            campoutDialogService, positionDialogService, serviceProjectDialogService, requirementDialogService, $log,
+            selectDetailBottomSheetService) {
 
 		$scope.scout = scout;
 
@@ -23,6 +24,20 @@ app.controller('ScoutController', ['$scope', 'scoutService', 'scout', '$mdBottom
           requirements: function () {
             return $scope.scout.getMissingRequirements();
           }
+        }
+      });
+    };
+
+    $scope.addDetails = function (event) {
+      selectDetailBottomSheetService.show(event).then(function (selectedItem) {
+        if (selectedItem.name === 'requirement') {
+          $scope.selectRequirements();
+        } else if (selectedItem.name === 'service') {
+          $scope.addServiceProject();
+        } else if (selectedItem.name === 'campout') {
+          $scope.addCampout();
+        } else if (selectedItem.name === 'position') {
+          $scope.addPosition();
         }
       });
     };
