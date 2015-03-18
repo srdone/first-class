@@ -1,12 +1,8 @@
-<md-content md-scroll-y layout-fill layout="column" flex>
+<md-content>
 
-  <div class="md-button-group">
-    <md-button ng-click="addScout($event)" class="md-button md-raised md-accent">Add Scout</md-button>
+  <div ng-repeat="scout in troop | orderBy: 'lastName+firstName'">
+    <fcs-scout-card scout="scout"></fcs-scout-card>
   </div>
-
-      <div ng-repeat="scout in troop | orderBy: 'lastName+firstName'">
-          <fcs-scout-card scout="scout"></fcs-scout-card>
-      </div>
 
   <div class="no-scouts" ng-if="troop.length === 0">
     <p>No scouts yet!</p>
@@ -14,3 +10,7 @@
   </div>
 
 </md-content>
+
+<md-button ng-click="addScout($event)" class="md-fab md-fab-bottom-right md-raised md-accent">
+  <md-icon md-svg-src="actions:add-one"></md-icon>
+</md-button>

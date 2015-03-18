@@ -31,5 +31,6 @@ angular.module('firstClass').config(['$mdIconProvider', function($mdIconProvider
   $mdIconProvider
     .icon('actions:edit'                      , 'bower_components/material-design-icons/editor/svg/design/ic_mode_edit_48px.svg')
     .icon('actions:delete'                    , 'bower_components/material-design-icons/action/svg/production/ic_delete_48px.svg')
+    .icon('actions:add-one'                   , 'bower_components/material-design-icons/content/svg/production/ic_add_48px.svg')
 
 }]);
