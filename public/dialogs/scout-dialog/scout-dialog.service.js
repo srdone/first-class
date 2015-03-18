@@ -20,9 +20,12 @@ angular.module('firstClass').factory('scoutDialogService', ['$mdDialog', functio
 
   var _showCreateScoutDialog = function (createOptions) {
     var options = {
-      targetEvent: createOptions.targetEvent,
       create: true
     };
+
+    if (createOptions.targetEvent) {
+      options.targetEvent = createOptions.targetEvent;
+    }
 
     return $mdDialog.show(_scoutDialogPreset(options));
   };
@@ -30,9 +33,13 @@ angular.module('firstClass').factory('scoutDialogService', ['$mdDialog', functio
   var _showEditScoutDialog = function (editOptions) {
     var options = {
       scout: editOptions.scout,
-      targetEvent: editOptions.targetEvent,
       create: false
     };
+
+    if (editOptions.targetEvent) {
+      options.targetEvent = editOptions.targetEvent;
+    }
+
     return $mdDialog.show(_scoutDialogPreset(options));
   };
 

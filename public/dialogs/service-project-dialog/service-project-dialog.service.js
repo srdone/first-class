@@ -20,19 +20,25 @@ angular.module('firstClass').factory('serviceProjectDialogService', ['$mdDialog'
 
   var _showCreateDialog = function (createOptions) {
     var options = {
-      targetEvent: createOptions.targetEvent,
       create: true
     };
+
+    if (createOptions) {
+      options.targetEvent = createOptions.targetEvent;
+    }
 
     return $mdDialog.show(_getDialogPreset(options));
   };
 
   var _showEditDialog = function (editOptions) {
     var options = {
-      targetEvent: editOptions.targetEvent,
       serviceProject: editOptions.serviceProject,
       create: false
     };
+
+    if (editOptions) {
+      options.targetEvent = editOptions.targetEvent;
+    }
 
     return $mdDialog.show(_getDialogPreset(options));
   };

@@ -19,20 +19,36 @@ angular.module('firstClass').factory('positionDialogService', ['$mdDialog', func
   };
 
   var _showCreateDialog = function (createOptions) {
+
+    if (!createOptions) {
+      var createOptions = {};
+    }
+
     var options = {
-      targetEvent: createOptions.targetEvent,
       create: true
     };
+
+    if (createOptions.targetEvent) {
+      options.targetEvent = createOptions.targetEvent;
+    }
 
     return $mdDialog.show(_getDialogPreset(options));
   };
 
   var _showEditDialog = function (editOptions) {
+
+    if (!editOptions) {
+      var editOptions = {};
+    }
+
     var options = {
-      targetEvent: editOptions.targetEvent,
       position: editOptions.position,
       create: false
     };
+
+    if (editOptions.targetEvent) {
+      options.targetEvent = editOptions.targetEvent;
+    }
 
     return $mdDialog.show(_getDialogPreset(options));
   };

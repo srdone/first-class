@@ -25,15 +25,22 @@ angular.module('firstClass').factory('requirementDialogService', ['$mdDialog', f
 
   var _showDialog = function (editOptions) {
 
+    if (!editOptions) {
+      var editOptions = {};
+    }
+
     if (!editOptions.preSelectedRequirements) {
       editOptions.preSelectedRequirements = [];
     }
 
     var options = {
-      targetEvent: editOptions.targetEvent,
       preSelectedRequirements: editOptions.preSelectedRequirements,
       difference: editOptions.difference
     };
+
+    if (editOptions.targetEvent) {
+      options.targetEvent = editOptions.targetEvent;
+    }
 
     return $mdDialog.show(_getDialogPreset(options));
   };

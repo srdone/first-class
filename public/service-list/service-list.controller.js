@@ -7,7 +7,6 @@ angular.module('firstClass').controller('ServiceListController', ['$mdToast', '$
 
     var warningDialog = $mdDialog.confirm().title('Warning').ok('Yes').cancel('Cancel');
 
-    debugger;
     vm.editServiceProject = function (event, serviceProject) {
       var serviceProjectToEdit = angular.copy(serviceProject);
 

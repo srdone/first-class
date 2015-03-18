@@ -20,19 +20,25 @@ angular.module('firstClass').factory('campoutDialogService', ['$mdDialog', funct
 
   var _showCreateCampoutDialog = function (createOptions) {
     var options = {
-      targetEvent: createOptions.targetEvent,
       create: true
     };
+
+    if (createOptions) {
+      options.targetEvent = createOptions.targetEvent;
+    }
 
     return $mdDialog.show(_campoutDialogPreset(options));
   };
 
   var _showEditCampoutDialog = function (editOptions) {
     var options = {
-      targetEvent: editOptions.targetEvent,
       campout: editOptions.campout,
       create: false
     };
+
+    if (editOptions) {
+      options.targetEvent = editOptions.targetEvent;
+    }
 
     return $mdDialog.show(_campoutDialogPreset(options));
   };
