@@ -16,7 +16,7 @@ app.controller('TroopController', ['$scope', 'scoutService', 'troop', 'scoutDial
           $scope.troop.push(newScout);
         });
       });
-    }
+    };
 
     $scope.addBatchDetails = function (event) {
       selectDetailBottomSheetService.show(event).then(function (selectedItem) {
