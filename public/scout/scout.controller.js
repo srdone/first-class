@@ -2,8 +2,11 @@
 
 var app = angular.module('firstClass');
 
-app.controller('ScoutController', ['$scope', 'scoutService', 'scout', '$mdBottomSheet', 'requirementService', '$mdDialog', '$filter', '$mdToast', 'scoutDialogService', 'campoutDialogService', 'positionDialogService', 'serviceProjectDialogService',
-	function ($scope, scoutService, scout, $mdBottomSheet, requirementService, $mdDialog, $filter, $mdToast, scoutDialogService, campoutDialogService, positionDialogService, serviceProjectDialogService) {
+app.controller('ScoutController', ['$scope', 'scoutService', 'scout', '$mdBottomSheet', 'requirementService',
+  '$mdDialog', '$filter', '$mdToast', 'scoutDialogService', 'campoutDialogService', 'positionDialogService',
+  'serviceProjectDialogService', 'requirementDialogService', '$log',
+	function ($scope, scoutService, scout, $mdBottomSheet, requirementService, $mdDialog, $filter, $mdToast, scoutDialogService,
+            campoutDialogService, positionDialogService, serviceProjectDialogService, requirementDialogService, $log) {
 
 		$scope.scout = scout;
 
@@ -170,6 +173,14 @@ app.controller('ScoutController', ['$scope', 'scoutService', 'scout', '$mdBottom
             $scope.scout.addPosition(position);
             $mdToast.showSimple('A server error occurred: Failed to delete position');
           });
+      });
+    };
+
+    $scope.selectRequirements = function ($event) {
+      requirementDialogService.showDialog({targetEvent: $event}).then(function handleSelected (selectedRequirements) {
+        selectedRequirements.forEach(function (currentRequirement) {
+          console.log(currentRequirement);
+        });
       });
     };
 

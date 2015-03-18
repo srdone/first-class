@@ -1,0 +1,32 @@
+<md-dialog>
+
+  <md-content>
+
+    <md-list>
+      <md-item ng-repeat="requirement in vm.existingRequirements">
+
+        <md-item-content>
+          <md-checkbox ng-model="requirement.isSelected">
+            {{requirement.name}}
+          </md-checkbox>
+        </md-item-content>
+
+      </md-item>
+    </md-list>
+
+  </md-content>
+
+  <div class="md-actions" layout="row">
+
+    <span flex></span>
+
+    <md-button id="submit" class="md-primary" ng-click="vm.returnAllSelections()">
+      Update
+      <span ng-show="$mdMedia('gt-sm')"> Requirements</span>
+    </md-button>
+
+    <md-button id="cancel" class="md-warn" ng-click="vm.cancel()">Cancel</md-button>
+
+  </div>
+
+</md-dialog>
