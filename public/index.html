@@ -14,17 +14,14 @@
 
 <md-sidenav class="md-whiteframe-z3" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" ng-if="loggedIn" md-swipe-left="close()" flex layout-fill>
   <md-toolbar layout="column" layout-align="center center">
-    Menu
+    Troop Progress
   </md-toolbar>
 
-  <div flex layout="column" layout-align="start center">
-    <md-button ng-click="goToTroopView()">
-      Troop
-    </md-button>
+  <div flex layout="column" layout-align="center center">
+    <div ui-view="chartView"></div>
     <md-button hide-gt-md ng-click="close()">
       Close Menu
     </md-button>
-    <div ui-view="chartView"></div>
   </div>
 </md-sidenav>
 
