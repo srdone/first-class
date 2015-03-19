@@ -35,9 +35,13 @@ app.config(['$stateProvider', '$urlRouterProvider',
           },
           "chartView": {
             template: '<fcs-troop-progress-chart troop="troop" width="100" height="50"></fcs-troop-progress-chart>',
-            controller: ['$scope', 'troop', function($scope, troop) {
+            controller: function ($scope, troop) {
               $scope.troop = troop;
-            }]
+
+              $scope.$on('troop:updated', function (event, troop) {
+                $scope.troop = troop;
+              });
+            }
           }
         }
 			})
