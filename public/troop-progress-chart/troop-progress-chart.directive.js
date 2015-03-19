@@ -54,7 +54,11 @@ angular.module('firstClass').directive('fcsTroopProgressChart', function () {
 
         var options = {
           tooltipTemplate: "<%if (label){%><%=label%>: <%}%><%= value %>%",
-          scaleLabel: "<%=value%>%"
+          scaleLabel: "<%=value%>%",
+          scaleOverride: true,
+          scaleSteps: 5,
+          scaleStepWidth: 20,
+          scaleStartValue: 0
         };
 
         barChart.Bar(dataset, options);
