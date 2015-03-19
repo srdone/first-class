@@ -4,7 +4,7 @@ angular.module('firstClass').directive('fcsRequirementSummaryIcons', function ()
     scope: {
       reqCategoryCount: '='
     },
-    templateUrl: 'scout/rank-requirements/requirement-summary-icons.template.html'
+    templateUrl: 'scout/requirement-summary-icons.template.html'
   }
 
 });
