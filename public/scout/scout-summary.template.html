@@ -1,14 +1,14 @@
 <div>
 
-  <div class="md-tile-content" ng-if="!scout.hasNoDetails()">
+  <div class="md-tile-content" ng-if="!scout.hasNoDetails()" layout-align="center center" layout="column">
 
     <fcs-rank rank="scout.currentRank" ng-if="scout.currentRank"></fcs-rank>
 
     <fcs-scout-patrol patrol="scout.currentPatrol" flex></fcs-scout-patrol>
 
-    <fcs-rank-progress pct-progress="scout.getPercentProgressToFirstClass()"></fcs-rank-progress>
+    <fcs-rank-progress pct-progress="scout.getPercentProgressToFirstClass()" layout-fill></fcs-rank-progress>
 
-    <fcs-requirement-summary-icons req-category-count="scout.neededReqSummary"></fcs-requirement-summary-icons>
+    <fcs-requirement-summary-icons req-category-count="scout.neededReqSummary" layout-margin></fcs-requirement-summary-icons>
 
     <fcs-position-list positions="scout.currentPositions"></fcs-position-list>
 
@@ -26,7 +26,9 @@
 
   </div>
 
-  <div class="no-details" ng-if="scout.hasNoDetails()">No details yet! Click the add button on the details screen to add
-  requirements and other events to this scout.</div>
+  <div class="no-details" ng-if="scout.hasNoDetails()" layout-margin>
+    No details yet! Click the add button on the details screen to add
+    requirements and other events to this scout.
+  </div>
 
 </div>
