@@ -5,6 +5,6 @@ app.directive('fcsScoutCard', function () {
 		scope: {
 			scout: '='
 		},
-		templateUrl: 'troop/scout-card.template.html'
+		templateUrl: 'scout/scout-card.template.html'
 	};
 });
