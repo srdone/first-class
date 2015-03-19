@@ -10,13 +10,15 @@ app.config(['$stateProvider', '$urlRouterProvider',
 		$stateProvider
 			.state('main', {
 				url: '/',
-				templateUrl: 'login/login.view.html',
-				controller: 'LayoutController'
+        views: {
+          "mainView": {
+            templateUrl:'login/login.view.html',
+            controller: 'LayoutController'
+          }
+        }
 			})
 			.state('troop', {
 				url: '/troop',
-				templateUrl: 'troop/troop.view.html',
-				controller: 'TroopController',
         resolve: {
           existingRequirements: ['requirementService', function (requirementService) {
             return requirementService.getAllRequirements();
@@ -25,12 +27,22 @@ app.config(['$stateProvider', '$urlRouterProvider',
             $log.debug('resolving troop');
             return scoutService.getScouts();
           }]
+        },
+        views: {
+          "mainView": {
+            templateUrl: 'troop/troop.view.html',
+            controller: 'TroopController'
+          },
+          "chartView": {
+            template: '<fcs-troop-progress-chart troop="troop" width="100" height="50"></fcs-troop-progress-chart>',
+            controller: ['$scope', 'troop', function($scope, troop) {
+              $scope.troop = troop;
+            }]
+          }
         }
 			})
 			.state('scout-detail', {
 				url: '/scout/:scoutId',
-				templateUrl: 'scout/scout.view.html',
-				controller: 'ScoutController',
         resolve: {
           existingRequirements: ['requirementService', function (requirementService) {
             return requirementService.getAllRequirements();
@@ -38,11 +50,21 @@ app.config(['$stateProvider', '$urlRouterProvider',
           scout: ['$stateParams', 'scoutService', 'existingRequirements', function ($stateParams, scoutService) {
             return scoutService.getScoutById($stateParams.scoutId);
           }]
+        },
+        views: {
+          "mainView": {
+            templateUrl: 'scout/scout.view.html',
+            controller: 'ScoutController'
+          }
         }
 			})
       .state('legal', {
         url: '/legal',
-        templateUrl: 'legal/legal.view.html'
+        views: {
+          "mainView": {
+            templateUrl: 'legal/legal.view.html'
+          }
+        }
       });
 
 	}]);

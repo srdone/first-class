@@ -27,6 +27,7 @@
     <md-button hide-gt-md ng-click="close()">
       Close Menu
     </md-button>
+    <div ui-view="chartView"></div>
   </div>
 </md-sidenav>
 
@@ -45,7 +46,7 @@
 
   </md-toolbar>
 
-  <md-content ui-view layout="column" id="content" flex></md-content>
+  <md-content ui-view="mainView" layout="column" id="content" flex></md-content>
 
 </div>
 
@@ -57,6 +58,9 @@
 
 <!--moment-->
 <script src="bower_components/moment/moment.js"></script>
+
+<!--d3-->
+<script src="bower_components/d3/d3.js"></script>
 
 <!-- angular components -->
 <script src="bower_components/angular/angular.js"></script>
@@ -126,6 +130,10 @@
 <!-- troop -->
 <script src="troop/troop.controller.js"></script>
 <script src="scout/scout-card.directive.js"></script>
+
+<!--troop-progress-chart-->
+<script src="troop-progress-chart/troop-progress-chart.controller.js"></script>
+<script src="troop-progress-chart/troop-progress-chart.directive.js"></script>
 
 <!-- scout -->
 <script src="scout/scout.controller.js"></script>
