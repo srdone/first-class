@@ -51,6 +51,18 @@ angular.module('firstClass').directive('fcsTroopProgressChart', function () {
           .attr('height', function (d) {
             return yScale(d.percentProgress);
           });
+
+        var text = svg.selectAll('text').data(dataset);
+
+        text.enter().append('text');
+
+        text.exit().remove();
+
+        text.attr('x', function (d, i) { return i * ($scope.width / dataset.length) + ($scope.width / dataset.length) / 2;})
+          .attr('y', function (d) { return $scope.height - yScale(d.percentProgress) - 3; })
+          .attr('dy', '.35em')
+          .text(function (d) { return d.name })
+          .attr('fill', 'red');
       };
 
       $scope.$watch('troop', function () {
