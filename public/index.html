@@ -21,9 +21,6 @@
     <md-button ng-click="goToTroopView()">
       Troop
     </md-button>
-    <md-button ng-click="logout()">
-      Logout {{username}}
-    </md-button>
     <md-button hide-gt-md ng-click="close()">
       Close Menu
     </md-button>
@@ -32,17 +29,21 @@
 </md-sidenav>
 
 <div layout="column" flex>
-  <md-toolbar layout="row">
+  <md-toolbar class="md-toolbar-tools" layout="row">
 
     <md-button hide-gt-md aria-label="Toogle Menu" ng-if="loggedIn" ng-click="toggleMenu()">
       <md-icon md-svg-src="bower_components/material-design-icons/navigation/svg/production/ic_menu_48px.svg"></md-icon>
     </md-button>
 
-    <div class="md-toolbar-item md-breadcrumb md-toolbar-tools">
+    <div class="title">
       First Class Scouting
     </div>
 
     <span flex></span>
+
+    <md-button class="md-button" ng-click="logout()">
+      Logout {{username}}
+    </md-button>
 
   </md-toolbar>
 
