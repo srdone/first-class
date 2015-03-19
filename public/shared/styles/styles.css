@@ -19,6 +19,7 @@
 .avatar-sm {
     height: 50px;
     width: 50px;
+    min-width: 50px;
     border: 1px black solid;
     border-radius: 50%;
 }

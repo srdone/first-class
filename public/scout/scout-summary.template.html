@@ -12,15 +12,15 @@
 
     <fcs-position-list positions="scout.currentPositions"></fcs-position-list>
 
-    <div layout="row" layout="center center">
+    <div layout="row" layout-align="space-around center" layout-wrap>
 
-      <fcs-nights-of-camping-icon nights="scout.getQualifiedNightsOfCamping()" flex></fcs-nights-of-camping-icon>
+      <span>Nights of Camping:</span>
 
-      <fcs-hours-of-service-icon hours="scout.getHoursOfService()" flex></fcs-hours-of-service-icon>
+      <fcs-nights-of-camping-icon nights="scout.getQualifiedNightsOfCamping()"></fcs-nights-of-camping-icon>
 
-      <span ng-if="!scout.isOA && scout.isOAQualified()" flex>OA Qualified</span>
+      <span>Hours of Service:</span>
 
-      <fcs-oa-icon ng-if="!!scout.isOA" flex></fcs-oa-icon>
+      <fcs-hours-of-service-icon hours="scout.getHoursOfService()"></fcs-hours-of-service-icon>
 
     </div>
 
