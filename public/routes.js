@@ -34,7 +34,7 @@ app.config(['$stateProvider', '$urlRouterProvider',
             controller: 'TroopController'
           },
           "chartView": {
-            template: '<fcs-troop-progress-chart troop="troop" width="250" height="150"></fcs-troop-progress-chart>',
+            template: '<fcs-troop-progress-chart troop="troop"></fcs-troop-progress-chart>',
             controller: function ($scope, troop) {
               $scope.troop = troop;
 

@@ -7,62 +7,47 @@ angular.module('firstClass').directive('fcsTroopProgressChart', function () {
       height: '@',
       width: '@'
     },
+    template: '<canvas id="troop-progress-chart" width="250" height="500"></canvas>',
     link: function ($scope, $element) {
 
-      var svg = d3.select($element[0])
-        .append('svg')
-        .attr('width', $scope.width)
-        .attr('height', $scope.height);
+      var ctx = document.getElementById('troop-progress-chart').getContext('2d');
 
-      var barPadding = 1;
-
-      var yScale = d3.scale
-        .linear()
-        .domain([0, 1])
-        .range([0, $scope.height]);
-
-      var xScale = d3.scale
-        .linear()
-        .domain();
+      var barChart = new Chart(ctx);
 
       var renderChart = function () {
 
-        var dataset = $scope.troop.map(function (currentScout) {
+        var progress = $scope.troop.map(function (currentScout) {
           var name = currentScout.getName();
-          var percentProgress = currentScout.getPercentProgressToFirstClass();
+          var percentProgress = currentScout.getPercentProgressToFirstClass() * 100;
 
           return {
             name: name,
             percentProgress: percentProgress
-          };
+          }
         });
 
-        var rects = svg.selectAll('rect').data(dataset);
+        var totalProgress = progress.reduce(function (previous, currentScout) {
+          return previous += currentScout.percentProgress;
+        }, 0);
 
-        // d3 is weird, you have to call enter and exit separately, then make changes.
-        // otherwise you are only performing your changes to a subset of the data.
-        rects.enter().append('rect');
+        var troopPercentProgress = (totalProgress / progress.length);
 
-        rects.exit().remove();
+        var dataset = {
+          labels: ['Troop Progress'],
+          datasets: [
+            {
+              fillColor: "rgba(220,220,220,0.5)",
+              strokeColor: "rgba(220,220,220,0.8)",
+              highlightFill: "rgba(220,220,220,0.75)",
+              highlightStroke: "rgba(220,220,220,1)",
+              label: 'Percent Progress to First Class',
+              data: [troopPercentProgress]
+            }
+          ]
+        };
+        debugger;
 
-        rects.attr('x', function (d, i) { return i * ($scope.width / dataset.length); })
-          .attr('y', function (d) { return $scope.height - yScale(d.percentProgress); })
-          .attr('width', ($scope.width / dataset.length) - barPadding)
-          .attr('height', function (d) {
-            return yScale(d.percentProgress);
-          });
-
-        var text = svg.selectAll('text').data(dataset);
-
-        text.enter().append('text');
-
-        text.exit().remove();
-
-        text.attr('x', function (d, i) { return i * ($scope.width / dataset.length) + ($scope.width / dataset.length) / 2;})
-          .attr('y', function (d) { return $scope.height - yScale(d.percentProgress) - 3; })
-          .attr('dy', '.35em')
-          .text(function (d) { return d.name })
-          .attr('fill', 'red');
+        barChart.Bar(dataset);
       };
 
       $scope.$watch('troop', function () {
