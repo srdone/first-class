@@ -7,7 +7,7 @@ angular.module('firstClass').directive('fcsTroopProgressChart', function () {
       height: '@',
       width: '@'
     },
-    template: '<canvas id="troop-progress-chart" width="250" height="500"></canvas>',
+    template: '<canvas id="troop-progress-chart" width="225" height="300"></canvas>',
     link: function ($scope, $element) {
 
       var ctx = document.getElementById('troop-progress-chart').getContext('2d');
@@ -19,10 +19,12 @@ angular.module('firstClass').directive('fcsTroopProgressChart', function () {
         var progress = $scope.troop.map(function (currentScout) {
           var name = currentScout.getName();
           var percentProgress = currentScout.getPercentProgressToFirstClass() * 100;
+          var serviceHours = currentScout.getHoursOfService();
 
           return {
             name: name,
-            percentProgress: percentProgress
+            percentProgress: percentProgress,
+            serviceHours: serviceHours
           }
         });
 
@@ -30,24 +32,32 @@ angular.module('firstClass').directive('fcsTroopProgressChart', function () {
           return previous += currentScout.percentProgress;
         }, 0);
 
-        var troopPercentProgress = (totalProgress / progress.length);
+        var totalServiceHours = progress.reduce(function (previous, currentScout) {
+          return previous += currentScout.percentProgress;
+        }, 0);
+
+        var troopPercentProgress = Math.round(totalProgress / progress.length);
 
         var dataset = {
           labels: ['Troop Progress'],
           datasets: [
             {
-              fillColor: "rgba(220,220,220,0.5)",
-              strokeColor: "rgba(220,220,220,0.8)",
-              highlightFill: "rgba(220,220,220,0.75)",
-              highlightStroke: "rgba(220,220,220,1)",
-              label: 'Percent Progress to First Class',
+              fillColor: "rgba(63, 81, 181, 0.5)",
+              strokeColor: "rgba(63, 81, 181, 0.8)",
+              highlightFill: "rgba(63, 81, 181, 0.75)",
+              highlightStroke: "rgba(63, 81, 181, 1)",
+              label: 'Troop Progress %',
               data: [troopPercentProgress]
             }
           ]
         };
-        debugger;
 
-        barChart.Bar(dataset);
+        var options = {
+          tooltipTemplate: "<%if (label){%><%=label%>: <%}%><%= value %>%",
+          scaleLabel: "<%=value%>%"
+        };
+
+        barChart.Bar(dataset, options);
       };
 
       $scope.$watch('troop', function () {
