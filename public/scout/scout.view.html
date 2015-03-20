@@ -6,9 +6,9 @@
         <fcs-scout-name scout="scout"></fcs-scout-name>
         <span flex></span>
         <fcs-oa-icon ng-if="!!scout.isOA" layout-margin></fcs-oa-icon>
-        <md-button ng-click="editScout($event)" class="md-raised md-button">
-          <md-icon md-svg-src="actions:edit"></md-icon>
-        </md-button>
+
+        <fcs-make-editable item="scout" edit="editScout" edit-takes-events="true"></fcs-make-editable>
+
       </div>
     </md-toolbar>
 

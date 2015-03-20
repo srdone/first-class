@@ -7,6 +7,7 @@
   function MakeEditableDirective () {
 
     return {
+      restrict: 'E',
       transclude: true,
       scope: {
         ariaDescription: '@',
