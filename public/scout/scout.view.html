@@ -12,70 +12,35 @@
       </div>
     </md-toolbar>
 
+    <md-tabs md-selected="vm.selectedIndex">
+      <md-tab>
+        Summary
+      </md-tab>
+      <md-tab>
+        Requirements
+      </md-tab>
+      <md-tab>
+        Campouts
+      </md-tab>
+      <md-tab>
+        Service
+      </md-tab>
+      <md-tab>
+        Positions
+      </md-tab>
+    </md-tabs>
     <md-card-content>
-      <!--Next rank progress -->
-      <fcs-scout-summary scout="vm.scout"></fcs-scout-summary>
+
+      <ng-switch on="vm.selectedIndex">
+        <fcs-scout-summary scout="vm.scout" ng-switch-when="0"></fcs-scout-summary>
+        <fcs-requirement-list scout="vm.scout" requirements="vm.scout.getCompletedRequirements()" ng-switch-when="1"></fcs-requirement-list>
+        <fcs-campout-list campouts="vm.scout.getCamping()" scout="vm.scout" ng-switch-when="2"></fcs-campout-list>
+        <fcs-service-list scout="vm.scout" service-projects="vm.scout.getService()" ng-switch-when="3"></fcs-service-list>
+        <fcs-position-list scout="vm.scout" positions="vm.scout.getPositions()" ng-switch-when="4"></fcs-position-list>
+      </ng-switch>
 
     </md-card-content>
 
-  </md-card>
-
-  <!--Service Detail-->
-  <md-card ng-if="!!vm.scout.getService().length" class="md-whiteframe-z2">
-
-    <md-toolbar>
-      <div class="md-toolbar-tools">
-        Service History
-      </div>
-    </md-toolbar>
-
-    <md-card-content>
-
-      <fcs-service-list scout="vm.scout" service-projects="vm.scout.getService()"></fcs-service-list>
-
-    </md-card-content>
-
-  </md-card>
-
-  <!--Camping Detail-->
-  <md-card ng-if="!!vm.scout.getCamping().length" class="md-whiteframe-z2">
-    <md-toolbar>
-      <div class="md-toolbar-tools">
-        Campouts Attended
-      </div>
-    </md-toolbar>
-    <md-card-content>
-
-      <fcs-campout-list campouts="vm.scout.getCamping()" scout="vm.scout"></fcs-campout-list>
-
-    </md-card-content>
-  </md-card>
-
-  <!--Position Detail-->
-  <md-card ng-if="!!vm.scout.getPositions().length" class="md-whiteframe-z2">
-    <md-toolbar>
-      <div class="md-toolbar-tools">
-        Position History
-      </div>
-    </md-toolbar>
-    <md-card-content>
-
-      <fcs-position-list scout="vm.scout" positions="vm.scout.getPositions()"></fcs-position-list>
-
-    </md-card-content>
-  </md-card>
-
-  <md-card ng-if="!!vm.scout.getCompletedRequirements().length" class="md-whiteframe-z2">
-    <md-toolbar>
-      <div class="md-toolbar-tools">
-        Requirements Completed
-      </div>
-    </md-toolbar>
-    <md-card-content>
-
-      <fcs-requirement-list scout="vm.scout" requirements="vm.scout.getCompletedRequirements()"></fcs-requirement-list>
-
-    </md-card-content>
   </md-card>
 
   <div class="spacer"></div>

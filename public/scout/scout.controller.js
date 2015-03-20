@@ -12,6 +12,13 @@ app.controller('ScoutController', ['scoutService', 'scout', '$mdBottomSheet', 'r
     var vm = this;
 
 		vm.scout = scout;
+    //vm.tabs = [
+    //  {name: 'Summary', description: 'Summary tab'},
+    //  {name: 'Requirements', description: 'Requirements tab'},
+    //  {name: 'Campouts', description: 'Campouts tab'},
+    //  {name: 'Service', description: 'Service tab'},
+    //  {name: 'Positions', description: 'Position tab'}
+    //];
 
     vm.openAddScoutDetailsSheet = function () {
       $mdBottomSheet.show({
