@@ -113,3 +113,9 @@ fcs-rank .rank {
 .title {
     font-size: 20px;
 }
+
+.container {
+    display: block;
+    
+    height: 300px;
+}
