@@ -4,15 +4,11 @@
 
     <md-item-content>
 
-      <md-button ng-click="vm.deleteService(service)" aria-label="Remove Service {{service.description}}">
-        <md-icon md-svg-src="actions:delete"></md-icon>
-      </md-button>
+      <fcs-make-editable edit="vm.editServiceProject" delete="vm.deleteService" item="service" edit-takes-events="true">
 
-      <md-button ng-click="vm.editServiceProject($event, service)" aria-label="Edit Campout {{service.description}}">
-        <md-icon md-svg-src="actions:edit"></md-icon>
-      </md-button>
+        {{service.description}} - {{service.hours | number: 1}} hours
 
-      {{service.description}} - {{service.hours | number: 1}} hours
+      </fcs-make-editable>
 
     </md-item-content>
 
