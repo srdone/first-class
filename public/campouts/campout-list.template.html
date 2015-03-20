@@ -1,0 +1,17 @@
+<md-list>
+  <md-item ng-repeat="campout in vm.campouts | orderBy: 'start'">
+    <md-item-content>
+
+      <fcs-make-editable edit="vm.editCampout"
+                         delete="vm.deleteCampout"
+                         item="campout"
+                         edit-takes-events="true"
+                         aria-description="{{campout.toString()}}">
+
+        <fcs-campout-item campout="campout"></fcs-campout-item>
+
+      </fcs-make-editable>
+
+    </md-item-content>
+  </md-item>
+</md-list>

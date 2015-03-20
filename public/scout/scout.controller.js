@@ -117,35 +117,35 @@ app.controller('ScoutController', ['$scope', 'scoutService', 'scout', '$mdBottom
         });
       });
     };
-
-    $scope.editCampout = function (event, campout) {
-      var campoutToEdit = angular.copy(campout);
-
-      campoutDialogService.showEditCampoutDialog({targetEvent: event, campout: campoutToEdit}).then(function (editedCampout) {
-        $scope.scout.removeCampout(campout.id);
-        $scope.scout.addCampout(editedCampout.description, editedCampout.start, editedCampout.end);
-        $scope.scout.save().then(function (savedScout) {
-          $mdToast.showSimple('Saved Campout Changes: ' + editedCampout.toString());
-          $scope.scout = savedScout;
-        });
-      });
-    };
-
-    $scope.deleteCampout = function (campout) {
-      var dialog = warningDialog.content('Delete campout record: ' + campout.description + ': ' +
-        $filter('date')(campout.start, 'shortDate') + '-' + $filter('date')(campout.end, 'shortDate') + '?');
-
-      $mdDialog.show(dialog).then(function () {
-        $scope.scout.removeCampout(campout.id);
-        $scope.scout.save()
-          .then(function () {
-            $mdToast.showSimple('Deleted campout: ' + campout.toString());
-          }, function () {
-            $scope.scout.addCampout(campout);
-            $mdToast.showSimple('A server error occurred: Failed to delete campout');
-          });
-      });
-    };
+    //
+    //$scope.editCampout = function (event, campout) {
+    //  var campoutToEdit = angular.copy(campout);
+    //
+    //  campoutDialogService.showEditCampoutDialog({targetEvent: event, campout: campoutToEdit}).then(function (editedCampout) {
+    //    $scope.scout.removeCampout(campout.id);
+    //    $scope.scout.addCampout(editedCampout.description, editedCampout.start, editedCampout.end);
+    //    $scope.scout.save().then(function (savedScout) {
+    //      $mdToast.showSimple('Saved Campout Changes: ' + editedCampout.toString());
+    //      $scope.scout = savedScout;
+    //    });
+    //  });
+    //};
+    //
+    //$scope.deleteCampout = function (campout) {
+    //  var dialog = warningDialog.content('Delete campout record: ' + campout.description + ': ' +
+    //    $filter('date')(campout.start, 'shortDate') + '-' + $filter('date')(campout.end, 'shortDate') + '?');
+    //
+    //  $mdDialog.show(dialog).then(function () {
+    //    $scope.scout.removeCampout(campout.id);
+    //    $scope.scout.save()
+    //      .then(function () {
+    //        $mdToast.showSimple('Deleted campout: ' + campout.toString());
+    //      }, function () {
+    //        $scope.scout.addCampout(campout);
+    //        $mdToast.showSimple('A server error occurred: Failed to delete campout');
+    //      });
+    //  });
+    //};
 
     $scope.deletePosition = function (position) {
       var dialog = warningDialog.content('Delete position record: ' + position.title + ': ' +

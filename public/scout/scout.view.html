@@ -30,7 +30,9 @@
     </md-toolbar>
 
     <md-card-content>
+
       <fcs-service-list scout="scout"></fcs-service-list>
+
     </md-card-content>
 
   </md-card>
@@ -43,19 +45,9 @@
       </div>
     </md-toolbar>
     <md-card-content>
-      <md-list>
-        <md-item ng-repeat="campout in scout.getCamping() | orderBy: 'start'">
-          <md-item-content>
 
-            <fcs-make-editable edit="editCampout" delete="deleteCampout" item="campout" edit-takes-events="true" aria-description="{{campout.toString()}}">
+      <fcs-campout-list campouts="scout.getCamping()" scout="scout"></fcs-campout-list>
 
-              <fcs-campout-item campout="campout"></fcs-campout-item>
-
-            </fcs-make-editable>
-
-          </md-item-content>
-        </md-item>
-      </md-list>
     </md-card-content>
   </md-card>
 
