@@ -59,19 +59,9 @@
       </div>
     </md-toolbar>
     <md-card-content>
-      <md-list>
-        <md-item ng-repeat="position in scout.getPositions() | orderBy: 'start'">
-          <md-item-content>
 
-            <fcs-make-editable edit="editPosition" delete="deletePosition" item="position" edit-takes-events="true">
+      <fcs-position-list scout="scout" positions="scout.getPositions()"></fcs-position-list>
 
-              {{position.title}}: {{position.start | date: 'shortDate'}} - {{position.end | date: 'shortDate'}}
-
-            </fcs-make-editable>
-
-          </md-item-content>
-        </md-item>
-      </md-list>
     </md-card-content>
   </md-card>
 

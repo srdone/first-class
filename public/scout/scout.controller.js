@@ -54,19 +54,6 @@ app.controller('ScoutController', ['$scope', 'scoutService', 'scout', '$mdBottom
       });
     };
 
-    $scope.editPosition = function (event, position) {
-      var positionToEdit = angular.copy(position);
-
-      positionDialogService.showEditDialog({targetEvent: event, position: positionToEdit}).then(function (editedPosition) {
-        $scope.scout.removePosition(position.id);
-        $scope.scout.addPosition(editedPosition.title, editedPosition.start, editedPosition.end);
-        $scope.scout.save().then(function (savedScout) {
-          $mdToast.showSimple('Saved Position Changes: ' + editedPosition.toString());
-          $scope.scout = savedScout;
-        });
-      });
-    };
-
     $scope.addServiceProject = function (event) {
       serviceProjectDialogService.showCreateDialog({targetEvent: event}).then(function handleServiceData (newServiceProjectData) {
         var newServiceProject = $scope.scout.addService(newServiceProjectData.description, newServiceProjectData.hours);
@@ -117,51 +104,8 @@ app.controller('ScoutController', ['$scope', 'scoutService', 'scout', '$mdBottom
         });
       });
     };
-    //
-    //$scope.editCampout = function (event, campout) {
-    //  var campoutToEdit = angular.copy(campout);
-    //
-    //  campoutDialogService.showEditCampoutDialog({targetEvent: event, campout: campoutToEdit}).then(function (editedCampout) {
-    //    $scope.scout.removeCampout(campout.id);
-    //    $scope.scout.addCampout(editedCampout.description, editedCampout.start, editedCampout.end);
-    //    $scope.scout.save().then(function (savedScout) {
-    //      $mdToast.showSimple('Saved Campout Changes: ' + editedCampout.toString());
-    //      $scope.scout = savedScout;
-    //    });
-    //  });
-    //};
-    //
-    //$scope.deleteCampout = function (campout) {
-    //  var dialog = warningDialog.content('Delete campout record: ' + campout.description + ': ' +
-    //    $filter('date')(campout.start, 'shortDate') + '-' + $filter('date')(campout.end, 'shortDate') + '?');
-    //
-    //  $mdDialog.show(dialog).then(function () {
-    //    $scope.scout.removeCampout(campout.id);
-    //    $scope.scout.save()
-    //      .then(function () {
-    //        $mdToast.showSimple('Deleted campout: ' + campout.toString());
-    //      }, function () {
-    //        $scope.scout.addCampout(campout);
-    //        $mdToast.showSimple('A server error occurred: Failed to delete campout');
-    //      });
-    //  });
-    //};
 
-    $scope.deletePosition = function (position) {
-      var dialog = warningDialog.content('Delete position record: ' + position.title + ': ' +
-        $filter('date')(position.start, 'shortDate') + '-' + $filter('date')(position.end, 'shortDate') + '?');
 
-      $mdDialog.show(dialog).then(function () {
-        $scope.scout.removePosition(position.id);
-        $scope.scout.save()
-          .then(function () {
-            $mdToast.showSimple('Deleted position: ' + position.toString());
-          }, function () {
-            $scope.scout.addPosition(position);
-            $mdToast.showSimple('A server error occurred: Failed to delete position');
-          });
-      });
-    };
 
     $scope.selectRequirements = function ($event) {
       var rawCompletedRequirements = $scope.scout.getCompletedRequirements().map(function (current) {
