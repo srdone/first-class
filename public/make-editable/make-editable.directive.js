@@ -9,7 +9,7 @@
     return {
       transclude: true,
       scope: {
-        description: '@',
+        ariaDescription: '@',
         delete: '&',
         edit: '&',
         item: '=',
