@@ -5,7 +5,7 @@
   <md-content>
 
     <md-list>
-      <md-item ng-repeat="scout in vm.troop">
+      <md-item ng-repeat="scout in vm.troop | orderBy: '+firstName+lastName'">
 
         <md-item-content>
           <md-checkbox ng-model="scout.isSelected">
