@@ -4,10 +4,10 @@
     .module('firstClass')
     .controller('MakeEditableController', MakeEditableController);
 
-  MakeEditableController.$inject = ['$parse', '$scope'];
+  MakeEditableController.$inject = ['$parse'];
 
   /* @ngInject */
-  function MakeEditableController($parse, $scope) {
+  function MakeEditableController($parse) {
     /* jshint validthis: true */
     var vm = this;
 
