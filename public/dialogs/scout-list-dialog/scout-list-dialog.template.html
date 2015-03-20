@@ -9,7 +9,9 @@
 
         <md-item-content>
           <md-checkbox ng-model="scout.isSelected">
-            <img ng-src="{{scout.photoUrl}}" class="avatar-sm" layout-margin> {{scout.getName()}}
+            <div layout="row" layout-align="start center" layout-wrap>
+              <div><img ng-src="{{scout.photoUrl}}" class="avatar-sm" layout-margin></div><div>{{scout.getName()}}</div>
+            </div>
           </md-checkbox>
         </md-item-content>
 
