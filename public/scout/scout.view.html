@@ -72,22 +72,9 @@
       </div>
     </md-toolbar>
     <md-card-content>
-      <md-list>
-        <md-item ng-repeat="completedRequirement in scout.getCompletedRequirements() | orderBy: 'requirement.requirementNumber+requirement.order'">
-          <md-item-content>
 
-            <fcs-make-editable delete="deleteRequirement" item="completedRequirement" aria-description="{{completedRequirement.requirement.name}}">
+      <fcs-requirement-list scout="scout" requirements="scout.getCompletedRequirements()"></fcs-requirement-list>
 
-              <span>
-                {{completedRequirement.dateCompleted | date: 'shortDate'}}: {{completedRequirement.requirement.name}}:<br/>
-                {{completedRequirement.requirement.description}}
-              </span>
-
-            </fcs-make-editable>
-
-          </md-item-content>
-        </md-item>
-      </md-list>
     </md-card-content>
   </md-card>
 

@@ -81,20 +81,7 @@ app.controller('ScoutController', ['$scope', 'scoutService', 'scout', '$mdBottom
       });
     };
 
-    $scope.deleteRequirement = function(completedRequirement) {
-      var dialog = warningDialog.content('Delete requirement ' + completedRequirement.requirement.name + ' and all parents?');
 
-      $mdDialog.show(dialog).then(function () {
-        $scope.scout.removeRequirementById(completedRequirement.requirement.id);
-        $scope.scout.save()
-          .then(function () {
-            $mdToast.showSimple('Deleted requirement and its dependents: ' + completedRequirement.requirement.name);
-          }, function () {
-            $scope.scout.addRequirement(completedRequirement.requirement);
-            $mdToast.showSimple('A server error occurred: Failed to delete requirement');
-          });
-      });
-    };
 
     $scope.addCampout = function (event) {
       campoutDialogService.showCreateCampoutDialog({targetEvent: event}).then(function (newCampoutData) {

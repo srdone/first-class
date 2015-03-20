@@ -1,0 +1,16 @@
+<md-list>
+  <md-item ng-repeat="requirement in vm.requirements | orderBy: 'requirement.requirementNumber+requirement.order'">
+    <md-item-content>
+
+      <fcs-make-editable delete="vm.deleteRequirement" item="requirement" aria-description="{{requirement.requirement.name}}">
+
+              <span>
+                {{requirement.dateCompleted | date: 'shortDate'}}: {{requirement.requirement.name}}:<br/>
+                {{requirement.requirement.description}}
+              </span>
+
+      </fcs-make-editable>
+
+    </md-item-content>
+  </md-item>
+</md-list>
