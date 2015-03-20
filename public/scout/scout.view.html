@@ -93,9 +93,16 @@
       <md-list>
         <md-item ng-repeat="completedRequirement in scout.getCompletedRequirements() | orderBy: 'requirement.requirementNumber+requirement.order'">
           <md-item-content>
-            <fcs-completed-requirement-summary completed-requirement="completedRequirement">
-              <fcs-delete-button ng-click="deleteRequirement(completedRequirement)" fcs-aria-label="Remove Requirement {{completedRequirement.requirement.name}}"></fcs-delete-button>
-            </fcs-completed-requirement-summary>
+
+            <fcs-make-editable delete="deleteRequirement" item="completedRequirement" aria-description="{{completedRequirement.requirement.name}}">
+
+              <span>
+                {{completedRequirement.dateCompleted | date: 'shortDate'}}: {{completedRequirement.requirement.name}}:<br/>
+                {{completedRequirement.requirement.description}}
+              </span>
+
+            </fcs-make-editable>
+
           </md-item-content>
         </md-item>
       </md-list>
