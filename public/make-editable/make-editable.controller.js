@@ -15,6 +15,8 @@
     vm.title = 'MakeEditableController';
     vm.deleteFunction = deleteFunction;
     vm.editFunction = editFunction;
+    vm.canEdit = false;
+    vm.canDelete = false;
 
     function deleteFunction ($event) {
       if (vm.deleteTakesEvents) {
@@ -41,6 +43,8 @@
       vm.editTakesEvents = $parse(vm.editTakesEvents)();
       vm.delete = $parse(vm.delete)();
       vm.edit = $parse(vm.edit)();
+      vm.canEdit = vm.edit ? true : false;
+      vm.canDelete = vm.delete ? true : false;
     }
 
 

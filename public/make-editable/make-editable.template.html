@@ -1,8 +1,8 @@
 <span>
-  <md-button ng-click="vm.deleteFunction($event)" aria-label="{{vm.description}}">
+  <md-button ng-click="vm.deleteFunction($event)" aria-label="{{vm.description}}" ng-if="vm.canDelete">
     <md-icon md-svg-src="actions:delete"></md-icon>
   </md-button>
-  <md-button ng-click="vm.editFunction($event)" aria-label="{{vm.description}}">
+  <md-button ng-click="vm.editFunction($event)" aria-label="{{vm.description}}" ng-if="vm.canEdit">
     <md-icon md-svg-src="actions:edit"></md-icon>
   </md-button>
   <ng-transclude></ng-transclude>
