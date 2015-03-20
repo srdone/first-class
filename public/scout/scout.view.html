@@ -1,4 +1,4 @@
-<md-content>
+<md-content layout="column">
   <md-card class="md-whiteframe-z2" layout="column">
     <md-toolbar>
       <div class="md-toolbar-tools" layout="row">
@@ -29,7 +29,8 @@
         Positions
       </md-tab>
     </md-tabs>
-    <md-content class="container" md-scroll-y>
+
+    <md-content md-scroll-y>
 
       <ng-switch on="vm.selectedIndex">
 
@@ -43,13 +44,13 @@
 
         <fcs-position-list scout="vm.scout" positions="vm.scout.getPositions()" ng-switch-when="4"></fcs-position-list>
 
+        <div class="spacer"></div>
+
       </ng-switch>
 
     </md-content>
 
   </md-card>
-
-  <div class="spacer"></div>
 
 </md-content>
 
