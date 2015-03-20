@@ -58,7 +58,8 @@ app.config(['$stateProvider', '$urlRouterProvider',
         views: {
           "mainView": {
             templateUrl: 'scout/scout.view.html',
-            controller: 'ScoutController'
+            controller: 'ScoutController',
+            controllerAs: 'vm'
           }
         }
 			})

@@ -2,91 +2,91 @@
 
 var app = angular.module('firstClass');
 
-app.controller('ScoutController', ['$scope', 'scoutService', 'scout', '$mdBottomSheet', 'requirementService',
+app.controller('ScoutController', ['scoutService', 'scout', '$mdBottomSheet', 'requirementService',
   '$mdDialog', '$filter', '$mdToast', 'scoutDialogService', 'campoutDialogService', 'positionDialogService',
   'serviceProjectDialogService', 'requirementDialogService', '$log', 'selectDetailBottomSheetService',
-	function ($scope, scoutService, scout, $mdBottomSheet, requirementService, $mdDialog, $filter, $mdToast, scoutDialogService,
+	function (scoutService, scout, $mdBottomSheet, requirementService, $mdDialog, $filter, $mdToast, scoutDialogService,
             campoutDialogService, positionDialogService, serviceProjectDialogService, requirementDialogService, $log,
             selectDetailBottomSheetService) {
 
-		$scope.scout = scout;
+    var vm = this;
 
-    var warningDialog = $mdDialog.confirm().title('Warning').ok('Yes').cancel('Cancel');
+		vm.scout = scout;
 
-    $scope.openAddScoutDetailsSheet = function () {
+    vm.openAddScoutDetailsSheet = function () {
       $mdBottomSheet.show({
         templateUrl: 'scout/add-details/add-details.bottom-sheet.html',
         controller: 'AddDetailsSheetController',
         resolve: {
           scout: function () {
-            return $scope.scout;
+            return vm.scout;
           },
           requirements: function () {
-            return $scope.scout.getMissingRequirements();
+            return vm.scout.getMissingRequirements();
           }
         }
       });
     };
 
-    $scope.addDetails = function (event) {
+    vm.addDetails = function (event) {
       selectDetailBottomSheetService.show(event).then(function (selectedItem) {
         if (selectedItem.name === 'requirement') {
-          $scope.selectRequirements();
+          vm.selectRequirements();
         } else if (selectedItem.name === 'service') {
-          $scope.addServiceProject();
+          vm.addServiceProject();
         } else if (selectedItem.name === 'campout') {
-          $scope.addCampout();
+          vm.addCampout();
         } else if (selectedItem.name === 'position') {
-          $scope.addPosition();
+          vm.addPosition();
         }
       });
     };
 
-    $scope.addPosition = function (event) {
+    vm.addPosition = function (event) {
       positionDialogService.showCreateDialog({targetEvent: event}).then(function (newPositionData) {
-        var newPosition = $scope.scout.addPosition(newPositionData.title, newPositionData.start, newPositionData.end);
-        $scope.scout.save().then(function () {
+        var newPosition = vm.scout.addPosition(newPositionData.title, newPositionData.start, newPositionData.end);
+        vm.scout.save().then(function () {
           $mdToast.showSimple('New Position Added: ' + newPosition.toString());
         }, function () {
-          $scope.scout.removePosition(newPosition.id);
+          vm.scout.removePosition(newPosition.id);
           $mdToast.showSimple('Failed to save new position');
         });
       });
     };
 
-    $scope.addServiceProject = function (event) {
+    vm.addServiceProject = function (event) {
       serviceProjectDialogService.showCreateDialog({targetEvent: event}).then(function handleServiceData (newServiceProjectData) {
-        var newServiceProject = $scope.scout.addService(newServiceProjectData.description, newServiceProjectData.hours);
+        var newServiceProject = vm.scout.addService(newServiceProjectData.description, newServiceProjectData.hours);
 
-        $scope.scout.save().then(function handleSuccessfulSave () {
+        vm.scout.save().then(function handleSuccessfulSave () {
           $mdToast.showSimple('New Service Project Added: ' + newServiceProject.toString());
         }, function handleError () {
-          $scope.scout.removeService(newServiceProject.id);
+          vm.scout.removeService(newServiceProject.id);
           $mdToast.showSimple('Failed to save new service project');
         });
       });
     };
 
-    $scope.editScout = function (event) {
+    vm.editScout = function (event) {
       var options = {
-        scout: angular.copy($scope.scout),
+        scout: angular.copy(vm.scout),
         event: event
       };
 
       scoutDialogService.showEditScoutDialog(options).then(function (editedScout) {
         editedScout.save().then(function (savedScout) {
           $mdToast.showSimple('Saved Scout: ' + savedScout.getName());
-          $scope.scout = savedScout;
+          vm.scout = savedScout;
         });
       });
     };
 
 
 
-    $scope.addCampout = function (event) {
+    vm.addCampout = function (event) {
       campoutDialogService.showCreateCampoutDialog({targetEvent: event}).then(function (newCampoutData) {
-        var newCampout = $scope.scout.addCampout(newCampoutData.description, newCampoutData.start, newCampoutData.end);
-        $scope.scout.save().then(function () {
+        var newCampout = vm.scout.addCampout(newCampoutData.description, newCampoutData.start, newCampoutData.end);
+        vm.scout.save().then(function () {
           $mdToast.showSimple('Created Campout: ' + newCampout.toString());
         });
       });
@@ -94,22 +94,22 @@ app.controller('ScoutController', ['$scope', 'scoutService', 'scout', '$mdBottom
 
 
 
-    $scope.selectRequirements = function ($event) {
-      var rawCompletedRequirements = $scope.scout.getCompletedRequirements().map(function (current) {
+    vm.selectRequirements = function ($event) {
+      var rawCompletedRequirements = vm.scout.getCompletedRequirements().map(function (current) {
         return current.requirement;
       });
 
       requirementDialogService.showDialog({targetEvent: $event, preSelectedRequirements: rawCompletedRequirements, difference: true})
         .then(function handleRequirementUpdates (updatedRequirements) {
           updatedRequirements.added.forEach(function (currentRequirement) {
-            $scope.scout.addRequirement(currentRequirement);
+            vm.scout.addRequirement(currentRequirement);
           });
           updatedRequirements.removed.forEach(function (currentRequirement) {
-            $scope.scout.removeRequirementById(currentRequirement.id);
+            vm.scout.removeRequirementById(currentRequirement.id);
           });
 
-          $scope.scout.save().then(function handleSavedScout (savedScout) {
-            $scope.scout = savedScout;
+          vm.scout.save().then(function handleSavedScout (savedScout) {
+            vm.scout = savedScout;
             var totalDeliberatelyUpdated = updatedRequirements.added.length + updatedRequirements.removed.length;
             $mdToast.showSimple('Updated ' + totalDeliberatelyUpdated + ' requirements and their parents or children.');
           });
@@ -118,8 +118,8 @@ app.controller('ScoutController', ['$scope', 'scoutService', 'scout', '$mdBottom
         });
     };
 
-    $scope.updateScout = function () {
-      $scope.scout.save();
+    vm.updateScout = function () {
+      vm.scout.save();
     };
 
 	}]);

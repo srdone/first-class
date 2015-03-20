@@ -2,26 +2,26 @@
   <md-card class="md-whiteframe-z2" layout="column">
     <md-toolbar>
       <div class="md-toolbar-tools" layout="row">
-        <img ng-src="{{scout.photoUrl}}" class="avatar-sm" layout-margin>
-        <fcs-scout-name scout="scout"></fcs-scout-name>
+        <img ng-src="{{vm.scout.photoUrl}}" class="avatar-sm" layout-margin>
+        <fcs-scout-name scout="vm.scout"></fcs-scout-name>
         <span flex></span>
         <fcs-oa-icon ng-if="!!scout.isOA" layout-margin></fcs-oa-icon>
 
-        <fcs-make-editable item="scout" edit="editScout" edit-takes-events="true"></fcs-make-editable>
+        <fcs-make-editable item="vm.scout" edit="vm.editScout" edit-takes-events="true"></fcs-make-editable>
 
       </div>
     </md-toolbar>
 
     <md-card-content>
       <!--Next rank progress -->
-      <fcs-scout-summary scout="scout"></fcs-scout-summary>
+      <fcs-scout-summary scout="vm.scout"></fcs-scout-summary>
 
     </md-card-content>
 
   </md-card>
 
   <!--Service Detail-->
-  <md-card ng-if="!!scout.getService().length" class="md-whiteframe-z2">
+  <md-card ng-if="!!vm.scout.getService().length" class="md-whiteframe-z2">
 
     <md-toolbar>
       <div class="md-toolbar-tools">
@@ -31,14 +31,14 @@
 
     <md-card-content>
 
-      <fcs-service-list scout="scout" service-projects="scout.getService()"></fcs-service-list>
+      <fcs-service-list scout="vm.scout" service-projects="vm.scout.getService()"></fcs-service-list>
 
     </md-card-content>
 
   </md-card>
 
   <!--Camping Detail-->
-  <md-card ng-if="!!scout.getCamping().length" class="md-whiteframe-z2">
+  <md-card ng-if="!!vm.scout.getCamping().length" class="md-whiteframe-z2">
     <md-toolbar>
       <div class="md-toolbar-tools">
         Campouts Attended
@@ -46,13 +46,13 @@
     </md-toolbar>
     <md-card-content>
 
-      <fcs-campout-list campouts="scout.getCamping()" scout="scout"></fcs-campout-list>
+      <fcs-campout-list campouts="vm.scout.getCamping()" scout="vm.scout"></fcs-campout-list>
 
     </md-card-content>
   </md-card>
 
   <!--Position Detail-->
-  <md-card ng-if="!!scout.getPositions().length" class="md-whiteframe-z2">
+  <md-card ng-if="!!vm.scout.getPositions().length" class="md-whiteframe-z2">
     <md-toolbar>
       <div class="md-toolbar-tools">
         Position History
@@ -60,12 +60,12 @@
     </md-toolbar>
     <md-card-content>
 
-      <fcs-position-list scout="scout" positions="scout.getPositions()"></fcs-position-list>
+      <fcs-position-list scout="vm.scout" positions="vm.scout.getPositions()"></fcs-position-list>
 
     </md-card-content>
   </md-card>
 
-  <md-card ng-if="!!scout.getCompletedRequirements().length" class="md-whiteframe-z2">
+  <md-card ng-if="!!vm.scout.getCompletedRequirements().length" class="md-whiteframe-z2">
     <md-toolbar>
       <div class="md-toolbar-tools">
         Requirements Completed
@@ -73,7 +73,7 @@
     </md-toolbar>
     <md-card-content>
 
-      <fcs-requirement-list scout="scout" requirements="scout.getCompletedRequirements()"></fcs-requirement-list>
+      <fcs-requirement-list scout="vm.scout" requirements="vm.scout.getCompletedRequirements()"></fcs-requirement-list>
 
     </md-card-content>
   </md-card>
@@ -86,6 +86,6 @@
   <md-icon md-svg-src="actions:go-back"></md-icon>
 </md-button>
 
-<md-button ng-click="addDetails($event)" class="md-fab md-fab-bottom-right md-raised md-primary md-hue-3">
+<md-button ng-click="vm.addDetails($event)" class="md-fab md-fab-bottom-right md-raised md-primary md-hue-3">
   <md-icon md-svg-src="actions:add-detail"></md-icon>
 </md-button>
