@@ -87,6 +87,10 @@ angular.module('firstClass').factory('requirementService', ['persistenceService'
   };
 
   var _getAllRequirements = function () {
+    // caching
+    if (existingRequirements.length) {
+      return existingRequirements;
+    }
     return persistenceService.getAllRequirements().then(function (requirements) {
       var inflatedReqs = [];
       requirements.forEach(function (current) {
