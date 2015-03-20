@@ -84,7 +84,7 @@
     </md-card-content>
   </md-card>
 
-  <md-card class="md-whiteframe-z2">
+  <md-card ng-if="!!scout.getCompletedRequirements().length" class="md-whiteframe-z2">
     <md-toolbar>
       <div class="md-toolbar-tools">
         Requirements Completed
