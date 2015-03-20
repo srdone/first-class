@@ -52,7 +52,7 @@
             <md-button ng-click="editCampout($event, campout)" aria-label="Edit Campout {{campout.description}}">
               <md-icon md-svg-src="actions:edit"></md-icon>
             </md-button>
-            {{campout.description}}: {{campout.start | date:'shortDate'}} - {{campout.end | date:'shortDate'}}
+            <fcs-campout-item campout="campout"></fcs-campout-item>
           </md-item-content>
         </md-item>
       </md-list>
