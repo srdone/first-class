@@ -5,8 +5,6 @@ angular.module('firstClass').factory('requirementService', ['persistenceService'
   var existingRequirementsChildrenByParentId = {};
 
   var Requirement = function (requirement) {
-    $log.debug('new Requirement called');
-    $log.debug(requirement);
     this._id = requirement._id;
     this.id = requirement.id;
     this.name = requirement.name;
@@ -54,17 +52,9 @@ angular.module('firstClass').factory('requirementService', ['persistenceService'
   };
 
   var _getCompletedRanks = function (completedRequirements) {
-    $log.debug('called requirementService.getCompletedRank');
-    $log.debug('Completed Requirements:');
-    $log.debug(completedRequirements);
-
-    $log.debug('Existing Requirements');
-    $log.debug(existingRequirements);
     var ranks = existingRequirements.filter(function (currentRequirement) {
       return (currentRequirement.requirementType === 'rank');
     });
-    $log.debug('Checking Ranks:');
-    $log.debug(ranks);
 
     var ranksMarkedComplete = ranks.filter(function (currentRank) {
       for (var i = 0; i < completedRequirements.length; i++) {
@@ -82,8 +72,6 @@ angular.module('firstClass').factory('requirementService', ['persistenceService'
 
   var _getCurrentRank = function (completedRequirements) {
       var completedRanks = _getCompletedRanks(completedRequirements);
-      $log.debug('Completed Ranks: ');
-      $log.debug(completedRanks);
 
       completedRanks.sort(function (a, b) {
         if (a.order < b.order) {
@@ -99,7 +87,6 @@ angular.module('firstClass').factory('requirementService', ['persistenceService'
   };
 
   var _getAllRequirements = function () {
-    $log.debug('getAllRequirements called');
     return persistenceService.getAllRequirements().then(function (requirements) {
       var inflatedReqs = [];
       requirements.forEach(function (current) {
@@ -107,11 +94,7 @@ angular.module('firstClass').factory('requirementService', ['persistenceService'
       });
       existingRequirements = inflatedReqs;
       existingRequirementsChildrenByParentId = _keyRequirementsByParent(existingRequirements);
-      $log.debug('existingRequirementsChildrenByParentId');
-      $log.debug(existingRequirementsChildrenByParentId);
       existingRequirementsParentByChildId = _keyRequirementsByChild(existingRequirements);
-      $log.debug('existingRequirementsParentByChildId');
-      $log.debug(existingRequirementsParentByChildId);
       return inflatedReqs;
     });
   };
