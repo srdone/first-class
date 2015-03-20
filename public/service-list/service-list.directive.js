@@ -4,7 +4,8 @@ angular.module('firstClass').directive('fcsServiceList', function () {
 
   return {
     scope: {
-      scout: '='
+      scout: '=',
+      serviceProjects: '='
     },
     bindToController: true,
     controller: 'ServiceListController',
