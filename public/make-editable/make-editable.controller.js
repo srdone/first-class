@@ -16,14 +16,20 @@
     vm.deleteFunction = deleteFunction;
     vm.editFunction = editFunction;
 
-    function deleteFunction () {
-      var fn = $parse(vm.delete)();
-      fn(vm.item);
+    function deleteFunction ($event) {
+      if (vm.deleteTakesEvents) {
+        vm.delete($event, vm.item);
+      } else {
+        vm.delete(vm.item);
+      }
     }
 
     function editFunction (event) {
-      var fn = $parse(vm.edit)();
-      fn(event, vm.item);
+      if (vm.editTakesEvents) {
+        vm.edit(event, vm.item);
+      } else {
+        vm.edit(vm.item);
+      }
     }
 
     activate();
@@ -31,7 +37,10 @@
     ////////////////
 
     function activate() {
-
+      vm.deleteTakesEvents = $parse(vm.deleteTakesEvents)();
+      vm.editTakesEvents = $parse(vm.editTakesEvents)();
+      vm.delete = $parse(vm.delete)();
+      vm.edit = $parse(vm.edit)();
     }
 
 

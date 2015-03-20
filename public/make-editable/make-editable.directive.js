@@ -12,7 +12,9 @@
         description: '@',
         delete: '&',
         edit: '&',
-        item: '='
+        item: '=',
+        editTakesEvents: '&',
+        deleteTakesEvents: '&'
       },
       bindToController: true,
       controller: 'MakeEditableController',

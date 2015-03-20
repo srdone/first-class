@@ -47,7 +47,7 @@
         <md-item ng-repeat="campout in scout.getCamping() | orderBy: 'start'">
           <md-item-content>
 
-            <fcs-make-editable edit="editCampout" delete="deleteCampout" item="campout">
+            <fcs-make-editable edit="editCampout" delete="deleteCampout" item="campout" edit-takes-events="true">
 
               <fcs-campout-item campout="campout"></fcs-campout-item>
 
