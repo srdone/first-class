@@ -3,7 +3,13 @@
   <md-content>
 
     <md-list>
-      <md-item ng-repeat="requirement in vm.existingRequirements">
+      <div ng-repeat="category in vm.categories">
+        <md-item>
+          <md-item-content>
+            {{category}}
+          </md-item-content>
+        </md-item>
+      <md-item ng-repeat="requirement in vm.existingRequirements | filter: {category: category}">
 
         <md-item-content>
           <md-checkbox ng-model="requirement.isSelected">
@@ -12,6 +18,7 @@
         </md-item-content>
 
       </md-item>
+      </div>
     </md-list>
 
   </md-content>

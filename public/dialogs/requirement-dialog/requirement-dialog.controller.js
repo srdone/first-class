@@ -4,6 +4,12 @@ angular.module('firstClass').controller('RequirementDialogController', ['$mdDial
   function ($mdDialog, existingRequirements, $timeout) {
 
     var _init = function () {
+      var categories = existingRequirements.map(function getCategories (current) {
+        return current.category;
+      });
+
+      this.categories = _.uniq(categories);
+
       if (this.preSelectedRequirements.length) {
         this.preSelectedRequirements.forEach(function markAsSelected(current) {
           var index = _.findIndex(existingRequirements, _.matches({id: current.id}));
