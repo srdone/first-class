@@ -9,11 +9,10 @@ app.controller('TroopController', ['$scope', 'scoutService', 'scoutDialogService
     positionDialogService, requirementDialogService, campoutDialogService, serviceProjectDialogService, $q, $rootScope, requirementService) {
 
     var _init = function () {
-      requirementService.getAllRequirements().then(function () {
-        scoutService.getScouts().then(function (scouts) {
-          $scope.troop = scouts;
-          _broadcastTroopUpdate();
-        });
+      requirementService.getAllRequirements();
+      scoutService.getScouts().then(function (scouts) {
+        $scope.troop = scouts;
+        _broadcastTroopUpdate();
       });
     };
 
