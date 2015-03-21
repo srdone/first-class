@@ -2,19 +2,19 @@
   display: none !important;
 }
 /*see http://www.htmlxprs.com/post/9/easy-angularjs-animations-using-animatecss*/
-/*#content.ng-enter {*/
-    /*-webkit-animation: slideInLeft 1s;*/
-    /*-moz-animation: slideInLeft 1s;*/
-    /*-o-animation: slideInLeft 1s;*/
-    /*animation: slideInLeft 1s;*/
-/*}*/
+md-card.ng-enter {
+    -webkit-animation: slideUp 1s;
+    -moz-animation: slideUp 1s;
+    -o-animation: slideUp 1s;
+    animation: slideUp 1s;
+}
 
-/*#content.ng-leave {*/
-    /*-webkit-animation: slideInLeft 1s;*/
-    /*-moz-animation: slideInLeft 1s;*/
-    /*-o-animation: slideInLeft 1s;*/
-    /*animation: slideInLeft 1s;*/
-/*}*/
+md-card.animate.ng-leave {
+    -webkit-animation: slideOutLeft .5s;
+    -moz-animation: slideOutLeft .5s;
+    -o-animation: slideOutLeft .5s;
+    animation: slideOutLeft .5s;
+}
 
 .avatar-sm {
     height: 50px;

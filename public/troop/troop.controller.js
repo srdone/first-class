@@ -11,7 +11,6 @@ app.controller('TroopController', ['$scope', 'scoutService', 'scoutDialogService
     var _init = function () {
       requirementService.getAllRequirements();
       scoutService.getScouts().then(function (scouts) {
-        debugger;
         $scope.troop = scouts;
         _broadcastTroopUpdate();
       });
