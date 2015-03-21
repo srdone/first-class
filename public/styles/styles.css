@@ -133,13 +133,12 @@ fcs-rank .rank {
 }
 
 .requirement-badge .number {
-    font-size: 29px;
-    width: 30px;
+    font-size: 24px;
 }
 
 .md-button.requirement-badge {
-    height: 41px;
-    width: 78px;
+    height: 37px;
+    width: 63px;
     margin-left: 5px;
     margin-right: 5px;
 }
