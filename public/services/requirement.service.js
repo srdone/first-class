@@ -1,4 +1,4 @@
-angular.module('firstClass').factory('requirementService', ['persistenceService', '$log', function(persistenceService, $log) {
+angular.module('firstClass').factory('requirementService', ['persistenceService', '$log', '$q', function(persistenceService, $log, $q) {
 
   var existingRequirements = [];
   var existingRequirementsParentByChildId = {};
@@ -87,20 +87,26 @@ angular.module('firstClass').factory('requirementService', ['persistenceService'
   };
 
   var _getAllRequirements = function () {
+    var deferred = $q.defer();
     // caching
     if (existingRequirements.length) {
-      return existingRequirements;
-    }
-    return persistenceService.getAllRequirements().then(function (requirements) {
-      var inflatedReqs = [];
-      requirements.forEach(function (current) {
-        inflatedReqs.push(new Requirement(current));
+      deferred.resolve(existingRequirements);
+    } else {
+      persistenceService.getAllRequirements().then(function (requirements) {
+        var inflatedReqs = [];
+        requirements.forEach(function (current) {
+          inflatedReqs.push(new Requirement(current));
+        });
+        existingRequirements = inflatedReqs;
+        existingRequirementsChildrenByParentId = _keyRequirementsByParent(existingRequirements);
+        existingRequirementsParentByChildId = _keyRequirementsByChild(existingRequirements);
+        deferred.resolve(inflatedReqs);
+      }, function (response) {
+        deferred.reject(response);
       });
-      existingRequirements = inflatedReqs;
-      existingRequirementsChildrenByParentId = _keyRequirementsByParent(existingRequirements);
-      existingRequirementsParentByChildId = _keyRequirementsByChild(existingRequirements);
-      return inflatedReqs;
-    });
+    }
+
+    return deferred.promise;
   };
 
   var _keyRequirementsByParent = function (requirements) {

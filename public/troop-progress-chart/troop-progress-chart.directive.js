@@ -64,8 +64,10 @@ angular.module('firstClass').directive('fcsTroopProgressChart', function () {
         barChart.Bar(dataset, options);
       };
 
-      $scope.$watch('troop', function () {
-        renderChart();
+      $scope.$watch('troop', function (newValue) {
+        if (newValue) {
+          renderChart();
+        }
       }, true);
     }
   }

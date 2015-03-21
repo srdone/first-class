@@ -2,13 +2,22 @@
 
 var app = angular.module('firstClass');
 
-app.controller('TroopController', ['$scope', 'scoutService', 'troop', 'scoutDialogService', '$mdToast', 'selectDetailBottomSheetService',
+app.controller('TroopController', ['$scope', 'scoutService', 'scoutDialogService', '$mdToast', 'selectDetailBottomSheetService',
   'scoutListDialogService', 'positionDialogService', 'requirementDialogService', 'campoutDialogService', 'serviceProjectDialogService', '$q',
-  '$rootScope',
-	function ($scope, scoutService, troop, scoutDialogService, $mdToast, selectDetailBottomSheetService, scoutListDialogService,
-    positionDialogService, requirementDialogService, campoutDialogService, serviceProjectDialogService, $q, $rootScope) {
+  '$rootScope', 'requirementService',
+	function ($scope, scoutService, scoutDialogService, $mdToast, selectDetailBottomSheetService, scoutListDialogService,
+    positionDialogService, requirementDialogService, campoutDialogService, serviceProjectDialogService, $q, $rootScope, requirementService) {
 
-    $scope.troop = troop;
+    var _init = function () {
+      requirementService.getAllRequirements().then(function () {
+        scoutService.getScouts().then(function (scouts) {
+          $scope.troop = scouts;
+          _broadcastTroopUpdate();
+        });
+      });
+    };
+
+    _init();
 
     var _broadcastTroopUpdate = function () {
       $rootScope.$broadcast('troop:updated', $scope.troop);

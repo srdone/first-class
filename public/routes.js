@@ -19,15 +19,6 @@ app.config(['$stateProvider', '$urlRouterProvider',
 			})
 			.state('troop', {
 				url: '/troop',
-        resolve: {
-          existingRequirements: ['requirementService', function (requirementService) {
-            return requirementService.getAllRequirements();
-          }],
-          troop: ['scoutService', '$log', 'existingRequirements', function (scoutService, $log) {
-            $log.debug('resolving troop');
-            return scoutService.getScouts();
-          }]
-        },
         views: {
           "mainView": {
             templateUrl: 'troop/troop.view.html',
@@ -35,9 +26,7 @@ app.config(['$stateProvider', '$urlRouterProvider',
           },
           "chartView": {
             template: '<fcs-troop-progress-chart troop="troop"></fcs-troop-progress-chart>',
-            controller: function ($scope, troop) {
-              $scope.troop = troop;
-
+            controller: function ($scope) {
               $scope.$on('troop:updated', function (event, troop) {
                 $scope.troop = troop;
               });
