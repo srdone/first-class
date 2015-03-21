@@ -119,3 +119,7 @@ fcs-rank .rank {
     
     height: 300px;
 }
+
+.tabs {
+    min-height: 48px;
+}
