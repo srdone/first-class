@@ -1,16 +1,21 @@
-<md-list>
-  <md-item ng-repeat="requirement in vm.requirements | orderBy: 'requirement.requirementNumber+requirement.order'">
-    <md-item-content>
+<md-content layout-margin>
+  <md-list>
+    <md-item ng-repeat="requirement in vm.requirements | orderBy: 'requirement.requirementNumber+requirement.order'">
+      <md-item-content layout="column" layout-align="start start">
 
-      <fcs-make-editable delete="vm.deleteRequirement" item="requirement" aria-description="{{requirement.requirement.name}}">
+        <div  layout="row" layout-align="start center">
+          <fcs-make-editable delete="vm.deleteRequirement" item="requirement" aria-description="{{requirement.requirement.name}}"></fcs-make-editable>
 
-              <span>
-                {{requirement.dateCompleted | date: 'shortDate'}}: {{requirement.requirement.name}}:<br/>
-                {{requirement.requirement.description}}
-              </span>
+          <div ng-click="show = !show" class="bold-on-hover">
+            {{requirement.dateCompleted | date: 'shortDate'}}: {{requirement.requirement.name}}
+          </div>
 
-      </fcs-make-editable>
+        </div>
+        <div ng-show="show" class="indent">
+          {{requirement.requirement.description}}
+        </div>
 
-    </md-item-content>
-  </md-item>
-</md-list>
+      </md-item-content>
+    </md-item>
+  </md-list>
+</md-content>

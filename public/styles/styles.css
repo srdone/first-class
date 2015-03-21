@@ -123,3 +123,11 @@ fcs-rank .rank {
 .tabs {
     min-height: 48px;
 }
+
+.bold-on-hover:hover {
+    font-weight: 800;
+}
+
+.indent {
+    margin-left: 36px;
+}
