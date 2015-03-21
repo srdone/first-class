@@ -4,10 +4,10 @@ var app = angular.module('firstClass');
 
 app.controller('ScoutController', ['scoutService', '$mdBottomSheet', 'requirementService',
   '$mdDialog', '$filter', '$mdToast', 'scoutDialogService', 'campoutDialogService', 'positionDialogService',
-  'serviceProjectDialogService', 'requirementDialogService', '$log', 'selectDetailBottomSheetService', '$stateParams',
+  'serviceProjectDialogService', 'requirementDialogService', '$log', 'selectDetailBottomSheetService', '$stateParams', '$timeout',
 	function (scoutService, $mdBottomSheet, requirementService, $mdDialog, $filter, $mdToast, scoutDialogService,
             campoutDialogService, positionDialogService, serviceProjectDialogService, requirementDialogService, $log,
-            selectDetailBottomSheetService, $stateParams) {
+            selectDetailBottomSheetService, $stateParams, $timeout) {
 
     var vm = this;
 

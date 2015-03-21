@@ -2,11 +2,12 @@
   display: none !important;
 }
 /*see http://www.htmlxprs.com/post/9/easy-angularjs-animations-using-animatecss*/
-md-card.ng-enter {
-    -webkit-animation: slideUp 1s;
-    -moz-animation: slideUp 1s;
-    -o-animation: slideUp 1s;
-    animation: slideUp 1s;
+
+.view.animate.ng-enter {
+    -webkit-animation: fadeInUpBig 1s;
+    -moz-animation: fadeInUpBig 1s;
+    -o-animation: fadeInUpBig 1s;
+    animation: fadeInUpBig 1s;
 }
 
 md-card.animate.ng-leave {
