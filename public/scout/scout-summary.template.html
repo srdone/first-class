@@ -10,7 +10,15 @@
 
     <fcs-requirement-summary-icons req-category-count="scout.neededReqSummary"></fcs-requirement-summary-icons>
 
-    <fcs-position-list positions="scout.currentPositions"></fcs-position-list>
+    <md-list>
+      <md-item ng-repeat="position in scout.getCurrentPositions() | orderBy: 'start'">
+        <md-item-content>
+
+            <strong>{{position.title}}:</strong> {{position.start | date: 'shortDate'}} - {{position.end | date: 'shortDate'}}
+
+        </md-item-content>
+      </md-item>
+    </md-list>
 
     <div layout="row" layout-align="space-around center" layout-wrap>
 
