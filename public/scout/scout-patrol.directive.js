@@ -6,7 +6,12 @@ angular.module('firstClass').directive('fcsScoutPatrol', function () {
     },
     templateUrl: 'scout/scout-patrol.template.html',
     link: function($scope, $element, $attribute) {
-      $scope.patrolContainsPatrol = ($scope.patrol.toLowerCase().indexOf('patrol') !== -1);
+
+      $scope.$watch('patrol', function (newVal) {
+        if (newVal) {
+          $scope.patrolContainsPatrol = ($scope.patrol.toLowerCase().indexOf('patrol') !== -1);
+        }
+      });
     }
   }
 

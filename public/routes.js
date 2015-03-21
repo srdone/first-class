@@ -36,14 +36,6 @@ app.config(['$stateProvider', '$urlRouterProvider',
 			})
 			.state('scout-detail', {
 				url: '/scout/:scoutId',
-        resolve: {
-          existingRequirements: ['requirementService', function (requirementService) {
-            return requirementService.getAllRequirements();
-          }],
-          scout: ['$stateParams', 'scoutService', 'existingRequirements', function ($stateParams, scoutService) {
-            return scoutService.getScoutById($stateParams.scoutId);
-          }]
-        },
         views: {
           "mainView": {
             templateUrl: 'scout/scout.view.html',

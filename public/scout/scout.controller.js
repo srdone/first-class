@@ -2,23 +2,24 @@
 
 var app = angular.module('firstClass');
 
-app.controller('ScoutController', ['scoutService', 'scout', '$mdBottomSheet', 'requirementService',
+app.controller('ScoutController', ['scoutService', '$mdBottomSheet', 'requirementService',
   '$mdDialog', '$filter', '$mdToast', 'scoutDialogService', 'campoutDialogService', 'positionDialogService',
-  'serviceProjectDialogService', 'requirementDialogService', '$log', 'selectDetailBottomSheetService',
-	function (scoutService, scout, $mdBottomSheet, requirementService, $mdDialog, $filter, $mdToast, scoutDialogService,
+  'serviceProjectDialogService', 'requirementDialogService', '$log', 'selectDetailBottomSheetService', '$stateParams',
+	function (scoutService, $mdBottomSheet, requirementService, $mdDialog, $filter, $mdToast, scoutDialogService,
             campoutDialogService, positionDialogService, serviceProjectDialogService, requirementDialogService, $log,
-            selectDetailBottomSheetService) {
+            selectDetailBottomSheetService, $stateParams) {
 
     var vm = this;
 
-		vm.scout = scout;
-    //vm.tabs = [
-    //  {name: 'Summary', description: 'Summary tab'},
-    //  {name: 'Requirements', description: 'Requirements tab'},
-    //  {name: 'Campouts', description: 'Campouts tab'},
-    //  {name: 'Service', description: 'Service tab'},
-    //  {name: 'Positions', description: 'Position tab'}
-    //];
+    var _init = function () {
+      requirementService.getAllRequirements().then(function () {
+        scoutService.getScoutById($stateParams.scoutId).then(function (scout) {
+          vm.scout = scout;
+        });
+      });
+    };
+
+    _init();
 
     vm.openAddScoutDetailsSheet = function () {
       $mdBottomSheet.show({
