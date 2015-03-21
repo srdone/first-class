@@ -2,18 +2,18 @@
   display: none !important;
 }
 /*see http://www.htmlxprs.com/post/9/easy-angularjs-animations-using-animatecss*/
-/*.ng-enter {*/
-    /*-webkit-animation: fadeIn 1s;*/
-    /*-moz-animation: fadeIn 1s;*/
-    /*-o-animation: fadeIn 1s;*/
-    /*animation: fadeIn 1s;*/
+/*#content.ng-enter {*/
+    /*-webkit-animation: slideInLeft 1s;*/
+    /*-moz-animation: slideInLeft 1s;*/
+    /*-o-animation: slideInLeft 1s;*/
+    /*animation: slideInLeft 1s;*/
 /*}*/
 
-/*.ng-leave {*/
-    /*-webkit-animation: fadeOut 1s;*/
-    /*-moz-animation: fadeOut 1s;*/
-    /*-o-animation: fadeOut 1s;*/
-    /*animation: fadeOut 1s;*/
+/*#content.ng-leave {*/
+    /*-webkit-animation: slideInLeft 1s;*/
+    /*-moz-animation: slideInLeft 1s;*/
+    /*-o-animation: slideInLeft 1s;*/
+    /*animation: slideInLeft 1s;*/
 /*}*/
 
 .avatar-sm {
@@ -130,4 +130,16 @@ fcs-rank .rank {
 
 .indent {
     margin-left: 36px;
+}
+
+.requirement-badge .number {
+    font-size: 29px;
+    width: 30px;
+}
+
+.md-button.requirement-badge {
+    height: 41px;
+    width: 78px;
+    margin-left: 5px;
+    margin-right: 5px;
 }

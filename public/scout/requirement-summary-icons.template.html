@@ -1,10 +1,10 @@
 <div layout="column" layout-align="center center" layout-margin>
 
-  <div class="header" ng-if="!reqCategoryCount">Remaining Requirements:</div>
+  <div class="header" ng-if="vm.hasRemainingRequirements">Remaining Requirements:</div>
   <div layout="row" layout-align="center center" layout-wrap>
-  <div ng-repeat="(key, value) in reqCategoryCount">
-    <md-button flex>
-      <span class="number">{{value}}</span>
+  <div ng-repeat="(key, value) in vm.reqCategoryCount" layout-align="space-around center">
+    <md-button class="requirement-badge" layout="row">
+      <div class="number">{{value}}</div>
       <md-tooltip>
         {{key | uppercase}}
       </md-tooltip>

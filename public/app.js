@@ -1,3 +1,3 @@
 'use strict';
 
-var app = angular.module('firstClass', ['ui.router', 'ngMaterial', 'ngAria',]);
+var app = angular.module('firstClass', ['ui.router', 'ngMaterial', 'ngAria', 'ngAnimate']);
