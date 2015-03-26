@@ -10,12 +10,12 @@
     animation: fadeInUpBig 1s;
 }
 
-fcs-scout-card.animate.ng-remove {
-    -webkit-animation: slideOutLeft .5s;
-    -moz-animation: slideOutLeft .5s;
-    -o-animation: slideOutLeft .5s;
-    animation: slideOutLeft .5s;
-}
+/*.view.animate.ng-leave {*/
+    /*-webkit-animation: slideOutLeft 1s;*/
+    /*-moz-animation: slideOutLeft 1s;*/
+    /*-o-animation: slideOutLeft 1s;*/
+    /*animation: slideOutLeft 1s;*/
+/*}*/
 
 .avatar-sm {
     height: 50px;

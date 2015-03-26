@@ -25,7 +25,8 @@ app.config(['$stateProvider', '$urlRouterProvider',
             controller: 'TroopController'
           },
           "chartView": {
-            template: '<fcs-troop-progress-chart troop="troop"></fcs-troop-progress-chart>',
+            template: '<div class="spacer"></div>'+
+            '<fcs-troop-progress-chart troop="troop"></fcs-troop-progress-chart>',
             controller: function ($scope) {
               $scope.$on('troop:updated', function (event, troop) {
                 $scope.troop = troop;
@@ -40,6 +41,11 @@ app.config(['$stateProvider', '$urlRouterProvider',
           "mainView": {
             templateUrl: 'scout/scout.view.html',
             controller: 'ScoutController',
+            controllerAs: 'vm'
+          },
+          "chartView": {
+            templateUrl: 'scout-sidebar/scout-sidebar.view.html',
+            controller: 'ScoutSidebarController',
             controllerAs: 'vm'
           }
         }

@@ -17,7 +17,7 @@
     Troop Progress
   </md-toolbar>
 
-  <div flex layout="column" layout-align="center center">
+  <div flex layout="column" layout-align="start center">
     <div ui-view="chartView"></div>
     <md-button hide-gt-md ng-click="close()">
       Close Menu
@@ -177,6 +177,12 @@
 <!--service-list-->
 <script src="service-list/service-list.directive.js"></script>
 <script src="service-list/service-list.controller.js"></script>
+
+<!--scout sidebar-->
+<script src="scout-sidebar/scout-sidebar.controller.js"></script>
+
+<!--scout graph-->
+<script src="scout-progress-chart/scout-progress-chart.directive.js"></script>
 
 </body>
 </html>
