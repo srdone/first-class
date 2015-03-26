@@ -42,10 +42,10 @@ angular.module('firstClass').directive('fcsTroopProgressChart', function () {
           labels: ['Troop Progress'],
           datasets: [
             {
-              fillColor: "rgba(63, 81, 181, 0.5)",
-              strokeColor: "rgba(63, 81, 181, 0.8)",
-              highlightFill: "rgba(63, 81, 181, 0.75)",
-              highlightStroke: "rgba(63, 81, 181, 1)",
+              fillColor: "rgba(0, 150, 136, 0.5)",
+              strokeColor: "rgba(0, 150, 136, 0.8)",
+              highlightFill: "rgba(0, 150, 136, 0.75)",
+              highlightStroke: "rgba(0, 150, 136, 1)",
               label: 'Troop Progress %',
               data: [troopPercentProgress]
             }
