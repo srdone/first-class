@@ -4,9 +4,10 @@ var app = angular.module('firstClass');
 
 app.controller('TroopController', ['$scope', 'scoutService', 'scoutDialogService', '$mdToast', 'selectDetailBottomSheetService',
   'scoutListDialogService', 'positionDialogService', 'requirementDialogService', 'campoutDialogService', 'serviceProjectDialogService', '$q',
-  '$rootScope', 'requirementService',
+  '$rootScope', 'requirementService', '$timeout', '$state',
 	function ($scope, scoutService, scoutDialogService, $mdToast, selectDetailBottomSheetService, scoutListDialogService,
-    positionDialogService, requirementDialogService, campoutDialogService, serviceProjectDialogService, $q, $rootScope, requirementService) {
+    positionDialogService, requirementDialogService, campoutDialogService, serviceProjectDialogService, $q, $rootScope, requirementService,
+    $timeout, $state) {
 
     var _init = function () {
       requirementService.getAllRequirements();
@@ -30,6 +31,25 @@ app.controller('TroopController', ['$scope', 'scoutService', 'scoutDialogService
           _broadcastTroopUpdate();
         });
       });
+    };
+
+    $scope.goToScout = function (scout) {
+      //var i;
+      //var hideScout = function (scoutToHide) {
+      //  scoutToHide.leaving = true;
+      //};
+      //
+      //for (i = 0; i < $scope.troop.length; i += 1) {
+      //  if ($scope.troop[i] !== scout) {
+      //    (function (i) {
+      //      $timeout(hideScout.bind(null, $scope.troop[i]));
+      //    }(i));
+      //  }
+      //}
+
+      $timeout(function () {
+        $state.go('scout-detail', { scoutId: scout.id });
+      },500);
     };
 
     $scope.addBatchDetails = function (event) {

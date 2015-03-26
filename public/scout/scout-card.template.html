@@ -1,5 +1,5 @@
-<md-card class="md-whiteframe-z1 animate" layout="column" ng-if="!leaving">
-  <md-toolbar>
+<md-card class="md-whiteframe-z1" layout="column">
+  <md-toolbar ng-click="vm.show = !vm.show">
     <div class="md-toolbar-tools" layout="row">
         <img ng-src="{{scout.photoUrl}}" class="avatar-sm" layout-margin>
         <fcs-scout-name scout="scout"></fcs-scout-name>
@@ -8,15 +8,17 @@
     </div>
   </md-toolbar>
 
-  <md-card-content flex>
+  <md-card-content flex ng-if="true">
 
-    <div class="md-button-group">
-      <md-button class="md-button md-raised md-accent details-button" ng-click="goToScout()">Details</md-button>
-    </div>
+    <ng-transclude></ng-transclude>
 
     <!--Next rank progress -->
     <fcs-scout-summary scout="scout"></fcs-scout-summary>
 
+  </md-card-content>
+
+  <md-card-content ng-if="false">
+    <md-icon md-svg-src="actions:show"></md-icon>
   </md-card-content>
 
 </md-card>

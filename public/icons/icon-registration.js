@@ -35,6 +35,7 @@ angular.module('firstClass').config(['$mdIconProvider', function($mdIconProvider
     .icon('actions:batch-add'                 , 'bower_components/material-design-icons/av/svg/production/ic_my_library_add_48px.svg')
     .icon('actions:go-back'                   , 'bower_components/material-design-icons/navigation/svg/production/ic_arrow_back_48px.svg')
     .icon('actions:add-detail'                , 'bower_components/material-design-icons/content/svg/production/ic_add_48px.svg')
+    .icon('actions:show'                      , 'bower_components/material-design-icons/navigation/svg/production/ic_expand_more_48px.svg');
 
   $mdIconProvider
     .icon('details:requirement'               , 'bower_components/material-design-icons/action/svg/production/ic_assignment_48px.svg')

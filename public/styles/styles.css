@@ -10,7 +10,7 @@
     animation: fadeInUpBig 1s;
 }
 
-md-card.animate.ng-leave {
+fcs-scout-card.animate.ng-remove {
     -webkit-animation: slideOutLeft .5s;
     -moz-animation: slideOutLeft .5s;
     -o-animation: slideOutLeft .5s;

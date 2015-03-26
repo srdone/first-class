@@ -1,8 +1,12 @@
 <md-content>
 
-  <div ng-repeat="scout in troop | orderBy: 'lastName+firstName'">
-    <fcs-scout-card scout="scout"></fcs-scout-card>
-  </div>
+    <fcs-scout-card class="animate" ng-repeat="scout in troop | orderBy: 'lastName+firstName'" scout="scout" ng-show="!scout.leaving">
+
+      <div class="md-button-group">
+        <md-button class="md-button md-raised md-accent details-button" ng-click="goToScout(scout)">Details</md-button>
+      </div>
+
+    </fcs-scout-card>
 
   <div class="no-scouts" ng-if="troop.length === 0">
     <p>No scouts yet!</p>

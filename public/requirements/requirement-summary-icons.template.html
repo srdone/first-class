@@ -5,7 +5,7 @@
     <div ng-repeat="(key, value) in vm.reqCategoryCount" layout-align="space-around center">
       <md-button class="requirement-badge" layout="row">
         <div class="number">{{value}}</div>
-        <md-tooltip>
+        <md-tooltip md-delay="500">
           {{key | uppercase}}
         </md-tooltip>
         <md-icon md-svg-src="requirements:{{key}}"></md-icon>
