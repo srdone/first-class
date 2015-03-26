@@ -4,10 +4,10 @@
     .module('firstClass')
     .controller('RequirementListController', RequirementListController);
 
-  RequirementListController.$inject = ['$mdToast', '$mdDialog'];
+  RequirementListController.$inject = ['$mdToast', '$mdDialog', 'dateDialogService'];
 
   /* @ngInject */
-  function RequirementListController($mdToast, $mdDialog) {
+  function RequirementListController($mdToast, $mdDialog, dateDialogService) {
     /* jshint validthis: true */
     var vm = this;
 
@@ -16,6 +16,7 @@
     vm.scout = vm.scout;
     vm.requirements = vm.requirements;
     vm.deleteRequirement = deleteRequirement;
+    vm.editRequirement = editRequirement;
 
     var warningDialog = $mdDialog.confirm().title('Warning').ok('Yes').cancel('Cancel');
 
@@ -32,6 +33,19 @@
             $mdToast.showSimple('A server error occurred: Failed to delete requirement');
           });
       });
+    }
+
+    function editRequirement (completedRequirement) {
+      debugger;
+      dateDialogService.show({date: completedRequirement.dateCompleted}).then(function (dateReturned) {
+        completedRequirement.dateCompleted = dateReturned;
+        vm.scout.save()
+          .then(function () {
+            $mdToast.showSimple('Updated date');
+          }, function () {
+            $mdToast.showSimple('A server error occurred: Failed to save new date');
+          });
+      })
     }
 
     activate();
