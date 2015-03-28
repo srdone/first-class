@@ -17,6 +17,12 @@ module.exports = function(config) {
     files: [
       'public/bower_components/angular/angular.js',
       'node_modules/angular-mocks/angular-mocks.js',
+      'public/bower_components/angular-ui-router/release/angular-ui-router.js',
+      'public/bower_components/angular-material/angular-material.js',
+      'public/bower_components/angular-aria/angular-aria.js',
+      'public/bower_components/angular-animate/angular-animate.js',
+      'public/app.js',
+      'public/services/scout-object.service.js',
       'test/unit/**/*.js'
     ],
 
