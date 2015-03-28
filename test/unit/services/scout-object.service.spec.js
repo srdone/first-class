@@ -35,16 +35,16 @@ describe('scoutObjectService', function () {
   });
 
   describe('the scout property', function () {
-    var scout;
 
     it('should be a function', function () {
       expect(Scout).toBeAFunction();
     });
 
-    //beforeEach(function () {
-    //  scout = new scoutObjectService.Scout;
-    //});
+  });
 
+  it('should have a CreateScout property', function () {
+
+    expect(scoutObjectService.CreateScout).toBeDefined();
   });
 
 });
