@@ -1,10 +1,18 @@
 describe('scoutObjectService', function () {
-  var scoutObjectService;
+  var scoutObjectService, Scout;
   var requirementServiceMock = {};
   var dateServiceMock = {};
   var utilServiceMock = {};
   var persistenceServiceMock = {};
   var logMock = {};
+
+  utilServiceMock.createUUID = function () {
+    return 'uuidString';
+  };
+
+  logMock.debug = function () {
+
+  };
 
   beforeEach(module('firstClass'));
 
@@ -20,10 +28,23 @@ describe('scoutObjectService', function () {
     scoutObjectService = _scoutObjectService_;
   }));
 
-  it('should have a scout property', function () {
-    var scout = scoutObjectService.Scout;
+  it('should have a Scout property', function () {
+    Scout = scoutObjectService.Scout;
 
-    expect(scout).toBeDefined();
+    expect(Scout).toBeDefined();
+  });
+
+  describe('the scout property', function () {
+    var scout;
+
+    it('should be a function', function () {
+      expect(Scout).toBeAFunction();
+    });
+
+    //beforeEach(function () {
+    //  scout = new scoutObjectService.Scout;
+    //});
+
   });
 
 });
