@@ -14,7 +14,7 @@
       <md-item ng-repeat="position in scout.getCurrentPositions() | orderBy: 'start'">
         <md-item-content>
 
-            <strong>{{position.title}}:</strong> {{position.start | date: 'shortDate'}} - {{position.end | date: 'shortDate'}}
+            <strong>{{position.title}}</strong>: {{position.start | date: 'shortDate'}} - {{position.end | date: 'shortDate'}}
 
         </md-item-content>
       </md-item>
