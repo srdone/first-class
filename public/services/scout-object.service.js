@@ -5,6 +5,22 @@ var app = angular.module('firstClass');
 app.factory('scoutObjectService', ['requirementService', 'dateService', 'utilService', 'persistenceService', '$log',
 	function (requirementService, dateService, utilService, persistenceService, $log) {
 
+    var createScout = function (scoutDetails) {
+      return new Scout(
+        scoutDetails.id,
+        scoutDetails.firstName,
+        scoutDetails.lastName,
+        scoutDetails.photoUrl,
+        scoutDetails.isOA,
+        scoutDetails.completedReqs,
+        scoutDetails.currentPatrol,
+        scoutDetails.troop,
+        scoutDetails.positionHistory,
+        scoutDetails.campingHistory,
+        scoutDetails.serviceHistory
+      )
+    };
+
 	  /**
 	  * @ngdoc function
 	  * @name firstClassApp.ScoutService.Scout
@@ -333,6 +349,7 @@ app.factory('scoutObjectService', ['requirementService', 'dateService', 'utilSer
     };
 
 	  return {
-	  	Scout: Scout
+	  	Scout: Scout,
+      createScout: createScout
 	  };
 	}]);

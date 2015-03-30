@@ -14,6 +14,14 @@ describe('scoutObjectService', function () {
 
   };
 
+  requirementServiceMock.getCurrentRank = function () {
+
+  };
+
+  requirementServiceMock.getMissingRequirements = function () {
+    return [];
+  };
+
   beforeEach(module('firstClass'));
 
   beforeEach(module(function($provide) {
@@ -28,9 +36,11 @@ describe('scoutObjectService', function () {
     scoutObjectService = _scoutObjectService_;
   }));
 
-  it('should have a Scout property', function () {
+  beforeEach(function () {
     Scout = scoutObjectService.Scout;
+  });
 
+  it('should have a Scout property', function () {
     expect(Scout).toBeDefined();
   });
 
@@ -44,7 +54,18 @@ describe('scoutObjectService', function () {
 
   it('should have a CreateScout property', function () {
 
-    expect(scoutObjectService.CreateScout).toBeDefined();
+    expect(scoutObjectService.createScout).toBeDefined();
+  });
+
+  describe('the createScout property', function () {
+
+    it('should be a function', function () {
+      expect(scoutObjectService.createScout).toBeAFunction();
+    });
+
+    it('should return a Scout instance', function () {
+      expect(scoutObjectService.createScout({})).toEqual(jasmine.any(Scout));
+    });
   });
 
 });
