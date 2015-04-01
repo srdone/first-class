@@ -4,6 +4,12 @@ angular.module('firstClass').controller('RequirementDialogController', ['$mdDial
   function ($mdDialog, existingRequirements, $timeout) {
 
     var _init = function () {
+      existingRequirements.forEach(function clearRequirementSelections (currentRequirement) {
+        if (currentRequirement.isSelected) {
+          delete currentRequirement.isSelected;
+        }
+      });
+
       var categories = existingRequirements.map(function getCategories (current) {
         return current.category;
       });

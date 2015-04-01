@@ -1,9 +1,19 @@
 'use strict';
 
-angular.module('firstClass').controller('ScoutListDialogController', ['$mdDialog',
-  function ($mdDialog) {
+angular.module('firstClass').controller('ScoutListDialogController', ['$mdDialog', '$timeout',
+  function ($mdDialog, $timeout) {
 
     var vm = this;
+
+    var _init = function () {
+      vm.troop.forEach(function clearIsSelected (currentScout) {
+        if (currentScout.isSelected) {
+          delete currentScout.isSelected;
+        }
+      });
+    };
+
+    $timeout(_init);
 
     var _getAllSelected = function () {
       return vm.troop.filter(function (currentScout) {
