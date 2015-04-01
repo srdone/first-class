@@ -13,6 +13,7 @@ angular.module('firstClass').controller('ScoutListDialogController', ['$mdDialog
       });
     };
 
+    // wait for a moment to allow binding of locals. Otherwise vm.troop will not be defined.
     $timeout(_init);
 
     var _getAllSelected = function () {
