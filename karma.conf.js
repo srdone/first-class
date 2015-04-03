@@ -23,6 +23,7 @@ module.exports = function(config) {
       'public/bower_components/angular-animate/angular-animate.js',
       'public/app.js',
       'public/services/scout-object.service.js',
+      'public/services/troop.service.js',
       'test/unit/**/*.js'
     ],
 

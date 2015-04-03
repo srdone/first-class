@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('firstClass').factory('persistenceService', ['$q', '$http', '$rootScope',
+angular.module('firstClass').factory('persistenceService', ['$q', '$http',
 	function ($q, $http) {
 
 	var _getScoutById = function (id) {
