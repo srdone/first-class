@@ -4,10 +4,10 @@
     .module('firstClass')
     .controller('ScoutSidebarController', ScoutSidebarController);
 
-  ScoutSidebarController.$inject = ['requirementService', 'scoutService', '$stateParams'];
+  ScoutSidebarController.$inject = ['requirementService', 'scoutService', '$stateParams', 'requirements'];
 
   /* @ngInject */
-  function ScoutSidebarController(requirementService, scoutService, $stateParams) {
+  function ScoutSidebarController(requirementService, scoutService, $stateParams, requirements) {
     /* jshint validthis: true */
     var vm = this;
 

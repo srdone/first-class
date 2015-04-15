@@ -20,7 +20,7 @@ app.controller('LoginController', ['$scope', '$rootScope', 'persistenceService',
           $mdToast.showSimple('Welcome to First Class Scouting!');
           _reset();
           $log.debug('logged in, going to troop state');
-          $state.go('troop');
+          $state.go('app.troop');
         }, function failure (response) {
           $scope.message = 'Login failed. Do you want to sign up?';
           _reset();

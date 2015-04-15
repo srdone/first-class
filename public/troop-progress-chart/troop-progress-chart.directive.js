@@ -3,9 +3,7 @@ angular.module('firstClass').directive('fcsTroopProgressChart', function () {
   return {
     restrict: 'E',
     scope: {
-      troop: '=',
-      height: '@',
-      width: '@'
+      troop: '='
     },
     template: '<canvas id="troop-progress-chart" width="225" height="300"></canvas>',
     link: function ($scope, $element) {

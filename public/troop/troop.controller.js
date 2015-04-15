@@ -4,13 +4,12 @@ var app = angular.module('firstClass');
 
 app.controller('TroopController', ['$scope', 'scoutService', 'scoutDialogService', '$mdToast', 'selectDetailBottomSheetService',
   'scoutListDialogService', 'positionDialogService', 'requirementDialogService', 'campoutDialogService', 'serviceProjectDialogService', '$q',
-  '$rootScope', 'requirementService', '$timeout', '$state',
+  '$rootScope', 'requirementService', '$timeout', '$state', 'requirements',
 	function ($scope, scoutService, scoutDialogService, $mdToast, selectDetailBottomSheetService, scoutListDialogService,
     positionDialogService, requirementDialogService, campoutDialogService, serviceProjectDialogService, $q, $rootScope, requirementService,
-    $timeout, $state) {
+    $timeout, $state, requirements) {
 
     var _init = function () {
-      requirementService.getAllRequirements();
       scoutService.getScouts().then(function (scouts) {
         $scope.troop = scouts;
         _broadcastTroopUpdate();
@@ -48,7 +47,7 @@ app.controller('TroopController', ['$scope', 'scoutService', 'scoutDialogService
       //}
 
       $timeout(function () {
-        $state.go('scout-detail', { scoutId: scout.id });
+        $state.go('app.scout-detail', { scoutId: scout.id });
       },500);
     };
 

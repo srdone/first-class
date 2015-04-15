@@ -3,9 +3,7 @@ angular.module('firstClass').directive('fcsScoutProgressChart', function () {
   return {
     restrict: 'E',
     scope: {
-      scout: '=',
-      height: '@',
-      width: '@'
+      scout: '='
     },
     template: '<canvas id="scout-progress-chart" width="225" height="300"></canvas>',
     link: function ($scope, $element) {

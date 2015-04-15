@@ -1,7 +1,8 @@
 'use strict';
 
-angular.module('firstClass').controller('LayoutController', ['$scope', '$mdSidenav', '$state', '$log', 'authService', '$rootScope', '$q', '$mdToast',
-  function($scope, $mdSidenav, $state, $log, authService, $rootScope, $q, $mdToast) {
+angular.module('firstClass').controller('LayoutController', ['$scope', '$mdSidenav', '$state', '$log', 'authService',
+  '$rootScope', '$q', '$mdToast', 'requirements',
+  function($scope, $mdSidenav, $state, $log, authService, $rootScope, $q, $mdToast, requirements) {
     $scope.introParagraph = 'Simple, intuitive tracking for your Boy Scout Troop';
 
     $scope.toggleMenu = function () {
@@ -10,7 +11,7 @@ angular.module('firstClass').controller('LayoutController', ['$scope', '$mdSiden
 
     $scope.goToTroopView = function () {
       $mdSidenav('left').toggle();
-      $state.go('troop');
+      $state.go('app.troop');
     };
 
     $scope.logout = function () {
@@ -20,7 +21,7 @@ angular.module('firstClass').controller('LayoutController', ['$scope', '$mdSiden
       };
 
       promises.push(authService.logout());
-      promises.push($state.go('main'));
+      promises.push($state.go('app.main'));
       promises.push($mdSidenav('left').close());
 
       $q.all(promises).then(toastLoggedOut);

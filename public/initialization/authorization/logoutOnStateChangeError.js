@@ -5,7 +5,7 @@ angular.module('firstClass').run(['$state', '$rootScope', '$mdToast', function (
     e.preventDefault();
     $rootScope.loggedIn = false;
     $rootScope.username = null;
-    $state.go('main').then(function () {
+    $state.go('app.main').then(function () {
       $mdToast.showSimple('Server error. Logged out.');
     });
   });

@@ -8,7 +8,17 @@ app.config(['$stateProvider', '$urlRouterProvider',
 		$urlRouterProvider.otherwise('/');
 
 		$stateProvider
-			.state('main', {
+      .state('app', {
+        abstract: true,
+        resolve: {
+          requirements: function (requirementService) {
+            return requirementService.getAllRequirements();
+          }
+        },
+        templateUrl: 'layout/layout.template.html',
+        controller: 'LayoutController'
+      })
+			.state('app.main', {
 				url: '/',
         views: {
           "mainView": {
@@ -17,7 +27,7 @@ app.config(['$stateProvider', '$urlRouterProvider',
           }
         }
 			})
-			.state('troop', {
+			.state('app.troop', {
 				url: '/troop',
         views: {
           "mainView": {
@@ -25,17 +35,20 @@ app.config(['$stateProvider', '$urlRouterProvider',
             controller: 'TroopController'
           },
           "chartView": {
-            template: '<div class="spacer"></div>'+
-            '<fcs-troop-progress-chart troop="troop"></fcs-troop-progress-chart>',
-            controller: function ($scope) {
+            template: '<fcs-troop-progress-chart troop="vm.troop"></fcs-troop-progress-chart>',
+            controllerAs: 'vm',
+            controller: function ($scope, requirements) {
+
+              var vm = this;
+
               $scope.$on('troop:updated', function (event, troop) {
-                $scope.troop = troop;
+                vm.troop = troop;
               });
             }
           }
         }
 			})
-			.state('scout-detail', {
+			.state('app.scout-detail', {
 				url: '/scout/:scoutId',
         views: {
           "mainView": {
@@ -50,7 +63,7 @@ app.config(['$stateProvider', '$urlRouterProvider',
           }
         }
 			})
-      .state('legal', {
+      .state('app.legal', {
         url: '/legal',
         views: {
           "mainView": {

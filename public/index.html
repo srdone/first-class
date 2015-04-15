@@ -10,43 +10,9 @@
 
   <link rel="stylesheet" href="styles/styles.css" />
 </head>
-<body ng-app="firstClass" ng-cloak ng-controller="LayoutController" layout="row" class="noselect">
+<body ng-app="firstClass" ng-cloak>
 
-<md-sidenav class="md-whiteframe-z3" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" ng-if="loggedIn" md-swipe-left="close()" flex layout-fill>
-  <md-toolbar layout="column" layout-align="center center">
-    Troop Progress
-  </md-toolbar>
-
-  <div flex layout="column" layout-align="start center">
-    <div ui-view="chartView"></div>
-    <md-button hide-gt-md ng-click="close()">
-      Close Menu
-    </md-button>
-  </div>
-</md-sidenav>
-
-<div layout="column" flex>
-  <md-toolbar class="md-toolbar-tools" layout="row">
-
-    <md-button hide-gt-md aria-label="Toogle Menu" ng-if="loggedIn" ng-click="toggleMenu()">
-      <md-icon md-svg-src="bower_components/material-design-icons/navigation/svg/production/ic_menu_48px.svg"></md-icon>
-    </md-button>
-
-    <div class="title">
-      First Class Scouting
-    </div>
-
-    <span flex></span>
-
-    <md-button class="md-button" ng-click="logout()" ng-if="loggedIn">
-      Logout {{username}}
-    </md-button>
-
-  </md-toolbar>
-
-  <md-content ui-view="mainView" layout="column" id="content" flex layout-fill class="animate view"></md-content>
-
-</div>
+<ui-view layout="row" class="noselect"></ui-view>
 
 <!-- jquery -->
 <!--<script src="bower_components/jquery/dist/jquery.js"></script>-->
