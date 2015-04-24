@@ -70,6 +70,16 @@ app.config(['$stateProvider', '$urlRouterProvider',
             templateUrl: 'legal/legal.view.html'
           }
         }
+      })
+      .state('app.test', {
+        url: '/experiments',
+        views: {
+          "mainView": {
+            templateUrl: 'experiments/experiments.template.html',
+            controller: 'ExperimentsController',
+            controllerAs: 'vm'
+          }
+        }
       });
 
 	}]);

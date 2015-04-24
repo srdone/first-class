@@ -1,13 +1,14 @@
-'use strict';
+(function () {
 
-angular.module('firstClass').service('troopService', function () {
+  angular.module('firstClass')
+    .factory('troopService', troopService);
 
-  this.troop = [];
+  troopService.$inject = ['$resource'];
 
-  this.addScout = function addScout (scout) {
-    if(this.troop.indexOf(scout) === -1) {
-      this.troop.push(scout);
-    }
+  function troopService ($resource) {
+
+    var scout = $resource('/scouts/:id')
+
   }
 
-});
+})();
