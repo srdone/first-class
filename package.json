@@ -1,51 +1,50 @@
 {
   "name": "first-class",
   "version": "1.0.0",
-  "description": "scout tracking app",
+  "description": "A boy scout troop tracking app using the MEAN stack. Aimed primarily at helping troops assist their new scouts through the first class rank.",
   "main": "server.js",
+  "directories": {
+    "test": "test"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "./node_modules/bower/bin/bower install",
     "start": "node server.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/srdone/first-class.git"
+    "url": "git+https://github.com/srdone/first-class.git"
   },
-  "author": "Stephen Done <srdone@gmail.com>",
-  "license": "MIT",
+  "author": "Stephen Done",
+  "license": "ISC",
   "bugs": {
     "url": "https://github.com/srdone/first-class/issues"
   },
-  "private": "true",
-  "homepage": "https://github.com/srdone/first-class",
+  "homepage": "https://github.com/srdone/first-class#readme",
   "dependencies": {
-    "body-parser": "^1.12.0",
-    "bower": "^1.3.12",
+    "body-parser": "^1.14.2",
+    "bower": "^1.7.2",
     "connect-flash": "^0.1.1",
-    "cookie-parser": "^1.3.4",
-    "express": "^4.12.2",
-    "express-session": "^1.10.3",
-    "lodash": "^3.4.0",
-    "method-override": "^2.3.1",
-    "moment": "^2.9.0",
-    "mongoose": "^3.8.23",
-    "morgan": "^1.5.1",
-    "passport": "^0.2.1",
+    "cookie-parser": "^1.4.1",
+    "express": "^4.13.3",
+    "express-session": "^1.13.0",
+    "kerberos": "0.0.17",
+    "lodash": "^4.0.0",
+    "method-override": "^2.3.5",
+    "moment": "^2.11.1",
+    "mongoose": "^4.3.6",
+    "morgan": "^1.6.1",
+    "passport": "^0.3.2",
     "passport-local": "^1.0.0"
   },
-  "engines": {
-    "node": "0.12.0",
-    "npm": "2.3.0"
-  },
   "devDependencies": {
-    "angular-mocks": "^1.3.15",
-    "jasmine-core": "^2.2.0",
-    "karma": "^0.12.31",
-    "karma-chrome-launcher": "^0.1.7",
-    "karma-firefox-launcher": "^0.1.4",
-    "karma-jasmine": "^0.3.5",
-    "karma-phantomjs-launcher": "^0.1.4",
-    "karma-safari-launcher": "^0.1.1"
+    "angular-mocks": "^1.4.8",
+    "frisby": "^0.8.5",
+    "jasmine-core": "^2.4.1",
+    "karma": "^0.13.19",
+    "karma-chrome-launcher": "^0.2.2",
+    "karma-jasmine": "^0.3.6",
+    "karma-phantomjs-launcher": "^0.2.3",
+    "karma-safari-launcher": "^0.1.1",
+    "phantomjs": "^1.9.19"
   }
 }

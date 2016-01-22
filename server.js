@@ -87,7 +87,7 @@ app.use('/', express.static(__dirname + '/public/'));
 
 app.get('*', mainRoute);
 
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 5000;
 
 var server = app.listen(port, function () {
   var address = server.address().address;
