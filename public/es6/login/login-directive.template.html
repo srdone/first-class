@@ -1,0 +1,51 @@
+<div>
+  <div layout="column">
+    <form novalidate name="loginForm">
+
+      <div layout-lt-md="col" layout-gt-md="row">
+
+      <md-input-container flex>
+        <label class="sr-only">Username</label>
+        <input name="username" type="text" class="form-control" ng-model="user.email" placeholder="Email" required>
+        <div ng-messages="loginForm.username.$error" ng-show="loginForm.username.$dirty && loginForm.username.$invalid">
+          <div ng-message="required">Username is required</div>
+        </div>
+      </md-input-container>
+
+      <md-input-container flex>
+        <label class="sr-only">Password</label>
+        <input name="password" type="password" class="form-control" ng-model="user.password" placeholder="Password" required>
+        <div ng-messages="loginForm.password.$error" ng-show="loginForm.username.$dirty && loginForm.password.$invalid">
+          <div ng-message="required">Password is required</div>
+        </div>
+      </md-input-container>
+
+      <md-input-container ng-if="doSignUp" flex>
+        <label class="sr-only">Verify Password</label>
+        <input name="verifyPassword" type="password" class="form-control" ng-model="newUser.verifyPassword" placeholder="Verify Password" ng-required="doSignUp">
+        <div ng-messages="loginForm.verifyPassword.$error" ng-show="loginForm.verifyPassword.$dirty && loginForm.verifyPassword.$invalid">
+          <div ng-message="required">You must verify your password</div>
+        </div>
+      </md-input-container>
+
+      </div>
+
+      <div layout="row" layout-align="space-around center" layout-margin>
+        <!-- TODO: Fix funny fade in / out on chooseToSignUp -->
+        <!-- TODO: Fix button margin -->
+
+        <md-button class="md-raised md-primary" ng-click="login()" class="btn bg-primary" ng-if="!doSignUp" layout-margin flex ng-disabled="loginForm.$invalid">Login</md-button>
+
+        <md-button class="md-raised" ng-click="chooseToSignUp()" class="btn btn-default" ng-if="!doSignUp" layout-margin flex>Sign Up</md-button>
+
+        <md-button class="md-raised md-primary" ng-click="signUp()" class="btn btn-primary" ng-if="doSignUp" layout-margin flex ng-disabled="loginForm.$invalid">Sign Up</md-button>
+        <md-button class="md-raised md-warn" ng-click="cancelSignUp()" class="btn btn-default" ng-if="doSignUp" layout-margin flex>Cancel</md-button>
+
+        <span flex></span>
+
+      </div>
+
+    </form>
+  </div>
+
+</div>
