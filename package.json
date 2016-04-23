@@ -4,7 +4,9 @@
   "description": "A boy scout troop tracking app using the MEAN stack. Aimed primarily at helping troops assist their new scouts through the first class rank.",
   "main": "server.js",
   "directories": {
-    "test": "test"
+    "test": "test",
+    "baseURL": "public",
+    "packages": "public/jspm_packages"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -41,11 +43,34 @@
     "angular-mocks": "^1.4.8",
     "frisby": "^0.8.5",
     "jasmine-core": "^2.4.1",
+    "jspm": "^0.16.33",
     "karma": "^0.13.19",
     "karma-chrome-launcher": "^0.2.2",
     "karma-jasmine": "^0.3.6",
     "karma-phantomjs-launcher": "^0.2.3",
     "karma-safari-launcher": "^0.1.1",
     "phantomjs": "^1.9.19"
+  },
+  "jspm": {
+    "directories": {
+      "baseURL": "public",
+      "test": "test"
+    },
+    "dependencies": {
+      "angular": "github:angular/bower-angular@^1.5.5",
+      "angular-animate": "github:angular/bower-angular-animate@^1.5.5",
+      "angular-aria": "github:angular/bower-angular-aria@^1.5.5",
+      "angular-material": "github:angular/bower-material@^1.0.7",
+      "angular-resource": "github:angular/bower-angular-resource@^1.5.5",
+      "angular-ui-router": "github:angular-ui/ui-router@^0.2.18",
+      "lodash": "npm:lodash@^4.11.1",
+      "moment": "npm:moment@^2.13.0",
+      "text": "github:systemjs/plugin-text@^0.0.7"
+    },
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.8.24",
+      "babel-runtime": "npm:babel-runtime@^5.8.24",
+      "core-js": "npm:core-js@^1.1.4"
+    }
   }
 }
