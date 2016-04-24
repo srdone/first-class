@@ -90,7 +90,8 @@ require('./app/routes/requirements.server.routes')(app); //requirement routes
 // serve static files
 app.use('/', express.static(__dirname + '/public/'));
 
-app.get('*', mainRoute);
+//TODO: figure out a better way to handle redirection so we don't return 200 - it makes it hard to fix errors
+// app.get('*', mainRoute);
 
 var port = process.env.PORT || 5000;
 

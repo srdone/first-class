@@ -15,14 +15,14 @@ app.config(['$stateProvider', '$urlRouterProvider',
             return requirementService.getAllRequirements();
           }
         },
-        templateUrl: 'layout/layout.template.html',
+        templateUrl: 'views/layout/layout.template.html',
         controller: 'LayoutController'
       })
 			.state('app.main', {
 				url: '/',
         views: {
           "mainView": {
-            templateUrl:'login/login.view.html',
+            templateUrl:'views/login/login.view.html',
             controller: 'LayoutController'
           }
         }
@@ -31,7 +31,7 @@ app.config(['$stateProvider', '$urlRouterProvider',
 				url: '/troop',
         views: {
           "mainView": {
-            templateUrl: 'troop/troop.view.html',
+            templateUrl: 'views/troop/troop.view.html',
             controller: 'TroopController'
           },
           "chartView": {
@@ -52,12 +52,12 @@ app.config(['$stateProvider', '$urlRouterProvider',
 				url: '/scout/:scoutId',
         views: {
           "mainView": {
-            templateUrl: 'scout/scout.view.html',
+            templateUrl: 'views/scout/scout.view.html',
             controller: 'ScoutController',
             controllerAs: 'vm'
           },
           "chartView": {
-            templateUrl: 'scout-sidebar/scout-sidebar.view.html',
+            templateUrl: 'views/scout-sidebar/scout-sidebar.view.html',
             controller: 'ScoutSidebarController',
             controllerAs: 'vm'
           }
@@ -67,17 +67,7 @@ app.config(['$stateProvider', '$urlRouterProvider',
         url: '/legal',
         views: {
           "mainView": {
-            templateUrl: 'legal/legal.view.html'
-          }
-        }
-      })
-      .state('app.test', {
-        url: '/experiments',
-        views: {
-          "mainView": {
-            templateUrl: 'experiments/experiments.template.html',
-            controller: 'ExperimentsController',
-            controllerAs: 'vm'
+            templateUrl: 'views/legal/legal.view.html'
           }
         }
       });
