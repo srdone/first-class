@@ -1,13 +1,16 @@
-import angular from 'angular';
+export { CampoutDialogController as default };
 
-angular.module('firstClass').controller('CampoutDialogController', ['$mdDialog', function ($mdDialog) {
+CampoutDialogController.$inject = ['$mdDialog'];
+function CampoutDialogController($mdDialog) {
+  
+  var vm = this;
 
-  this.returnCampout = function () {
+  vm.returnCampout = function () {
     return $mdDialog.hide(this.campout);
   };
 
-  this.cancel = function () {
+  vm.cancel = function () {
     return $mdDialog.cancel();
   };
 
-}]);
+}

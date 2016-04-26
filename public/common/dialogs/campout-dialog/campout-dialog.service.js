@@ -1,13 +1,26 @@
 import angular from 'angular';
 import tpl from './campout-dialog.template.html!text';
+import controller from './campout-dialog.controller';
 
-angular.module('firstClass').factory('campoutDialogService', ['$mdDialog', function ($mdDialog) {
+export { campoutDialogService as default };
 
-  var _campoutDialogPreset = function (options) {
+angular.module('firstClass').factory('campoutDialogService', campoutDialogService);
+
+campoutDialogService.$inject = ['$mdDialog'];
+function campoutDialogService($mdDialog) {
+
+  return {
+    showCreateCampoutDialog: _showCreateCampoutDialog,
+    showEditCampoutDialog: _showEditCampoutDialog
+  }
+  
+  /////////
+  
+  function _campoutDialogPreset(options) {
 
     return {
       template: tpl,
-      controller: 'CampoutDialogController',
+      controller: controller,
       controllerAs: 'vm',
       bindToController: true,
       targetEvent: options.targetEvent,
@@ -19,7 +32,7 @@ angular.module('firstClass').factory('campoutDialogService', ['$mdDialog', funct
 
   };
 
-  var _showCreateCampoutDialog = function (createOptions) {
+  function _showCreateCampoutDialog(createOptions) {
     var options = {
       create: true
     };
@@ -31,7 +44,7 @@ angular.module('firstClass').factory('campoutDialogService', ['$mdDialog', funct
     return $mdDialog.show(_campoutDialogPreset(options));
   };
 
-  var _showEditCampoutDialog = function (editOptions) {
+  function _showEditCampoutDialog(editOptions) {
     var options = {
       campout: editOptions.campout,
       create: false
@@ -44,9 +57,4 @@ angular.module('firstClass').factory('campoutDialogService', ['$mdDialog', funct
     return $mdDialog.show(_campoutDialogPreset(options));
   };
 
-  return {
-    showCreateCampoutDialog: _showCreateCampoutDialog,
-    showEditCampoutDialog: _showEditCampoutDialog
-  }
-
-}]);
+}
