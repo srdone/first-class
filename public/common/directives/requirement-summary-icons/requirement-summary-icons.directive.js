@@ -1,3 +1,6 @@
+import angular from 'angular';
+import tpl from './requirement-summary-icons.template.html!text';
+
 angular.module('firstClass').directive('fcsRequirementSummaryIcons', function () {
 
   return {
@@ -5,7 +8,7 @@ angular.module('firstClass').directive('fcsRequirementSummaryIcons', function ()
       reqCategoryCount: '='
     },
     bindToController: true,
-    templateUrl: 'common/directives/requirement-summary-icons/requirement-summary-icons.template.html',
+    template: tpl,
     controller: function () {
       var vm = this;
       

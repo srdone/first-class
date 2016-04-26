@@ -1,4 +1,4 @@
-'use strict';
+import angular from 'angular';
 
 angular.module('firstClass').controller('RequirementDialogController', ['$mdDialog', 'existingRequirements', '$timeout',
   function ($mdDialog, existingRequirements, $timeout) {

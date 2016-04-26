@@ -1,10 +1,11 @@
-'use strict';
+import angular from 'angular';
+import tpl from './select-detail-bottom-sheet.template.html!text';
 
 angular.module('firstClass').factory('selectDetailBottomSheetService', function ($mdBottomSheet) {
 
   var _getPresets = function () {
     return {
-      templateUrl: 'common/services/select-detail-bottom-sheet/select-detail-bottom-sheet.template.html',
+      template: tpl,
       controller: 'SelectDetailBottomSheetController',
       controllerAs: 'vm',
       parent: angular.element(document.getElementById('content'))

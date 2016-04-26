@@ -1,3 +1,5 @@
+import angular from 'angular';
+
 angular.module('firstClass').directive('fcsScoutName', function () {
 
   return {

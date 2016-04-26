@@ -1,0 +1,11 @@
+import './select-detail-bottom-sheet/select-detail-bottom-sheet.controller';
+import './select-detail-bottom-sheet/select-detail-bottom-sheet.service';
+import './auth.service';
+import './campout-model.service';
+import './date.service';
+import './persistence.service';
+import './requirement.service';
+import './scout-object.service';
+import './scout.service';
+import './troop.service';
+import './util.service';

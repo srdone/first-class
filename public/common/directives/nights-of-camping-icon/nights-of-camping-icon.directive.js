@@ -1,3 +1,6 @@
+import angular from 'angular';
+import tpl from './nights-of-camping-icon.template.html!text'
+
 angular.module('firstClass').directive('fcsNightsOfCampingIcon', function () {
 
   return {
@@ -5,7 +8,7 @@ angular.module('firstClass').directive('fcsNightsOfCampingIcon', function () {
     scope: {
       nights: '='
     },
-    templateUrl: 'common/directives/nights-of-camping-icon/nights-of-camping-icon.template.html'
+    template: tpl
   }
 
 });

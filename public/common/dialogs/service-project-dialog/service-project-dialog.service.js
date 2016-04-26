@@ -1,11 +1,12 @@
-'use strict';
+import angular from 'angular';
+import tpl from './service-project-dialog.template.html!text';
 
 angular.module('firstClass').factory('serviceProjectDialogService', ['$mdDialog', function ($mdDialog) {
 
   var _getDialogPreset = function (options) {
 
     return {
-      templateUrl: 'common/dialogs/service-project-dialog/service-project-dialog.template.html',
+      templateUrl: tpl,
       controller: 'ServiceProjectDialogController',
       controllerAs: 'vm',
       bindToController: true,

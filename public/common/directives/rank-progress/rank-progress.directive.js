@@ -1,3 +1,6 @@
+import angular from 'angular';
+import tpl from './rank-progress.template.html!text';
+
 angular.module('firstClass').directive('fcsRankProgress', function () {
 
   return {
@@ -5,7 +8,7 @@ angular.module('firstClass').directive('fcsRankProgress', function () {
     scope: {
       pctProgress: '='
     },
-    templateUrl: 'common/directives/rank-progress/rank-progress.template.html'
+    template: tpl
   }
 
 });

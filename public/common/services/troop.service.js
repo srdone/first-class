@@ -1,4 +1,4 @@
-(function () {
+import angular from 'angular';
 
   angular.module('firstClass')
     .factory('troopService', troopService);
@@ -10,5 +10,3 @@
     var scout = $resource('/scouts/:id')
 
   }
-
-})();

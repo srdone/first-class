@@ -1,11 +1,12 @@
-'use strict';
+import angular from 'angular';
+import tpl from './campout-dialog.template.html!text';
 
 angular.module('firstClass').factory('campoutDialogService', ['$mdDialog', function ($mdDialog) {
 
   var _campoutDialogPreset = function (options) {
 
     return {
-      templateUrl: 'common/dialogs/campout-dialog/campout-dialog.template.html',
+      template: tpl,
       controller: 'CampoutDialogController',
       controllerAs: 'vm',
       bindToController: true,

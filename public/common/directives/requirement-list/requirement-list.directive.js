@@ -1,4 +1,5 @@
-(function () {
+import angular from 'angular';
+import tpl from './requirement-list.template.html!text';
 
   angular
     .module('firstClass')
@@ -15,10 +16,7 @@
       bindToController: true,
       controller: 'RequirementListController',
       controllerAs: 'vm',
-      templateUrl: 'common/directives/requirement-list/requirement-list.template.html'
+      template: tpl
     }
-
-
+    
   }
-
-}());

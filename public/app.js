@@ -1,3 +1,7 @@
-'use strict';
+import 'views/index';
+import 'initialization/index';
+import 'common/index';
 
-var app = angular.module('firstClass', ['ui.router', 'ngMaterial', 'ngAria', 'ngAnimate', 'ngResource']);
+angular.element(document).ready(() => {
+  angular.bootstrap(document.body, ['firstClass']);
+});

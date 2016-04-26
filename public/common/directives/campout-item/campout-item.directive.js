@@ -1,21 +1,20 @@
-(function () {
+import angular from 'angular';
+import tpl from './campout-item.template.html!text';
 
-  angular
-    .module('firstClass')
-    .directive('fcsCampoutItem', CampoutItemDirective);
+angular
+  .module('firstClass')
+  .directive('fcsCampoutItem', CampoutItemDirective);
 
-  function CampoutItemDirective () {
+function CampoutItemDirective () {
 
-    return {
-      scope: {
-        campout: '='
-      },
-      bindToController: true,
-      controller: 'CampoutItemController',
-      controllerAs: 'vm',
-      templateUrl: 'common/directives/campout-item/campout-item.template.html'
-    }
-
+  return {
+    scope: {
+      campout: '='
+    },
+    bindToController: true,
+    controller: 'CampoutItemController',
+    controllerAs: 'vm',
+    template: tpl
   }
 
-}());
+}

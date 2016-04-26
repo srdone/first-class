@@ -1,11 +1,12 @@
-'use strict';
+import angular from 'angular';
+import tpl from './requirement-dialog.template.html!text';
 
 angular.module('firstClass').factory('requirementDialogService', ['$mdDialog', function ($mdDialog) {
 
   var _getDialogPreset = function (options) {
 
     return {
-      templateUrl: 'common/dialogs/requirement-dialog/requirement-dialog.template.html',
+      templateUrl: tpl,
       controller: 'RequirementDialogController',
       controllerAs: 'vm',
       bindToController: true,

@@ -1,4 +1,4 @@
-(function () {
+import angular from 'angular';
 
   angular
     .module('firstClass')
@@ -57,5 +57,3 @@
 
 
   }
-
-}());

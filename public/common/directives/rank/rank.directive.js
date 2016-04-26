@@ -1,3 +1,5 @@
+import angular from 'angular';
+
 angular.module('firstClass').directive('fcsRank', function () {
 
   return {

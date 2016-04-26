@@ -1,10 +1,13 @@
+import angular from 'angular';
+import tpl from './scout-summary.template.html!text';
+
 angular.module('firstClass').directive('fcsScoutSummary', function () {
 
   return {
     scope: {
       scout: '='
     },
-    templateUrl: 'common/directives/scout-summary/scout-summary.template.html'
+    template: tpl
   }
 
 });

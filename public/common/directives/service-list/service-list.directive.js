@@ -1,4 +1,5 @@
-'use strict';
+import angular from 'angular';
+import tpl from './service-list.template.html!text';
 
 angular.module('firstClass').directive('fcsServiceList', function () {
 
@@ -10,7 +11,7 @@ angular.module('firstClass').directive('fcsServiceList', function () {
     bindToController: true,
     controller: 'ServiceListController',
     controllerAs: 'vm',
-    templateUrl: 'common/directives/service-list/service-list.template.html'
+    template: tpl
   }
 
 });

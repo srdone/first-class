@@ -1,4 +1,4 @@
-'use strict';
+import angular from 'angular';
 
 angular.module('firstClass').controller('LayoutController', ['$scope', '$mdSidenav', '$state', '$log', 'authService',
   '$rootScope', '$q', '$mdToast', 'requirements',

@@ -1,4 +1,5 @@
-(function () {
+import angular from 'angular';
+import tpl from './campout-list.template.html!text';
 
   angular
     .module('firstClass')
@@ -15,9 +16,7 @@
       bindToController: true,
       controller: 'CampoutListController',
       controllerAs: 'vm',
-      templateUrl: 'common/directives/campout-list/campout-list.template.html'
+      template: tpl
     }
 
   }
-
-}());

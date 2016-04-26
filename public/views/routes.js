@@ -1,4 +1,11 @@
-'use strict';
+import angular from 'angular';
+
+import layoutTpl from './layout/layout.template.html!text';
+import loginTpl from './login/login.view.html!text';
+import troopTpl from './troop/troop.view.html!text';
+import scoutTpl from './scout/scout.view.html!text';
+import scoutSidebarTpl from './scout-sidebar/scout-sidebar.view.html!text';
+import legalTpl from './legal/legal.view.html!text';
 
 var app = angular.module('firstClass');
 
@@ -15,14 +22,14 @@ app.config(['$stateProvider', '$urlRouterProvider',
             return requirementService.getAllRequirements();
           }
         },
-        templateUrl: 'views/layout/layout.template.html',
+        template: layoutTpl,
         controller: 'LayoutController'
       })
 			.state('app.main', {
 				url: '/',
         views: {
           "mainView": {
-            templateUrl:'views/login/login.view.html',
+            template: loginTpl,
             controller: 'LayoutController'
           }
         }
@@ -31,7 +38,7 @@ app.config(['$stateProvider', '$urlRouterProvider',
 				url: '/troop',
         views: {
           "mainView": {
-            templateUrl: 'views/troop/troop.view.html',
+            template: troopTpl,
             controller: 'TroopController'
           },
           "chartView": {
@@ -52,12 +59,12 @@ app.config(['$stateProvider', '$urlRouterProvider',
 				url: '/scout/:scoutId',
         views: {
           "mainView": {
-            templateUrl: 'views/scout/scout.view.html',
+            template: scoutTpl,
             controller: 'ScoutController',
             controllerAs: 'vm'
           },
           "chartView": {
-            templateUrl: 'views/scout-sidebar/scout-sidebar.view.html',
+            template: scoutSidebarTpl,
             controller: 'ScoutSidebarController',
             controllerAs: 'vm'
           }
@@ -67,7 +74,7 @@ app.config(['$stateProvider', '$urlRouterProvider',
         url: '/legal',
         views: {
           "mainView": {
-            templateUrl: 'views/legal/legal.view.html'
+            template: legalTpl
           }
         }
       });

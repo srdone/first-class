@@ -1,4 +1,5 @@
-(function () {
+import angular from 'angular';
+import tpl from './make-editable.template.html!text';
 
   angular
     .module('firstClass')
@@ -20,9 +21,7 @@
       bindToController: true,
       controller: 'MakeEditableController',
       controllerAs: 'vm',
-      templateUrl: 'common/directives/make-editable/make-editable.template.html'
+      template: tpl
     }
 
   }
-
-}());

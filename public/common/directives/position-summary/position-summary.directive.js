@@ -1,3 +1,6 @@
+import angular from 'angular';
+import tpl from './position-summary.template.html!text';
+
 angular.module('firstClass').directive('fcsPositionSummary', function () {
 
   return {
@@ -5,7 +8,7 @@ angular.module('firstClass').directive('fcsPositionSummary', function () {
     scope: {
       position: '='
     },
-    templateUrl: 'common/directives/position-summary/position-summary.template.html'
+    template: tpl
   }
 
 });

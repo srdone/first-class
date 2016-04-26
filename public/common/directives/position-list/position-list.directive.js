@@ -1,4 +1,5 @@
-(function () {
+import angular from 'angular';
+import tpl from './position-list.template.html!text';
 
   angular
     .module('firstClass')
@@ -15,10 +16,7 @@
       bindToController: true,
       controller: 'PositionListController',
       controllerAs: 'vm',
-      templateUrl: 'common/directives/position-list/position-list.template.html'
+      template: tpl
     }
 
-
   }
-
-}());

@@ -1,6 +1,7 @@
+import angular from 'angular';
+
 // http://stackoverflow.com/questions/27299471/angular-ui-router-resolve-service-halting-route-change
 // Adds state change hooks; logs to console.
-'use strict';
 
 angular.module('firstClass').run(['$rootScope', '$state', '$log', function($rootScope, $state, $log) {
   $rootScope.$state = $state;

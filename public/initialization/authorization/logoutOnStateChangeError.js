@@ -1,4 +1,4 @@
-'use strict';
+import angular from 'angular';
 
 angular.module('firstClass').run(['$state', '$rootScope', '$mdToast', function ($state, $rootScope, $mdToast) {
   $rootScope.$on('$stateChangeError', function (e) {

@@ -1,6 +1,4 @@
-// largely from the angular material docs
-
-'use strict';
+import angular from 'angular';
 
 angular.module('firstClass').controller('SelectDetailBottomSheetController',
   function ($mdBottomSheet) {

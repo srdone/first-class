@@ -1,3 +1,5 @@
+import angular from 'angular';
+
 // see https://vickev.com/#!/article/authentication-in-single-page-applications-node-js-passportjs-angularjs
 
 angular.module('firstClass').factory('verifyAuthenticationHttpInterceptor',

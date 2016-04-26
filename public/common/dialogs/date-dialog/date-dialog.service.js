@@ -1,11 +1,12 @@
-'use strict';
+import angular from 'angular';
+import tpl from './date-dialog.template.html!text';
 
 angular.module('firstClass').factory('dateDialogService', ['$mdDialog', function ($mdDialog) {
 
   var _getDialogPreset = function (options) {
 
     return {
-      templateUrl: 'common/dialogs/date-dialog/date-dialog.template.html',
+      template: tpl,
       controller: 'DateDialogController',
       controllerAs: 'vm',
       bindToController: true,

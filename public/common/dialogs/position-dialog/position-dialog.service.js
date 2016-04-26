@@ -1,11 +1,12 @@
-'use strict';
+import angular from 'angular';
+import tpl from './position-dialog.template.html!text';
 
 angular.module('firstClass').factory('positionDialogService', ['$mdDialog', function ($mdDialog) {
 
   var _getDialogPreset = function (options) {
 
     return {
-      templateUrl: 'common/dialogs/position-dialog/position-dialog.template.html',
+      template: tpl,
       controller: 'PositionDialogController',
       controllerAs: 'vm',
       bindToController: true,

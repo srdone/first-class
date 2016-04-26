@@ -1,3 +1,6 @@
+import angular from 'angular';
+import tpl from './scout-card.template.html!text';
+
 var app = angular.module('firstClass');
 
 app.directive('fcsScoutCard', ['$timeout', '$state', function ($timeout, $state) {
@@ -7,6 +10,6 @@ app.directive('fcsScoutCard', ['$timeout', '$state', function ($timeout, $state)
 			scout: '='
 		},
     transclude: true,
-		templateUrl: 'common/directives/scout-card/scout-card.template.html'
+		template: tpl
 	};
 }]);

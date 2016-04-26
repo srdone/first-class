@@ -1,11 +1,12 @@
-'use strict';
+import angular from 'angular';
+import tpl from './scout-list-dialog.template.html!text';
 
 angular.module('firstClass').factory('scoutListDialogService', ['$mdDialog', function ($mdDialog) {
 
   var _getDialogPreset = function (options) {
 
     return {
-      templateUrl: 'common/dialogs/scout-list-dialog/scout-list-dialog.template.html',
+      template: tpl,
       controller: 'ScoutListDialogController',
       controllerAs: 'vm',
       bindToController: true,
