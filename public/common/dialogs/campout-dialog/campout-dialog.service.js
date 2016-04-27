@@ -1,4 +1,3 @@
-import angular from 'angular';
 import tpl from './campout-dialog.template.html!text';
 import CampoutDialogController from './campout-dialog.controller';
 

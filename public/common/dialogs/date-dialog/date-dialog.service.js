@@ -1,4 +1,3 @@
-import angular from 'angular';
 import tpl from './date-dialog.template.html!text';
 import DateDialogController from './date-dialog.controller';
 
