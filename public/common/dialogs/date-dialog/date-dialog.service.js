@@ -19,7 +19,6 @@ angular.module('firstClass').factory('dateDialogService', ['$mdDialog', function
   };
 
   var _show = function (editOptions) {
-    debugger;
     var options = {
       date: editOptions.date
     };

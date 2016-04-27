@@ -4,8 +4,6 @@ import controller from './campout-dialog.controller';
 
 export { campoutDialogService as default };
 
-angular.module('firstClass').factory('campoutDialogService', campoutDialogService);
-
 campoutDialogService.$inject = ['$mdDialog'];
 function campoutDialogService($mdDialog) {
 

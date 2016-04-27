@@ -36,7 +36,6 @@
     }
 
     function editRequirement (completedRequirement) {
-      debugger;
       dateDialogService.show({date: completedRequirement.dateCompleted}).then(function (dateReturned) {
         completedRequirement.dateCompleted = dateReturned;
         vm.scout.save()

@@ -76,11 +76,6 @@ app.get('/', function (req, res) {
   res.sendFile(__dirname + '/public/index.html');
 });
 
-app.get('/es6/', function (req, res) {
-  req.session.lastVisit = Date.now();
-  res.sendFile(__dirname + '/public/es6/index.html');
-});
-
 // add route middleware
 require('./app/routes/auth.server.routes')(app); //login and logout routes
 require('./app/routes/users.server.routes')(app); //user routes
