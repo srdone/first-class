@@ -1,6 +1,6 @@
 import angular from 'angular';
 import tpl from './campout-dialog.template.html!text';
-import controller from './campout-dialog.controller';
+import CampoutDialogController from './campout-dialog.controller';
 
 export { campoutDialogService as default };
 
@@ -18,7 +18,7 @@ function campoutDialogService($mdDialog) {
 
     return {
       template: tpl,
-      controller: controller,
+      controller: CampoutDialogController,
       controllerAs: 'vm',
       bindToController: true,
       targetEvent: options.targetEvent,

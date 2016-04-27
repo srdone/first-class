@@ -1,6 +1,6 @@
 import angular from 'angular';
 import tpl from './date-dialog.template.html!text';
-import controller from './date-dialog.controller';
+import DateDialogController from './date-dialog.controller';
 
 export { dateDialogService as default };
 
@@ -11,11 +11,13 @@ function dateDialogService($mdDialog) {
     show: _show
   };
 
+  /////////
+
   function _getDialogPreset(options) {
 
     return {
       template: tpl,
-      controller: controller,
+      controller: DateDialogController,
       controllerAs: 'vm',
       bindToController: true,
       targetEvent: options.targetEvent,
