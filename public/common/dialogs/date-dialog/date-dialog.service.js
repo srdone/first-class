@@ -1,13 +1,21 @@
 import angular from 'angular';
 import tpl from './date-dialog.template.html!text';
+import controller from './date-dialog.controller';
 
-angular.module('firstClass').factory('dateDialogService', ['$mdDialog', function ($mdDialog) {
+export { dateDialogService as default };
 
-  var _getDialogPreset = function (options) {
+dateDialogService.$inject = ['$mdDialog'];
+function dateDialogService($mdDialog) {
+
+  return {
+    show: _show
+  };
+
+  function _getDialogPreset(options) {
 
     return {
       template: tpl,
-      controller: 'DateDialogController',
+      controller: controller,
       controllerAs: 'vm',
       bindToController: true,
       targetEvent: options.targetEvent,
@@ -18,7 +26,7 @@ angular.module('firstClass').factory('dateDialogService', ['$mdDialog', function
 
   };
 
-  var _show = function (editOptions) {
+  function _show(editOptions) {
     var options = {
       date: editOptions.date
     };
@@ -30,8 +38,4 @@ angular.module('firstClass').factory('dateDialogService', ['$mdDialog', function
     return $mdDialog.show(_getDialogPreset(options));
   };
 
-  return {
-    show: _show
-  }
-
-}]);
+}

@@ -1,4 +1,4 @@
-'use strict';	
+import angular from 'angular';
 
 var app = angular.module('firstClass');
 

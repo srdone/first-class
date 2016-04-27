@@ -1,4 +1,4 @@
-'use strict';
+import angular from 'angular';
 
 angular.module('firstClass').factory('persistenceService', ['$q', '$http',
 	function ($q, $http) {

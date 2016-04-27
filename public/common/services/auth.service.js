@@ -1,3 +1,5 @@
+import angular from 'angular';
+
 angular.module('firstClass').factory('authService', ['$location', '$http', '$q', '$rootScope', function ($location, $http, $q, $rootScope) {
 
   // see https://vickev.com/#!/article/authentication-in-single-page-applications-node-js-passportjs-angularjs

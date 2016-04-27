@@ -1,13 +1,18 @@
 import angular from 'angular';
 
-angular.module('firstClass').controller('DateDialogController', ['$mdDialog', function ($mdDialog) {
+export { DateDialogController as default };
 
-  this.returnDate = function () {
+DateDialogController.$inject = ['$mdDialog']
+function DateDialogController($mdDialog) {
+
+  var vm = this;
+
+  vm.returnDate = function () {
     return $mdDialog.hide(this.date);
   };
 
-  this.cancel = function () {
+  vm.cancel = function () {
     return $mdDialog.cancel();
   };
 
-}]);
+}

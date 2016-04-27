@@ -1,3 +1,5 @@
+import angular from 'angular';
+
 angular.module('firstClass').factory('requirementService', ['persistenceService', '$log', '$q', function(persistenceService, $log, $q) {
 
   var existingRequirements = [];

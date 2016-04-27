@@ -1,5 +1,6 @@
 import angular from 'angular';
 import tpl from './requirement-summary-icons.template.html!text';
+import _ from 'lodash';
 
 angular.module('firstClass').directive('fcsRequirementSummaryIcons', function () {
 
