@@ -1,5 +1,3 @@
-import angular from 'angular';
-
 export { DateDialogController as default };
 
 DateDialogController.$inject = ['$mdDialog']

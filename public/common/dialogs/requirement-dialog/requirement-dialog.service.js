@@ -1,13 +1,22 @@
-import angular from 'angular';
 import tpl from './requirement-dialog.template.html!text';
+import RequirementDialogController from './requirement-dialog.controller';
 
-angular.module('firstClass').factory('requirementDialogService', ['$mdDialog', function ($mdDialog) {
+export { requirementDialogService as default };
 
-  var _getDialogPreset = function (options) {
+requirementDialogService.$inject = ['$mdDialog'];
+function requirementDialogService($mdDialog) {
+
+  return {
+    showDialog: _showDialog
+  }
+  
+  /*==========Functions==========*/
+
+  function _getDialogPreset(options) {
 
     return {
-      templateUrl: tpl,
-      controller: 'RequirementDialogController',
+      template: tpl,
+      controller: RequirementDialogController,
       controllerAs: 'vm',
       bindToController: true,
       targetEvent: options.targetEvent,
@@ -24,7 +33,7 @@ angular.module('firstClass').factory('requirementDialogService', ['$mdDialog', f
 
   };
 
-  var _showDialog = function (editOptions) {
+  function _showDialog(editOptions) {
 
     if (!editOptions) {
       var editOptions = {};
@@ -46,8 +55,4 @@ angular.module('firstClass').factory('requirementDialogService', ['$mdDialog', f
     return $mdDialog.show(_getDialogPreset(options));
   };
 
-  return {
-    showDialog: _showDialog
-  }
-
-}]);
+}

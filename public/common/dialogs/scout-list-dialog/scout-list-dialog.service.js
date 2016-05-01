@@ -1,13 +1,22 @@
-import angular from 'angular';
 import tpl from './scout-list-dialog.template.html!text';
+import ScoutListDialogController from './scout-list-dialog.controller';
 
-angular.module('firstClass').factory('scoutListDialogService', ['$mdDialog', function ($mdDialog) {
+export { scoutListDialogService as default };
 
-  var _getDialogPreset = function (options) {
+scoutListDialogService.$inject = ['$mdDialog'];
+function scoutListDialogService($mdDialog) {
+
+  return {
+    showDialog: _showDialog
+  }
+  
+  /*===============Functions==============*/ 
+
+  function _getDialogPreset(options) {
 
     return {
       template: tpl,
-      controller: 'ScoutListDialogController',
+      controller: ScoutListDialogController,
       controllerAs: 'vm',
       bindToController: true,
       targetEvent: options.targetEvent,
@@ -16,9 +25,9 @@ angular.module('firstClass').factory('scoutListDialogService', ['$mdDialog', fun
       }
     };
 
-  };
+  }
 
-  var _showDialog = function (editOptions) {
+  function _showDialog(editOptions) {
 
     var options = {
       troop: editOptions.troop
@@ -29,10 +38,6 @@ angular.module('firstClass').factory('scoutListDialogService', ['$mdDialog', fun
     }
 
     return $mdDialog.show(_getDialogPreset(options));
-  };
-
-  return {
-    showDialog: _showDialog
   }
 
-}]);
+}

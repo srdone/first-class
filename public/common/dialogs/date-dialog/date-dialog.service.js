@@ -10,7 +10,7 @@ function dateDialogService($mdDialog) {
     show: _show
   };
 
-  /////////
+  /*==========Functions==========*/
 
   function _getDialogPreset(options) {
 

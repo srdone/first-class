@@ -1,13 +1,23 @@
-import angular from 'angular';
 import tpl from './position-dialog.template.html!text';
+import PositionDialogController from './position-dialog.controller';
 
-angular.module('firstClass').factory('positionDialogService', ['$mdDialog', function ($mdDialog) {
+export { positionDialogService as default };
 
-  var _getDialogPreset = function (options) {
+positionDialogService.$inject = ['$mdDialog'];
+function positionDialogService($mdDialog) {
+
+  return {
+    showCreateDialog: _showCreateDialog,
+    showEditDialog: _showEditDialog
+  }
+
+  /*===============Functions==============*/ 
+
+  function _getDialogPreset(options) {
 
     return {
       template: tpl,
-      controller: 'PositionDialogController',
+      controller: PositionDialogController,
       controllerAs: 'vm',
       bindToController: true,
       targetEvent: options.targetEvent,
@@ -19,7 +29,7 @@ angular.module('firstClass').factory('positionDialogService', ['$mdDialog', func
 
   };
 
-  var _showCreateDialog = function (createOptions) {
+  function _showCreateDialog(createOptions) {
 
     if (!createOptions) {
       var createOptions = {};
@@ -36,7 +46,7 @@ angular.module('firstClass').factory('positionDialogService', ['$mdDialog', func
     return $mdDialog.show(_getDialogPreset(options));
   };
 
-  var _showEditDialog = function (editOptions) {
+  function _showEditDialog(editOptions) {
 
     if (!editOptions) {
       var editOptions = {};
@@ -54,9 +64,4 @@ angular.module('firstClass').factory('positionDialogService', ['$mdDialog', func
     return $mdDialog.show(_getDialogPreset(options));
   };
 
-  return {
-    showCreateDialog: _showCreateDialog,
-    showEditDialog: _showEditDialog
-  }
-
-}]);
+}

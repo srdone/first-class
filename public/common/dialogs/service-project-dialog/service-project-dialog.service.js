@@ -1,13 +1,23 @@
-import angular from 'angular';
 import tpl from './service-project-dialog.template.html!text';
+import ServiceProjectDialogController from './service-project-dialog.controller';
 
-angular.module('firstClass').factory('serviceProjectDialogService', ['$mdDialog', function ($mdDialog) {
+export { serviceProjectDialogService as default };
 
-  var _getDialogPreset = function (options) {
+serviceProjectDialogService.$inject = ['$mdDialog']
+function serviceProjectDialogService($mdDialog) {
+
+  return {
+    showCreateDialog: _showCreateDialog,
+    showEditDialog: _showEditDialog
+  }
+
+  /*===============Functions==============*/
+
+  function _getDialogPreset(options) {
 
     return {
-      templateUrl: tpl,
-      controller: 'ServiceProjectDialogController',
+      template: tpl,
+      controller: ServiceProjectDialogController,
       controllerAs: 'vm',
       bindToController: true,
       targetEvent: options.targetEvent,
@@ -19,7 +29,7 @@ angular.module('firstClass').factory('serviceProjectDialogService', ['$mdDialog'
 
   };
 
-  var _showCreateDialog = function (createOptions) {
+  function _showCreateDialog(createOptions) {
     var options = {
       create: true
     };
@@ -31,7 +41,7 @@ angular.module('firstClass').factory('serviceProjectDialogService', ['$mdDialog'
     return $mdDialog.show(_getDialogPreset(options));
   };
 
-  var _showEditDialog = function (editOptions) {
+  function _showEditDialog(editOptions) {
     var options = {
       serviceProject: editOptions.serviceProject,
       create: false
@@ -44,9 +54,4 @@ angular.module('firstClass').factory('serviceProjectDialogService', ['$mdDialog'
     return $mdDialog.show(_getDialogPreset(options));
   };
 
-  return {
-    showCreateDialog: _showCreateDialog,
-    showEditDialog: _showEditDialog
-  }
-
-}]);
+}

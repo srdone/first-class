@@ -1,59 +1,25 @@
-import angular from 'angular';
+import _ from 'lodash';
 
-angular.module('firstClass').controller('RequirementDialogController', ['$mdDialog', 'existingRequirements', '$timeout',
-  function ($mdDialog, existingRequirements, $timeout) {
+export { RequirementDialogController as default };
 
-    var _init = function () {
-      existingRequirements.forEach(function clearRequirementSelections (currentRequirement) {
-        if (currentRequirement.isSelected) {
-          delete currentRequirement.isSelected;
-        }
-      });
+RequirementDialogController.$inject = ['$mdDialog', 'existingRequirements', '$timeout'];
+function RequirementDialogController($mdDialog, existingRequirements, $timeout) {
 
-      var categories = existingRequirements.map(function getCategories (current) {
-        return current.category;
-      });
-
-      this.categories = _.uniq(categories);
-
-      if (this.preSelectedRequirements.length) {
-        this.preSelectedRequirements.forEach(function markAsSelected(current) {
-          var index = _.findIndex(existingRequirements, _.matches({id: current.id}));
-
-          existingRequirements[index].isSelected = true;
-          existingRequirements[index].wasPreSelected = true;
-        });
-      }
-    };
-
+    var vm = this;
+    vm.returnAllSelections = returnAllSelections;
+    vm.returnChangedSelections = returnChangedSelections;
+    vm.cancel = $mdDialog.cancel;
+    
     // wait to run _init until controller has instantiated. Otherwise bindToController hasn't yet run
     $timeout(_init.bind(this), 4);
+    
+    /*============Functions============*/
 
-    var _getAllSelected = function () {
-      return existingRequirements.filter(function (currentRequirement) {
-        return currentRequirement.isSelected;
-      });
-    };
+    function returnAllSelections() {
+      $mdDialog.hide(_getAllSelected());
+    }
 
-    var _getNotSelected = function () {
-      return existingRequirements.filter(function (currentRequirement) {
-        return !currentRequirement.isSelected;
-      });
-    };
-
-    var _getWasPreSelected = function () {
-      return existingRequirements.filter(function (currentRequirement) {
-        return currentRequirement.wasPreSelected;
-      });
-    };
-
-    this.returnAllSelections = function () {
-      var allSelected = _getAllSelected();
-
-      $mdDialog.hide(allSelected);
-    };
-
-    this.returnChangedSelections = function () {
+    function returnChangedSelections() {
       var wasPreSelected = _getWasPreSelected();
 
       var added = _.difference(_getAllSelected(), wasPreSelected);
@@ -65,8 +31,41 @@ angular.module('firstClass').controller('RequirementDialogController', ['$mdDial
       });
     };
 
-    this.cancel = function () {
-      $mdDialog.cancel();
+    function _init() {
+      existingRequirements.forEach(_clearRequirementSelections);
+
+      var categories = existingRequirements.map((req) => req.category);
+
+      vm.categories = _.uniq(categories);
+
+      if (vm.preSelectedRequirements.length) {
+        vm.preSelectedRequirements.forEach(_markAsSelected);
+      }
+    };
+    
+    function _clearRequirementSelections (currentRequirement) {
+        if (currentRequirement.isSelected) {
+          delete currentRequirement.isSelected;
+        }
+    }
+    
+    function _markAsSelected(current) {
+        var index = _.findIndex(existingRequirements, _.matches({id: current.id}));
+
+        existingRequirements[index].isSelected = true;
+        existingRequirements[index].wasPreSelected = true;
+    }
+
+    function _getAllSelected() {
+      return _.filter(existingRequirements, 'isSelected');
     };
 
-  }]);
+    function _getNotSelected() {
+      return _.filter(existingRequirements, req => !req.isSelected);
+    };
+
+    function _getWasPreSelected() {
+      return _.filter(existingRequirements, 'wasPreSelected');
+    };
+
+  }

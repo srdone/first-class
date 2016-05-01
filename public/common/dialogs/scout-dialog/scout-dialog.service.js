@@ -1,13 +1,23 @@
-import angular from 'angular';
 import tpl from './scout-dialog.template.html!text';
+import ScoutDialogController from './scout-dialog.controller';
 
-angular.module('firstClass').factory('scoutDialogService', ['$mdDialog', function ($mdDialog) {
+export { scoutDialogService as default };
 
-  var _scoutDialogPreset = function (options)  {
+scoutDialogService.$inject = ['$mdDialog'];
+function scoutDialogService($mdDialog) {
+
+  return {
+    showCreateScoutDialog: _showCreateScoutDialog,
+    showEditScoutDialog: _showEditScoutDialog
+  }
+  
+  /*===============Functions==============*/ 
+
+  function _scoutDialogPreset(options)  {
 
     return {
       template: tpl,
-      controller: 'ScoutDialogController',
+      controller: ScoutDialogController,
       controllerAs: 'vm',
       bindToController: true,
       targetEvent: options.targetEvent,
@@ -19,7 +29,7 @@ angular.module('firstClass').factory('scoutDialogService', ['$mdDialog', functio
 
   };
 
-  var _showCreateScoutDialog = function (createOptions) {
+  function _showCreateScoutDialog(createOptions) {
     var options = {
       create: true
     };
@@ -31,7 +41,7 @@ angular.module('firstClass').factory('scoutDialogService', ['$mdDialog', functio
     return $mdDialog.show(_scoutDialogPreset(options));
   };
 
-  var _showEditScoutDialog = function (editOptions) {
+  function _showEditScoutDialog(editOptions) {
     var options = {
       scout: editOptions.scout,
       create: false
@@ -44,9 +54,4 @@ angular.module('firstClass').factory('scoutDialogService', ['$mdDialog', functio
     return $mdDialog.show(_scoutDialogPreset(options));
   };
 
-  return {
-    showCreateScoutDialog: _showCreateScoutDialog,
-    showEditScoutDialog: _showEditScoutDialog
-  }
-
-}]);
+}

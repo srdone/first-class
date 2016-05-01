@@ -1,7 +1,8 @@
-import angular from 'angular';
+export { PositionDialogController as default };
 
-angular.module('firstClass').controller('PositionDialogController', ['$mdDialog', function ($mdDialog) {
-
+PositionDialogController.$inject = ['$mdDialog'];
+function PositionDialogController($mdDialog) {
+  
   this.returnPosition = function () {
     $mdDialog.hide(this.position);
   };
@@ -10,4 +11,4 @@ angular.module('firstClass').controller('PositionDialogController', ['$mdDialog'
     $mdDialog.cancel();
   };
 
-}]);
+}

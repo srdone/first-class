@@ -1,5 +1,3 @@
-import angular from 'angular';
-
 export { RequirementListController as default };
 
 RequirementListController.$inject = ['$mdToast', '$mdDialog', 'dateDialogService'];

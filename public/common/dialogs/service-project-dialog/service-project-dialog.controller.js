@@ -1,13 +1,11 @@
-import angular from 'angular';
+export { ServiceProjectDialogController as default };
 
-angular.module('firstClass').controller('ServiceProjectDialogController', ['$mdDialog', function ($mdDialog) {
+ServiceProjectDialogController.$inject = ['$mdDialog'];
+function ServiceProjectDialogController($mdDialog) {
 
+  this.cancel = $mdDialog.cancel;
   this.returnServiceProject = function () {
     return $mdDialog.hide(this.serviceProject);
   };
 
-  this.cancel = function () {
-    return $mdDialog.cancel();
-  };
-
-}]);
+}

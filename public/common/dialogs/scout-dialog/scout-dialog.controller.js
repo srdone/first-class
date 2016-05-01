@@ -1,18 +1,18 @@
-import angular from 'angular';
+export { ScoutDialogController as default };
 
-angular.module('firstClass').controller('ScoutDialogController', ['$mdDialog',
-  function ($mdDialog) {
+ScoutDialogController.$inject = ['$mdDialog'];
+function ScoutDialogController($mdDialog) {
+  
+  this.addScout = function () {
+    $mdDialog.hide(this.scout);
+  };
 
-    this.addScout = function () {
-      $mdDialog.hide(this.scout);
-    };
+  this.updateScout = function () {
+    $mdDialog.hide(this.scout);
+  };
 
-    this.updateScout = function () {
-      $mdDialog.hide(this.scout);
-    };
+  this.cancel = function () {
+    $mdDialog.cancel();
+  };
 
-    this.cancel = function () {
-      $mdDialog.cancel();
-    };
-
-  }]);
+}
