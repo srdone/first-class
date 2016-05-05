@@ -9,6 +9,7 @@ import legalTpl from './legal/legal.view.html!text';
 
 import LayoutController from './layout/layout.controller';
 import ScoutController from './scout/scout.controller';
+import TroopController from './troop/troop.controller';
 
 var app = angular.module('firstClass');
 
@@ -42,7 +43,7 @@ app.config(['$stateProvider', '$urlRouterProvider',
         views: {
           "mainView": {
             template: troopTpl,
-            controller: 'TroopController'
+            controller: TroopController
           },
           "chartView": {
             template: '<fcs-troop-progress-chart troop="vm.troop"></fcs-troop-progress-chart>',
