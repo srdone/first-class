@@ -1,12 +1,5 @@
-import angular from 'angular';
-
-angular
-  .module('firstClass')
-  .controller('ScoutSidebarController', ScoutSidebarController);
-
 ScoutSidebarController.$inject = ['requirementService', 'scoutService', '$stateParams', 'requirements'];
-
-function ScoutSidebarController(requirementService, scoutService, $stateParams, requirements) {
+export default function ScoutSidebarController(requirementService, scoutService, $stateParams, requirements) {
 
   var vm = this;
 
