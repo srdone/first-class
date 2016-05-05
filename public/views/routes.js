@@ -7,6 +7,8 @@ import scoutTpl from './scout/scout.view.html!text';
 import scoutSidebarTpl from './scout-sidebar/scout-sidebar.view.html!text';
 import legalTpl from './legal/legal.view.html!text';
 
+import LayoutController from './layout/layout.controller';
+
 var app = angular.module('firstClass');
 
 app.config(['$stateProvider', '$urlRouterProvider',
@@ -23,14 +25,14 @@ app.config(['$stateProvider', '$urlRouterProvider',
           }
         },
         template: layoutTpl,
-        controller: 'LayoutController'
+        controller: LayoutController
       })
 			.state('app.main', {
 				url: '/',
         views: {
           "mainView": {
             template: loginTpl,
-            controller: 'LayoutController'
+            controller: LayoutController
           }
         }
 			})

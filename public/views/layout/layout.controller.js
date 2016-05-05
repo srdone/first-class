@@ -1,8 +1,5 @@
-import angular from 'angular';
-
-angular.module('firstClass').controller('LayoutController', ['$scope', '$mdSidenav', '$state', '$log', 'authService',
-  '$rootScope', '$q', '$mdToast', 'requirements',
-  function($scope, $mdSidenav, $state, $log, authService, $rootScope, $q, $mdToast, requirements) {
+LayoutController.$inject = ['$scope', '$mdSidenav', '$state', '$log', 'authService', '$rootScope', '$q', '$mdToast', 'requirements']
+export default function LayoutController($scope, $mdSidenav, $state, $log, authService, $rootScope, $q, $mdToast, requirements) {
     $scope.introParagraph = 'Simple, intuitive tracking for your Boy Scout Troop';
 
     $scope.toggleMenu = function () {
@@ -34,5 +31,4 @@ angular.module('firstClass').controller('LayoutController', ['$scope', '$mdSiden
     $rootScope.$watch('loggedIn', function (newVal) {
       $scope.loggedIn = (newVal === true);
     });
-
-  }]);
+}
