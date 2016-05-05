@@ -8,6 +8,7 @@ import scoutSidebarTpl from './scout-sidebar/scout-sidebar.view.html!text';
 import legalTpl from './legal/legal.view.html!text';
 
 import LayoutController from './layout/layout.controller';
+import ScoutController from './scout/scout.controller';
 
 var app = angular.module('firstClass');
 
@@ -62,7 +63,7 @@ app.config(['$stateProvider', '$urlRouterProvider',
         views: {
           "mainView": {
             template: scoutTpl,
-            controller: 'ScoutController',
+            controller: ScoutController,
             controllerAs: 'vm'
           },
           "chartView": {
