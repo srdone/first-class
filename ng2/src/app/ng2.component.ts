@@ -1,9 +1,6 @@
 import { Component } from '@angular/core';
-
-export class Hero {
-  id: number;
-  name: string;
-}
+import { Hero } from './hero';
+import { HeroDetailComponent } from './hero-detail.component';
 
 var HEROES: Hero[] = [
   { "id": 11, "name": "Mr. Nice" },
@@ -21,6 +18,7 @@ var HEROES: Hero[] = [
 @Component({
   moduleId: module.id,
   selector: 'ng2-app',
+  directives: [HeroDetailComponent],
   templateUrl: 'ng2.component.html',
   styleUrls: ['ng2.component.css']
 })
@@ -33,4 +31,3 @@ export class Ng2AppComponent {
     this.selectedHero = hero;
   }
 }
-
