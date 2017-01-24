@@ -2,5 +2,3 @@
 .idea/
 node_modules/
 public/bower_components/
-npm-debug.log
-public/jspm_packages/

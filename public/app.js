@@ -1,7 +1,3 @@
-import 'views/index';
-import 'initialization/index';
-import 'common/index';
+'use strict';
 
-angular.element(document).ready(() => {
-  angular.bootstrap(document.body, ['firstClass']);
-});
+var app = angular.module('firstClass', ['ui.router', 'ngMaterial', 'ngAria', 'ngAnimate']);

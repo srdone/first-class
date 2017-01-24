@@ -1,9 +1,10 @@
-var exec = require('child_process').exec;
+var sys = require('sys'),
+  exec = require('child_process').exec;
 
 module.exports = function () {
   // see http://www.dzone.com/snippets/execute-unix-command-nodejs
   function puts(err, sterr, stdout) {
-    console.log(stdout);
+    sys.puts(stdout);
   }
 
   //drop old data

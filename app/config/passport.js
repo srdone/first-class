@@ -13,18 +13,22 @@ module.exports = function () {
     });
   });
 
+// add local authentication strategy - roughly from MEAN Web Development by PACKT Publishing
+// the "done" callback is used to signal if authentication succeeded:
+// done(err) means there was an error
+// done(null, false) means authentication failed for some reason
+// done(null, user) means authentication succeeded and it takes the user to be added to the session
   passport.use(new LocalStrategy(function (username, password, done) {
     User.findOne({username: username}).exec(function (err, user) {
       if (err) {
-        return done(err);
+        done(err);
+      } else if (!user) {
+        done(null, false, {message: 'User ' + username + ' does not exist.'});
+      } else if (!user.authenticate(password)) {
+        done(null, false, {message: 'Invalid password'});
+      } else {
+        done(null, user);
       }
-      if (!user) {
-        return done(null, false, {message: 'User ' + username + ' does not exist.'});
-      }
-      if (!user.authenticate(password)) {
-        return done(null, false, {message: 'Invalid password'});
-      }
-      done(null, user);
     });
   }));
 };

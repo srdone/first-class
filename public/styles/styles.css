@@ -1,15 +1,6 @@
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none !important;
 }
-
-ui-view {
-    height: 100%;
-}
-
-md-sidenav {
-    height: 100%;
-}
-
 /*see http://www.htmlxprs.com/post/9/easy-angularjs-animations-using-animatecss*/
 
 .view.animate.ng-enter {

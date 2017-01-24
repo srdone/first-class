@@ -10,9 +10,46 @@
 
   <link rel="stylesheet" href="styles/styles.css" />
 </head>
-<body ng-cloak>
+<body ng-app="firstClass" ng-cloak ng-controller="LayoutController" layout="row" class="noselect">
 
-<ui-view layout="row" class="noselect"></ui-view>
+<md-sidenav class="md-whiteframe-z3" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" ng-if="loggedIn" md-swipe-left="close()" flex layout-fill>
+  <md-toolbar layout="column" layout-align="center center">
+    Troop Progress
+  </md-toolbar>
+
+  <div flex layout="column" layout-align="start center">
+    <div ui-view="chartView"></div>
+    <md-button hide-gt-md ng-click="close()">
+      Close Menu
+    </md-button>
+  </div>
+</md-sidenav>
+
+<div layout="column" flex>
+  <md-toolbar class="md-toolbar-tools" layout="row">
+
+    <md-button hide-gt-md aria-label="Toogle Menu" ng-if="loggedIn" ng-click="toggleMenu()">
+      <md-icon md-svg-src="bower_components/material-design-icons/navigation/svg/production/ic_menu_48px.svg"></md-icon>
+    </md-button>
+
+    <div class="title">
+      First Class Scouting
+    </div>
+
+    <span flex></span>
+
+    <md-button class="md-button" ng-click="logout()" ng-if="loggedIn">
+      Logout {{username}}
+    </md-button>
+
+  </md-toolbar>
+
+  <md-content ui-view="mainView" layout="column" id="content" flex layout-fill class="animate view"></md-content>
+
+</div>
+
+<!-- jquery -->
+<!--<script src="bower_components/jquery/dist/jquery.js"></script>-->
 
 <!-- lodash -->
 <script src="bower_components/lodash/lodash.js"></script>
@@ -23,11 +60,8 @@
 <!--Chart.js-->
 <script src="bower_components/Chart.js/Chart.js"></script>
 
-<script src="jspm_packages/system.js"></script>
-<script src="config.js"></script>
 <!-- angular components -->
 <script src="bower_components/angular/angular.js"></script>
-<script src="bower_components/angular-resource/angular-resource.js"></script>
 <script src="bower_components/angular-animate/angular-animate.js"></script>
 <script src="bower_components/angular-aria/angular-aria.js"></script>
 <script src="bower_components/angular-material/angular-material.js"></script>
@@ -35,10 +69,124 @@
 <!-- third party angular components -->
 <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
 
-<script>
-  var app = angular.module('firstClass', ['ui.router', 'ngMaterial', 'ngAria', 'ngAnimate', 'ngResource']);
-  System.import('app');
-</script>
+<!-- First Class App Scripts -->
+<script src="app.js"></script>
+<script src="routes.js"></script>
+
+<!--theme configuration-->
+<script src="initialization/theme-config.js"></script>
+
+<!--campouts-->
+<script src="campouts/campout-item.directive.js"></script>
+<script src="campouts/campout-item.controller.js"></script>
+
+<!-- dialogs -->
+<script src="dialogs/scout-dialog/scout-dialog.service.js"></script>
+<script src="dialogs/scout-dialog/scout-dialog.controller.js"></script>
+<script src="dialogs/campout-dialog/campout-dialog.service.js"></script>
+<script src="dialogs/campout-dialog/campout-dialog.controller.js"></script>
+<script src="dialogs/position-dialog/position-dialog.service.js"></script>
+<script src="dialogs/position-dialog/position-dialog.controller.js"></script>
+<script src="dialogs/service-project-dialog/service-project-dialog.service.js"></script>
+<script src="dialogs/service-project-dialog/service-project-dialog.controller.js"></script>
+<script src="dialogs/requirement-dialog/requirement-dialog.service.js"></script>
+<script src="dialogs/requirement-dialog/requirement-dialog.controller.js"></script>
+<script src="dialogs/scout-list-dialog/scout-list-dialog.service.js"></script>
+<script src="dialogs/scout-list-dialog/scout-list-dialog.controller.js"></script>
+
+<!-- initialization:debugging -->
+<script src="initialization/debugging/enableDebuggingCode.js"></script>
+<script src="initialization/debugging/stateChangeDebugging.js"></script>
+
+<!-- initialization:authorization -->
+<script src="initialization/authorization/checkLoggedInOnLoad.js"></script>
+<script src="initialization/authorization/logoutOnStateChangeError.js"></script>
+
+<!--initialization:icon-registration-->
+<script src="icons/icon-registration.js"></script>
+
+<!-- initialization:interceptors -->
+<script src="initialization/interceptors/verify-authentication.http-interceptor.js"></script>
+<script src="initialization/interceptors/loadHttpInterceptors.js"></script>
+
+<!-- shared:filters -->
+<script src="filters/percent.filter.js"></script>
+
+<!-- shared:services -->
+<script src="services/auth.service.js"></script>
+<script src="services/util.service.js"></script>
+<script src="services/date.service.js"></script>
+<script src="services/scout.service.js"></script>
+<script src="services/scout-object.service.js"></script>
+<script src="services/persistence.service.js"></script>
+<script src="services/requirement.service.js"></script>
+
+<!-- login -->
+<script src="login/login.controller.js"></script>
+<script src="login/login.directive.js"></script>
+<script src="login/welcome.directive.js"></script>
+
+<!--layout-->
+<script src="layout/layout.controller.js"></script>
+
+<!--make-editable-->
+<script src="make-editable/make-editable.directive.js"></script>
+<script src="make-editable/make-editable.controller.js"></script>
+
+<!-- troop -->
+<script src="troop/troop.controller.js"></script>
+<script src="scout/scout-card.directive.js"></script>
+
+<!--troop-progress-chart-->
+<script src="troop-progress-chart/troop-progress-chart.directive.js"></script>
+
+<!-- scout -->
+<script src="scout/scout.controller.js"></script>
+<script src="scout/scout-name.directive.js"></script>
+<script src="scout/scout-patrol.directive.js"></script>
+<script src="scout/scout-summary.directive.js"></script>
+<!--scout:order-of-the-arrow-->
+<script src="order-of-the-arrow/oa-icon.directive.js"></script>
+
+<!--campouts-->
+<script src="scout/nights-of-camping-icon.directive.js"></script>
+<script src="campouts/campout-list.directive.js"></script>
+<script src="campouts/campout-list.controller.js"></script>
+
+<!--service-projects-->
+<script src="scout/hours-of-service-icon.directive.js"></script>
+
+<!--positions-->
+<script src="positions/position-list.directive.js"></script>
+<script src="positions/position-list.controller.js"></script>
+<script src="positions/position-summary.directive.js"></script>
+
+<!--requirements-->
+<script src="requirements/requirement-list.directive.js"></script>
+<script src="requirements/requirement-list.controller.js"></script>
+
+<!--rank-requirements-->
+<script src="ranks/rank.directive.js"></script>
+<script src="ranks/rank-progress.directive.js"></script>
+<script src="requirements/requirement-summary-icons.directive.js"></script>
+
+<!--select detail bottom sheet-->
+<script src="select-detail-bottom-sheet/select-detail-bottom-sheet.service.js"></script>
+<script src="select-detail-bottom-sheet/select-detail-bottom-sheet.controller.js"></script>
+
+<!--service-list-->
+<script src="service-list/service-list.directive.js"></script>
+<script src="service-list/service-list.controller.js"></script>
+
+<!--scout sidebar-->
+<script src="scout-sidebar/scout-sidebar.controller.js"></script>
+
+<!--scout graph-->
+<script src="scout-progress-chart/scout-progress-chart.directive.js"></script>
+
+<!--date dialog-->
+<script src="dialogs/date-dialog/date-dialog.controller.js"></script>
+<script src="dialogs/date-dialog/date-dialog.service.js"></script>
 
 </body>
 </html>

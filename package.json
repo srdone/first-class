@@ -1,13 +1,8 @@
 {
   "name": "first-class",
   "version": "1.0.0",
-  "description": "A boy scout troop tracking app using the MEAN stack. Aimed primarily at helping troops assist their new scouts through the first class rank.",
+  "description": "scout tracking app",
   "main": "server.js",
-  "directories": {
-    "test": "test",
-    "baseURL": "public",
-    "packages": "public/jspm_packages"
-  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "postinstall": "./node_modules/bower/bin/bower install",
@@ -15,62 +10,42 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/srdone/first-class.git"
+    "url": "https://github.com/srdone/first-class.git"
   },
-  "author": "Stephen Done",
-  "license": "ISC",
+  "author": "Stephen Done <srdone@gmail.com>",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/srdone/first-class/issues"
   },
-  "homepage": "https://github.com/srdone/first-class#readme",
+  "private": "true",
+  "homepage": "https://github.com/srdone/first-class",
   "dependencies": {
-    "body-parser": "^1.14.2",
-    "bower": "^1.7.2",
+    "body-parser": "^1.12.0",
+    "bower": "^1.3.12",
     "connect-flash": "^0.1.1",
-    "cookie-parser": "^1.4.1",
-    "express": "^4.13.3",
-    "express-session": "^1.13.0",
-    "kerberos": "0.0.17",
-    "lodash": "^4.0.0",
-    "method-override": "^2.3.5",
-    "moment": "^2.11.1",
-    "mongoose": "^4.3.6",
-    "morgan": "^1.6.1",
-    "passport": "^0.3.2",
+    "cookie-parser": "^1.3.4",
+    "express": "^4.12.2",
+    "express-session": "^1.10.3",
+    "lodash": "^3.4.0",
+    "method-override": "^2.3.1",
+    "moment": "^2.9.0",
+    "mongoose": "^3.8.23",
+    "morgan": "^1.5.1",
+    "passport": "^0.2.1",
     "passport-local": "^1.0.0"
   },
-  "devDependencies": {
-    "angular-mocks": "^1.4.8",
-    "frisby": "^0.8.5",
-    "jasmine-core": "^2.4.1",
-    "jspm": "^0.16.33",
-    "karma": "^0.13.19",
-    "karma-chrome-launcher": "^0.2.2",
-    "karma-jasmine": "^0.3.6",
-    "karma-phantomjs-launcher": "^0.2.3",
-    "karma-safari-launcher": "^0.1.1",
-    "phantomjs": "^1.9.19"
+  "engines": {
+    "node": "0.12.0",
+    "npm": "2.3.0"
   },
-  "jspm": {
-    "directories": {
-      "baseURL": "public",
-      "test": "test"
-    },
-    "dependencies": {
-      "angular": "github:angular/bower-angular@^1.5.5",
-      "angular-animate": "github:angular/bower-angular-animate@^1.5.5",
-      "angular-aria": "github:angular/bower-angular-aria@^1.5.5",
-      "angular-material": "github:angular/bower-material@^1.0.7",
-      "angular-resource": "github:angular/bower-angular-resource@^1.5.5",
-      "angular-ui-router": "github:angular-ui/ui-router@^0.2.18",
-      "lodash": "npm:lodash@^4.11.1",
-      "moment": "npm:moment@^2.13.0",
-      "text": "github:systemjs/plugin-text@^0.0.7"
-    },
-    "devDependencies": {
-      "babel": "npm:babel-core@^5.8.24",
-      "babel-runtime": "npm:babel-runtime@^5.8.24",
-      "core-js": "npm:core-js@^1.1.4"
-    }
+  "devDependencies": {
+    "angular-mocks": "^1.3.15",
+    "jasmine-core": "^2.2.0",
+    "karma": "^0.12.31",
+    "karma-chrome-launcher": "^0.1.7",
+    "karma-firefox-launcher": "^0.1.4",
+    "karma-jasmine": "^0.3.5",
+    "karma-phantomjs-launcher": "^0.1.4",
+    "karma-safari-launcher": "^0.1.1"
   }
 }
