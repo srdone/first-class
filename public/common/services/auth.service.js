@@ -1,5 +1,9 @@
 angular.module('firstClass').factory('authService', ['$location', '$http', '$q', '$rootScope', function ($location, $http, $q, $rootScope) {
 
+  /* Private Variables */
+  var loggedIn = false;
+  var currentUsername = undefined;
+
   // see https://vickev.com/#!/article/authentication-in-single-page-applications-node-js-passportjs-angularjs
   var _requireAuth = function () {
     console.log('called requireAuth');
@@ -8,8 +12,9 @@ angular.module('firstClass').factory('authService', ['$location', '$http', '$q',
     $http.get('/loggedIn')
       .success(function (response) {
         console.log(response);
-        $rootScope.loggedIn = true;
-        $rootScope.username = response.data.username;
+        loggedIn = true;
+        currentUsername = response.data.username;
+        console.log('requireAuth', username);
         deferred.resolve('success');
       })
       .error(function () {
@@ -26,33 +31,38 @@ angular.module('firstClass').factory('authService', ['$location', '$http', '$q',
   };
 
   var _login = function (username, password) {
-    return $http.post('/login', {username: username, password: password}).then(function (response) {
-      $rootScope.loggedIn = true;
-      $rootScope.username = response.data.username;
-      console.log('login called, responded: ' + JSON.stringify(response));
-    });
+    return $http.post('/login', {username: username, password: password})
+      .then(function (response) {
+        loggedIn = true;
+        currentUsername = response.data.username;
+        console.log(username);
+        console.log('login called, responded: ', response);
+      });
   };
 
   var _logout = function () {
-    return $http.post('/logout', {}).then(function (response) {
-      $rootScope.loggedIn = false;
-      $rootScope.username = undefined;
-      console.log('logout called, responded: ' + JSON.stringify(response));
-    });
+    return $http.post('/logout', {})
+      .then(function (response) {
+        loggedIn = false;
+        currentUsername = undefined;
+        console.log('logout called, responded: ', response);
+      });
   };
 
   var _checkLoggedIn = function () {
     return $http.get('/loggedIn')
       .then(function (response) {
-        if (response.message === 'currently logged in') {
-          $rootScope.username = response.username;
-          $rootScope.loggedIn = true;
+        if (response.data.message === 'currently logged in') {
+          currentUsername = response.data.username;
+          console.log('checkLoggedIn success', username);
+          loggedIn = true;
         }
       })
       .catch(function (response) {
         $location.path('/');
-        $rootScope.username = undefined;
-        $rootScope.loggedIn = false;
+        currentUsername = undefined;
+        console.log('checkLoggedIn failure', username);
+        loggedIn = false;
       });
   };
 
@@ -61,7 +71,11 @@ angular.module('firstClass').factory('authService', ['$location', '$http', '$q',
     signUp: _signUp,
     login: _login,
     logout: _logout,
-    checkLoggedIn: _checkLoggedIn
+    checkLoggedIn: _checkLoggedIn,
+    getUsername: function () { return currentUsername; },
+    setUsername: function (value) { currentUsername = value; },
+    isLoggedIn: function () { return loggedIn; },
+    setLoggedIn: function (state) { loggedIn = state; }
   };
 
 }]);

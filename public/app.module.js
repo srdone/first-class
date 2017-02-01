@@ -23,11 +23,11 @@ app.run(['$rootScope', '$state', 'authService', function ($rootScope, $state, au
 }]);
 
 //logout on state change error
-app.run(['$state', '$rootScope', '$mdToast', function ($state, $rootScope, $mdToast) {
+app.run(['$state', '$rootScope', '$mdToast', 'authService', function ($state, $rootScope, $mdToast, authService) {
   $rootScope.$on('$stateChangeError', function (e) {
     e.preventDefault();
-    $rootScope.loggedIn = false;
-    $rootScope.username = null;
+    authService.setLoggedIn(false);
+    authService.setUsername(null);
     $state.go('main').then(function () {
       $mdToast.showSimple('Server error. Logged out.');
     });

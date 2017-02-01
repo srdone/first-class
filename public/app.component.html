@@ -11,8 +11,8 @@
 
     <span flex></span>
 
-    <md-button class="md-button" ng-click="$ctrl.logout()" ng-if="$ctrl.loggedIn">
-      Logout {{username}}
+    <md-button class="md-button" ng-click="$ctrl.logout()" ng-if="$ctrl.isLoggedIn()">
+      Logout {{$ctrl.getUsername()}}
     </md-button>
 
   </md-toolbar>

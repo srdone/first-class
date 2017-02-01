@@ -19,6 +19,8 @@
     $ctrl.toggleMenu = toggleMenu;
     $ctrl.goToTroopView = goToTroopView;
     $ctrl.logout = logout;
+    $ctrl.isLoggedIn = authService.isLoggedIn;
+    $ctrl.getUsername = authService.getUsername;
 
     /* Implementation */
 
@@ -47,10 +49,6 @@
     function close() {
       $mdSidenav('left').toggle();
     };
-
-    $rootScope.$watch('loggedIn', function (newVal) {
-      $ctrl.loggedIn = (newVal === true);
-    });
 
   }
 
