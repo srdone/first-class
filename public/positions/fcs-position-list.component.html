@@ -1,0 +1,15 @@
+<md-content layout-margin>
+<md-list>
+  <md-item ng-repeat="position in $ctrl.positions | orderBy: 'start'">
+    <md-item-content>
+
+      <fcs-make-editable edit="$ctrl.editPosition" delete="$ctrl.deletePosition" item="position" edit-takes-events="true">
+
+        {{position.title}}: {{position.start | date: 'shortDate'}} - {{position.end | date: 'shortDate'}}
+
+      </fcs-make-editable>
+
+    </md-item-content>
+  </md-item>
+</md-list>
+</md-content>

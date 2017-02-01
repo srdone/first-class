@@ -1,0 +1,38 @@
+<div>
+
+  <div class="md-tile-content" ng-if="!$ctrl.scout.hasNoDetails()" layout-align="center center" layout="column">
+
+    <fcs-rank rank="$ctrl.scout.currentRank" ng-if="$ctrl.scout.currentRank"></fcs-rank>
+
+    <fcs-scout-patrol patrol="$ctrl.scout.currentPatrol" flex></fcs-scout-patrol>
+
+    <fcs-rank-progress pct-progress="$ctrl.scout.getPercentProgressToFirstClass()" layout-fill></fcs-rank-progress>
+
+    <fcs-requirement-summary-icons req-category-count="$ctrl.scout.neededReqSummary"></fcs-requirement-summary-icons>
+
+    <md-list>
+      <md-item ng-repeat="position in $ctrl.scout.getCurrentPositions() | orderBy: 'start'">
+        <md-item-content>
+
+            <strong>{{position.title}}</strong>: {{position.start | date: 'shortDate'}} - {{position.end | date: 'shortDate'}}
+
+        </md-item-content>
+      </md-item>
+    </md-list>
+
+    <div layout="row" layout-align="space-around center" layout-wrap>
+
+      <fcs-nights-of-camping-icon nights="$ctrl.scout.getQualifiedNightsOfCamping()"></fcs-nights-of-camping-icon>
+
+      <fcs-hours-of-service-icon hours="$ctrl.scout.getHoursOfService()"></fcs-hours-of-service-icon>
+
+    </div>
+
+  </div>
+
+  <div class="no-details" ng-if="$ctrl.scout.hasNoDetails()" layout-margin>
+    No details yet! Click the <md-icon md-svg-src="actions:add-detail"></md-icon> button on the details screen or the
+    <md-icon md-svg-src="actions:batch-add"></md-icon> button on the troop screen to add requirements and other events to this scout.
+  </div>
+
+</div>

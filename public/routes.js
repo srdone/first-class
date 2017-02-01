@@ -12,8 +12,7 @@ app.config(['$stateProvider', '$urlRouterProvider',
 				url: '/',
         views: {
           "mainView": {
-            templateUrl:'login/login.view.html',
-            controller: 'LayoutController'
+            template: '<fcs-login></fcs-login>',
           }
         }
 			})
@@ -21,17 +20,7 @@ app.config(['$stateProvider', '$urlRouterProvider',
 				url: '/troop',
         views: {
           "mainView": {
-            templateUrl: 'troop/troop.view.html',
-            controller: 'TroopController'
-          },
-          "chartView": {
-            template: '<div class="spacer"></div>'+
-            '<fcs-troop-progress-chart troop="troop"></fcs-troop-progress-chart>',
-            controller: function ($scope) {
-              $scope.$on('troop:updated', function (event, troop) {
-                $scope.troop = troop;
-              });
-            }
+            template: '<fcs-troop></fcs-troop>',
           }
         }
 			})
@@ -39,14 +28,7 @@ app.config(['$stateProvider', '$urlRouterProvider',
 				url: '/scout/:scoutId',
         views: {
           "mainView": {
-            templateUrl: 'scout/scout.view.html',
-            controller: 'ScoutController',
-            controllerAs: 'vm'
-          },
-          "chartView": {
-            templateUrl: 'scout-sidebar/scout-sidebar.view.html',
-            controller: 'ScoutSidebarController',
-            controllerAs: 'vm'
+            template: '<fcs-scout></fcs-scout>',
           }
         }
 			})
@@ -54,7 +36,7 @@ app.config(['$stateProvider', '$urlRouterProvider',
         url: '/legal',
         views: {
           "mainView": {
-            templateUrl: 'legal/legal.view.html'
+            template: '<fcs-legal></fcs-legal>'
           }
         }
       });

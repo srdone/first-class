@@ -1,0 +1,59 @@
+<md-content layout-margin>
+
+  <p>{{introParagraph}}</p>
+  <div>
+    <div layout="column">
+      <form novalidate name="loginForm">
+
+        <div layout-lt-md="col" layout-gt-md="row">
+
+        <md-input-container flex>
+          <label class="sr-only">Username</label>
+          <input name="username" type="text" class="form-control" ng-model="$ctrl.user.email" placeholder="Email" required>
+          <div ng-messages="$ctrl.loginForm.username.$error" ng-show="loginForm.username.$dirty && loginForm.username.$invalid">
+            <div ng-message="required">Username is required</div>
+          </div>
+        </md-input-container>
+
+        <md-input-container flex>
+          <label class="sr-only">Password</label>
+          <input name="password" type="password" class="form-control" ng-model="$ctrl.user.password" placeholder="Password" required>
+          <div ng-messages="$ctrl.loginForm.password.$error" ng-show="$ctrl.loginForm.username.$dirty && $ctrl.loginForm.password.$invalid">
+            <div ng-message="required">Password is required</div>
+          </div>
+        </md-input-container>
+
+        <md-input-container ng-if="doSignUp" flex>
+          <label class="sr-only">Verify Password</label>
+          <input name="verifyPassword" type="password" class="form-control" ng-model="$ctrl.newUser.verifyPassword" placeholder="Verify Password" ng-required="$ctrl.doSignUp">
+          <div ng-messages="$ctrl.loginForm.verifyPassword.$error" ng-show="$ctrl.loginForm.verifyPassword.$dirty && $ctrl.loginForm.verifyPassword.$invalid">
+            <div ng-message="required">You must verify your password</div>
+          </div>
+        </md-input-container>
+
+        </div>
+
+        <div layout="row" layout-align="space-around center" layout-margin>
+          <!-- TODO: Fix funny fade in / out on chooseToSignUp -->
+          <!-- TODO: Fix button margin -->
+
+          <md-button class="md-raised md-primary" ng-click="$ctrl.login()" class="btn bg-primary" ng-if="!$ctrl.doSignUp" layout-margin flex ng-disabled="$ctrl.loginForm.$invalid">Login</md-button>
+
+          <md-button class="md-raised" ng-click="$ctrl.chooseToSignUp()" class="btn btn-default" ng-if="!$ctrl.doSignUp" layout-margin flex>Sign Up</md-button>
+
+          <md-button class="md-raised md-primary" ng-click="$ctrl.signUp()" class="btn btn-primary" ng-if="$ctrl.doSignUp" layout-margin flex ng-disabled="$ctrl.loginForm.$invalid">Sign Up</md-button>
+          <md-button class="md-raised md-warn" ng-click="$ctrl.cancelSignUp()" class="btn btn-default" ng-if="$ctrl.doSignUp" layout-margin flex>Cancel</md-button>
+
+          <span flex></span>
+
+        </div>
+
+      </form>
+    </div>
+
+  </div>
+
+  <div>
+    <md-button class="md-primary" ui-sref="legal">Legal Information</md-button>
+  </div>
+</md-content>

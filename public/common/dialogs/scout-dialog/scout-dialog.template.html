@@ -1,0 +1,55 @@
+<md-dialog aria-label="Add Scout" layout-padding>
+
+  <md-subheader class="md-sticky-no-effect md-primary">{{$ctrl.create ? 'Add' : 'Edit'}} Scout</md-subheader>
+
+  <md-content>
+
+  <form name="$ctrl.scoutForm">
+
+    <md-input-container>
+      <label>First Name</label>
+      <input type="text" class="form-control" name="firstName" ng-model="$ctrl.scout.firstName" placeholder="Robert Baden" required>
+      <div ng-messages="$ctrl.addScoutForm.firstName.$error" ng-show="$ctrl.scoutForm.firstName.$dirty && $ctrl.scoutForm.firstName.$invalid">
+        <div ng-message="required">First Name is Required</div>
+      </div>
+    </md-input-container>
+
+    <md-input-container>
+      <label>Last Name</label>
+      <input type="text" class="form-control" name="lastName" ng-model="$ctrl.scout.lastName" placeholder="Powell" required>
+      <div ng-messages="$ctrl.addScoutForm.lastName.$error" ng-show="$ctrl.scoutForm.lastName.$dirty && $ctrl.scoutForm.lastName.$invalid">
+        <div ng-message="required">Last Name is Required</div>
+      </div>
+    </md-input-container>
+
+    <md-input-container>
+      <label>Patrol</label>
+      <input type="text" class="form-control" name="patrol" ng-model="$ctrl.scout.patrol" placeholder="Owl Patrol">
+    </md-input-container>
+
+    <div layout="row">
+
+      <md-input-container flex>
+        <label>Photo URL</label>
+        <input type="text" class="form-control" name="photoUrl" ng-model="$ctrl.scout.photoUrl" placeholder="http://...">
+      </md-input-container>
+
+      <img ng-if="$ctrl.scout.photoUrl" ng-src="{{$ctrl.scout.photoUrl}}" class="avatar-sm">
+
+    </div>
+
+    <md-checkbox class="form-control" name="isOA" ng-model="$ctrl.scout.isOA">
+      OA Member
+    </md-checkbox>
+
+  </form>
+
+  </md-content>
+
+  <div class="md-actions" layout="row">
+    <span flex></span>
+    <md-button class="md-primary" ng-click="$ctrl.addScout()" ng-disabled="$ctrl.scoutForm.$invalid || $ctrl.scoutForm.$untouched" ng-if="$ctrl.create">Add Scout</md-button>
+    <md-button class="md-primary" ng-click="$ctrl.updateScout()" ng-disabled="$ctrl.scoutForm.$invalid" ng-if="!$ctrl.create">Save Edits</md-button>
+    <md-button class="md-warn" ng-click="$ctrl.cancel()">Cancel</md-button>
+  </div>
+</md-dialog>

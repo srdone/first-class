@@ -1,0 +1,19 @@
+<md-content layout-margin>
+<md-list>
+
+  <md-item ng-repeat="service in $ctrl.serviceProjects | orderBy: 'description'">
+
+    <md-item-content>
+
+      <fcs-make-editable edit="$ctrl.editServiceProject" delete="$ctrl.deleteService" item="service" edit-takes-events="true">
+
+        {{service.description}} - {{service.hours | number: 1}} hours
+
+      </fcs-make-editable>
+
+    </md-item-content>
+
+  </md-item>
+
+</md-list>
+</md-content>

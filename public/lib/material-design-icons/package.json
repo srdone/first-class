@@ -1,0 +1,83 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "material-design-icons@1.0.1",
+        "scope": null,
+        "escapedName": "material-design-icons",
+        "name": "material-design-icons",
+        "rawSpec": "1.0.1",
+        "spec": "1.0.1",
+        "type": "version"
+      },
+      "/Users/srdone/Development/first-class"
+    ]
+  ],
+  "_from": "material-design-icons@1.0.1",
+  "_id": "material-design-icons@1.0.1",
+  "_inCache": true,
+  "_location": "/material-design-icons",
+  "_npmUser": {
+    "name": "addyosmani",
+    "email": "addyosmani@gmail.com"
+  },
+  "_npmVersion": "1.4.23",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "material-design-icons@1.0.1",
+    "scope": null,
+    "escapedName": "material-design-icons",
+    "name": "material-design-icons",
+    "rawSpec": "1.0.1",
+    "spec": "1.0.1",
+    "type": "version"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/material-design-icons/-/material-design-icons-1.0.1.tgz",
+  "_shasum": "38ef45bf931d838c89e0f3a1acedea050cd1bd66",
+  "_shrinkwrap": null,
+  "_spec": "material-design-icons@1.0.1",
+  "_where": "/Users/srdone/Development/first-class",
+  "author": {
+    "name": "Material Design Authors"
+  },
+  "bugs": {
+    "url": "https://github.com/google/material-design-icons/issues"
+  },
+  "dependencies": {},
+  "description": "Material Design icons by Google",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "38ef45bf931d838c89e0f3a1acedea050cd1bd66",
+    "tarball": "https://registry.npmjs.org/material-design-icons/-/material-design-icons-1.0.1.tgz"
+  },
+  "gitHead": "623ff2dfa1869cbfbd011440239c572f25a0cfc5",
+  "homepage": "https://github.com/google/material-design-icons",
+  "keywords": [
+    "icons",
+    "material",
+    "material-design",
+    "google"
+  ],
+  "license": "CC-BY-4.0",
+  "main": "index.html",
+  "maintainers": [
+    {
+      "name": "addyosmani",
+      "email": "addyosmani@gmail.com"
+    }
+  ],
+  "name": "material-design-icons",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/google/material-design-icons.git"
+  },
+  "scripts": {},
+  "version": "1.0.1"
+}

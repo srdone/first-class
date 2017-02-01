@@ -1,0 +1,33 @@
+<md-dialog layout-padding>
+
+  <md-content>
+
+    <md-list flex>
+        <md-subheader ng-repeat-start="category in $ctrl.categories" class="md-no-sticky">
+          {{category}}
+        </md-subheader>
+        <md-list-item ng-repeat="requirement in $ctrl.existingRequirements | filter: {category: category}">
+
+          <md-checkbox ng-model="requirement.isSelected"></md-checkbox>
+          {{requirement.name}}
+
+        </md-list-item>
+        <md-divider ng-repeat-end></md-divider>
+    </md-list>
+
+  </md-content>
+
+  <div class="md-actions" layout="row">
+
+    <span flex></span>
+
+    <md-button id="submit" class="md-primary" ng-click="$ctrl.difference ? $ctrl.returnChangedSelections() : $ctrl.returnAllSelections()">
+      Update
+      <span ng-show="$mdMedia('gt-sm')"> Requirements</span>
+    </md-button>
+
+    <md-button id="cancel" class="md-warn" ng-click="$ctrl.cancel()">Cancel</md-button>
+
+  </div>
+
+</md-dialog>

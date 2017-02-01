@@ -115,12 +115,6 @@ fcs-rank .rank {
     font-size: 20px;
 }
 
-.container {
-    display: block;
-    
-    height: 300px;
-}
-
 .tabs {
     min-height: 48px;
 }

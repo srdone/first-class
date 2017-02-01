@@ -1,0 +1,51 @@
+'use strict';
+
+angular.module('firstClass').factory('serviceProjectDialogService', ['$mdDialog', function ($mdDialog) {
+
+  var _getDialogPreset = function (options) {
+
+    return {
+      templateUrl: 'common/dialogs/service-project-dialog/service-project-dialog.template.html',
+      controller: 'ServiceProjectDialogController',
+      controllerAs: '$ctrl',
+      bindToController: true,
+      targetEvent: options.targetEvent,
+      locals: {
+        create: options.create,
+        serviceProject: options.serviceProject
+      }
+    };
+
+  };
+
+  var _showCreateDialog = function (createOptions) {
+    var options = {
+      create: true
+    };
+
+    if (createOptions) {
+      options.targetEvent = createOptions.targetEvent;
+    }
+
+    return $mdDialog.show(_getDialogPreset(options));
+  };
+
+  var _showEditDialog = function (editOptions) {
+    var options = {
+      serviceProject: editOptions.serviceProject,
+      create: false
+    };
+
+    if (editOptions) {
+      options.targetEvent = editOptions.targetEvent;
+    }
+
+    return $mdDialog.show(_getDialogPreset(options));
+  };
+
+  return {
+    showCreateDialog: _showCreateDialog,
+    showEditDialog: _showEditDialog
+  }
+
+}]);

@@ -1,0 +1,9 @@
+<div layout="row">
+  <md-button class="md-icon-button" ng-click="$ctrl.deleteFunction($event)" aria-label="Delete {{$ctrl.ariaDescription}}" ng-if="$ctrl.canDelete">
+    <md-icon md-svg-icon="actions:delete"></md-icon>
+  </md-button>
+  <md-button class="md-icon-button" ng-click="$ctrl.editFunction($event)" aria-label="Edit {{$ctrl.ariaDescription}}" ng-if="$ctrl.canEdit">
+    <md-icon md-svg-icon="actions:edit"></md-icon>
+  </md-button>
+  <ng-transclude></ng-transclude>
+</div>

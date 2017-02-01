@@ -1,0 +1,38 @@
+<div>
+  <md-toolbar class="md-toolbar-tools" layout="row" flex>
+
+    <md-button hide-gt-md aria-label="Toogle Menu" ng-if="$ctrl.loggedIn" ng-click="$ctrl.toggleMenu()">
+      <md-icon md-svg-src="bower_components/material-design-icons/navigation/svg/production/ic_menu_48px.svg"></md-icon>
+    </md-button>
+
+    <div class="title">
+      First Class Scouting
+    </div>
+
+    <span flex></span>
+
+    <md-button class="md-button" ng-click="$ctrl.logout()" ng-if="$ctrl.loggedIn">
+      Logout {{username}}
+    </md-button>
+
+  </md-toolbar>
+  <!--<md-sidenav class="md-whiteframe-z3" md-component-id="left" md-is-locked-open="true" ng-if="loggedIn" md-swipe-left="$ctrl.close()" flex layout-fill>
+    <md-toolbar layout="column" layout-align="center center">
+      Troop Progress
+    </md-toolbar>
+
+    <div flex layout="column" layout-align="start center">
+      <div ui-view="chartView"></div>
+      <md-button hide-gt-md ng-click="$ctrl.close()">
+        Close Menu
+      </md-button>
+    </div>
+  </md-sidenav>-->
+
+  <div layout="row" flex>
+    
+
+    <md-content ui-view="mainView" layout="column" id="content" flex layout-fill class="animate view"></md-content>
+    
+  </div>
+</div>

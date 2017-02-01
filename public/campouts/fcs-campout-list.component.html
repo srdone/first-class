@@ -1,0 +1,21 @@
+<md-content layout-margin>
+<md-list>
+  <md-item ng-repeat="campout in $ctrl.campouts | orderBy: 'start'">
+    <md-item-content>
+
+      <fcs-make-editable edit="$ctrl.editCampout"
+                         delete="$ctrl.deleteCampout"
+                         item="campout"
+                         edit-takes-events="true"
+                         aria-description="{{campout.toString()}}">
+
+        <div>
+          <strong>{{campout.description}}:</strong> {{campout.start | date : 'shortDate'}} - {{campout.end | date : 'shortDate'}}
+        </div>
+
+      </fcs-make-editable>
+
+    </md-item-content>
+  </md-item>
+</md-list>
+</md-content>

@@ -1,0 +1,26 @@
+<md-content>
+
+  <fcs-scout-card class="animate" ng-repeat="scout in $ctrl.troop | orderBy: 'lastName+firstName'" scout="scout" ng-show="!scout.leaving">
+
+    <div class="md-button-group">
+      <md-button class="md-button md-raised md-accent details-button" ng-click="$ctrl.goToScout(scout)">Details</md-button>
+    </div>
+
+  </fcs-scout-card>
+
+  <div class="no-scouts" ng-if="$ctrl.troop.length === 0">
+    <p>No scouts yet!</p>
+    <p>Click the <md-icon md-svg-src="actions:add-person" layout-margin></md-icon> button to get started.</p>
+  </div>
+
+  <div class="spacer"></div>
+
+  <md-button ng-click="$ctrl.addBatchDetails($event)" class="md-fab md-fab-bottom-left md-raised md-warn md-hue-2" ng-show="$ctrl.troop.length > 0">
+    <md-icon md-svg-src="actions:batch-add"></md-icon>
+  </md-button>
+
+  <md-button ng-click="$ctrl.addScout($event)" class="md-fab md-fab-bottom-right md-raised md-primary md-hue-3">
+    <md-icon md-svg-src="actions:add-person"></md-icon>
+  </md-button>
+
+</md-content>

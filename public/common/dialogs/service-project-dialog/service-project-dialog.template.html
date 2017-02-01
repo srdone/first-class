@@ -1,0 +1,44 @@
+<md-dialog layout-padding>
+
+  <md-subheader class="md-sticky-no-effect md-primary">{{$ctrl.create ? 'Add' : 'Edit'}} Service Project</md-subheader>
+
+  <md-content>
+
+    <form name="$ctrl.serviceProjectForm">
+
+      <md-input-container>
+        <label>Description</label>
+        <input type="text" class="form-control" name="description" ng-model="$ctrl.serviceProject.description" required>
+        <div ng-messages="$ctrl.serviceProjectForm.description"
+             ng-show="$ctrl.serviceProjectForm.description.$dirty && $ctrl.serviceProjectForm.description.$invalid">
+          <div ng-message="required">Service Description is Required</div>
+        </div>
+      </md-input-container>
+
+      <md-input-container>
+        <label>Hours</label>
+        <input type="number" class="form-control" name="hours" ng-model="$ctrl.serviceProject.hours" required>
+        <div ng-messages="$ctrl.serviceProjectForm.hours"
+             ng-show="$ctrl.serviceProjectForm.hours.$dirty && $ctrl.serviceProjectForm.hours.$invalid">
+          <div ng-message="required">Service Hours are Required</div>
+        </div>
+      </md-input-container>
+
+    </form>
+
+  </md-content>
+
+  <div class="md-actions">
+
+    <span flex></span>
+
+    <md-button id="submit" class="md-primary" ng-click="$ctrl.returnServiceProject()">
+      {{$ctrl.create ? 'Add' : 'Update'}}
+      <span show-gt-sm> Service Project</span>
+    </md-button>
+
+    <md-button id="cancel" class="md-warn" ng-click="$ctrl.cancel()">Cancel</md-button>
+
+  </div>
+
+</md-dialog>
